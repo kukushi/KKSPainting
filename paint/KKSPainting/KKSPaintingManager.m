@@ -35,6 +35,8 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 @property (nonatomic, weak) KKSPaintingTool *selectedPainting;
 
+@property (nonatomic, weak) KKSPaintingTool *paintingToFill;
+
 @property (nonatomic) CGPoint firstTouchLocation;
 @property (nonatomic) CGPoint previousLocation;
 
@@ -95,10 +97,25 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
     KKSDLog("Mode %td Hit on %@", self.paintingMode, self.selectedPainting);
 }
 
+- (KKSPaintingTool *)paintingContainedInAreaWithPoint:(CGPoint)point {
+    __block KKSPaintingTool* containedPainting = nil;
+    [self.usedPaintings enumerateObjectsWithOptions:NSEnumerationReverse
+                                         usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                             KKSPaintingTool *painting = (KKSPaintingTool *)obj;
+                                             if ([painting areaContainsPoint:point]) {
+                                                 containedPainting = painting;
+                                                 *stop = YES;
+                                             }
+                                         }];
+    return containedPainting;
+}
+
 #pragma mark - Touches
 
 - (void)paintingBeginWithTouch:(UITouch *)touch {
     KKSPaintingMode paintingMode = self.paintingMode;
+    CGPoint touchedLocation = [touch locationInView:self.paintingView];
+    
     if (paintingMode == KKSPaintingModePainting) {
         if (self.isActive == NO) {
             self.isActive = YES;
@@ -112,10 +129,14 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
         [self registerUndoForPaintingWithPaintings:[self.usedPaintings copy]];
     }
     else if (paintingMode == KKSPaintingModeFillColor) {
-        
+        self.paintingToFill = [self paintingContainedInAreaWithPoint:touchedLocation];
+        if (self.paintingToFill) {
+            self.isActive = YES;
+            [self registerUndoForFillColorWithPainting:self.paintingToFill];
+            [self.paintingToFill setFill:YES color:self.color.CGColor];
+        }
     }
     else {
-        CGPoint touchedLocation = [touch locationInView:self.paintingView];
         
         if (paintingMode == KKSPaintingModeSelection) {
             BOOL needRedraw = NO;
@@ -154,9 +175,6 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
                 else if (paintingMode == KKSPaintingModeZoom) {
                     [self registerUndoForZoomingWithPainting:self.selectedPainting];
                 }
-                
-            }
-            else if (paintingMode == KKSPaintingModeFillColor) {
                 
             }
             else if (paintingMode == KKSPaintingModeRemove) {
@@ -258,11 +276,12 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
         }
     }
     else if (self.paintingMode == KKSPaintingModeFillColor) {
-        if (self.selectedPainting) {
-            [self updateCachedImageWithPainting:self.selectedPainting
+        if (self.paintingToFill) {
+            [self updateCachedImageWithPainting:self.paintingToFill
                                     cachedImage:self.cachedImage];
             [self.paintingView setNeedsDisplay];
             self.isActive = NO;
+            self.paintingToFill = nil;
         }
     }
     else if (self.paintingMode == KKSPaintingModeRemove) {
