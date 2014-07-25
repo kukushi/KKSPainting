@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Xing He. All rights reserved.
 //
 
-#import "KKSPaintingTool.h"
+#import "KKSPaintingBase.h"
 
 #pragma mark - KKSPainting
 
-@interface KKSPaintingTool () <NSCopying, NSCoding>
+@interface KKSPaintingBase () <NSCopying, NSCoding>
 
 @property (nonatomic) CGAffineTransform transform;
 @property (nonatomic) CGFloat realLineWidth;
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation KKSPaintingTool
+@implementation KKSPaintingBase
 
 #pragma mark - Init
 
@@ -213,7 +213,7 @@
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    KKSPaintingTool *painting = [[self class] allocWithZone:zone];
+    KKSPaintingBase *painting = [[self class] allocWithZone:zone];
     if (painting) {
         painting->_lineWidth = _lineWidth;
         painting->_alpha = _alpha;

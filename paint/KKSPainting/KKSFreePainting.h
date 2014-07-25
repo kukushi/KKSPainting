@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Xing He. All rights reserved.
 //
 
-#import "KKSPaintingTool.h"
+#import "KKSPaintingBase.h"
 
-@interface KKSFreePainting : KKSPaintingTool
+@interface KKSFreePainting : KKSPaintingBase
 
 @end
 

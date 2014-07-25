@@ -6,28 +6,20 @@
 //  Copyright (c) 2014 Xing He. All rights reserved.
 //
 
-#import "KKSPaintingTool.h"
+#import "KKSPaintingBase.h"
 
-@interface KKSBrokenPainting : KKSPaintingTool
+@interface KKSBrokenPainting : KKSPaintingBase <NSCoding>
 
-@end
+@property (nonatomic) BOOL isFirstTap;
+@property (nonatomic) BOOL isBeforeSecondTap;
+@property (nonatomic) CGPoint firstLocation;
+@property (nonatomic) CGPoint previousLocation;
 
+@property (nonatomic) CGFloat previousTimeStamp;
 
+@property (nonatomic, strong) NSTimer *autoEndTimer;
+@property (nonatomic, strong) NSTimer *longPressFinishTimer;
 
-@interface KKSPaintingSegments : KKSBrokenPainting
-
-@end
-
-
-
-
-@interface KKSPaintingBezier : KKSBrokenPainting
-
-@end
-
-
-
-
-@interface KKSPaintingPolygon : KKSBrokenPainting
+- (BOOL)isLongTapWithTouch:(UITouch *)touch;
 
 @end

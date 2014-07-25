@@ -16,7 +16,6 @@
 {
     NSDate *LastMotion;
     NSString* filePath;//图片文件路径
-    BOOL menuIsOn;
 }
 @property (nonatomic, strong) FAFancyMenuView *menu;
 
@@ -24,10 +23,20 @@
 
 @implementation FirstViewController
 @synthesize panGes;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    menuIsOn=false;
+
+    if (!self.menu)
+    {
+        NSArray *images = @[[UIImage imageNamed:@"magnify.png"],[UIImage imageNamed:@"delete.png"],[UIImage imageNamed:@"copy.png"],[UIImage imageNamed:@"rotate.png"]];
+        self.menu = [[FAFancyMenuView alloc] init];
+        self.menu.delegate = self;
+        self.menu.buttonImages = images;
+        [self.drawerView addSubview:self.menu];
+    }
+
     self.paintingManager = self.drawerView.paintingManager;
     self.paintingManager.paintingDelegate = self;
     self.drawerView.delegate=self;
@@ -49,6 +58,8 @@
 	recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
     
 	if (recorder) {
+//#warning comment it temp
+        /*
 		[recorder prepareToRecord];
         
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
@@ -56,6 +67,7 @@
 		recorder.meteringEnabled = YES;
 		[recorder record];
 		levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
+         */
 	} else
 		NSLog(@"%@",[error description]);
 /*-------------------------------音频检测相关代码---------------------------*/
@@ -93,16 +105,20 @@
                                                  name:@"UIDeviceProximityStateDidChangeNotification"
                                                object:nil];
 /*----------------------------加速计和距离传感器注册---------------------------*/
-
-    
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self.drawerView setContentSize:CGSizeMake(500.f, 1000.f)];
+    if (self.drawerView.contentSize.width==0.0f)
+    {
+        [self.drawerView setContentSize:CGSizeMake(500.f, 1000.f)];
+        NSLog(@"seseset");
+    }
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
 }
+
 #pragma mark    吹气相关
 - (void)levelTimerCallback:(NSTimer *)timer {
 	[recorder updateMeters];
@@ -124,9 +140,6 @@
         }
     }
 }
-- (IBAction)debugClear:(id)sender {
-    [self.paintingManager clear];
-}
 
 #pragma mark 改变线条颜色
 - (IBAction)changeColor:(UIButton *)sender {
@@ -141,7 +154,7 @@
 #pragma mark Redo undo相关
 -(void)sensorStateChange:(NSNotificationCenter *)notification;
 {
-    //if ([LastMotion timeIntervalSinceNow]<-0.4f)
+    //if ([LastMotion timeIntervalSinceNow]<-0.25f)
     //{
         LastMotion=[NSDate date]; //上次检测的时间设为现在时间
         if ([[UIDevice currentDevice] proximityState] == YES) {
@@ -264,7 +277,7 @@
 - (IBAction)selectedTool:(id)sender {
     CATransition *animation = [CATransition animation];
     animation.type = kCATransitionFade;
-    animation.duration = 0.4;
+    animation.duration = 0.25;
     [self.hiddenTools.layer addAnimation:animation forKey:nil];
 
     if (self.hiddenTools.hidden) {
@@ -318,9 +331,13 @@
 - (IBAction)editTool:(id)sender {
     CATransition *animation = [CATransition animation];
     animation.type = kCATransitionFade;
-    animation.duration = 0.4;
+    animation.duration = 0.25;
     [self.hiddenEditAbout.layer addAnimation:animation forKey:nil];
     if (self.hiddenEditAbout.hidden) {
+        if (!self.hiddenLineDegrees.hidden)
+        {
+            self.hiddenLineDegrees.hidden=YES;
+        }
         self.hiddenEditAbout.hidden=NO;
     }
     else{
@@ -332,12 +349,14 @@
     BOOL enable = self.drawerView.scrollEnabled;
     enable ^= 1;
     self.drawerView.scrollEnabled = YES;
+    self.hiddenEditAbout.hidden=YES;
 
 }
 
 - (IBAction)editGraphic:(id)sender {
     [self.editTool setBackgroundImage:[sender backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];//更改选中工具图标
     self.paintingManager.paintingMode=KKSPaintingModeSelection;
+    self.hiddenEditAbout.hidden=YES;
 
 }
 -(void)patntingManagerDidSelectedPainting
@@ -346,22 +365,21 @@
     self.menu = [[FAFancyMenuView alloc] init];
     self.menu.delegate = self;
     self.menu.buttonImages = images;
-    if (!menuIsOn)
+    if (!self.menu.onScreen)
     {
-        [self.drawerView addSubview:self.menu];
-        menuIsOn=true;
+        [self.menu show];
+
     }
     NSLog(@"selected");
 }
 -(void)paintingManagerDidLeftSelection
 {
-    [self.menu removeFromSuperview];
-    menuIsOn=false;
-    NSLog(@"sdaf");
+    [self.menu hide];
+    NSLog(@"1111");
 }
 
 - (void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
-    NSLog(@"%td",index);
+    NSLog(@"%i",index);
     switch (index)
     {
         case 0:
@@ -402,7 +420,7 @@
 - (IBAction)selectedLine:(id)sender {
     CATransition *animation = [CATransition animation];
     animation.type = kCATransitionFade;
-    animation.duration = 0.4;
+    animation.duration = 0.25;
     [self.hiddenLineDegrees.layer addAnimation:animation forKey:nil];
     if (self.hiddenLineDegrees.hidden) {
         self.hiddenLineDegrees.hidden=NO;
@@ -424,7 +442,7 @@
 - (IBAction)keep:(id)sender {
     CATransition *animation = [CATransition animation];
     animation.type = kCATransitionFade;
-    animation.duration = 0.4;
+    animation.duration = 0.25;
     [self.hiddenKeepAbout.layer addAnimation:animation forKey:nil];
     if (self.hiddenKeepAbout.hidden) {
         if (!self.hiddenTools.hidden)
@@ -451,14 +469,14 @@
 }
 //新建作品，可以载入，可以新建画布
 - (IBAction)addFile:(id)sender {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc]
+        /*UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                       initWithTitle:@"新建"
                                       delegate:self
                                       cancelButtonTitle:@"取消"
                                       destructiveButtonTitle:Nil
                                       otherButtonTitles:@"空白画布", @"从相册导入",nil];
         //actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-        [actionSheet showInView:self.view];
+        [actionSheet showInView:self.view];*/
 
     
 }
@@ -510,7 +528,7 @@
                 {
                     CATransition *animation = [CATransition animation];
                     animation.type = kCATransitionFade;
-                    animation.duration = 0.4;
+                    animation.duration = 0.25;
                     [self.myDownBar.layer addAnimation:animation forKey:nil];
                     if (self.myDownBar.hidden==NO)
                     {
@@ -527,7 +545,7 @@
                     {
                         CATransition *animation = [CATransition animation];
                         animation.type = kCATransitionFade;
-                        animation.duration = 0.4;
+                        animation.duration = 0.25;
                         [self.myTopBar.layer addAnimation:animation forKey:nil];
                         [self.myDownBar.layer addAnimation:animation forKey:nil];
                         if (self.myTopBar.hidden==NO)

@@ -10,7 +10,8 @@
 
 #import "KKSFreePainting.h"
 #import "KKSShapePainting.h"
-#import "KKSBrokenPainting.h"
+#import "KKSPaintingTool.h"
+
 
 #import "KKSPaintingView.h"
 
@@ -28,14 +29,14 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 @interface KKSPaintingManager () <KKSPaintingDelegate>
 
-@property (nonatomic, strong) KKSPaintingTool *painting;
+@property (nonatomic, strong) KKSPaintingBase *painting;
 @property (nonatomic, strong) UIImage *cachedImage;
 
 @property (nonatomic, strong) NSMutableArray *usedPaintings;
 
-@property (nonatomic, weak) KKSPaintingTool *selectedPainting;
+@property (nonatomic, weak) KKSPaintingBase *selectedPainting;
 
-@property (nonatomic, weak) KKSPaintingTool *paintingToFill;
+@property (nonatomic, weak) KKSPaintingBase *paintingToFill;
 
 @property (nonatomic) CGPoint firstTouchLocation;
 @property (nonatomic) CGPoint previousLocation;
@@ -53,6 +54,8 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 @end
 
 @implementation KKSPaintingManager
+
+#pragma mark - Init
 
 - (id)init {
     if (self = [super init]) {
@@ -77,7 +80,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
     self.selectedPainting = nil;
     
     BOOL willSelectPainting = NO;
-    for (KKSPaintingTool *painting in self.usedPaintings) {
+    for (KKSPaintingBase *painting in self.usedPaintings) {
         if ([painting pathContainsPoint:point]) {
             self.selectedPainting = painting;
             willSelectPainting = YES;
@@ -97,11 +100,11 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
     KKSDLog("Mode %td Hit on %@", self.paintingMode, self.selectedPainting);
 }
 
-- (KKSPaintingTool *)paintingContainedInAreaWithPoint:(CGPoint)point {
-    __block KKSPaintingTool* containedPainting = nil;
+- (KKSPaintingBase *)paintingContainedInAreaWithPoint:(CGPoint)point {
+    __block KKSPaintingBase* containedPainting = nil;
     [self.usedPaintings enumerateObjectsWithOptions:NSEnumerationReverse
                                          usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                             KKSPaintingTool *painting = (KKSPaintingTool *)obj;
+                                             KKSPaintingBase *painting = (KKSPaintingBase *)obj;
                                              if ([painting areaContainsPoint:point]) {
                                                  containedPainting = painting;
                                                  *stop = YES;
@@ -189,7 +192,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
             else if (paintingMode == KKSPaintingModePaste) {
                 [self registerUndoForPaintingWithPaintings:[self.usedPaintings copy]];
                 
-                KKSPaintingTool *painting = [self.selectedPainting copy];
+                KKSPaintingBase *painting = [self.selectedPainting copy];
                 CGPoint translation = translationBetweenPoints(self.firstTouchLocation, touchedLocation);
                 [painting moveByIncreasingTranslation:translation];
                 [self.usedPaintings addObject:painting];
@@ -341,7 +344,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 #pragma mark - Zoom
 
 - (void)zoomAllPaintingsByScale:(CGFloat)scale {
-    for (KKSPaintingTool *painting in self.usedPaintings) {
+    for (KKSPaintingBase *painting in self.usedPaintings) {
         [painting zoomByMultipleCurrentScale:scale];
     }
 }
@@ -353,7 +356,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
         self.paintingView.contentSize = contentSize;
         
         [self zoomAllPaintingsByScale:scale];
-        for (KKSPaintingTool *painting in self.usedPaintings) {
+        for (KKSPaintingBase *painting in self.usedPaintings) {
             [painting zoomByMultipleCurrentScale:scale];
         }
         [self redrawViewWithPaintings:self.usedPaintings];
@@ -396,7 +399,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 }
 
 - (void)undoMoving:(id)object {
-    KKSPaintingTool *painting = object[KKSPaintingUndoKeyPainting];
+    KKSPaintingBase *painting = object[KKSPaintingUndoKeyPainting];
     [self registerUndoForMovingWithPainting:painting];
     
     NSValue *newValue = object[KKSPaintingUndoKeyTranslation];
@@ -408,7 +411,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
     
 }
 
-- (void)registerUndoForMovingWithPainting:(KKSPaintingTool *)painting {
+- (void)registerUndoForMovingWithPainting:(KKSPaintingBase *)painting {
     CGPoint translation = [painting currentTranslation];
     NSValue *value = [NSValue valueWithCGPoint:translation];
     
@@ -422,7 +425,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 - (void)undoRotating:(id)object {
     
-    KKSPaintingTool *painting = object[KKSPaintingUndoKeyPainting];
+    KKSPaintingBase *painting = object[KKSPaintingUndoKeyPainting];
     [self registerUndoForRotatingWithPainting:painting];
     
     NSValue *newValue = object[KKSPaintingUndoKeyDegree];
@@ -434,7 +437,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
     [self redrawViewWithPaintings:self.usedPaintings];
 }
 
-- (void)registerUndoForRotatingWithPainting:(KKSPaintingTool *)painting {
+- (void)registerUndoForRotatingWithPainting:(KKSPaintingBase *)painting {
     CGFloat degree = [painting currentRotateDegree];
     NSValue *value = [NSValue value:&degree withObjCType:@encode(CGFloat)];
     
@@ -448,7 +451,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 - (void)undoZooming:(id)object {
     
-    KKSPaintingTool *painting = object[KKSPaintingUndoKeyPainting];
+    KKSPaintingBase *painting = object[KKSPaintingUndoKeyPainting];
     [self registerUndoForZoomingWithPainting:painting];
     
     NSValue *newValue = object[KKSPaintingUndoKeyZoomScale];
@@ -460,7 +463,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
     [self redrawViewWithPaintings:self.usedPaintings];
 }
 
-- (void)registerUndoForZoomingWithPainting:(KKSPaintingTool *)painting {
+- (void)registerUndoForZoomingWithPainting:(KKSPaintingBase *)painting {
     CGFloat scale = [painting currentZoomScale];
     NSValue *value = [NSValue value:&scale withObjCType:@encode(CGFloat)];
     
@@ -473,7 +476,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 }
 
 - (void)undoFillColor:(id)object {
-    KKSPaintingTool *painting = object[KKSPaintingUndoKeyPainting];
+    KKSPaintingBase *painting = object[KKSPaintingUndoKeyPainting];
     [self registerUndoForFillColorWithPainting:painting];
     
     NSNumber *shouldFillValue = object[KKSPaintingUndoKeyShouldFill];
@@ -487,7 +490,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
     [self redrawViewWithPaintings:self.usedPaintings];
 }
 
-- (void)registerUndoForFillColorWithPainting:(KKSPaintingTool *)painting {
+- (void)registerUndoForFillColorWithPainting:(KKSPaintingBase *)painting {
     BOOL shouldFill = painting.shouldFill;
     NSNumber *shouldFillValue = [NSNumber numberWithBool:shouldFill];
     NSValue *colorValue = [NSValue valueWithPointer:painting.fillColor];
@@ -563,17 +566,17 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
     NSInteger startIndex = [self.usedPaintings indexOfObject:self.selectedPainting];
     NSInteger count = [self.usedPaintings count];
     for (NSInteger index = startIndex; index<count; ++index) {
-        KKSPaintingTool *painting = self.usedPaintings[index];
+        KKSPaintingBase *painting = self.usedPaintings[index];
         [painting drawPath];
     }
 }
 
-- (UIImage *)imageBeforePaintingComplete:(KKSPaintingTool *)painting {
+- (UIImage *)imageBeforePaintingComplete:(KKSPaintingBase *)painting {
     NSInteger endIndex = [self.usedPaintings indexOfObject:painting];
     
     KKSViewBeginImageContext(self.paintingView);
     for (NSInteger index = 0; index<endIndex; ++index) {
-        KKSPaintingTool *painting = self.usedPaintings[index];
+        KKSPaintingBase *painting = self.usedPaintings[index];
         [painting drawPath];
     }
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -582,14 +585,14 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
     return image;
 }
 
-- (void)updateCachedImageWithPaintingsAfterPainting:(KKSPaintingTool *)painting {
+- (void)updateCachedImageWithPaintingsAfterPainting:(KKSPaintingBase *)painting {
     NSInteger startIndex = [self.usedPaintings indexOfObject:painting];
     NSInteger count = [self.usedPaintings count];
     
     KKSViewBeginImageContext(self.paintingView);
     [self.cachedImage drawAtPoint:CGPointZero];
     for (NSInteger index = startIndex; index<count; ++index) {
-        KKSPaintingTool *painting = self.usedPaintings[index];
+        KKSPaintingBase *painting = self.usedPaintings[index];
         [painting drawPath];
     }
     
@@ -602,7 +605,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 - (void)redrawViewWithPaintings:(NSArray *)paintings {
     KKSViewBeginImageContext(self.paintingView);
     
-    for (KKSPaintingTool *painting in paintings) {
+    for (KKSPaintingBase *painting in paintings) {
         [painting drawPath];
     }
     
@@ -612,7 +615,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
     [self.paintingView setNeedsDisplay];
 }
 
-- (void)updateCachedImageWithPainting:(KKSPaintingTool *)painting
+- (void)updateCachedImageWithPainting:(KKSPaintingBase *)painting
                           cachedImage:(UIImage *)cachedImage {
     KKSViewBeginImageContext(self.paintingView);
     

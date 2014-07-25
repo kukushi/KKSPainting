@@ -51,7 +51,7 @@
 		00887F7F18ED9141004E26B4 /* KKSBrokenPainting.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F6C18ED9141004E26B4 /* KKSBrokenPainting.m */; };
 		00887F8018ED9141004E26B4 /* KKSFreePainting.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F6E18ED9141004E26B4 /* KKSFreePainting.m */; };
 		00887F8118ED9141004E26B4 /* KKSPaintingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7318ED9141004E26B4 /* KKSPaintingManager.m */; };
-		00887F8218ED9141004E26B4 /* KKSPaintingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7518ED9141004E26B4 /* KKSPaintingTool.m */; };
+		00887F8218ED9141004E26B4 /* KKSPaintingBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7518ED9141004E26B4 /* KKSPaintingBase.m */; };
 		00887F8318ED9141004E26B4 /* KKSPaintingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7818ED9141004E26B4 /* KKSPaintingView.m */; };
 		00887F8418ED9141004E26B4 /* KKSPointExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7A18ED9141004E26B4 /* KKSPointExtend.m */; };
 		00887F8518ED9141004E26B4 /* KKSShapePainting.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7C18ED9141004E26B4 /* KKSShapePainting.m */; };
@@ -69,6 +69,9 @@
 		527DE9A5198232E900EF570C /* UMSnsAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527DE999198232E900EF570C /* UMSnsAccountViewController.xib */; };
 		527DE9A6198232E900EF570C /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527DE99A198232E900EF570C /* UMSShareListController.xib */; };
 		527DE9A7198232E900EF570C /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 527DE99B198232E900EF570C /* UMSocialSDKResourcesNew.bundle */; };
+		52E91BE6198265A6000F5ED4 /* KKSPaintingSegments.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E91BE5198265A6000F5ED4 /* KKSPaintingSegments.m */; };
+		52E91BEA1982688F000F5ED4 /* KKSPaintingBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E91BE91982688F000F5ED4 /* KKSPaintingBezier.m */; };
+		52E91BEE19826B13000F5ED4 /* KKSPaintingPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E91BED19826B13000F5ED4 /* KKSPaintingPolygon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,13 +137,13 @@
 		00887F6C18ED9141004E26B4 /* KKSBrokenPainting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSBrokenPainting.m; sourceTree = "<group>"; };
 		00887F6D18ED9141004E26B4 /* KKSFreePainting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSFreePainting.h; sourceTree = "<group>"; };
 		00887F6E18ED9141004E26B4 /* KKSFreePainting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSFreePainting.m; sourceTree = "<group>"; };
-		00887F6F18ED9141004E26B4 /* KKSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSLog.h; sourceTree = "<group>"; };
+		00887F6F18ED9141004E26B4 /* KKSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKSLog.h; path = KKSPainting/KKSLog.h; sourceTree = "<group>"; };
 		00887F7018ED9141004E26B4 /* KKSPainting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPainting.h; sourceTree = "<group>"; };
 		00887F7118ED9141004E26B4 /* KKSPaintingConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingConstant.h; sourceTree = "<group>"; };
 		00887F7218ED9141004E26B4 /* KKSPaintingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingManager.h; sourceTree = "<group>"; };
 		00887F7318ED9141004E26B4 /* KKSPaintingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingManager.m; sourceTree = "<group>"; };
-		00887F7418ED9141004E26B4 /* KKSPaintingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingTool.h; sourceTree = "<group>"; };
-		00887F7518ED9141004E26B4 /* KKSPaintingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingTool.m; sourceTree = "<group>"; };
+		00887F7418ED9141004E26B4 /* KKSPaintingBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingBase.h; sourceTree = "<group>"; };
+		00887F7518ED9141004E26B4 /* KKSPaintingBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingBase.m; sourceTree = "<group>"; };
 		00887F7618ED9141004E26B4 /* KKSPaintingTool_KKSPaintingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingTool_KKSPaintingHelper.h; sourceTree = "<group>"; };
 		00887F7718ED9141004E26B4 /* KKSPaintingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingView.h; sourceTree = "<group>"; };
 		00887F7818ED9141004E26B4 /* KKSPaintingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingView.m; sourceTree = "<group>"; };
@@ -176,6 +179,13 @@
 		527DE99A198232E900EF570C /* UMSShareListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSShareListController.xib; sourceTree = "<group>"; };
 		527DE99B198232E900EF570C /* UMSocialSDKResourcesNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResourcesNew.bundle; sourceTree = "<group>"; };
 		527DE99C198232E900EF570C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
+		52E91BE4198265A6000F5ED4 /* KKSPaintingSegments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingSegments.h; sourceTree = "<group>"; };
+		52E91BE5198265A6000F5ED4 /* KKSPaintingSegments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingSegments.m; sourceTree = "<group>"; };
+		52E91BE81982688F000F5ED4 /* KKSPaintingBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingBezier.h; sourceTree = "<group>"; };
+		52E91BE91982688F000F5ED4 /* KKSPaintingBezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingBezier.m; sourceTree = "<group>"; };
+		52E91BEB198269D4000F5ED4 /* KKSPaintingTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKSPaintingTool.h; sourceTree = "<group>"; };
+		52E91BEC19826B13000F5ED4 /* KKSPaintingPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingPolygon.h; sourceTree = "<group>"; };
+		52E91BED19826B13000F5ED4 /* KKSPaintingPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingPolygon.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,7 +215,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		003F38DC18E9A36600F9A8B1 /* menu */ = {
+		003F38DC18E9A36600F9A8B1 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				003F38DD18E9A36E00F9A8B1 /* FAFancyButton.h */,
@@ -213,7 +223,7 @@
 				003F38DF18E9A36E00F9A8B1 /* FAFancyMenuView.h */,
 				003F38E018E9A36E00F9A8B1 /* FAFancyMenuView.m */,
 			);
-			name = menu;
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		00868A3C18C012E200CBBE3C = {
@@ -251,9 +261,10 @@
 		00868A4E18C012E200CBBE3C /* paint */ = {
 			isa = PBXGroup;
 			children = (
-				527DE981198232E900EF570C /* umeng_ios_social_sdk_4.0 */,
+				00887F6F18ED9141004E26B4 /* KKSLog.h */,
+				527DE981198232E900EF570C /* UMSocial */,
 				00887F6A18ED9141004E26B4 /* KKSPainting */,
-				003F38DC18E9A36600F9A8B1 /* menu */,
+				003F38DC18E9A36600F9A8B1 /* Menu */,
 				00868A5718C012E200CBBE3C /* AppDelegate.h */,
 				00868A5818C012E200CBBE3C /* AppDelegate.m */,
 				00868A5A18C012E200CBBE3C /* Main.storyboard */,
@@ -323,36 +334,19 @@
 		00887F6A18ED9141004E26B4 /* KKSPainting */ = {
 			isa = PBXGroup;
 			children = (
-				00887F6F18ED9141004E26B4 /* KKSLog.h */,
-				00887F6B18ED9141004E26B4 /* KKSBrokenPainting.h */,
-				00887F6C18ED9141004E26B4 /* KKSBrokenPainting.m */,
-				00887F6D18ED9141004E26B4 /* KKSFreePainting.h */,
-				00887F6E18ED9141004E26B4 /* KKSFreePainting.m */,
-				00887F7018ED9141004E26B4 /* KKSPainting.h */,
-				00887F7118ED9141004E26B4 /* KKSPaintingConstant.h */,
-				00887F7218ED9141004E26B4 /* KKSPaintingManager.h */,
-				00887F7318ED9141004E26B4 /* KKSPaintingManager.m */,
-				00887F7418ED9141004E26B4 /* KKSPaintingTool.h */,
-				00887F7518ED9141004E26B4 /* KKSPaintingTool.m */,
-				00887F7618ED9141004E26B4 /* KKSPaintingTool_KKSPaintingHelper.h */,
-				00887F7718ED9141004E26B4 /* KKSPaintingView.h */,
-				00887F7818ED9141004E26B4 /* KKSPaintingView.m */,
-				00887F7918ED9141004E26B4 /* KKSPointExtend.h */,
-				00887F7A18ED9141004E26B4 /* KKSPointExtend.m */,
-				00887F7B18ED9141004E26B4 /* KKSShapePainting.h */,
-				00887F7C18ED9141004E26B4 /* KKSShapePainting.m */,
-				00887F7D18ED9141004E26B4 /* NSMutableArray+KKSValueSupport.h */,
-				00887F7E18ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m */,
+				529DB90F198255A4007037DA /* Painting */,
+				529DB90E19825584007037DA /* Manager */,
+				529DB910198255C4007037DA /* Extension */,
 			);
 			path = KKSPainting;
 			sourceTree = "<group>";
 		};
-		527DE981198232E900EF570C /* umeng_ios_social_sdk_4.0 */ = {
+		527DE981198232E900EF570C /* UMSocial */ = {
 			isa = PBXGroup;
 			children = (
 				527DE982198232E900EF570C /* UMSocial_Sdk_4.0 */,
 			);
-			name = umeng_ios_social_sdk_4.0;
+			name = UMSocial;
 			path = umeng_ios_social_sdk_4.0_custom;
 			sourceTree = "<group>";
 		};
@@ -399,6 +393,61 @@
 				527DE99A198232E900EF570C /* UMSShareListController.xib */,
 			);
 			path = SocialSDKXib;
+			sourceTree = "<group>";
+		};
+		529DB90E19825584007037DA /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				00887F7118ED9141004E26B4 /* KKSPaintingConstant.h */,
+				00887F7218ED9141004E26B4 /* KKSPaintingManager.h */,
+				00887F7318ED9141004E26B4 /* KKSPaintingManager.m */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		529DB90F198255A4007037DA /* Painting */ = {
+			isa = PBXGroup;
+			children = (
+				00887F7018ED9141004E26B4 /* KKSPainting.h */,
+				52E91BEB198269D4000F5ED4 /* KKSPaintingTool.h */,
+				00887F7418ED9141004E26B4 /* KKSPaintingBase.h */,
+				00887F7518ED9141004E26B4 /* KKSPaintingBase.m */,
+				00887F7618ED9141004E26B4 /* KKSPaintingTool_KKSPaintingHelper.h */,
+				52E91BE7198265AF000F5ED4 /* BrokenPainting */,
+				00887F6D18ED9141004E26B4 /* KKSFreePainting.h */,
+				00887F6E18ED9141004E26B4 /* KKSFreePainting.m */,
+				00887F7718ED9141004E26B4 /* KKSPaintingView.h */,
+				00887F7818ED9141004E26B4 /* KKSPaintingView.m */,
+				00887F7B18ED9141004E26B4 /* KKSShapePainting.h */,
+				00887F7C18ED9141004E26B4 /* KKSShapePainting.m */,
+			);
+			name = Painting;
+			sourceTree = "<group>";
+		};
+		529DB910198255C4007037DA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				00887F7918ED9141004E26B4 /* KKSPointExtend.h */,
+				00887F7A18ED9141004E26B4 /* KKSPointExtend.m */,
+				00887F7D18ED9141004E26B4 /* NSMutableArray+KKSValueSupport.h */,
+				00887F7E18ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		52E91BE7198265AF000F5ED4 /* BrokenPainting */ = {
+			isa = PBXGroup;
+			children = (
+				00887F6B18ED9141004E26B4 /* KKSBrokenPainting.h */,
+				00887F6C18ED9141004E26B4 /* KKSBrokenPainting.m */,
+				52E91BE4198265A6000F5ED4 /* KKSPaintingSegments.h */,
+				52E91BE5198265A6000F5ED4 /* KKSPaintingSegments.m */,
+				52E91BE81982688F000F5ED4 /* KKSPaintingBezier.h */,
+				52E91BE91982688F000F5ED4 /* KKSPaintingBezier.m */,
+				52E91BEC19826B13000F5ED4 /* KKSPaintingPolygon.h */,
+				52E91BED19826B13000F5ED4 /* KKSPaintingPolygon.m */,
+			);
+			name = BrokenPainting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,17 +584,20 @@
 			files = (
 				00887F7F18ED9141004E26B4 /* KKSBrokenPainting.m in Sources */,
 				00887F8418ED9141004E26B4 /* KKSPointExtend.m in Sources */,
+				52E91BEA1982688F000F5ED4 /* KKSPaintingBezier.m in Sources */,
 				00868A5918C012E200CBBE3C /* AppDelegate.m in Sources */,
+				52E91BE6198265A6000F5ED4 /* KKSPaintingSegments.m in Sources */,
 				00887F8018ED9141004E26B4 /* KKSFreePainting.m in Sources */,
 				00868A5F18C012E200CBBE3C /* FirstViewController.m in Sources */,
 				003F38E118E9A36E00F9A8B1 /* FAFancyButton.m in Sources */,
 				00887F8118ED9141004E26B4 /* KKSPaintingManager.m in Sources */,
 				00887F8318ED9141004E26B4 /* KKSPaintingView.m in Sources */,
-				00887F8218ED9141004E26B4 /* KKSPaintingTool.m in Sources */,
+				00887F8218ED9141004E26B4 /* KKSPaintingBase.m in Sources */,
 				00887F8518ED9141004E26B4 /* KKSShapePainting.m in Sources */,
 				00887F8618ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m in Sources */,
 				00887F8918EDA66C004E26B4 /* SetPatingBgViewController.m in Sources */,
 				003F38E218E9A36E00F9A8B1 /* FAFancyMenuView.m in Sources */,
+				52E91BEE19826B13000F5ED4 /* KKSPaintingPolygon.m in Sources */,
 				00868A5518C012E200CBBE3C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

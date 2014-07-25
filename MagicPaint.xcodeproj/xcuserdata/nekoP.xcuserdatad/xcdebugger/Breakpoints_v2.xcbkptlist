@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             scope = "0"
@@ -20,12 +20,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "paint/FirstViewController.m"
-            timestampString = "427952206.09883"
+            timestampString = "427971400.045923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
-            landmarkName = "-paintingManagerDidLeftSelection"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "-patntingManagerDidSelectedPainting"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
