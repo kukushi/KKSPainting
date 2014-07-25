@@ -8,12 +8,6 @@
 
 #import "KKSPaintingBase.h"
 
-@interface KKSFreePainting : KKSPaintingBase
-
-@end
-
-
-
-@interface KKSPaintingPen : KKSFreePainting
+@interface KKSPaintingPen : KKSPaintingBase
 
 @end

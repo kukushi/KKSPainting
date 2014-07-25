@@ -8,7 +8,7 @@
 
 #import "KKSPaintingManager.h"
 
-#import "KKSFreePainting.h"
+#import "KKSPaintingPen.h"
 #import "KKSShapePainting.h"
 #import "KKSPaintingTool.h"
 

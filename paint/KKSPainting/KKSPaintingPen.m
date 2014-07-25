@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Xing He. All rights reserved.
 //
 
-#import "KKSFreePainting.h"
+#import "KKSPaintingPen.h"
 #import "KKSPointExtend.h"
 #import "KKSPaintingTool_KKSPaintingHelper.h"
 
 #pragma mark - KKSFreePainting
 
-@interface KKSFreePainting ()
+@interface KKSPaintingPen ()
 
 @property (nonatomic) CGPoint previousLocation;
 @property (nonatomic) CGPoint currentLocation;
@@ -23,7 +23,7 @@
 @end
 
 
-@implementation KKSFreePainting
+@implementation KKSPaintingPen
 
 #pragma mark - Init
 
@@ -86,7 +86,7 @@
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    KKSFreePainting *painting = [super copyWithZone:zone];
+    KKSPaintingPen *painting = [super copyWithZone:zone];
     if (painting) {
         painting->_previousLocation = _previousLocation;
         painting->_currentLocation = _currentLocation;
@@ -117,13 +117,7 @@
     return self;
 }
 
-
-@end
-
-
-#pragma mark - KKSPaintingPen
-
-@implementation KKSPaintingPen
+#pragma mark - Drawing
 
 - (void)drawPath {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -146,18 +140,14 @@
     if (self.shouldStrokePath) {
         [self strokeBoundWithContext:context];
         self.strokingPath = CGPathCreateCopyByStrokingPath(self.path,
-                                                                NULL,
-                                                                self.scaledLineWidth + 3.f,
-                                                                kCGLineCapRound,
-                                                                kCGLineJoinRound,
-                                                                0.f);
+                                                           NULL,
+                                                           self.scaledLineWidth + 3.f,
+                                                           kCGLineCapRound,
+                                                           kCGLineJoinRound,
+                                                           0.f);
     }
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-    KKSPaintingPen *painting = [super copyWithZone:zone];
-    return painting;
-}
 
 
 @end

@@ -14,8 +14,7 @@
 
 @interface KKSShapePainting ()
 
-@property (nonatomic) CGPoint firstLocation;
-@property (nonatomic) CGPoint lastLocation;
+
 
 @end
 
@@ -67,110 +66,6 @@
     return self;
 }
 
-
-@end
-
-
-
-#pragma mark - KKSPaintingLine
-
-@implementation KKSPaintingLine
-
-- (void)drawPath {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    [self setupContext:context];
-    
-    CGContextStrokePath(context);
-    
-    CGMutablePathRef path = CGPathCreateMutable();
-    
-    CGAffineTransform transform = [self currentTransform];
-    CGPathMoveToPoint(path, &transform, self.firstLocation.x, self.firstLocation.y);
-    CGPathAddLineToPoint(path, &transform, self.lastLocation.x, self.lastLocation.y);
-    CGContextAddPath(context, path);
-    
-    CGContextStrokePath(context);
-    self.path = path;
-    
-    if (self.shouldStrokePath) {
-        self.strokingPath = [self strokePathWithContext:context];
-    }
-}
-
-@end
-
-
-
-#pragma mark - KKSPaintingRetangle
-
-@interface KKSPaintingRectangle () <NSCopying>
-
-@end
-
-@implementation KKSPaintingRectangle
-
-- (void)drawPath {
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    [self setupContext:context];
-    
-    CGRect rectToDraw = [self rectToDraw];
-    CGAffineTransform transform = [self currentTransform];
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddRect(path, &transform, rectToDraw);
-    CGContextAddPath(context, path);
-    
-    if (self.shouldFill) {
-        CGContextSetFillColorWithColor(context, self.fillColor);
-        CGContextDrawPath(context, kCGPathFillStroke);
-    } else {
-        CGContextStrokePath(context);
-    }
-    
-    
-    self.path = path;
-    
-    if (self.shouldStrokePath) {        
-        self.strokingPath = [self strokePathWithContext:context];
-    }
-}
-
-@end
-
-
-
-#pragma mark - KKSPaintingEllipse
-
-@implementation KKSPaintingEllipse
-
-- (void)drawPath {
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    [self setupContext:context];
-
-    CGRect rectToDraw = [self rectToDraw];
-    CGAffineTransform transform = [self currentTransform];
-
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddEllipseInRect(path, &transform, rectToDraw);
-    CGContextAddPath(context, path);
-    
-    if (self.shouldFill) {
-        CGContextSetFillColorWithColor(context, self.fillColor);
-        CGContextDrawPath(context, kCGPathFillStroke);
-    } else {
-        CGContextStrokePath(context);
-    }
-    
-    self.path = path;
-    
-    if (self.shouldStrokePath) {
-        self.strokingPath = [self strokePathWithContext:context];
-    }
-}
 
 @end
 

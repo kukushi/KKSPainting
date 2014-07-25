@@ -10,19 +10,9 @@
 
 @interface KKSShapePainting : KKSPaintingBase
 
-@end
+@property (nonatomic) CGPoint firstLocation;
+@property (nonatomic) CGPoint lastLocation;
 
-
-@interface KKSPaintingLine : KKSShapePainting
-
-@end
-
-
-@interface KKSPaintingRectangle : KKSShapePainting
-
-@end
-
-
-@interface KKSPaintingEllipse : KKSShapePainting
+- (CGRect)rectToDraw;
 
 @end

@@ -11,4 +11,8 @@
     #import "KKSPaintingSegments.h"
     #import "KKSPaintingBezier.h"
     #import "KKSPaintingPolygon.h"
+    #import "KKSPaintingPen.h"
+    #import "KKSPaintingLine.h"
+    #import "KKSPaintingRectangle.h"
+    #import "KKSPaintingEllipse.h"
 #endif
