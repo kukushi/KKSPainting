@@ -124,6 +124,9 @@
         }
     }
 }
+- (IBAction)debugClear:(id)sender {
+    [self.paintingManager clear];
+}
 
 #pragma mark 改变线条颜色
 - (IBAction)changeColor:(UIButton *)sender {
@@ -358,7 +361,7 @@
 }
 
 - (void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
-    NSLog(@"%i",index);
+    NSLog(@"%td",index);
     switch (index)
     {
         case 0:

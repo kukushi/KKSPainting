@@ -42,6 +42,13 @@
     return self;
 }
 
+- (void)dealloc {
+    _path = nil;
+    _strokingPath = nil;
+    _strokeColor = nil;
+    _fillColor = nil;
+}
+
 - (void)setLineWidth:(CGFloat)lineWidth
                color:(CGColorRef)color
                alpha:(CGFloat)alpha {
