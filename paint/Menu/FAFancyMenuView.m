@@ -10,7 +10,7 @@
 #import "FAFancyButton.h"
 @implementation FAFancyMenuView
 - (void)addButtons{
-    self.frame = CGRectMake(100, 100, ((UIImage *)[self.buttonImages lastObject]).size.height * 2, ((UIImage *)[self.buttonImages lastObject]).size.height * 2);
+    self.frame = CGRectMake(79, 120, ((UIImage *)[self.buttonImages lastObject]).size.height * 2, ((UIImage *)[self.buttonImages lastObject]).size.height * 2);
     if (self.subviews.count > 0)
         [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSInteger i = 0;
@@ -26,7 +26,7 @@
         i++;
     }
 }
-
+/*
 - (void)handleLongPress:(UILongPressGestureRecognizer *)sender{
     if (self.onScreen) return;
     UIView *superView = [sender view];
@@ -64,10 +64,11 @@
     [super willMoveToSuperview:newSuperview];
     [self addGestureRecognizerForView:newSuperview];
 }
-
+*/
 
 - (void)buttonPressed:(FAFancyButton *)button{
 //    NSLog(@"%i",button.tag - 292);
+    NSLog(@"6666");
     if (self.delegate){
         if ([self.delegate respondsToSelector:@selector(fancyMenu:didSelectedButtonAtIndex:)]){
             [self.delegate fancyMenu:self didSelectedButtonAtIndex:button.tag - 292];

@@ -87,7 +87,8 @@
                         0.f * M_PI/180,
                         360.f * M_PI/180,
                         1);
-    } else {
+    }
+    else {
         CGMutablePathRef path = CGPathCreateMutable();
         
         CGAffineTransform transform = [self currentTransform];

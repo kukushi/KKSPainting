@@ -106,7 +106,6 @@
                                                object:nil];
 /*----------------------------加速计和距离传感器注册---------------------------*/
 }
-
 -(void)viewWillAppear:(BOOL)animated
 {
     if (self.drawerView.contentSize.width==0.0f)
@@ -118,7 +117,6 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
 }
-
 #pragma mark    吹气相关
 - (void)levelTimerCallback:(NSTimer *)timer {
 	[recorder updateMeters];
@@ -361,16 +359,11 @@
 }
 -(void)patntingManagerDidSelectedPainting
 {
-    NSArray *images = @[[UIImage imageNamed:@"magnify.png"],[UIImage imageNamed:@"delete.png"],[UIImage imageNamed:@"copy.png"],[UIImage imageNamed:@"rotate.png"]];
-    self.menu = [[FAFancyMenuView alloc] init];
-    self.menu.delegate = self;
-    self.menu.buttonImages = images;
     if (!self.menu.onScreen)
     {
         [self.menu show];
 
     }
-    NSLog(@"selected");
 }
 -(void)paintingManagerDidLeftSelection
 {
@@ -423,6 +416,10 @@
     animation.duration = 0.25;
     [self.hiddenLineDegrees.layer addAnimation:animation forKey:nil];
     if (self.hiddenLineDegrees.hidden) {
+        if (!self.hiddenEditAbout.hidden)
+        {
+            self.hiddenEditAbout.hidden=YES;
+        }
         self.hiddenLineDegrees.hidden=NO;
     }
     else{
@@ -457,6 +454,8 @@
 }
 //作品保存至本地
 - (IBAction)keepInPhoto:(id)sender {
+    self.hiddenKeepAbout.hidden=YES;
+
 }
 //作品分享到社交工具
 - (IBAction)share:(id)sender {
@@ -466,6 +465,8 @@
                                      shareImage:[UIImage imageNamed:@"share.png"]
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQzone,UMShareToQQ,UMShareToRenren,UMShareToDouban,UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter,nil]
                                        delegate:nil];
+    self.hiddenKeepAbout.hidden=YES;
+
 }
 //新建作品，可以载入，可以新建画布
 - (IBAction)addFile:(id)sender {
@@ -477,6 +478,7 @@
                                       otherButtonTitles:@"空白画布", @"从相册导入",nil];
         //actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [actionSheet showInView:self.view];*/
+    self.hiddenKeepAbout.hidden=YES;
 
     
 }
@@ -511,7 +513,7 @@
             {
                 CATransition *animation = [CATransition animation];
                 animation.type = kCATransitionFade;
-                animation.duration = 0.4;
+                animation.duration = 0.25;
                 [self.myTopBar.layer addAnimation:animation forKey:nil];
                 if (self.myTopBar.hidden==NO)
                 {
@@ -663,7 +665,14 @@
     
     return UIGraphicsGetCurrentContext();
 }
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"setBg"]) {
+        [[segue destinationViewController] setDrawerView:self.drawerView];
+        [[segue destinationViewController] setPaintingManager:self.paintingManager];
 
+    }
+}
 
 
 @end
