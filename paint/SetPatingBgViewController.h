@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class KKSPaintingView;
+@class KKSPaintingManager;
 @interface SetPatingBgViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *paintWidth;
+@property (weak, nonatomic) IBOutlet UITextField *paintHeight;
+- (IBAction)setBg:(id)sender;
+@property (strong, nonatomic) KKSPaintingView *drawerView;
+@property (strong,nonatomic)KKSPaintingManager *paintingManager;
 @end

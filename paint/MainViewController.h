@@ -11,7 +11,7 @@
 #import "KKSPaintingView.h"
 #import "FAFancyMenuView.h"
 
-@interface FirstViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,FAFancyMenuViewDelegate,UIScrollViewDelegate>
+@interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,FAFancyMenuViewDelegate,UIScrollViewDelegate>
 {
     //音频检测相关
 	AVAudioRecorder *recorder;
