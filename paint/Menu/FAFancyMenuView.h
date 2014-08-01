@@ -14,9 +14,12 @@
 @end
 
 @interface FAFancyMenuView : UIView
+
 @property (nonatomic, assign) id<FAFancyMenuViewDelegate> delegate;
 @property (nonatomic, strong) NSArray *buttonImages;
 @property (nonatomic) BOOL onScreen;
+
 - (void)show;
 - (void)hide;
+
 @end

@@ -57,6 +57,17 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 #pragma mark - Init
 
+void KKSViewBeginImageContext(UIScrollView *view) {
+    CGSize imageSize;
+    if (CGSizeEqualToSize(CGSizeZero, view.contentSize)) {
+        imageSize = view.bounds.size;
+    }
+    else {
+        imageSize = view.contentSize;
+    }
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.f);
+}
+
 - (id)init {
     if (self = [super init]) {
         _lineWidth = 5.f;
@@ -492,7 +503,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 - (void)registerUndoForFillColorWithPainting:(KKSPaintingBase *)painting {
     BOOL shouldFill = painting.shouldFill;
-    NSNumber *shouldFillValue = [NSNumber numberWithBool:shouldFill];
+    NSNumber *shouldFillValue = @(shouldFill);
     NSValue *colorValue = [NSValue valueWithPointer:painting.fillColor];
     
     NSDictionary *dict = @{KKSPaintingUndoKeyPainting: painting,
@@ -538,7 +549,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
         !self.painting.isDrawingFinished &&
         ([self.painting isKindOfClass:[KKSPaintingSegments class]]
          || [self.painting isKindOfClass:[KKSPaintingPolygon class]]) &&
-        self.isActive == YES) {
+        self.isActive) {
         
         self.cachedImage = [self.painting endDrawingWithCacheImage:self.cachedImage];
         
@@ -634,16 +645,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 #pragma mark -
 
-void KKSViewBeginImageContext(UIScrollView *view) {
-    CGSize imageSize;
-    if (CGSizeEqualToSize(CGSizeZero, view.contentSize)) {
-        imageSize = view.bounds.size;
-    }
-    else {
-        imageSize = view.contentSize;
-    }
-    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.f);
-}
+void KKSViewBeginImageContext(UIScrollView *view);
 
 
 #pragma mark - Accessor & Setter
@@ -709,8 +711,8 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         _color = [decoder decodeObjectForKey:@"color"];
         _alpha = [decoder decodeFloatForKey:@"alpha"];
         _canZoom = [decoder decodeBoolForKey:@"canZoom"];
-        _paintingType = [decoder decodeIntegerForKey:@"paintingType"];
-        _paintingMode = [decoder decodeIntegerForKey:@"paintingMode"];
+        _paintingType = (KKSPaintingType)[decoder decodeIntegerForKey:@"paintingType"];
+        _paintingMode = (KKSPaintingMode)[decoder decodeIntegerForKey:@"paintingMode"];
         _painting = [decoder decodeObjectForKey:@"painting"];
         _cachedImage = [decoder decodeObjectForKey:@"cachedImage"];
         _usedPaintings = [decoder decodeObjectForKey:@"usedPaintings"];

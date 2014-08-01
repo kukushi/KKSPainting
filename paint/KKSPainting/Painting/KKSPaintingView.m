@@ -13,12 +13,11 @@
 @interface KKSPaintingView() <NSCoding>
 
 @property (nonatomic, strong) UILabel *indicatorLabel;
-
 @property (nonatomic, strong) UIImageView *backgroundImageView;
-
 @property (nonatomic, strong, readwrite) KKSPaintingManager *paintingManager;
 
 @end
+
 
 @implementation KKSPaintingView
 
@@ -74,12 +73,18 @@
         UITouch *touch = [touches anyObject];
         [self.paintingManager paintingBeginWithTouch:touch];
     }
+    if (self.viewController) {
+        [self.viewController touchesBegan:touches withEvent:event];
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     if (!self.scrollEnabled) {
         UITouch *touch = [touches anyObject];
         [self.paintingManager paintingMovedWithTouch:touch];
+    }
+    if (self.viewController) {
+        [self.viewController touchesMoved:touches withEvent:event];
     }
 }
 
@@ -88,10 +93,17 @@
         UITouch *touch = [touches anyObject];
         [self.paintingManager paintingEndWithTouch:touch];
     }
+    if (self.viewController) {
+        [self.viewController touchesMoved:touches withEvent:event];
+    }
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     [self touchesMoved:touches withEvent:event];
+    
+    if (self.viewController) {
+        [self.viewController touchesCancelled:touches withEvent:event];
+    }
 }
 
 #pragma mark - Indicator Label

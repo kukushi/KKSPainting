@@ -10,9 +10,11 @@
 
 @class KKSPaintingManager;
 
+
 @interface KKSPaintingView : UIScrollView
 
 @property (nonatomic, strong, readonly) KKSPaintingManager *paintingManager;
+@property (nonatomic, weak) UIViewController *viewController;
 
 - (void)setBackgroundImage:(UIImage *)image;
 

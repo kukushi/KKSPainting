@@ -26,7 +26,7 @@
 		00868A5518C012E200CBBE3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00868A5418C012E200CBBE3C /* main.m */; };
 		00868A5918C012E200CBBE3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00868A5818C012E200CBBE3C /* AppDelegate.m */; };
 		00868A5C18C012E200CBBE3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00868A5A18C012E200CBBE3C /* Main.storyboard */; };
-		00868A5F18C012E200CBBE3C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00868A5E18C012E200CBBE3C /* FirstViewController.m */; };
+		00868A5F18C012E200CBBE3C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00868A5E18C012E200CBBE3C /* MainViewController.m */; };
 		00868A6418C012E200CBBE3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00868A6318C012E200CBBE3C /* Images.xcassets */; };
 		00868A6B18C012E300CBBE3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00868A6A18C012E300CBBE3C /* XCTest.framework */; };
 		00868A6C18C012E300CBBE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00868A4818C012E200CBBE3C /* Foundation.framework */; };
@@ -113,8 +113,8 @@
 		00868A5718C012E200CBBE3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		00868A5818C012E200CBBE3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		00868A5B18C012E200CBBE3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		00868A5D18C012E200CBBE3C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		00868A5E18C012E200CBBE3C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		00868A5D18C012E200CBBE3C /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		00868A5E18C012E200CBBE3C /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		00868A6318C012E200CBBE3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		00868A6918C012E300CBBE3C /* MagicPaintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MagicPaintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00868A6A18C012E300CBBE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -277,8 +277,8 @@
 				00868A5718C012E200CBBE3C /* AppDelegate.h */,
 				00868A5818C012E200CBBE3C /* AppDelegate.m */,
 				00868A5A18C012E200CBBE3C /* Main.storyboard */,
-				00868A5D18C012E200CBBE3C /* FirstViewController.h */,
-				00868A5E18C012E200CBBE3C /* FirstViewController.m */,
+				00868A5D18C012E200CBBE3C /* MainViewController.h */,
+				00868A5E18C012E200CBBE3C /* MainViewController.m */,
 				00887F8718EDA66C004E26B4 /* SetPatingBgViewController.h */,
 				00887F8818EDA66C004E26B4 /* SetPatingBgViewController.m */,
 				00868A6318C012E200CBBE3C /* Images.xcassets */,
@@ -618,7 +618,7 @@
 				00868A5918C012E200CBBE3C /* AppDelegate.m in Sources */,
 				52E91BE6198265A6000F5ED4 /* KKSPaintingSegments.m in Sources */,
 				00887F8018ED9141004E26B4 /* KKSPaintingPen.m in Sources */,
-				00868A5F18C012E200CBBE3C /* FirstViewController.m in Sources */,
+				00868A5F18C012E200CBBE3C /* MainViewController.m in Sources */,
 				003F38E118E9A36E00F9A8B1 /* FAFancyButton.m in Sources */,
 				522FE923198289D900E0E599 /* KKSPaintingRectangle.m in Sources */,
 				00887F8118ED9141004E26B4 /* KKSPaintingManager.m in Sources */,

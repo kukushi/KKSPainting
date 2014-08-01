@@ -35,7 +35,7 @@
 }
 
 - (NSInteger)kks_integerAtIndex:(NSInteger)index {
-    NSValue *value = [self objectAtIndex:index];
+    NSValue *value = self[index];
     NSInteger integer = [self integerFromValue:value];
     return integer;
 }

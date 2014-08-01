@@ -7,7 +7,7 @@
 //
 #define DegreesToRadians(degrees) (degrees * M_PI / 180.f)
 #import "FAFancyButton.h"
-#import <QuartzCore/QuartzCore.h>
+// #import <QuartzCore/QuartzCore.h>
 @interface FAFancyButton ()
 
 @end
@@ -35,7 +35,7 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     CABasicAnimation *animation = (CABasicAnimation *)anim;
-    if ([animation.keyPath isEqualToString:@"transform.scale"] && flag){
+    if ([animation.keyPath isEqualToString:@"transform"] && flag){
         switch (self.state) {
             case FAFancyButtonFadeIn:
                 [self.layer addAnimation:[self rotateAnimationFromDegree:0 toDegree:self.degree delegate:nil] forKey:@"FancyButtonRotation"];
@@ -55,7 +55,7 @@
 
 - (CABasicAnimation *)fadeInAnimation{
     self.state = FAFancyButtonFadeIn;
-    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(.01, .01, .1)];
     scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)];
     scaleAnimation.duration = 0.2;
@@ -65,7 +65,7 @@
 
 - (CABasicAnimation *)fadeOutAnimation{
     self.state = FAFancyButtonFadeOut;
-    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(.01, .01, .1)];
     scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)];
     scaleAnimation.duration = 0.2;

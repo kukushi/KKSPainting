@@ -90,7 +90,7 @@
 @protocol KKSPaintingDelegate <NSObject>
 
 /**
- *  Tell the delegate drawing is about to end automaticallly.
+ *  Tell the delegate drawing is about to end automatically.
  *
  *  It'll happen when user leave screen for a long time while
  *  drawing is not yet finish.

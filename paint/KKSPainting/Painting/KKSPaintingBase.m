@@ -144,13 +144,13 @@
 
 - (void)moveBySetingTranslation:(CGPoint)translation {
     self.translation = translation;
-    [self updateTransfrom];
+    [self updateTransform];
 }
 
 - (void)moveByIncreasingTranslation:(CGPoint)translation {
     self.translation = CGPointMake(self.translation.x + translation.x,
                                    self.translation.y + translation.y);
-    [self updateTransfrom];
+    [self updateTransform];
 }
 
 - (CGFloat)currentRotateDegree {
@@ -159,12 +159,12 @@
 
 - (void)rotateBySettingDegree:(CGFloat)degree {
     self.rotateDegree = degree;
-    [self updateTransfrom];
+    [self updateTransform];
 }
 
 - (void)rotateByIncreasingDegree:(CGFloat)degree {
     self.rotateDegree += degree;
-    [self updateTransfrom];
+    [self updateTransform];
 }
 
 - (CGFloat)currentZoomScale {
@@ -173,15 +173,15 @@
 
 - (void)zoomBySettingScale:(CGFloat)scale {
     self.zoomScale = scale;
-    [self updateTransfrom];
+    [self updateTransform];
 }
 
 - (void)zoomByMultipleCurrentScale:(CGFloat)scale {
     self.zoomScale += scale;
-    [self updateTransfrom];
+    [self updateTransform];
 }
 
-- (void)updateTransfrom {
+- (void)updateTransform {
     CGAffineTransform transform = CGAffineTransformMakeTranslation(self.translation.x,
                                                                    self.translation.y);
     

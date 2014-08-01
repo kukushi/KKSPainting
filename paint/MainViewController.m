@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 Robin W. All rights reserved.
 //
 
-#import "FirstViewController.h"
-#import <AVFoundation/AVFoundation.h>
+#import "MainViewController.h"
+// #import <AVFoundation/AVFoundation.h>
 #import "UMSocial.h"
 #import "KKSPainting.h"
 
 #define screenHight [[UIScreen mainScreen] bounds].size.height
-@interface FirstViewController ()<KKSPaintingManagerDelegate>
+@interface MainViewController ()<KKSPaintingManagerDelegate>
 {
     NSDate *LastMotion;
     NSString* filePath;//图片文件路径
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation FirstViewController
+@implementation MainViewController
 @synthesize panGes;
 
 - (void)viewDidLoad
@@ -38,8 +38,9 @@
     }
 
     self.paintingManager = self.drawerView.paintingManager;
+    self.drawerView.viewController = self;
     self.paintingManager.paintingDelegate = self;
-    self.drawerView.delegate=self;
+    self.drawerView.delegate = self;
     self.paintingManager.paintingMode = KKSPaintingModePainting;
     
 /*-------------------------------音频检测相关代码---------------------------*/
@@ -114,9 +115,8 @@
         NSLog(@"seseset");
     }
 }
--(void)viewWillDisappear:(BOOL)animated
-{
-}
+
+
 #pragma mark    吹气相关
 - (void)levelTimerCallback:(NSTimer *)timer {
 	[recorder updateMeters];
@@ -145,17 +145,13 @@
 
 }
 
-
-
-
-
 #pragma mark Redo undo相关
 -(void)sensorStateChange:(NSNotificationCenter *)notification;
 {
     //if ([LastMotion timeIntervalSinceNow]<-0.25f)
     //{
         LastMotion=[NSDate date]; //上次检测的时间设为现在时间
-        if ([[UIDevice currentDevice] proximityState] == YES) {
+        if ([[UIDevice currentDevice] proximityState]) {
             //在此写接近时，要做的操作逻辑代码
             if (self.paintingManager.canUndo)
             {
@@ -550,7 +546,7 @@
                         animation.duration = 0.25;
                         [self.myTopBar.layer addAnimation:animation forKey:nil];
                         [self.myDownBar.layer addAnimation:animation forKey:nil];
-                        if (self.myTopBar.hidden==NO)
+                        if (!self.myTopBar.hidden)
                         {
                             self.myTopBar.hidden=YES;
                             self.myDownBar.hidden=YES;
@@ -643,8 +639,7 @@
 }
 
 //触碰其他位置隐藏工具扩展栏
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch =  [touches anyObject];
     if (touch.view!=self.hiddenTools&&touch.view!=self.hiddenLineDegrees&&touch.view!=self.hiddenKeepAbout)
     {
