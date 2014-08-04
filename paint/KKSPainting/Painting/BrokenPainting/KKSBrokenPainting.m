@@ -7,9 +7,9 @@
 //
 
 #import "KKSBrokenPainting.h"
-#import "KKSPointExtend.h"
-#import "KKSPaintingTool_KKSPaintingHelper.h"
-#import "NSMutableArray+KKSValueSupport.h"
+// #import "KKSPointExtend.h"
+// #import "KKSPaintingTool_KKSPaintingHelper.h"
+// #import "NSMutableArray+KKSValueSupport.h"
 
 CGFloat const kAutoEndTime = 1.2f;
 NSTimeInterval const kLongPressEndTime = 0.6f;

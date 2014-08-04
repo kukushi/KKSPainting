@@ -16,7 +16,7 @@
 
 - (void)paintingManagerDidEndedPainting;
 
-- (void)patntingManagerDidSelectedPainting;
+- (void)paintingManagerDidSelectedPainting;
 - (void)paintingManagerDidLeftSelection;
 
 @end

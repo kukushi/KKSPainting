@@ -7,11 +7,11 @@
 //
 
 #import "MainViewController.h"
-// #import <AVFoundation/AVFoundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import "UMSocial.h"
 #import "KKSPainting.h"
 
-#define screenHight [[UIScreen mainScreen] bounds].size.height
+#define screenHeight [[UIScreen mainScreen] bounds].size.height
 @interface MainViewController ()<KKSPaintingManagerDelegate>
 {
     NSDate *LastMotion;
@@ -108,10 +108,8 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    if (self.drawerView.contentSize.width==0.0f)
-    {
+    if (self.drawerView.contentSize.width==0.0f) {
         [self.drawerView setContentSize:CGSizeMake(500.f, 1000.f)];
-        NSLog(@"seseset");
     }
 }
 
@@ -352,7 +350,7 @@
     self.hiddenEditAbout.hidden=YES;
 
 }
--(void)patntingManagerDidSelectedPainting
+-(void)paintingManagerDidSelectedPainting
 {
     if (!self.menu.onScreen)
     {
@@ -389,13 +387,13 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
     self.myTopBar.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.myTopBar.bounds.size.width, self.myTopBar.bounds.size.height);
-    self.myDownBar.frame=CGRectMake(scrollView.bounds.origin.x,screenHight-self.myDownBar.bounds.size.height+scrollView.bounds.origin.y, self.myDownBar.bounds.size.width, self.myDownBar.bounds.size.height);
+    self.myDownBar.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.myDownBar.bounds.size.height+scrollView.bounds.origin.y, self.myDownBar.bounds.size.width, self.myDownBar.bounds.size.height);
     
-    self.hiddenTools.frame=CGRectMake(scrollView.bounds.origin.x,screenHight-self.hiddenTools.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenTools.bounds.size.width, self.hiddenTools.bounds.size.height);
-    self.hiddenKeepAbout.frame=CGRectMake(scrollView.bounds.origin.x,screenHight-self.hiddenKeepAbout.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenKeepAbout.bounds.size.width, self.hiddenKeepAbout.bounds.size.height);
-    self.hiddenEditAbout.frame=CGRectMake(242+scrollView.bounds.origin.x,screenHight-self.hiddenEditAbout.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenEditAbout.bounds.size.width, self.hiddenEditAbout.bounds.size.height);
+    self.hiddenTools.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.hiddenTools.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenTools.bounds.size.width, self.hiddenTools.bounds.size.height);
+    self.hiddenKeepAbout.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.hiddenKeepAbout.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenKeepAbout.bounds.size.width, self.hiddenKeepAbout.bounds.size.height);
+    self.hiddenEditAbout.frame=CGRectMake(242+scrollView.bounds.origin.x, screenHeight-self.hiddenEditAbout.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenEditAbout.bounds.size.width, self.hiddenEditAbout.bounds.size.height);
 
-    self.hiddenLineDegrees.frame=CGRectMake(158+scrollView.bounds.origin.x,screenHight-self.hiddenLineDegrees.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenLineDegrees.bounds.size.width, self.hiddenLineDegrees.bounds.size.height);
+    self.hiddenLineDegrees.frame=CGRectMake(158+scrollView.bounds.origin.x, screenHeight-self.hiddenLineDegrees.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenLineDegrees.bounds.size.width, self.hiddenLineDegrees.bounds.size.height);
     
 }
 
@@ -637,13 +635,13 @@
     
 }
 
-/*
+
 //触碰其他位置隐藏工具扩展栏
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch =  [touches anyObject];
     if (touch.view!=self.hiddenTools&&touch.view!=self.hiddenLineDegrees&&touch.view!=self.hiddenKeepAbout)
     {
-        if (self.hiddenKeepAbout.hidden==NO||self.hiddenLineDegrees.hidden==NO||self.hiddenTools.hidden==NO)
+        if (!self.hiddenKeepAbout.hidden||!self.hiddenLineDegrees.hidden||!self.hiddenTools.hidden)
         {
             self.hiddenKeepAbout.hidden=YES;
             self.hiddenLineDegrees.hidden=YES;
@@ -653,7 +651,7 @@
     }
     
  }
- */
+
 /*----------------------------保存作品相关内容---------------------------*/
 
 
@@ -669,7 +667,6 @@
 
     }
 }
-
 
 #pragma mark - Test
 

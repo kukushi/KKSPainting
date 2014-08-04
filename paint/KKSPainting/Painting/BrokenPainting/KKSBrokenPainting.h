@@ -15,7 +15,7 @@
 @property (nonatomic) CGPoint firstLocation;
 @property (nonatomic) CGPoint previousLocation;
 
-@property (nonatomic) CGFloat previousTimeStamp;
+@property (nonatomic) NSTimeInterval previousTimeStamp;
 
 @property (nonatomic, strong) NSTimer *autoEndTimer;
 @property (nonatomic, strong) NSTimer *longPressFinishTimer;

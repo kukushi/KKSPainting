@@ -98,8 +98,8 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         }
     }
     if (willSelectPainting) {
-        if ([self.paintingDelegate respondsToSelector:@selector(patntingManagerDidSelectedPainting)]) {
-            [self.paintingDelegate patntingManagerDidSelectedPainting];
+        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidSelectedPainting)]) {
+            [self.paintingDelegate paintingManagerDidSelectedPainting];
         }
     }
     else if (didSelectedPainting) {
@@ -520,8 +520,6 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     [self.undoManager redo];
 }
 
-
-
 - (void)clear {
     if ([self canClear]) {
         [self.usedPaintings removeAllObjects];
@@ -670,7 +668,9 @@ void KKSViewBeginImageContext(UIScrollView *view);
         self.paintingView.scrollEnabled = (paintingMode == KKSPaintingModeNone);
     }
     else if (_paintingMode == KKSPaintingModeSelection &&
-            paintingMode != KKSPaintingModeSelection) {
+            (paintingMode == KKSPaintingModePainting ||
+            paintingMode == KKSPaintingModeSelection ||
+            paintingMode == KKSPaintingModeFillColor)) {
         self.selectedPainting.shouldStrokePath = NO;
         [self redrawViewWithPaintings:self.usedPaintings];
     }
