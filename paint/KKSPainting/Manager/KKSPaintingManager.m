@@ -131,7 +131,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     CGPoint touchedLocation = [touch locationInView:self.paintingView];
     
     if (paintingMode == KKSPaintingModePainting) {
-        if (self.isActive == NO) {
+        if (!self.isActive) {
             self.isActive = YES;
             [self renewPainting];
             
@@ -667,7 +667,13 @@ void KKSViewBeginImageContext(UIScrollView *view);
     
     if (_paintingMode == KKSPaintingModeNone) {
         self.paintingView.scrollEnabled = (paintingMode == KKSPaintingModeNone);
-    } else {
+    }
+    else if (_paintingMode == KKSPaintingModeSelection &&
+            paintingMode != KKSPaintingModeSelection) {
+        self.selectedPainting.shouldStrokePath = NO;
+        [self redrawViewWithPaintings:self.usedPaintings];
+    }
+    else {
         [self paintingViewDidChangeState];
     }
     _paintingMode = paintingMode;
