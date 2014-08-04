@@ -15,7 +15,7 @@
 
 #import "KKSPaintingView.h"
 
-#import "NSMutableArray+KKSValueSupport.h"
+// #import "NSMutableArray+KKSValueSupport.h"
 #import "KKSPointExtend.h"
 #import "KKSLog.h"
 
@@ -138,9 +138,10 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerWillBeginPainting)]) {
                 [self.paintingDelegate paintingManagerWillBeginPainting];
             }
+            [self registerUndoForPaintingWithPaintings:[self.usedPaintings copy]];
         }
         [self.painting recordingBeganWithTouch:touch];
-        [self registerUndoForPaintingWithPaintings:[self.usedPaintings copy]];
+        
     }
     else if (paintingMode == KKSPaintingModeFillColor) {
         self.paintingToFill = [self paintingContainedInAreaWithPoint:touchedLocation];
@@ -587,8 +588,8 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     
     KKSViewBeginImageContext(self.paintingView);
     for (NSInteger index = 0; index<endIndex; ++index) {
-        KKSPaintingBase *painting = self.usedPaintings[index];
-        [painting drawPath];
+        KKSPaintingBase *usedPainting = self.usedPaintings[index];
+        [usedPainting drawPath];
     }
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     
@@ -603,8 +604,8 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     KKSViewBeginImageContext(self.paintingView);
     [self.cachedImage drawAtPoint:CGPointZero];
     for (NSInteger index = startIndex; index<count; ++index) {
-        KKSPaintingBase *painting = self.usedPaintings[index];
-        [painting drawPath];
+        KKSPaintingBase *usedPainting = self.usedPaintings[index];
+        [usedPainting drawPath];
     }
     
     self.cachedImage = UIGraphicsGetImageFromCurrentImageContext();

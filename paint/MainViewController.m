@@ -59,7 +59,6 @@
 	recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
     
 	if (recorder) {
-//#warning comment it temp
         /*
 		[recorder prepareToRecord];
         
@@ -638,6 +637,7 @@
     
 }
 
+/*
 //触碰其他位置隐藏工具扩展栏
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch =  [touches anyObject];
@@ -653,6 +653,7 @@
     }
     
  }
+ */
 /*----------------------------保存作品相关内容---------------------------*/
 
 
@@ -667,6 +668,13 @@
         [[segue destinationViewController] setPaintingManager:self.paintingManager];
 
     }
+}
+
+
+#pragma mark - Test
+
+- (IBAction)undoChangeButtonFired:(id)sender {
+    [self.paintingManager undo];
 }
 
 
