@@ -299,6 +299,9 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             self.paintingToFill = nil;
         }
     }
+    else if (self.paintingMode == KKSPaintingModeCopy) {
+        self.paintingMode = KKSPaintingModePaste;
+    }
     else if (self.paintingMode == KKSPaintingModeRemove) {
         [self.paintingView setNeedsDisplay];
     }

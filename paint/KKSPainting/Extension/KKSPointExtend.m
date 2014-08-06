@@ -54,11 +54,11 @@ CGFloat degreeWithPoints(CGPoint originPoint,
     
     CGFloat distanceOriginToInit = distanceBetweenPoints(CGPointZero, initialPosition);
     CGFloat distanceOriginToCurrent = distanceBetweenPoints(CGPointZero, currentPosition);
-    CGFloat distanceInitToCurrnet = distanceBetweenPoints(initialPosition, currentPosition);
+    CGFloat distanceInitToCurrent = distanceBetweenPoints(initialPosition, currentPosition);
     
     CGFloat formulaPart1 = (distanceOriginToInit * distanceOriginToInit
                             + distanceOriginToCurrent * distanceOriginToCurrent
-                            - distanceInitToCurrnet * distanceInitToCurrnet);
+                            - distanceInitToCurrent * distanceInitToCurrent);
     CGFloat formulaPart2 = (2 * distanceOriginToInit * distanceOriginToCurrent);
     
     CGFloat angle = acos(formulaPart1 / formulaPart2);

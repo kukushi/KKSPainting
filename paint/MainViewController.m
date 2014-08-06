@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import <AVFoundation/AVFoundation.h>
+// #import <AVFoundation/AVFoundation.h>
 #import "UMSocial.h"
 #import "KKSPainting.h"
 
