@@ -350,18 +350,40 @@
     self.hiddenEditAbout.hidden=YES;
 
 }
--(void)paintingManagerDidSelectedPainting
+-(void)paintingManagerDidSelectedPainting:(CGPoint )point
 {
-    if (!self.menu.onScreen)
+    BOOL needAddToViewFlag=YES;
+    for (UIView *view in self.drawerView.subviews)
     {
-        [self.menu show];
-
+        if ([view isKindOfClass:[FAFancyMenuView class]])
+        {
+            needAddToViewFlag = NO;
+            NSLog(@"no need");
+        }
     }
+    if (needAddToViewFlag)
+    {
+        [self.drawerView addSubview:self.menu];
+        [self.menu addGestureRecognizerForView:self.drawerView];
+        
+        NSLog(@"add");
+    }
+    
 }
--(void)paintingManagerDidLeftSelection
+-(void)paintingManagerDidLeftSelection:(CGPoint )point
 {
-    [self.menu hide];
-    NSLog(@"1111");
+    for (UIView *view in self.drawerView.subviews)
+    {
+        if ([view isKindOfClass:[FAFancyMenuView class]])
+        {
+            [self.menu hide];
+            [self.drawerView removeGestureRecognizer:self.menu.longPress];
+            [self.menu removeFromSuperview];
+            NSLog(@"hide");
+            
+        }
+    }
+    
 }
 
 - (void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
@@ -383,7 +405,11 @@
         default:
             break;
     }
+    [self.menu hide];
+    
+    
 }
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
     self.myTopBar.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.myTopBar.bounds.size.width, self.myTopBar.bounds.size.height);

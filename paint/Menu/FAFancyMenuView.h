@@ -14,12 +14,13 @@
 @end
 
 @interface FAFancyMenuView : UIView
-
 @property (nonatomic, assign) id<FAFancyMenuViewDelegate> delegate;
 @property (nonatomic, strong) NSArray *buttonImages;
 @property (nonatomic) BOOL onScreen;
-
+@property(nonatomic,strong)UILongPressGestureRecognizer *longPress;
 - (void)show;
 - (void)hide;
+- (void)addGestureRecognizerForView:(UIView *)view;
 
 @end
+

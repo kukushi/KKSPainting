@@ -98,13 +98,13 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         }
     }
     if (willSelectPainting) {
-        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidSelectedPainting)]) {
-            [self.paintingDelegate paintingManagerDidSelectedPainting];
+        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidSelectedPainting:)]) {
+            [self.paintingDelegate paintingManagerDidSelectedPainting:point];
         }
     }
     else if (didSelectedPainting) {
-        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidLeftSelection)]) {
-            [self.paintingDelegate paintingManagerDidLeftSelection];
+        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidLeftSelection:)]) {
+            [self.paintingDelegate paintingManagerDidLeftSelection:point];
         }
     }
     
@@ -308,7 +308,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     }
 }
 
-#pragma mark - Painting 
+#pragma mark - Painting
 
 - (void)renewPainting {
     switch (self.paintingType) {
@@ -712,6 +712,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
                  self.paintingMode == KKSPaintingModeRotate ||
                  self.paintingMode == KKSPaintingModeZoom) {
             [self redrawPaintingsFromSelectedPainting];
+            
         }
     }
 }

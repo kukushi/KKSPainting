@@ -16,8 +16,8 @@
 
 - (void)paintingManagerDidEndedPainting;
 
-- (void)paintingManagerDidSelectedPainting;
-- (void)paintingManagerDidLeftSelection;
+- (void)paintingManagerDidSelectedPainting:(CGPoint )point;
+- (void)paintingManagerDidLeftSelection:(CGPoint )point;
 
 @end
 
@@ -36,6 +36,7 @@
 
 @property (nonatomic) KKSPaintingType paintingType;
 @property (nonatomic) KKSPaintingMode paintingMode;
+
 
 @property (nonatomic, weak) id<KKSPaintingManagerDelegate> paintingDelegate;
 
