@@ -407,6 +407,7 @@
     }
     [self.menu hide];
     
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

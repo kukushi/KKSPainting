@@ -88,6 +88,7 @@
         [button hide];
     }
     self.onScreen = NO;
+    
 }
 
 - (void)show{

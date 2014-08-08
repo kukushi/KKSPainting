@@ -37,6 +37,7 @@
 @property (nonatomic) KKSPaintingType paintingType;
 @property (nonatomic) KKSPaintingMode paintingMode;
 
+
 @property (nonatomic, weak) id<KKSPaintingManagerDelegate> paintingDelegate;
 
 - (void)paintingBeginWithTouch:(UITouch *)touch;

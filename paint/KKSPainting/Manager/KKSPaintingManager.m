@@ -709,6 +709,7 @@ void KKSViewBeginImageContext(UIScrollView *view);
                  self.paintingMode == KKSPaintingModeRotate ||
                  self.paintingMode == KKSPaintingModeZoom) {
             [self redrawPaintingsFromSelectedPainting];
+            
         }
     }
 }

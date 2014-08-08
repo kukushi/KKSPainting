@@ -21,5 +21,6 @@
 - (void)show;
 - (void)hide;
 - (void)addGestureRecognizerForView:(UIView *)view;
+
 @end
 
