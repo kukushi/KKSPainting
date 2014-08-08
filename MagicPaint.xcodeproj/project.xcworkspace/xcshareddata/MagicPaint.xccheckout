@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E7FA2FF4-978E-46B7-931A-EA82F4E4D18E</string>
+	<string>188B7E09-0115-4E71-9D90-1B3CCE5827B1</string>
 	<key>IDESourceControlProjectName</key>
 	<string>MagicPaint</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CADA31A7-E237-4523-8DEE-D2BC58E1BB04</key>
-		<string>https://github.com/kukushi/paint</string>
+		<key>39B2E42C-7F53-44AD-B36A-85F3641EBD62</key>
+		<string>https://github.com/Robinisabadguy/Paint.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MagicPaint.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CADA31A7-E237-4523-8DEE-D2BC58E1BB04</key>
+		<key>39B2E42C-7F53-44AD-B36A-85F3641EBD62</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/kukushi/paint</string>
+	<string>https://github.com/Robinisabadguy/Paint.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CADA31A7-E237-4523-8DEE-D2BC58E1BB04</string>
+	<string>39B2E42C-7F53-44AD-B36A-85F3641EBD62</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CADA31A7-E237-4523-8DEE-D2BC58E1BB04</string>
+			<string>39B2E42C-7F53-44AD-B36A-85F3641EBD62</string>
 			<key>IDESourceControlWCCName</key>
-			<string>paint</string>
+			<string>Paint</string>
 		</dict>
 	</array>
 </dict>
