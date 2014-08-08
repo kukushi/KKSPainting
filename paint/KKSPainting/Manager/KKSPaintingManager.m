@@ -300,6 +300,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         }
     }
     else if (self.paintingMode == KKSPaintingModeCopy) {
+        [self clearSelectedPaintingStrokePath];
         self.paintingMode = KKSPaintingModePaste;
     }
     else if (self.paintingMode == KKSPaintingModeRemove) {
@@ -647,7 +648,10 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 #pragma mark -
 
-void KKSViewBeginImageContext(UIScrollView *view);
+- (void)clearSelectedPaintingStrokePath {
+    self.selectedPainting.shouldStrokePath = NO;
+    [self redrawViewWithPaintings:self.usedPaintings];
+}
 
 
 #pragma mark - Accessor & Setter
@@ -674,8 +678,7 @@ void KKSViewBeginImageContext(UIScrollView *view);
             (paintingMode == KKSPaintingModePainting ||
             paintingMode == KKSPaintingModeSelection ||
             paintingMode == KKSPaintingModeFillColor)) {
-        self.selectedPainting.shouldStrokePath = NO;
-        [self redrawViewWithPaintings:self.usedPaintings];
+        [self clearSelectedPaintingStrokePath];
     }
     else {
         [self paintingViewDidChangeState];
