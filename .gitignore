@@ -23,7 +23,7 @@ build/
 *.swp
 *.lock
 Podfile.lock
-.xccheckout
+*.xccheckout
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
