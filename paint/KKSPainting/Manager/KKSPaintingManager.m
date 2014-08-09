@@ -653,6 +653,15 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     [self redrawViewWithPaintings:self.usedPaintings];
 }
 
+#pragma mark - 
+
+- (BOOL)isPaintingModeEditing:(KKSPaintingMode)paintingMode {
+    return (paintingMode == KKSPaintingModeRemove ||
+            paintingMode == KKSPaintingModeCopy ||
+            paintingMode == KKSPaintingModeZoom ||
+            paintingMode == KKSPaintingModeRotate);
+    
+}
 
 #pragma mark - Accessor & Setter
 

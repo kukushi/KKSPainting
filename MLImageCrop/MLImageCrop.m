@@ -7,8 +7,8 @@
 //
 
 #import "MLImageCrop.h"
-#import "UIImageView+AFNetworking.h"
-//#import "Debug.h"
+// #import "UIImageView+AFNetworking.h"
+// #import "Debug.h"
 
 #define kDefualRatioOfWidthAndHeight 1.0f
 
@@ -292,7 +292,6 @@
     }
     _image = image;
     
-    [self.imageView cancelImageRequestOperation];
     self.imageView.image = [image MLImageCrop_fixOrientation];
     if (self.isViewLoaded) {
         [self.view setNeedsLayout];
@@ -316,41 +315,6 @@
     indicator.center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
     [self.view addSubview:indicator];
     [indicator startAnimating];
-    
-    NSURL *recordURL = imageURL;
-    __weak __typeof(self)weakSelf = self;
-    [self.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        [indicator stopAnimating];
-        [indicator removeFromSuperview];
-        
-        if (!weakSelf.imageURL||![recordURL isEqual:weakSelf.imageURL]) {
-            return;
-        }
-        
-        weakSelf.image = image;
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        [indicator stopAnimating];
-        [indicator removeFromSuperview];
-        
-        if (!weakSelf.imageURL||![recordURL isEqual:weakSelf.imageURL]) {
-            return;
-        }
-        UILabel *tipsLabel = [[UILabel alloc]initWithFrame:CGRectMake((weakSelf.view.bounds.size.width-120)/2, (weakSelf.view.bounds.size.height-30)/2, 120, 30)];
-        tipsLabel.text = @"加载网络图片失败";
-        tipsLabel.layer.opacity = .4f;
-        tipsLabel.layer.cornerRadius = 3.0f;
-        tipsLabel.font = [UIFont systemFontOfSize:13.0f];
-        tipsLabel.textColor = [UIColor whiteColor];
-        tipsLabel.backgroundColor = [UIColor darkGrayColor];
-        tipsLabel.textAlignment = NSTextAlignmentCenter;
-        [weakSelf.view addSubview:tipsLabel];
-        
-        [UIView animateWithDuration:2.0f delay:.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            tipsLabel.layer.opacity = .8f;
-        } completion:^(BOOL finished) {
-            [weakSelf disappear];
-        }];
-    }];
 }
 
 - (void)setRatioOfWidthAndHeight:(CGFloat)ratioOfWidthAndHeight
