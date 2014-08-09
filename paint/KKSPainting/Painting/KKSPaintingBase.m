@@ -142,7 +142,7 @@
     return self.translation;
 }
 
-- (void)moveBySetingTranslation:(CGPoint)translation {
+- (void)moveBySettingTranslation:(CGPoint)translation {
     self.translation = translation;
     [self updateTransform];
 }

@@ -62,7 +62,7 @@
 
 - (CGPoint)currentTranslation;
 
-- (void)moveBySetingTranslation:(CGPoint)translation;
+- (void)moveBySettingTranslation:(CGPoint)translation;
 
 - (void)moveByIncreasingTranslation:(CGPoint)translation;
 
@@ -93,7 +93,7 @@
  *  Tell the delegate drawing is about to end automatically.
  *
  *  It'll happen when user leave screen for a long time while
- *  drawing is not yet finish.
+ *  drawing is not yet finished.
  */
 - (void)drawingWillEndAutomatically;
 

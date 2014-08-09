@@ -138,7 +138,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerWillBeginPainting)]) {
                 [self.paintingDelegate paintingManagerWillBeginPainting];
             }
-            [self registerUndoForPaintingWithPaintings:[self.usedPaintings copy]];
+//            [self registerUndoForPaintingWithPaintings:[self.usedPaintings copy]];
         }
         [self.painting recordingBeganWithTouch:touch];
         
@@ -420,8 +420,8 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     
     NSValue *newValue = object[KKSPaintingUndoKeyTranslation];
     CGPoint newTranslation = [newValue CGPointValue];
-    
-    [painting moveBySetingTranslation:newTranslation];
+
+    [painting moveBySettingTranslation:newTranslation];
     
     [self redrawViewWithPaintings:self.usedPaintings];
     

@@ -23,3 +23,4 @@ Podfile.lock
 *.xccheckout
 MagicPaint.xcodeproj/project.xcworkspace/xcshareddata/MagicPaint.xccheckout
 MagicPaint.xccheckout
+Breakpoints_v2.xcbkptlist
