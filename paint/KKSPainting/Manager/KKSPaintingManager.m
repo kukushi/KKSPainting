@@ -643,7 +643,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 }
 
 - (UIImage *)currentImage {
-    return nil;
+    return self.cachedImage;
 }
 
 #pragma mark -
