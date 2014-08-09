@@ -1,9 +1,9 @@
 //
-//  FAFancyMenuView.m
-//  TestAnimation
+//  FAFancyMenuView.h
+//  paint
 //
-//  Created by Ben Xu on 12-11-21.
-//  Copyright (c) 2012年 Fancy App. All rights reserved.
+//  Created by Robin W on 14-2-28.
+//  Copyright (c) 2014年 Robin W. All rights reserved.
 //
 
 #import "FAFancyMenuView.h"
@@ -29,30 +29,18 @@
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)sender{
     if (self.onScreen) return;
-    UIView *superView = [sender view];
-    CGPoint pressedPoint = [sender locationInView:superView];
-    CGPoint newCenter = pressedPoint;
-    if ((pressedPoint.x - self.frame.size.width/2) < 0){
-        newCenter.x = self.frame.size.width/2;
-    }
-    if ((pressedPoint.x + self.frame.size.width/2) > superView.frame.size.width){
-        newCenter.x = superView.frame.size.width - self.frame.size.width/2;
-    }
-    if ((pressedPoint.y - self.frame.size.height/2) <0){
-        newCenter.y = self.frame.size.height/2;
-    }
-    if ((pressedPoint.y + self.frame.size.height/2) > superView.frame.size.height){
-        newCenter.y = superView.frame.size.height - self.frame.size.height/2;
-    }
-    self.center = newCenter;
-    [self show];
+    [self showMenuInPosition:self.showInPoint];
 }
 
 //- (void)handleTap:(UITapGestureRecognizer *)tap{
 // if (!self.onScreen) return;
 // [self hide];
 //}
-
+-(void)showMenuInPosition:(CGPoint )point;
+{
+    self.center = point;
+    [self show];
+}
 - (void)addGestureRecognizerForView:(UIView *)view{
     self.longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     [view addGestureRecognizer:self.longPress];
@@ -62,6 +50,7 @@
 
 - (void)willMoveToSuperview:(UIView *)newSuperview{
     [super willMoveToSuperview:newSuperview];
+
 }
 
 

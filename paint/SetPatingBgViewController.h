@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class KKSPaintingView;
 @class KKSPaintingManager;
-@interface SetPatingBgViewController : UIViewController
+@interface SetPatingBgViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *paintWidth;
 @property (weak, nonatomic) IBOutlet UITextField *paintHeight;
