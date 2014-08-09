@@ -10,7 +10,7 @@
 // #import <AVFoundation/AVFoundation.h>
 #import "UMSocial.h"
 #import "KKSPainting.h"
-
+#import "SetPatingBgViewController.h"
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 @interface MainViewController ()<KKSPaintingManagerDelegate>
 {
@@ -34,7 +34,6 @@
         self.menu = [[FAFancyMenuView alloc] init];
         self.menu.delegate = self;
         self.menu.buttonImages = images;
-        [self.drawerView addSubview:self.menu];
     }
 
     self.paintingManager = self.drawerView.paintingManager;
@@ -42,8 +41,8 @@
     self.paintingManager.paintingDelegate = self;
     self.drawerView.delegate = self;
     self.paintingManager.paintingMode = KKSPaintingModePainting;
-    
-/*-------------------------------音频检测相关代码---------------------------*/
+/*
+//-------------------------------音频检测相关代码---------------------------
  
     NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
     
@@ -59,7 +58,7 @@
 	recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
     
 	if (recorder) {
-        /*
+        
 		[recorder prepareToRecord];
         
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
@@ -67,12 +66,10 @@
 		recorder.meteringEnabled = YES;
 		[recorder record];
 		levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
-         */
+        
 	} else
 		NSLog(@"%@",[error description]);
-/*-------------------------------音频检测相关代码---------------------------*/
-
-    
+*/
    
     
     
@@ -113,7 +110,7 @@
     }
 }
 
-
+/*
 #pragma mark    吹气相关
 - (void)levelTimerCallback:(NSTimer *)timer {
 	[recorder updateMeters];
@@ -125,17 +122,26 @@
 	if ([LastMotion timeIntervalSinceNow]<-1.2f)
     {
         LastMotion=[NSDate date]; //上次检测的时间设为现在时间
+        NSLog(@"%f",lowPassResults);
+
         if (lowPassResults >0.8)//数值越小越灵敏
         {
             NSLog(@"%f",lowPassResults);
             //在这里写吹气后执行的操作
-            
-            [self.paintingManager clear];
+            UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:Nil message:@"是否清除所有操作？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"是的", nil];
+            [alertView show];
 
         }
     }
 }
-
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex)
+    {
+        [self.paintingManager clear];
+    }
+}
+ */
 #pragma mark 改变线条颜色
 - (IBAction)changeColor:(UIButton *)sender {
     self.paintingManager.color=sender.backgroundColor;
@@ -245,7 +251,7 @@
         if ([LastMotion timeIntervalSinceNow]<-0.5f)
         {
             LastMotion=[NSDate date];
-            UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"redo",@"显示/隐藏颜色栏",@"显示/隐藏工具栏",@"显示/隐藏全部", nil];
+            UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"redo",@"清屏",@"显示/隐藏颜色栏",@"显示/隐藏工具栏",@"显示/隐藏全部" ,nil];
             [actionSheet showInView:self.drawerView];
         }
     }
@@ -281,7 +287,7 @@
     else{
         self.hiddenTools.hidden=YES;
     }
-
+    
 }
 
 - (IBAction)lineTool:(UIButton *)sender {
@@ -316,6 +322,7 @@
         default:
             break;
     }
+    self.hiddenTools.hidden=YES;
     
 }
 #pragma mark 编辑工具
@@ -346,6 +353,7 @@
 
 - (IBAction)editGraphic:(id)sender {
     [self.editTool setBackgroundImage:[sender backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];//更改选中工具图标
+    self.drawerView.scrollEnabled = NO;
     self.paintingManager.paintingMode=KKSPaintingModeSelection;
     self.hiddenEditAbout.hidden=YES;
 
@@ -353,6 +361,9 @@
 -(void)paintingManagerDidSelectedPainting:(CGPoint )point
 {
     BOOL needAddToViewFlag=YES;
+
+
+    self.menu.showInPoint=point;
     for (UIView *view in self.drawerView.subviews)
     {
         if ([view isKindOfClass:[FAFancyMenuView class]])
@@ -449,6 +460,7 @@
 - (IBAction)lineDegree:(UIButton *)sender {
     [self.selectedLine setBackgroundImage:[sender backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];//更改选中工具图标
     self.paintingManager.lineWidth=[sender.titleLabel.text intValue];
+    self.hiddenLineDegrees.hidden=YES;
 }
 /*----------------------------选择线条长度---------------------------*/
 
@@ -473,9 +485,13 @@
 }
 //作品保存至本地
 - (IBAction)keepInPhoto:(id)sender {
+    [self.drawerView showIndicatorLabelWithText:@"已保存到相册"];
+   // UIImageWriteToSavedPhotosAlbum([ ], nil, nil,nil);
+
     self.hiddenKeepAbout.hidden=YES;
 
 }
+
 //作品分享到社交工具
 - (IBAction)share:(id)sender {
     [UMSocialSnsService presentSnsIconSheetView:self
@@ -489,14 +505,14 @@
 }
 //新建作品，可以载入，可以新建画布
 - (IBAction)addFile:(id)sender {
-        /*UIActionSheet *actionSheet = [[UIActionSheet alloc]
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                       initWithTitle:@"新建"
                                       delegate:self
                                       cancelButtonTitle:@"取消"
                                       destructiveButtonTitle:Nil
-                                      otherButtonTitles:@"空白画布", @"从相册导入",nil];
+                                      otherButtonTitles:@"空白画布", @"加载文件",nil];
         //actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-        [actionSheet showInView:self.view];*/
+        [actionSheet showInView:self.view];
     self.hiddenKeepAbout.hidden=YES;
 
     
@@ -507,10 +523,11 @@
     if ([actionSheet.title isEqualToString:@"新建"])
     {
         if (buttonIndex == 0) {
-            NSLog(@"0");
+            SetPatingBgViewController *patingBg=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"setBg"];
+            patingBg.modalTransitionStyle=UIModalTransitionStylePartialCurl;
+            [self presentViewController:patingBg animated:YES completion:nil];
         }else if (buttonIndex == 1) {
-            NSLog(@"1");
-            [self LocalPhoto];
+            
         }
     }
     else
@@ -528,36 +545,24 @@
             }
         }
         else
-            if (buttonIndex==1)
-            {
-                CATransition *animation = [CATransition animation];
-                animation.type = kCATransitionFade;
-                animation.duration = 0.25;
-                [self.myTopBar.layer addAnimation:animation forKey:nil];
-                if (self.myTopBar.hidden==NO)
-                {
-                    self.myTopBar.hidden=YES;
-                }
-                else
-                {
-                    self.myTopBar.hidden=NO;
-                }
-                //如果bar不显示就显示，显示则隐藏
-            }
+            if(buttonIndex==1){
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"是否清除所有操作？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"清除", nil];
+            [alert show];
+        }
             else
                 if (buttonIndex==2)
                 {
                     CATransition *animation = [CATransition animation];
                     animation.type = kCATransitionFade;
                     animation.duration = 0.25;
-                    [self.myDownBar.layer addAnimation:animation forKey:nil];
-                    if (self.myDownBar.hidden==NO)
+                    [self.myTopBar.layer addAnimation:animation forKey:nil];
+                    if (self.myTopBar.hidden==NO)
                     {
-                        self.myDownBar.hidden=YES;
+                        self.myTopBar.hidden=YES;
                     }
                     else
                     {
-                        self.myDownBar.hidden=NO;
+                        self.myTopBar.hidden=NO;
                     }
                     //如果bar不显示就显示，显示则隐藏
                 }
@@ -567,21 +572,45 @@
                         CATransition *animation = [CATransition animation];
                         animation.type = kCATransitionFade;
                         animation.duration = 0.25;
-                        [self.myTopBar.layer addAnimation:animation forKey:nil];
                         [self.myDownBar.layer addAnimation:animation forKey:nil];
-                        if (!self.myTopBar.hidden)
+                        if (self.myDownBar.hidden==NO)
                         {
-                            self.myTopBar.hidden=YES;
                             self.myDownBar.hidden=YES;
                         }
                         else
                         {
-                            self.myTopBar.hidden=NO;
                             self.myDownBar.hidden=NO;
                         }
-
+                        //如果bar不显示就显示，显示则隐藏
                     }
+                    else
+                        if (buttonIndex==4)
+                        {
+                            CATransition *animation = [CATransition animation];
+                            animation.type = kCATransitionFade;
+                            animation.duration = 0.25;
+                            [self.myTopBar.layer addAnimation:animation forKey:nil];
+                            [self.myDownBar.layer addAnimation:animation forKey:nil];
+                            if (!self.myTopBar.hidden)
+                            {
+                                self.myTopBar.hidden=YES;
+                                self.myDownBar.hidden=YES;
+                            }
+                            else
+                            {
+                                self.myTopBar.hidden=NO;
+                                self.myDownBar.hidden=NO;
+                            }
 
+                        }
+
+    }
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex)
+    {
+        [self.paintingManager clear];
     }
 }
 //打开本地相册

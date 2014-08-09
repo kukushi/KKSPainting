@@ -11,12 +11,14 @@
 #import "KKSPaintingView.h"
 #import "FAFancyMenuView.h"
 
-@interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,FAFancyMenuViewDelegate,UIScrollViewDelegate>
+@interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,FAFancyMenuViewDelegate,UIScrollViewDelegate,UIAlertViewDelegate>
 {
+    /*
     //音频检测相关
 	AVAudioRecorder *recorder;
 	NSTimer *levelTimer;
 	double lowPassResults;
+     */
 }
 @property(strong,nonatomic)UIPanGestureRecognizer *panGes;//拖动对象
 
@@ -50,7 +52,7 @@
 - (IBAction)keepInPhoto:(id)sender;
 - (IBAction)share:(id)sender;
 
-- (void)levelTimerCallback:(NSTimer *)timer;
+//- (void)levelTimerCallback:(NSTimer *)timer;
 - (IBAction)changeColor:(id)sender;
 
 @property(nonatomic,strong)NSUserDefaults *userDefaults;
