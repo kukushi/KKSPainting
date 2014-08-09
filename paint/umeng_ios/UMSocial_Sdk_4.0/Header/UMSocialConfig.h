@@ -233,15 +233,14 @@ typedef void (^UMTableViewCellConfig)(UITableViewCell *cell,UMSViewControllerTyp
 
 + (UMSocialConfig *)shareInstance;
 
-/** deprecated API, Use ''[UMSocialSinaHandler openSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];''
-
+/**
  设置是否支持新浪微博SSO，默认不支持
  @param supportSinaSSO 设置是否支持新浪微博SSO
  @param appRedirectUrl 设置授权回调地址，此授权回调地址必须和你在新浪应用后台填写的回调地址一致，否则不能授权
         如果在新浪微博后台绑定我们的回调地址“http://sns.whalecloud.com/sina2/callback”，这里可以传nil
 
  */
-//+ (void)setSupportSinaSSO:(BOOL)supportSinaSSO appRedirectUrl:(NSString *)appRedirectUrl;
++ (void)setSupportSinaSSO:(BOOL)supportSinaSSO appRedirectUrl:(NSString *)appRedirectUrl;
 
 
 /** deprecated API, Use ''[UMSocialQQHandler shareToQQWithAppId:@"100424468" url:@"http://www.umeng.com/social"];''

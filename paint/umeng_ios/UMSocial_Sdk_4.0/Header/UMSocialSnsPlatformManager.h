@@ -204,15 +204,6 @@ typedef void (^UMSocialSnsPlatformLoginHandler)(UIViewController *presentingCont
 @property(nonatomic, copy) UMSocialSnsPlatformLoginHandler loginClickHandler;
 
 /**
- 是否需要登录授权
- */
-@property(nonatomic, assign) BOOL needLogin;
-
-/**
- 标志是否有webView授权
- */
-@property(nonatomic, assign) BOOL haveWebViewAuth;
-/**
  初始化方法
  
  @param platformName 作为该对象标识的平台名

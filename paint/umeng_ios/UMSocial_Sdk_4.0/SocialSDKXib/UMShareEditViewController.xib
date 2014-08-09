@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1072</int>
-		<string key="IBDocument.SystemVersion">13D65</string>
-		<string key="IBDocument.InterfaceBuilderVersion">5056</string>
-		<string key="IBDocument.AppKitVersion">1265.20</string>
-		<string key="IBDocument.HIToolboxVersion">698.00</string>
+		<string key="IBDocument.SystemVersion">13A603</string>
+		<string key="IBDocument.InterfaceBuilderVersion">4514</string>
+		<string key="IBDocument.AppKitVersion">1265</string>
+		<string key="IBDocument.HIToolboxVersion">695.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">3733</string>
+			<string key="NS.object.0">3746</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -289,6 +289,7 @@
 						<string key="NSFrame">{{0, 208}, {320, 181}}</string>
 						<reference key="NSSuperview" ref="372931748"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -311,10 +312,6 @@
 					<bool key="IBUITranslucent">NO</bool>
 					<bool key="IBUIPrompted">NO</bool>
 				</object>
-				<double key="IBUIInsetFor6xAndEarlier.top">20</double>
-				<double key="IBUIInsetFor6xAndEarlier.bottom">0.0</double>
-				<double key="IBUIInsetFor6xAndEarlier.left">0.0</double>
-				<double key="IBUIInsetFor6xAndEarlier.right">0.0</double>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</array>
@@ -352,6 +349,14 @@
 						<reference key="destination" ref="120761779"/>
 					</object>
 					<string key="id">27</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">changeAccountButton</string>
+						<reference key="source" ref="567259532"/>
+						<reference key="destination" ref="1034774090"/>
+					</object>
+					<string key="id">23</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -416,14 +421,6 @@
 						<reference key="destination" ref="303072693"/>
 					</object>
 					<string key="id">kJT-ao-FBF</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">changeAccountButton</string>
-						<reference key="source" ref="567259532"/>
-						<reference key="destination" ref="1034774090"/>
-					</object>
-					<string key="id">Mr2-cl-kYO</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -692,6 +689,6 @@
 			<string key="NS.key.0">UMSocialSDKResourcesNew.bundle/Buttons/UMS_delete_image_button_normal</string>
 			<string key="NS.object.0">{16, 16}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">3733</string>
+		<string key="IBCocoaTouchPluginVersion">3746</string>
 	</data>
 </archive>
