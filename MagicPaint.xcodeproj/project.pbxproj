@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0038BED319964F2D0068DD44 /* MLImageCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BED219964F2D0068DD44 /* MLImageCrop.m */; };
 		003F38D518E9A33500F9A8B1 /* rotate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D418E9A33500F9A8B1 /* rotate@2x.png */; };
 		003F38D718E9A33B00F9A8B1 /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D618E9A33B00F9A8B1 /* magnify@2x.png */; };
 		003F38D918E9A34700F9A8B1 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D818E9A34700F9A8B1 /* delete@2x.png */; };
 		003F38DB18E9A34B00F9A8B1 /* copy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38DA18E9A34B00F9A8B1 /* copy@2x.png */; };
-		003F38E118E9A36E00F9A8B1 /* FAFancyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F38DE18E9A36E00F9A8B1 /* FAFancyButton.m */; };
-		003F38E218E9A36E00F9A8B1 /* FAFancyMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F38E018E9A36E00F9A8B1 /* FAFancyMenuView.m */; };
 		0049925F18C48326004B23F9 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 0049925E18C48326004B23F9 /* add.png */; };
 		0049926118C4895F004B23F9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0049926018C4895F004B23F9 /* AVFoundation.framework */; };
 		0049926318C48FE9004B23F9 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0049926218C48FE9004B23F9 /* CoreAudio.framework */; };
@@ -88,14 +87,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0038BED119964F2D0068DD44 /* MLImageCrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLImageCrop.h; sourceTree = "<group>"; };
+		0038BED219964F2D0068DD44 /* MLImageCrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLImageCrop.m; sourceTree = "<group>"; };
 		003F38D418E9A33500F9A8B1 /* rotate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotate@2x.png"; sourceTree = "<group>"; };
 		003F38D618E9A33B00F9A8B1 /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magnify@2x.png"; sourceTree = "<group>"; };
 		003F38D818E9A34700F9A8B1 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		003F38DA18E9A34B00F9A8B1 /* copy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy@2x.png"; sourceTree = "<group>"; };
-		003F38DD18E9A36E00F9A8B1 /* FAFancyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAFancyButton.h; sourceTree = "<group>"; };
-		003F38DE18E9A36E00F9A8B1 /* FAFancyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAFancyButton.m; sourceTree = "<group>"; };
-		003F38DF18E9A36E00F9A8B1 /* FAFancyMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAFancyMenuView.h; sourceTree = "<group>"; };
-		003F38E018E9A36E00F9A8B1 /* FAFancyMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAFancyMenuView.m; sourceTree = "<group>"; };
 		0049925E18C48326004B23F9 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		0049926018C4895F004B23F9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0049926218C48FE9004B23F9 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -224,15 +221,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		003F38DC18E9A36600F9A8B1 /* Menu */ = {
+		0038BED019964F2D0068DD44 /* MLImageCrop */ = {
 			isa = PBXGroup;
 			children = (
-				003F38DD18E9A36E00F9A8B1 /* FAFancyButton.h */,
-				003F38DE18E9A36E00F9A8B1 /* FAFancyButton.m */,
-				003F38DF18E9A36E00F9A8B1 /* FAFancyMenuView.h */,
-				003F38E018E9A36E00F9A8B1 /* FAFancyMenuView.m */,
+				0038BED119964F2D0068DD44 /* MLImageCrop.h */,
+				0038BED219964F2D0068DD44 /* MLImageCrop.m */,
 			);
-			path = Menu;
+			name = MLImageCrop;
+			path = ../MLImageCrop;
 			sourceTree = "<group>";
 		};
 		00868A3C18C012E200CBBE3C = {
@@ -270,10 +266,10 @@
 		00868A4E18C012E200CBBE3C /* paint */ = {
 			isa = PBXGroup;
 			children = (
+				0038BED019964F2D0068DD44 /* MLImageCrop */,
 				52E931F319962D0700BD9988 /* umeng_ios */,
 				00887F6F18ED9141004E26B4 /* KKSLog.h */,
 				00887F6A18ED9141004E26B4 /* KKSPainting */,
-				003F38DC18E9A36600F9A8B1 /* Menu */,
 				00868A5718C012E200CBBE3C /* AppDelegate.h */,
 				00868A5818C012E200CBBE3C /* AppDelegate.m */,
 				00868A5A18C012E200CBBE3C /* Main.storyboard */,
@@ -619,15 +615,14 @@
 				52E91BE6198265A6000F5ED4 /* KKSPaintingSegments.m in Sources */,
 				00887F8018ED9141004E26B4 /* KKSPaintingPen.m in Sources */,
 				00868A5F18C012E200CBBE3C /* MainViewController.m in Sources */,
-				003F38E118E9A36E00F9A8B1 /* FAFancyButton.m in Sources */,
 				522FE923198289D900E0E599 /* KKSPaintingRectangle.m in Sources */,
 				00887F8118ED9141004E26B4 /* KKSPaintingManager.m in Sources */,
 				00887F8318ED9141004E26B4 /* KKSPaintingView.m in Sources */,
 				00887F8218ED9141004E26B4 /* KKSPaintingBase.m in Sources */,
 				00887F8518ED9141004E26B4 /* KKSShapePainting.m in Sources */,
+				0038BED319964F2D0068DD44 /* MLImageCrop.m in Sources */,
 				00887F8618ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m in Sources */,
 				00887F8918EDA66C004E26B4 /* SetPaintingBgViewController.m in Sources */,
-				003F38E218E9A36E00F9A8B1 /* FAFancyMenuView.m in Sources */,
 				522FE9261982905600E0E599 /* KKSPaintingEllipse.m in Sources */,
 				52E91BF619826DE6000F5ED4 /* KKSPaintingLine.m in Sources */,
 				52E91BEE19826B13000F5ED4 /* KKSPaintingPolygon.m in Sources */,

@@ -57,11 +57,11 @@
                                         <color key="backgroundColor" red="0.9803922176361084" green="0.97647064924240112" blue="0.7725490927696228" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
                                     <view hidden="YES" alpha="0.64999999999999969" contentMode="scaleToFill" id="UjK-qk-X5D">
-                                        <rect key="frame" x="161" y="162" width="84" height="346"/>
+                                        <rect key="frame" x="163" y="324" width="157" height="184"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jDI-vi-IAQ">
-                                                <rect key="frame" x="19" y="240" width="45" height="45"/>
+                                                <rect key="frame" x="19" y="78" width="45" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="5" backgroundImage="degree2.png">
@@ -73,7 +73,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FXX-FW-Prb">
-                                                <rect key="frame" x="19" y="182" width="45" height="45"/>
+                                                <rect key="frame" x="19" y="20" width="45" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="8" backgroundImage="degree3.png">
@@ -84,44 +84,8 @@
                                                     <action selector="lineDegree:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="ayd-Xu-QRl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UFX-06-JdL">
-                                                <rect key="frame" x="19" y="122" width="45" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="11" backgroundImage="degree4.png">
-                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="lineDegree:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="Qz1-xn-5Q3"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g31-in-nMQ">
-                                                <rect key="frame" x="19" y="60" width="45" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="14" backgroundImage="degree5.png">
-                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="lineDegree:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="rxs-AD-KHJ"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K1w-jM-v8m">
-                                                <rect key="frame" x="19" y="7" width="45" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="17" backgroundImage="degree6.png">
-                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="lineDegree:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="zOr-tK-es7"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yvB-kw-6Oe">
-                                                <rect key="frame" x="19" y="294" width="45" height="45"/>
+                                                <rect key="frame" x="19" y="132" width="45" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="2" backgroundImage="degree1.png">
@@ -130,6 +94,42 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="lineDegree:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="p1f-2L-RZu"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OWU-uI-2v6">
+                                                <rect key="frame" x="92" y="132" width="45" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="11" backgroundImage="degree4.png">
+                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineDegree:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="Hrb-Eg-EE9"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HkG-8P-p1f">
+                                                <rect key="frame" x="92" y="76" width="45" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="14" backgroundImage="degree5.png">
+                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineDegree:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="raV-Ov-TXF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FsR-Pz-Xx2">
+                                                <rect key="frame" x="92" y="20" width="45" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="17" backgroundImage="degree6.png">
+                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineDegree:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="0Y0-Mb-Vit"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -421,6 +421,60 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.98039221759999995" green="0.97647064920000004" blue="0.72156864399999998" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
+                                    <view hidden="YES" contentMode="scaleToFill" id="e7P-6o-vgW">
+                                        <rect key="frame" x="1" y="0.0" width="320" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VdL-yO-pVu">
+                                                <rect key="frame" x="97" y="8" width="45" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" backgroundImage="rotate.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="changeEditMode:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="2mR-Jx-NIN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GcJ-Eb-3eV">
+                                                <rect key="frame" x="183" y="7" width="45" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" backgroundImage="copy.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="changeEditMode:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="RQY-uT-Qzd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="irk-T3-AIn">
+                                                <rect key="frame" x="20" y="7" width="45" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" backgroundImage="delete.png"/>
+                                                <connections>
+                                                    <action selector="changeEditMode:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="fwf-1L-dTe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d8a-3f-MbJ">
+                                                <rect key="frame" x="261" y="7" width="45" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" backgroundImage="magnify.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="changeEditMode:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="GrI-bH-zxn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.98039221759999995" green="0.97647064920000004" blue="0.77254909279999995" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="模式：旋转" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7QT-bt-8ah">
+                                        <rect key="frame" x="112" y="62" width="96" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -431,6 +485,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="drawerView" destination="KMd-fE-0fS" id="hOY-Wg-Ntx"/>
+                        <outlet property="editBar" destination="e7P-6o-vgW" id="6Lm-Yt-ayA"/>
                         <outlet property="editTool" destination="mag-Ry-Hqt" id="52a-EQ-Scc"/>
                         <outlet property="hiddenEditAbout" destination="hJs-P3-gf9" id="KUg-yC-0Me"/>
                         <outlet property="hiddenKeepAbout" destination="uBW-IR-UAC" id="le9-f3-mDe"/>
@@ -438,6 +493,7 @@
                         <outlet property="hiddenTools" destination="1Wh-rQ-xxp" id="lG5-qL-oUq"/>
                         <outlet property="myDownBar" destination="lWX-S8-0pj" id="JKf-Id-5Jp"/>
                         <outlet property="myTopBar" destination="Tfh-Fl-7fo" id="6iP-1P-duF"/>
+                        <outlet property="nowEditMode" destination="7QT-bt-8ah" id="4FN-rB-zvr"/>
                         <outlet property="selectedLine" destination="as6-ak-bON" id="mc0-tC-gKX"/>
                         <outlet property="selectedTool" destination="4PP-2c-TNc" id="19B-yH-z0n"/>
                     </connections>
@@ -446,7 +502,7 @@
             </objects>
             <point key="canvasLocation" x="280" y="84"/>
         </scene>
-        <!--Set Pating Bg View Controller-->
+        <!--Set Painting Bg View Controller-->
         <scene sceneID="qwb-TB-L3K">
             <objects>
                 <viewController storyboardIdentifier="setBg" id="hhu-0I-inU" customClass="SetPaintingBgViewController" sceneMemberID="viewController">
@@ -454,34 +510,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="XPf-Zb-hWg">
-                                <rect key="frame" x="126" y="225" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="320" borderStyle="line" placeholder="画布宽度" textAlignment="center" minimumFontSize="17" id="XPf-Zb-hWg">
+                                <rect key="frame" x="52" y="146" width="217" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="bjl-jz-Pdf">
-                                <rect key="frame" x="126" y="275" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="画布高度" textAlignment="center" minimumFontSize="17" id="bjl-jz-Pdf">
+                                <rect key="frame" x="52" y="202" width="217" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宽度" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KUx-rp-GRF">
-                                <rect key="frame" x="76" y="228" width="34" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长度" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PRh-4T-Rnk">
-                                <rect key="frame" x="76" y="275" width="34" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uWZ-Wu-Kuz">
-                                <rect key="frame" x="127" y="339" width="66" height="31"/>
+                                <rect key="frame" x="52" y="260" width="217" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.760844466" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="生成画布">
                                     <color key="titleColor" red="0.99028437400000002" green="1" blue="0.92941627930000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.9911340246" green="1" blue="0.85738525030000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -490,20 +534,40 @@
                                     <action selector="setBg:" destination="hhu-0I-inU" eventType="touchUpInside" id="oNw-2T-Pna"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="brr-Kd-662">
-                                <rect key="frame" x="122" y="91" width="77" height="14"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xh5-En-ioo">
+                                <rect key="frame" x="52" y="327" width="217" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="自定义背景(可选)">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setBgImg:" destination="hhu-0I-inU" eventType="touchUpInside" id="T3x-cT-eWb"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" id="kc0-IU-QNB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="PGz-rP-swI">
+                                <rect key="frame" x="72" y="356" width="176" height="192"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="161-RK-JcI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98039221759999995" green="0.97647064920000004" blue="0.77254909279999995" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bgImgView" destination="PGz-rP-swI" id="lf0-AV-cOx"/>
                         <outlet property="paintHeight" destination="bjl-jz-Pdf" id="d0Y-t0-g8Y"/>
                         <outlet property="paintWidth" destination="XPf-Zb-hWg" id="QbU-uH-FuO"/>
                     </connections>
@@ -515,6 +579,7 @@
     </scenes>
     <resources>
         <image name="add.png" width="512" height="512"/>
+        <image name="copy.png" width="64" height="64"/>
         <image name="curve.png" width="512" height="512"/>
         <image name="degree1.png" width="512" height="512"/>
         <image name="degree2.png" width="512" height="512"/>
@@ -522,17 +587,20 @@
         <image name="degree4.png" width="512" height="512"/>
         <image name="degree5.png" width="512" height="512"/>
         <image name="degree6.png" width="512" height="512"/>
+        <image name="delete.png" width="64" height="64"/>
         <image name="edit.png" width="512" height="512"/>
         <image name="ellipse.png" width="512" height="512"/>
         <image name="hand.png" width="512" height="512"/>
         <image name="keep.png" width="512" height="512"/>
         <image name="line.png" width="512" height="512"/>
+        <image name="magnify.png" width="64" height="64"/>
         <image name="paint.png" width="512" height="512"/>
         <image name="pencil.png" width="512" height="512"/>
         <image name="pentagon.png" width="512" height="512"/>
         <image name="photo.png" width="512" height="512"/>
         <image name="polyline.png" width="512" height="512"/>
         <image name="rectangle.png" width="512" height="512"/>
+        <image name="rotate.png" width="64" height="64"/>
         <image name="share.png" width="512" height="512"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
