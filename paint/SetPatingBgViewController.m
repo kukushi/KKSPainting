@@ -27,9 +27,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.paintWidth.delegate=self;
+    self.paintHeight.delegate=self;
 }
-
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.paintHeight resignFirstResponder];
+    [self.paintWidth resignFirstResponder];
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.paintWidth resignFirstResponder];
+    [self.paintHeight resignFirstResponder];
+    return YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -58,8 +69,5 @@
     }
 
 }
-- (IBAction)backtoPaint:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
 
-}
 @end

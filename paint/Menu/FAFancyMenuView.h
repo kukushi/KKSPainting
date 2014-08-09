@@ -1,9 +1,9 @@
 //
 //  FAFancyMenuView.h
-//  TestAnimation
+//  paint
 //
-//  Created by Ben Xu on 12-11-21.
-//  Copyright (c) 2012年 Fancy App. All rights reserved.
+//  Created by Robin W on 14-2-28.
+//  Copyright (c) 2014年 Robin W. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -21,6 +21,6 @@
 - (void)show;
 - (void)hide;
 - (void)addGestureRecognizerForView:(UIView *)view;
-
+@property(nonatomic)CGPoint showInPoint;
 @end
 
