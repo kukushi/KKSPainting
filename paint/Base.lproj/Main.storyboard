@@ -449,7 +449,7 @@
         <!--Set Pating Bg View Controller-->
         <scene sceneID="qwb-TB-L3K">
             <objects>
-                <viewController storyboardIdentifier="setBg" id="hhu-0I-inU" customClass="SetPatingBgViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setBg" id="hhu-0I-inU" customClass="SetPaintingBgViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jwK-St-mhJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

@@ -1,5 +1,5 @@
 //
-//  SetPatingBgViewController.h
+//  SetPaintingBgViewController.h
 //  MagicPaint
 //
 //  Created by Robin W on 14-4-3.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class KKSPaintingView;
 @class KKSPaintingManager;
-@interface SetPatingBgViewController : UIViewController<UITextFieldDelegate>
+@interface SetPaintingBgViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *paintWidth;
 @property (weak, nonatomic) IBOutlet UITextField *paintHeight;

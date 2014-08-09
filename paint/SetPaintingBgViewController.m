@@ -1,20 +1,20 @@
 //
-//  SetPatingBgViewController.m
+//  SetPaintingBgViewController.m
 //  MagicPaint
 //
 //  Created by Robin W on 14-4-3.
 //  Copyright (c) 2014年 Robin W. All rights reserved.
 //
 
-#import "SetPatingBgViewController.h"
+#import "SetPaintingBgViewController.h"
 #import "KKSPaintingManager.h"
 #import "KKSPaintingView.h"
 
-@interface SetPatingBgViewController ()
+@interface SetPaintingBgViewController ()
 
 @end
 
-@implementation SetPatingBgViewController
+@implementation SetPaintingBgViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

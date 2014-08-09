@@ -10,7 +10,7 @@
 // #import <AVFoundation/AVFoundation.h>
 #import "UMSocial.h"
 #import "KKSPainting.h"
-#import "SetPatingBgViewController.h"
+#import "SetPaintingBgViewController.h"
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 @interface MainViewController ()<KKSPaintingManagerDelegate>
 {
@@ -523,7 +523,7 @@
     if ([actionSheet.title isEqualToString:@"新建"])
     {
         if (buttonIndex == 0) {
-            SetPatingBgViewController *patingBg=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"setBg"];
+            SetPaintingBgViewController *patingBg=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"setBg"];
             patingBg.modalTransitionStyle=UIModalTransitionStylePartialCurl;
             [self presentViewController:patingBg animated:YES completion:nil];
         }else if (buttonIndex == 1) {
