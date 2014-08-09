@@ -9,20 +9,17 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "KKSPaintingView.h"
-#import "FAFancyMenuView.h"
 
-@interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,FAFancyMenuViewDelegate,UIScrollViewDelegate,UIAlertViewDelegate>
+@interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIScrollViewDelegate,UIAlertViewDelegate>
 {
-    /*
-    //音频检测相关
-	AVAudioRecorder *recorder;
-	NSTimer *levelTimer;
-	double lowPassResults;
-     */
+
 }
 @property(strong,nonatomic)UIPanGestureRecognizer *panGes;//拖动对象
 
 
+@property (weak, nonatomic) IBOutlet UIView *editBar;
+- (IBAction)changeEditMode:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *nowEditMode;
 
 @property (weak, nonatomic) IBOutlet UIView *myTopBar;
 @property (weak, nonatomic) IBOutlet UIView *myDownBar;
