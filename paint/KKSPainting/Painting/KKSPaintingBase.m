@@ -108,7 +108,7 @@
 }
 
 - (BOOL)pathContainsPoint:(CGPoint)point {
-        CGFloat zoomLength = 5.f;
+        CGFloat zoomLength = 10.f;
         CGPathRef selectingPath = CGPathCreateCopyByStrokingPath(self.path,
                                                            NULL,
                                                            self.scaledLineWidth + zoomLength,
