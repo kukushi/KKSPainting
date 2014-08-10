@@ -87,7 +87,6 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 }
 
 - (void)updateSelectedPaintingWithPoint:(CGPoint)point {
-    BOOL didSelectedPainting = [self hasSelectedPainting];
     self.selectedPainting = nil;
     
     BOOL willSelectPainting = NO;
@@ -97,19 +96,6 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             willSelectPainting = YES;
         }
     }
-    /*
-    if (willSelectPainting) {
-        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidEnterEditingMode)]) {
-            [self.paintingDelegate paintingManagerDidEnterEditingMode];
-        }
-    }
-    else if (didSelectedPainting) {
-        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidLeftEditingMode)]) {
-            [self.paintingDelegate paintingManagerDidLeftEditingMode];
-        }
-    }
-    */
-    
     KKSDLog("Mode %td Hit on %@", self.paintingMode, self.selectedPainting);
 }
 
@@ -289,6 +275,9 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         }
     }
     else if (self.paintingMode == KKSPaintingModeCopy) {
+        if ([self.paintingDelegate respondsToSelector:@selector(paintingmanagerDidCopyPainting)]) {
+            [self.paintingDelegate paintingmanagerDidCopyPainting];
+        }
         [self clearSelectedPaintingStrokePath];
         self.paintingMode = KKSPaintingModePaste;
     }

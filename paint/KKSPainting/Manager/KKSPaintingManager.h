@@ -20,6 +20,8 @@
 
 - (void)paintingManagerDidLeftEditingMode;
 
+- (void)paintingmanagerDidCopyPainting;
+
 @end
 
 

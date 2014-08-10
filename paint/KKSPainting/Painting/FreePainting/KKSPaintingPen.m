@@ -16,7 +16,6 @@
 
 @property (nonatomic) CGPoint previousLocation;
 @property (nonatomic) CGPoint currentLocation;
-// @property (nonatomic) CGPoint firstLocation;
 
 @property (nonatomic, readwrite) __attribute__((NSObject)) CGMutablePathRef tempPath;
 
@@ -38,7 +37,6 @@
 - (void)recordingBeganWithTouch:(UITouch *)touch {
     CGPoint currentLocation = [touch locationInView:self.view];
     self.currentLocation = currentLocation;
-    //self.firstLocation = currentLocation;
     self.previousLocation = [touch previousLocationInView:self.view];
 }
 
@@ -70,8 +68,6 @@
     CGPoint middlePoint1 = middlePoint(previousPoint, controlPoint);
     CGPoint middlePoint2 = middlePoint(controlPoint, currentPoint);
     
-//    CGAffineTransform transform = [self currentTransform];
-    
     CGMutablePathRef subpath = CGPathCreateMutable();
     CGPathMoveToPoint(subpath, NULL, middlePoint1.x, middlePoint1.y);
     
@@ -90,7 +86,6 @@
     if (painting) {
         painting->_previousLocation = _previousLocation;
         painting->_currentLocation = _currentLocation;
-        // painting->_firstLocation = _firstLocation;
         painting->_tempPath = CGPathCreateMutableCopy(CGPathRetain(_tempPath));
     }
     return painting;
@@ -101,7 +96,6 @@
 - (void)encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeCGPoint:self.previousLocation forKey:@"previousLocation"];
     [encoder encodeCGPoint:self.currentLocation forKey:@"currentLocation"];
-    // [encoder encodeCGPoint:self.firstLocation forKey:@"firstLocation"];
     NSValue *tempPathValue = [NSValue valueWithPointer:self.tempPath];
     [encoder encodeObject:tempPathValue forKey:@"tempPath"];
 }
@@ -110,7 +104,6 @@
     if (self = [super init]) {
         _previousLocation = [decoder decodeCGPointForKey:@"previousLocation"];
         _currentLocation = [decoder decodeCGPointForKey:@"currentLocation"];
-        // _firstLocation = [decoder decodeCGPointForKey:@"firstLocation"];
         NSValue *tempPathValue = [decoder decodeObjectForKey:@"tempPath"];
         _tempPath = [tempPathValue pointerValue];
     }
