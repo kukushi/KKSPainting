@@ -9,7 +9,6 @@
 #import "SetPaintingBgViewController.h"
 #import "KKSPaintingManager.h"
 #import "KKSPaintingView.h"
-#import "MLImageCrop.h"
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 
 @interface SetPaintingBgViewController ()
@@ -62,19 +61,11 @@
 }
 - (IBAction)setBg:(id)sender {
     NSLog(@"%f",self.drawerView.contentSize.width);
-    if (![self.paintWidth.text length]||![self.paintWidth.text length])
-    {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"请输入大小" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    else
-    {
-        [self.drawerView setContentSize:CGSizeMake([self.paintWidth.text floatValue],[self.paintHeight.text floatValue])];
-        [self.paintingManager clear];
-        [self.drawerView setBackgroundImage:self.bgImage];
+    [self.drawerView setContentSize:CGSizeMake([self.paintWidth.text floatValue],[self.paintHeight.text floatValue])];
+    [self.paintingManager clear];
+    self.drawerView.backgroundColor=[UIColor colorWithPatternImage:self.bgImage];
 
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 #pragma  mark 改变画布背景
@@ -106,32 +97,23 @@
     {
         //先把图片转成NSData
         UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        MLImageCrop *imageCrop = [[MLImageCrop alloc]init];
-        imageCrop.delegate = self;
-        imageCrop.ratioOfWidthAndHeight = [self.paintWidth.text floatValue]/[self.paintHeight.text floatValue];
-        imageCrop.image = image;
-        [imageCrop showWithAnimation:YES];
+        self.bgImgView.image=image;
         
-        
+        self.bgImage=image;
+        if (image.size.width>=320)
+        {
+            self.paintWidth.text=[NSString stringWithFormat:@"%.0f",image.size.width];
+        }
+
+        if (image.size.height>=[[NSString stringWithFormat:@"%.0f",screenHeight]intValue])
+        {
+            self.paintHeight.text=[NSString stringWithFormat:@"%.0f",image.size.height];
+        }
     }
     
 }
-#pragma mark - crop delegate
-- (void)cropImage:(UIImage*)cropImage forOriginalImage:(UIImage*)originalImage
-{
-    self.bgImgView.image=cropImage;
-    
-    self.bgImage=cropImage;
-}
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    NSLog(@"您取消了选择图片");
-    [picker dismissViewControllerAnimated:YES
-                               completion:^(void){
-                                   // Code
-                               }];
-}
+
 
 - (IBAction)setBgImg:(id)sender {
     [self LocalPhoto];
