@@ -18,7 +18,6 @@ xcshareddata/
 build/
 .idea/
 *.swp
-*.lock
 *.xccheckout
 MagicPaint.xcodeproj/project.xcworkspace/xcshareddata/MagicPaint.xccheckout
 MagicPaint.xccheckout
