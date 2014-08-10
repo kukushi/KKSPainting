@@ -57,6 +57,7 @@
 		00887F8618ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7E18ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m */; };
 		00887F8918EDA66C004E26B4 /* SetPaintingBgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F8818EDA66C004E26B4 /* SetPaintingBgViewController.m */; };
 		00D4E9D718E02EE1006340AB /* paint.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E9D618E02EE1006340AB /* paint.png */; };
+		00E3764D1997436800F2D686 /* select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E3764C1997436800F2D686 /* select@2x.png */; };
 		522FE923198289D900E0E599 /* KKSPaintingRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 522FE922198289D900E0E599 /* KKSPaintingRectangle.m */; };
 		522FE9261982905600E0E599 /* KKSPaintingEllipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 522FE9251982905600E0E599 /* KKSPaintingEllipse.m */; };
 		52E91BE6198265A6000F5ED4 /* KKSPaintingSegments.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E91BE5198265A6000F5ED4 /* KKSPaintingSegments.m */; };
@@ -156,6 +157,7 @@
 		00887F8718EDA66C004E26B4 /* SetPaintingBgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPaintingBgViewController.h; sourceTree = "<group>"; };
 		00887F8818EDA66C004E26B4 /* SetPaintingBgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPaintingBgViewController.m; sourceTree = "<group>"; };
 		00D4E9D618E02EE1006340AB /* paint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paint.png; sourceTree = "<group>"; };
+		00E3764C1997436800F2D686 /* select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select@2x.png"; sourceTree = "<group>"; };
 		522FE921198289D900E0E599 /* KKSPaintingRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingRectangle.h; sourceTree = "<group>"; };
 		522FE922198289D900E0E599 /* KKSPaintingRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingRectangle.m; sourceTree = "<group>"; };
 		522FE9241982905600E0E599 /* KKSPaintingEllipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingEllipse.h; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 		00868A4F18C012E200CBBE3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				00E3764C1997436800F2D686 /* select@2x.png */,
 				003F38DA18E9A34B00F9A8B1 /* copy@2x.png */,
 				003F38D818E9A34700F9A8B1 /* delete@2x.png */,
 				003F38D618E9A33B00F9A8B1 /* magnify@2x.png */,
@@ -559,6 +562,7 @@
 				00868A9818C01DA100CBBE3C /* degree3.png in Resources */,
 				00868A9618C01DA100CBBE3C /* degree1.png in Resources */,
 				00868A9718C01DA100CBBE3C /* degree2.png in Resources */,
+				00E3764D1997436800F2D686 /* select@2x.png in Resources */,
 				52E9320F19962D0700BD9988 /* UMSocialLocalizable.strings in Resources */,
 				0057234A18C3202B00E05B28 /* hand.png in Resources */,
 				52E9321619962D0700BD9988 /* UMSLoginViewController.xib in Resources */,
