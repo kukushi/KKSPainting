@@ -651,6 +651,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 - (void)setPaintingType:(KKSPaintingType)paintingType {
     [self paintingViewDidChangeState];
+    self.paintingMode = KKSPaintingModePainting;
     _paintingType = paintingType;
 }
 

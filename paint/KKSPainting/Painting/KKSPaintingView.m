@@ -31,6 +31,14 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initializeSelf];
+    }
+    return self;
+}
+
 - (void)initializeSelf {
     self.backgroundColor = [UIColor clearColor];
     self.scrollEnabled = NO;
@@ -148,34 +156,6 @@
 - (void)setContentOffset:(CGPoint)contentOffset {
     [super setContentOffset:contentOffset];
     [self setNeedsDisplay];
-}
-
-
-#pragma mark - NSCoding
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super initWithCoder:decoder]) {
-        _indicatorLabel = [decoder decodeObjectForKey:@"indicatorLabel"];
-        _backgroundImageView = [decoder decodeObjectForKey:@"backgroundImageView"];
-        _paintingManager = [decoder decodeObjectForKey:@"paintingManager"];
-        _viewController = [decoder decodeObjectForKey:@"viewController"];
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    if (self.indicatorLabel) {
-        [encoder encodeObject:self.indicatorLabel forKey:@"indicatorLabel"];
-    }
-    if (self.backgroundImageView) {
-        [encoder encodeObject:self.backgroundImageView forKey:@"backgroundImageView"];
-    }
-    if (self.paintingManager) {
-        [encoder encodeObject:self.paintingManager forKey:@"paintingManager"];
-    }
-    if (self.viewController) {
-        [encoder encodeObject:self.viewController forKey:@"viewController"];
-    }
 }
 
 

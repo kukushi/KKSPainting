@@ -527,6 +527,7 @@
 
 
 //触碰其他位置隐藏工具扩展栏
+/*
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch =  [touches anyObject];
     if (touch.view!=self.hiddenTools&&touch.view!=self.hiddenLineDegrees&&touch.view!=self.hiddenKeepAbout)
@@ -541,6 +542,7 @@
     }
     
  }
+ */
 
 /*----------------------------保存作品相关内容---------------------------*/
 
