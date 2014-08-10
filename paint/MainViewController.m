@@ -372,10 +372,17 @@
 }
 //作品保存至本地
 - (IBAction)keepInPhoto:(id)sender {
-    [self.drawerView showIndicatorLabelWithText:@"已保存到相册"];
-   UIImageWriteToSavedPhotosAlbum([self.paintingManager currentImage], nil, nil,nil);
-
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@"保存"
+                                  delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:Nil
+                                  otherButtonTitles:@"保存到相册", @"保存工程",nil];
+    //actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionSheet showInView:self.view];
     self.hiddenKeepAbout.hidden=YES;
+
+
 
 }
 
@@ -383,7 +390,7 @@
 - (IBAction)share:(id)sender {
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@"507fcab25270157b37000010"
-                                      shareText:@"你要分享的文字"
+                                      shareText:@"我正在使用MagicPaint作画哦，单手就能涂鸦实在太方便啦，快看看我的作品吧~"
                                      shareImage:[self.paintingManager currentImage]
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQzone,UMShareToQQ,UMShareToRenren,UMShareToDouban,UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter,nil]
                                        delegate:nil];
@@ -397,7 +404,7 @@
                                       delegate:self
                                       cancelButtonTitle:@"取消"
                                       destructiveButtonTitle:Nil
-                                      otherButtonTitles:@"空白画布", @"加载文件",nil];
+                                      otherButtonTitles:@"空白画布", @"加载工程",nil];
         //actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [actionSheet showInView:self.view];
     self.hiddenKeepAbout.hidden=YES;
@@ -418,6 +425,17 @@
         }else if (buttonIndex == 1) {
             
         }
+    }
+    else if([actionSheet.title isEqualToString:@"保存"])
+    {
+        if (buttonIndex == 0) {
+            UIImageWriteToSavedPhotosAlbum([self.paintingManager currentImage], nil, nil,nil);
+            [self.drawerView showIndicatorLabelWithText:@"已保存到相册"];
+            self.hiddenKeepAbout.hidden=YES;
+        }else if (buttonIndex == 1) {
+            
+        }
+
     }
     else
     {
@@ -549,19 +567,23 @@
     {
         case 0:
             self.paintingManager.paintingMode=KKSPaintingModeRemove;
-            self.nowEditMode.text=@"删除";
+            self.nowEditMode.text=@"模式:删除";
             break;
         case 1:
             self.paintingManager.paintingMode=KKSPaintingModeRotate;
-            self.nowEditMode.text=@"旋转";
+            self.nowEditMode.text=@"模式:旋转";
             break;
         case 2:
             self.paintingManager.paintingMode=KKSPaintingModeCopy;
-            self.nowEditMode.text=@"复制";
+            self.nowEditMode.text=@"模式:复制";
             break;
         case 3:
             self.paintingManager.paintingMode=KKSPaintingModeZoom;
-            self.nowEditMode.text=@"放大";
+            self.nowEditMode.text=@"模式:缩放";
+            break;
+        case 4:
+            self.paintingManager.paintingMode=KKSPaintingModeMove;
+            self.nowEditMode.text=@"模式:拖动";
             break;
         default:
             break;

@@ -422,11 +422,11 @@
                                         <color key="backgroundColor" red="0.98039221759999995" green="0.97647064920000004" blue="0.72156864399999998" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" id="e7P-6o-vgW">
-                                        <rect key="frame" x="1" y="0.0" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VdL-yO-pVu">
-                                                <rect key="frame" x="97" y="8" width="45" height="45"/>
+                                                <rect key="frame" x="138" y="8" width="45" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" backgroundImage="rotate.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -436,7 +436,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GcJ-Eb-3eV">
-                                                <rect key="frame" x="183" y="7" width="45" height="45"/>
+                                                <rect key="frame" x="198" y="7" width="45" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" backgroundImage="copy.png">
@@ -447,7 +447,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="irk-T3-AIn">
-                                                <rect key="frame" x="20" y="7" width="45" height="45"/>
+                                                <rect key="frame" x="77" y="7" width="45" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" backgroundImage="delete.png"/>
@@ -455,8 +455,17 @@
                                                     <action selector="changeEditMode:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="fwf-1L-dTe"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Loc-wX-wDf">
+                                                <rect key="frame" x="17" y="7" width="45" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" backgroundImage="select.png"/>
+                                                <connections>
+                                                    <action selector="changeEditMode:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="KSX-u3-Nr2"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d8a-3f-MbJ">
-                                                <rect key="frame" x="261" y="7" width="45" height="45"/>
+                                                <rect key="frame" x="258" y="7" width="45" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" backgroundImage="magnify.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -588,7 +597,7 @@
         <image name="degree5.png" width="512" height="512"/>
         <image name="degree6.png" width="512" height="512"/>
         <image name="delete.png" width="64" height="64"/>
-        <image name="edit.png" width="512" height="512"/>
+        <image name="edit.png" width="64" height="64"/>
         <image name="ellipse.png" width="512" height="512"/>
         <image name="hand.png" width="512" height="512"/>
         <image name="keep.png" width="512" height="512"/>
@@ -601,6 +610,7 @@
         <image name="polyline.png" width="512" height="512"/>
         <image name="rectangle.png" width="512" height="512"/>
         <image name="rotate.png" width="64" height="64"/>
+        <image name="select.png" width="64" height="64"/>
         <image name="share.png" width="512" height="512"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
