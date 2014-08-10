@@ -283,7 +283,7 @@
 - (IBAction)editGraphic:(id)sender {
     [self.editTool setBackgroundImage:[sender backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];//更改选中工具图标
     self.drawerView.scrollEnabled = NO;
-    self.paintingManager.paintingMode=KKSPaintingModeSelection;
+    self.paintingManager.paintingMode= KKSPaintingModeMove;
     self.hiddenEditAbout.hidden=YES;
 
 }

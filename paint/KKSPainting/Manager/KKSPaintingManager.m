@@ -140,7 +140,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerWillBeginPainting)]) {
                 [self.paintingDelegate paintingManagerWillBeginPainting];
             }
-//            [self registerUndoForPaintingWithPaintings:[self.usedPaintings copy]];
+            [self registerUndoForPaintingWithPaintings:[self.usedPaintings copy]];
         }
         [self.painting recordingBeganWithTouch:touch];
         
@@ -154,36 +154,21 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         }
     }
     else {
-        
-        if (paintingMode == KKSPaintingModeSelection) {
-            BOOL needRedraw = NO;
-            
-            if (self.selectedPainting.shouldStrokePath) {
-                // reset the previous selection state
-                self.selectedPainting.shouldStrokePath = NO;
-                needRedraw = YES;
-            }
-            
-            [self updateSelectedPaintingWithPoint:touchedLocation];
-            
-            self.selectedPainting.shouldStrokePath = YES;
-            
-            if (!self.selectedPainting && needRedraw) {
-                [self redrawViewWithPaintings:self.usedPaintings];
-            }
-        }
-        
+        // Editing Mode
+        [self updateSelectedPaintingWithPoint:touchedLocation];
         if (self.selectedPainting) {
-            if (paintingMode == KKSPaintingModeSelection ||
-                paintingMode == KKSPaintingModeRotate ||
-                paintingMode == KKSPaintingModeZoom) {
-                
+            self.selectedPainting.shouldStrokePath = YES;
+            [self redrawViewWithPaintings:self.usedPaintings];
+            
+            if (paintingMode == KKSPaintingModeMove ||
+                paintingMode == KKSPaintingModeZoom ||
+                paintingMode == KKSPaintingModeRotate) {
                 self.cachedImage = [self imageBeforePaintingComplete:self.selectedPainting];
                 self.isActive = YES;
                 self.previousLocation = touchedLocation;
                 self.firstTouchLocation = touchedLocation;
                 
-                if (paintingMode == KKSPaintingModeSelection) {
+                if (paintingMode == KKSPaintingModeMove) {
                     [self registerUndoForMovingWithPainting:self.selectedPainting];
                 }
                 else if (paintingMode == KKSPaintingModeRotate) {
@@ -192,7 +177,6 @@ void KKSViewBeginImageContext(UIScrollView *view) {
                 else if (paintingMode == KKSPaintingModeZoom) {
                     [self registerUndoForZoomingWithPainting:self.selectedPainting];
                 }
-                
             }
             else if (paintingMode == KKSPaintingModeRemove) {
                 [self registerUndoForPaintingWithPaintings:[self.usedPaintings copy]];
@@ -225,7 +209,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         [self.painting recordingContinueWithTouchMoved:touch];
     }
     else if (self.selectedPainting) {
-        if (paintingMode == KKSPaintingModeSelection) {
+        if (paintingMode == KKSPaintingModeMove) {
             CGPoint translation = translationBetweenPoints(self.previousLocation, touchedLocation);
             [self.selectedPainting moveByIncreasingTranslation:translation];
             
@@ -280,16 +264,19 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             }
         }
     }
-    else if (self.paintingMode == KKSPaintingModeSelection||
+    else if (self.paintingMode == KKSPaintingModeMove ||
              self.paintingMode == KKSPaintingModeRotate ||
              self.paintingMode == KKSPaintingModeZoom) {
         if (self.selectedPainting) {
-            
+            self.selectedPainting.shouldStrokePath = NO;
             [self updateCachedImageWithPaintingsAfterPainting:self.selectedPainting];
             
             [self.paintingView setNeedsDisplay];
             
             self.isActive = NO;
+
+            // after editing end, mode should be changed to selection
+            // self.paintingMode = KKSPaintingModeMove;
         }
     }
     else if (self.paintingMode == KKSPaintingModeFillColor) {
@@ -663,7 +650,8 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             paintingMode == KKSPaintingModeCopy ||
             paintingMode == KKSPaintingModeZoom ||
             paintingMode == KKSPaintingModeRotate ||
-            paintingMode == KKSPaintingModeSelection);
+            paintingMode == KKSPaintingModeMove ||
+            paintingMode == KKSPaintingModePaste);
 }
 
 #pragma mark - Accessor & Setter
@@ -686,9 +674,9 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     if (_paintingMode == KKSPaintingModeNone) {
         self.paintingView.scrollEnabled = (paintingMode == KKSPaintingModeNone);
     }
-    else if (_paintingMode == KKSPaintingModeSelection &&
+    else if (_paintingMode == KKSPaintingModeMove &&
             (paintingMode == KKSPaintingModePainting ||
-            paintingMode == KKSPaintingModeSelection ||
+            paintingMode == KKSPaintingModeMove ||
             paintingMode == KKSPaintingModeFillColor)) {
         [self clearSelectedPaintingStrokePath];
     }
@@ -696,8 +684,8 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         [self paintingViewDidChangeState];
     }
 
-    if (_paintingMode != KKSPaintingModeSelection &&
-        paintingMode == KKSPaintingModeSelection) {
+    if (_paintingMode != KKSPaintingModeMove &&
+        paintingMode == KKSPaintingModeMove) {
         if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidEnterEditingMode)]) {
             [self.paintingDelegate paintingManagerDidEnterEditingMode];
         }
@@ -734,7 +722,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         if (self.paintingMode == KKSPaintingModePainting) {
             [self.painting drawPath];
         }
-        else if (self.paintingMode == KKSPaintingModeSelection ||
+        else if (self.paintingMode == KKSPaintingModeMove ||
                  self.paintingMode == KKSPaintingModeRotate ||
                  self.paintingMode == KKSPaintingModeZoom) {
             [self redrawPaintingsFromSelectedPainting];
