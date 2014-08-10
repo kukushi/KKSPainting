@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "KKSPaintingConstant.h"
 
+@class  KKSPaintingModel;
+
 @protocol KKSPaintingManagerDelegate <NSObject>
 
 @optional
@@ -27,7 +29,7 @@
 
 @class KKSPaintingView;
 
-@interface KKSPaintingManager : NSObject <NSCoding>
+@interface KKSPaintingManager : NSObject
 
 @property (nonatomic) CGFloat lineWidth;
 @property (nonatomic) UIColor *color;
@@ -67,5 +69,7 @@
 - (BOOL)hasSelectedPainting;
 
 - (void)drawAllPaintings;
+
+- (KKSPaintingModel *)paintingModel;
 
 @end

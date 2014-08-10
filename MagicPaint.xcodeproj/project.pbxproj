@@ -58,6 +58,10 @@
 		00887F8918EDA66C004E26B4 /* SetPaintingBgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F8818EDA66C004E26B4 /* SetPaintingBgViewController.m */; };
 		00D4E9D718E02EE1006340AB /* paint.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E9D618E02EE1006340AB /* paint.png */; };
 		00E3764D1997436800F2D686 /* select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E3764C1997436800F2D686 /* select@2x.png */; };
+		2BFB270DA67D4D7F8C0AD85A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24A4D5A2C164D18994E3209 /* libPods.a */; };
+		52117937199763C600CEC810 /* FTEPaintingStorer.m in Sources */ = {isa = PBXBuildFile; fileRef = 52117936199763C600CEC810 /* FTEPaintingStorer.m */; };
+		5211793E199765D200CEC810 /* FTEFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5211793D199765D200CEC810 /* FTEFileManager.m */; };
+		5211794119976F3100CEC810 /* KKSPaintingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5211794019976F3100CEC810 /* KKSPaintingModel.m */; };
 		522FE923198289D900E0E599 /* KKSPaintingRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 522FE922198289D900E0E599 /* KKSPaintingRectangle.m */; };
 		522FE9261982905600E0E599 /* KKSPaintingEllipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 522FE9251982905600E0E599 /* KKSPaintingEllipse.m */; };
 		52E91BE6198265A6000F5ED4 /* KKSPaintingSegments.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E91BE5198265A6000F5ED4 /* KKSPaintingSegments.m */; };
@@ -158,6 +162,13 @@
 		00887F8818EDA66C004E26B4 /* SetPaintingBgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPaintingBgViewController.m; sourceTree = "<group>"; };
 		00D4E9D618E02EE1006340AB /* paint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paint.png; sourceTree = "<group>"; };
 		00E3764C1997436800F2D686 /* select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select@2x.png"; sourceTree = "<group>"; };
+		4074F7872A53482AA5F9637D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		52117935199763C600CEC810 /* FTEPaintingStorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FTEPaintingStorer.h; path = ../FTEPaintingStorer.h; sourceTree = "<group>"; };
+		52117936199763C600CEC810 /* FTEPaintingStorer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTEPaintingStorer.m; path = ../FTEPaintingStorer.m; sourceTree = "<group>"; };
+		5211793C199765D200CEC810 /* FTEFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FTEFileManager.h; path = ../../BangumiPush/BangumiPush/FTEFileManager.h; sourceTree = "<group>"; };
+		5211793D199765D200CEC810 /* FTEFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTEFileManager.m; path = ../../BangumiPush/BangumiPush/FTEFileManager.m; sourceTree = "<group>"; };
+		5211793F19976F3100CEC810 /* KKSPaintingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingModel.h; sourceTree = "<group>"; };
+		5211794019976F3100CEC810 /* KKSPaintingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingModel.m; sourceTree = "<group>"; };
 		522FE921198289D900E0E599 /* KKSPaintingRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingRectangle.h; sourceTree = "<group>"; };
 		522FE922198289D900E0E599 /* KKSPaintingRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingRectangle.m; sourceTree = "<group>"; };
 		522FE9241982905600E0E599 /* KKSPaintingEllipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingEllipse.h; sourceTree = "<group>"; };
@@ -194,6 +205,7 @@
 		52E9320C19962D0700BD9988 /* UMSShareListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSShareListController.xib; sourceTree = "<group>"; };
 		52E9320D19962D0700BD9988 /* UMSocialSDKResourcesNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResourcesNew.bundle; sourceTree = "<group>"; };
 		52E9320E19962D0700BD9988 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
+		C24A4D5A2C164D18994E3209 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +219,7 @@
 				00868A4B18C012E200CBBE3C /* CoreGraphics.framework in Frameworks */,
 				00868A4D18C012E200CBBE3C /* UIKit.framework in Frameworks */,
 				00868A4918C012E200CBBE3C /* Foundation.framework in Frameworks */,
+				2BFB270DA67D4D7F8C0AD85A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +253,7 @@
 				00868A7018C012E300CBBE3C /* paintTests */,
 				00868A4718C012E200CBBE3C /* Frameworks */,
 				00868A4618C012E200CBBE3C /* Products */,
+				4074F7872A53482AA5F9637D /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,6 +275,7 @@
 				00868A4A18C012E200CBBE3C /* CoreGraphics.framework */,
 				00868A4C18C012E200CBBE3C /* UIKit.framework */,
 				00868A6A18C012E300CBBE3C /* XCTest.framework */,
+				C24A4D5A2C164D18994E3209 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -268,6 +283,7 @@
 		00868A4E18C012E200CBBE3C /* paint */ = {
 			isa = PBXGroup;
 			children = (
+				52117938199765A700CEC810 /* FTEFileManager */,
 				0038BED019964F2D0068DD44 /* MLImageCrop */,
 				52E931F319962D0700BD9988 /* umeng_ios */,
 				00887F6F18ED9141004E26B4 /* KKSLog.h */,
@@ -349,6 +365,16 @@
 			path = KKSPainting;
 			sourceTree = "<group>";
 		};
+		52117938199765A700CEC810 /* FTEFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				5211793C199765D200CEC810 /* FTEFileManager.h */,
+				5211793D199765D200CEC810 /* FTEFileManager.m */,
+			);
+			name = FTEFileManager;
+			path = ../MLImageCrop;
+			sourceTree = "<group>";
+		};
 		529DB90E19825584007037DA /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +388,10 @@
 		529DB90F198255A4007037DA /* Painting */ = {
 			isa = PBXGroup;
 			children = (
+				52117935199763C600CEC810 /* FTEPaintingStorer.h */,
+				52117936199763C600CEC810 /* FTEPaintingStorer.m */,
+				5211793F19976F3100CEC810 /* KKSPaintingModel.h */,
+				5211794019976F3100CEC810 /* KKSPaintingModel.m */,
 				00887F7018ED9141004E26B4 /* KKSPainting.h */,
 				52E91BEB198269D4000F5ED4 /* KKSPaintingTool.h */,
 				00887F7418ED9141004E26B4 /* KKSPaintingBase.h */,
@@ -486,9 +516,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00868A7A18C012E300CBBE3C /* Build configuration list for PBXNativeTarget "MagicPaint" */;
 			buildPhases = (
+				6A3BCCA8166B46128AD7A186 /* Check Pods Manifest.lock */,
 				00868A4118C012E200CBBE3C /* Sources */,
 				00868A4218C012E200CBBE3C /* Frameworks */,
 				00868A4318C012E200CBBE3C /* Resources */,
+				DF888278D51947C6BDE3012C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -607,6 +639,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6A3BCCA8166B46128AD7A186 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DF888278D51947C6BDE3012C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		00868A4118C012E200CBBE3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -621,11 +686,14 @@
 				00868A5F18C012E200CBBE3C /* MainViewController.m in Sources */,
 				522FE923198289D900E0E599 /* KKSPaintingRectangle.m in Sources */,
 				00887F8118ED9141004E26B4 /* KKSPaintingManager.m in Sources */,
+				5211793E199765D200CEC810 /* FTEFileManager.m in Sources */,
 				00887F8318ED9141004E26B4 /* KKSPaintingView.m in Sources */,
 				00887F8218ED9141004E26B4 /* KKSPaintingBase.m in Sources */,
 				00887F8518ED9141004E26B4 /* KKSShapePainting.m in Sources */,
+				5211794119976F3100CEC810 /* KKSPaintingModel.m in Sources */,
 				0038BED319964F2D0068DD44 /* MLImageCrop.m in Sources */,
 				00887F8618ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m in Sources */,
+				52117937199763C600CEC810 /* FTEPaintingStorer.m in Sources */,
 				00887F8918EDA66C004E26B4 /* SetPaintingBgViewController.m in Sources */,
 				522FE9261982905600E0E599 /* KKSPaintingEllipse.m in Sources */,
 				52E91BF619826DE6000F5ED4 /* KKSPaintingLine.m in Sources */,
@@ -763,6 +831,7 @@
 		};
 		00868A7B18C012E300CBBE3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4074F7872A53482AA5F9637D /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -778,6 +847,7 @@
 		};
 		00868A7C18C012E300CBBE3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4074F7872A53482AA5F9637D /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

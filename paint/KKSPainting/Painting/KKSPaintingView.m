@@ -31,14 +31,6 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self initializeSelf];
-    }
-    return self;
-}
-
 - (void)initializeSelf {
     self.backgroundColor = [UIColor clearColor];
     self.scrollEnabled = NO;
@@ -159,70 +151,33 @@
 }
 
 
-/*
 #pragma mark - NSCoding
 
 - (id)initWithCoder:(NSCoder *)decoder {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        _lineWidth = [decoder decodeFloatForKey:@"lineWidth"];
-        _color = [decoder decodeObjectForKey:@"color"];
-        _alpha = [decoder decodeFloatForKey:@"alpha"];
-        _paintingType = [decoder decodeIntegerForKey:@"paintingType"];
-        _paintingMode = [decoder decodeIntegerForKey:@"paintingMode"];
-        _paintingDelegate = [decoder decodeObjectForKey:@"paintingDelegate"];
-        _painting = [decoder decodeObjectForKey:@"painting"];
-        _cachedImage = [decoder decodeObjectForKey:@"cachedImage"];
-        _usedPaintings = [decoder decodeObjectForKey:@"usedPaintings"];
-        _selectedPainting = [decoder decodeObjectForKey:@"selectedPainting"];
-        _firstTouchLocation = [decoder decodeCGPointForKey:@"firstTouchLocation"];
-        _previousLocation = [decoder decodeCGPointForKey:@"previousLocation"];
+    if (self = [super initWithCoder:decoder]) {
         _indicatorLabel = [decoder decodeObjectForKey:@"indicatorLabel"];
-        _isActive = [decoder decodeBoolForKey:@"isActive"];
-        _originalContentSize = [decoder decodeCGSizeForKey:@"originalContentSize"];
-        _canChangeContentSize = [decoder decodeBoolForKey:@"canChangeContentSize"];
         _backgroundImageView = [decoder decodeObjectForKey:@"backgroundImageView"];
+        _paintingManager = [decoder decodeObjectForKey:@"paintingManager"];
+        _viewController = [decoder decodeObjectForKey:@"viewController"];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
-    
-    [encoder encodeFloat:self.lineWidth forKey:@"lineWidth"];
-    if (self.color) {
-        [encoder encodeObject:self.color forKey:@"color"];
-    }
-    [encoder encodeFloat:self.alpha forKey:@"alpha"];
-    [encoder encodeInteger:self.paintingType forKey:@"paintingType"];
-    [encoder encodeInteger:self.paintingMode forKey:@"paintingMode"];
-    if (self.paintingDelegate) {
-        [encoder encodeObject:self.paintingDelegate forKey:@"paintingDelegate"];
-    }
-    if (self.painting) {
-        [encoder encodeObject:self.painting forKey:@"painting"];
-    }
-    if (self.cachedImage) {
-        [encoder encodeObject:self.cachedImage forKey:@"cachedImage"];
-    }
-    if (self.usedPaintings) {
-        [encoder encodeObject:self.usedPaintings forKey:@"usedPaintings"];
-    }
-    if (self.selectedPainting) {
-        [encoder encodeObject:self.selectedPainting forKey:@"selectedPainting"];
-    }
-    [encoder encodeCGPoint:self.firstTouchLocation forKey:@"firstTouchLocation"];
-    [encoder encodeCGPoint:self.previousLocation forKey:@"previousLocation"];
     if (self.indicatorLabel) {
         [encoder encodeObject:self.indicatorLabel forKey:@"indicatorLabel"];
     }
-    [encoder encodeBool:self.isActive forKey:@"isActive"];
-    [encoder encodeCGSize:self.originalContentSize forKey:@"originalContentSize"];
-    [encoder encodeBool:self.canChangeContentSize forKey:@"canChangeContentSize"];
     if (self.backgroundImageView) {
         [encoder encodeObject:self.backgroundImageView forKey:@"backgroundImageView"];
     }
+    if (self.paintingManager) {
+        [encoder encodeObject:self.paintingManager forKey:@"paintingManager"];
+    }
+    if (self.viewController) {
+        [encoder encodeObject:self.viewController forKey:@"viewController"];
+    }
 }
- */
+
 
 #pragma mark - drawing
 
