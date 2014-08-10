@@ -26,7 +26,6 @@
 {
     [super viewDidLoad];
 
-
     self.paintingManager = self.drawerView.paintingManager;
     self.drawerView.viewController = self;
     self.paintingManager.paintingDelegate = self;
@@ -302,6 +301,11 @@
     self.myTopBar.hidden=NO;
     self.editBar.hidden=YES;
     self.nowEditMode.hidden=YES;
+}
+- (void)paintingmanagerDidCopyPainting
+{
+    self.nowEditMode.text=@"模式:黏贴";
+
 }
 
 

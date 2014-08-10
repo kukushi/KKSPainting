@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0038BED319964F2D0068DD44 /* MLImageCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038BED219964F2D0068DD44 /* MLImageCrop.m */; };
 		003F38D518E9A33500F9A8B1 /* rotate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D418E9A33500F9A8B1 /* rotate@2x.png */; };
 		003F38D718E9A33B00F9A8B1 /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D618E9A33B00F9A8B1 /* magnify@2x.png */; };
 		003F38D918E9A34700F9A8B1 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D818E9A34700F9A8B1 /* delete@2x.png */; };
@@ -88,8 +87,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0038BED119964F2D0068DD44 /* MLImageCrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLImageCrop.h; sourceTree = "<group>"; };
-		0038BED219964F2D0068DD44 /* MLImageCrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLImageCrop.m; sourceTree = "<group>"; };
 		003F38D418E9A33500F9A8B1 /* rotate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotate@2x.png"; sourceTree = "<group>"; };
 		003F38D618E9A33B00F9A8B1 /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magnify@2x.png"; sourceTree = "<group>"; };
 		003F38D818E9A34700F9A8B1 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
@@ -223,16 +220,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0038BED019964F2D0068DD44 /* MLImageCrop */ = {
-			isa = PBXGroup;
-			children = (
-				0038BED119964F2D0068DD44 /* MLImageCrop.h */,
-				0038BED219964F2D0068DD44 /* MLImageCrop.m */,
-			);
-			name = MLImageCrop;
-			path = ../MLImageCrop;
-			sourceTree = "<group>";
-		};
 		00868A3C18C012E200CBBE3C = {
 			isa = PBXGroup;
 			children = (
@@ -268,7 +255,6 @@
 		00868A4E18C012E200CBBE3C /* paint */ = {
 			isa = PBXGroup;
 			children = (
-				0038BED019964F2D0068DD44 /* MLImageCrop */,
 				52E931F319962D0700BD9988 /* umeng_ios */,
 				00887F6F18ED9141004E26B4 /* KKSLog.h */,
 				00887F6A18ED9141004E26B4 /* KKSPainting */,
@@ -624,7 +610,6 @@
 				00887F8318ED9141004E26B4 /* KKSPaintingView.m in Sources */,
 				00887F8218ED9141004E26B4 /* KKSPaintingBase.m in Sources */,
 				00887F8518ED9141004E26B4 /* KKSShapePainting.m in Sources */,
-				0038BED319964F2D0068DD44 /* MLImageCrop.m in Sources */,
 				00887F8618ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m in Sources */,
 				00887F8918EDA66C004E26B4 /* SetPaintingBgViewController.m in Sources */,
 				522FE9261982905600E0E599 /* KKSPaintingEllipse.m in Sources */,
