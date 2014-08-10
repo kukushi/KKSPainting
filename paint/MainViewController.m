@@ -291,15 +291,14 @@
 #pragma mark - 编辑菜单相关
 
 //你在切换到编辑模式和离开编辑模式的时候给个委托方法，然后替换下面这两个。一个是进入编辑模式，一个是离开编辑模式
--(void)paintingManagerDidSelectedPainting:(CGPoint )point
-{
+- (void)paintingManagerDidEnterEditingMode {
     self.myTopBar.hidden=YES;
     self.editBar.hidden=NO;
     self.nowEditMode.hidden=NO;
     self.nowEditMode.text=@"模式:拖动";
 }
--(void)paintingManagerDidLeftSelection:(CGPoint )point
-{
+
+- (void)paintingManagerDidLeftEditingMode {
     self.myTopBar.hidden=NO;
     self.editBar.hidden=YES;
     self.nowEditMode.hidden=YES;

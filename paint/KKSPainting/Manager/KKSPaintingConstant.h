@@ -10,11 +10,16 @@
 #define Drawing_Demo_KKSPaintingConstant_h
 
 typedef NS_ENUM(NSInteger, KKSPaintingMode) {
-    KKSPaintingModeNone,
     // you can scroll only in this mode
+    KKSPaintingModeNone,
+
+    // DrawingMode
     KKSPaintingModePainting,
-    KKSPaintingModeSelection,
     KKSPaintingModeFillColor,
+
+    // Editing Mode
+    KKSPaintingModeMove,
+
     KKSPaintingModeRotate,
     KKSPaintingModeZoom,
     KKSPaintingModeRemove,

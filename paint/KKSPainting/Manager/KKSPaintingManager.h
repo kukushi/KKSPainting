@@ -16,8 +16,9 @@
 
 - (void)paintingManagerDidEndedPainting;
 
-- (void)paintingManagerDidSelectedPainting:(CGPoint )point;
-- (void)paintingManagerDidLeftSelection:(CGPoint )point;
+- (void)paintingManagerDidEnterEditingMode;
+
+- (void)paintingManagerDidLeftEditingMode;
 
 @end
 

@@ -97,16 +97,18 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             willSelectPainting = YES;
         }
     }
+    /*
     if (willSelectPainting) {
-        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidSelectedPainting:)]) {
-            [self.paintingDelegate paintingManagerDidSelectedPainting:point];
+        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidEnterEditingMode)]) {
+            [self.paintingDelegate paintingManagerDidEnterEditingMode];
         }
     }
     else if (didSelectedPainting) {
-        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidLeftSelection:)]) {
-            [self.paintingDelegate paintingManagerDidLeftSelection:point];
+        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidLeftEditingMode)]) {
+            [self.paintingDelegate paintingManagerDidLeftEditingMode];
         }
     }
+    */
     
     KKSDLog("Mode %td Hit on %@", self.paintingMode, self.selectedPainting);
 }
@@ -656,11 +658,12 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 #pragma mark - 
 
 - (BOOL)isPaintingModeEditing:(KKSPaintingMode)paintingMode {
+
     return (paintingMode == KKSPaintingModeRemove ||
             paintingMode == KKSPaintingModeCopy ||
             paintingMode == KKSPaintingModeZoom ||
-            paintingMode == KKSPaintingModeRotate);
-    
+            paintingMode == KKSPaintingModeRotate ||
+            paintingMode == KKSPaintingModeSelection);
 }
 
 #pragma mark - Accessor & Setter
@@ -692,6 +695,20 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     else {
         [self paintingViewDidChangeState];
     }
+
+    if (_paintingMode != KKSPaintingModeSelection &&
+        paintingMode == KKSPaintingModeSelection) {
+        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidEnterEditingMode)]) {
+            [self.paintingDelegate paintingManagerDidEnterEditingMode];
+        }
+    }
+    else if ([self isPaintingModeEditing:_paintingMode] &&
+        ![self isPaintingModeEditing:paintingMode]) {
+        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidLeftEditingMode)]) {
+            [self.paintingDelegate paintingManagerDidLeftEditingMode];
+        }
+    }
+
     _paintingMode = paintingMode;
 }
 
