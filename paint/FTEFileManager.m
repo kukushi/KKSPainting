@@ -10,8 +10,6 @@
 
 @interface FTEFileManager ()
 
-@property (nonatomic, weak) NSFileManager *fileManager;
-
 @end
 
 @implementation FTEFileManager
@@ -46,6 +44,29 @@
     NSString *path = [self pathWithFilename:filename];
     BOOL success = [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     return success;
+}
+
++ (NSArray *)itemsInDirectory:(NSString *)directoryName {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
+    
+    NSError *error;
+    NSArray *contents = [fileManager contentsOfDirectoryAtURL:bundleURL
+                                   includingPropertiesForKeys:@[]
+                                                      options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                        error:&error];
+    if (!error) {
+        NSMutableArray *items = [[NSMutableArray alloc] init];
+        for (NSURL *fileURL in contents) {
+            NSData *data = [NSData dataWithContentsOfURL:fileURL];
+            if (data) {
+                id obj = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                [items addObject:obj];
+            }
+        }
+        return items;
+    }
+    return nil;
 }
 
 @end

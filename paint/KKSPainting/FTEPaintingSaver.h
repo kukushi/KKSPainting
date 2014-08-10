@@ -12,19 +12,20 @@ typedef void (^FTEStoreCallback)(BOOL success);
 
 @class KKSPaintingModel;
 
-@interface FTEPaintingStorer : NSObject
+@interface FTEPaintingSaver : NSObject
 
 /**
- *  Store the view in the NSData format.
- *  Not Executed in the main thread.
- *
- *  @param paintingView view to be stored.
- *  @param name
- *  @param callback     call back will executed after store is complete
- */
+*  Store the view in the NSData format.
+*  Not Executed in the main thread.
+*
+*  @param paintingModel model to be saved
+*  @param name          name of the model
+*  @param callback      callback will executed after store is complete
+*/
 + (void)storePaintingManager:(KKSPaintingModel *)paintingModel
                         name:(NSString *)name
                     callback:(FTEStoreCallback)callback;
 
++ (NSArray *)retriveModels;
 
 @end

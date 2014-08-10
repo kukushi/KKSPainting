@@ -20,4 +20,6 @@
 
 + (BOOL)removeFileAtDirectoryWithFilename:(NSString *)filename;
 
++ (NSArray *)itemsInDirectory:(NSString *)directoryName;
+
 @end

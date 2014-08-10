@@ -51,6 +51,8 @@
 
 - (void)paintingEndWithTouch:(UITouch *)touch;
 
+- (void)reloadManagerWithModel:(KKSPaintingModel *)paintingModel;
+
 - (BOOL)canUndo;
 - (void)undo;
 

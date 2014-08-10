@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Robin W. All rights reserved.
 //
 
-#import "FTEPaintingStorer.h"
+#import "FTEPaintingSaver.h"
 #import "FTEFileManager.h"
 #import "KKSPaintingModel.h"
 
-@implementation FTEPaintingStorer
+@implementation FTEPaintingSaver
 
 + (void)storePaintingManager:(KKSPaintingModel *)paintingModel
                         name:(NSString *)name
@@ -26,6 +26,10 @@
             callback(writeDataSuccess);
         });
     });
+}
+
++ (NSArray *)retriveModels {
+    return [FTEFileManager itemsInDirectory:nil];
 }
 
 @end

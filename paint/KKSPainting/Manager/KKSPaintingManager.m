@@ -76,6 +76,13 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     return self;
 }
 
+#pragma mark -
+
+- (void)reloadManagerWithModel:(KKSPaintingModel *)paintingModel {
+    self.paintingModel = paintingModel;
+    [self.paintingView setNeedsDisplay];
+}
+
 #pragma mark - Selected Painting
 
 - (BOOL)hasSelectedPainting {
