@@ -353,17 +353,15 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 }
 
 - (void)zoomByScale:(CGFloat)scale {
-    if (self.canZoom) {
-        CGSize contentSize = self.paintingView.contentSize;
-        contentSize = CGSizeMake(contentSize.width * scale, contentSize.height * scale);
-        self.paintingView.contentSize = contentSize;
-        
-        [self zoomAllPaintingsByScale:scale];
-        for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
-            [painting zoomByMultipleCurrentScale:scale];
-        }
-        [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
+    CGSize contentSize = self.paintingView.contentSize;
+    contentSize = CGSizeMake(contentSize.width * scale, contentSize.height * scale);
+    self.paintingView.contentSize = contentSize;
+    
+    [self zoomAllPaintingsByScale:scale];
+    for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
+        [painting zoomByMultipleCurrentScale:scale];
     }
+    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
 }
 
 #pragma mark - Undo & Redo & Clear
