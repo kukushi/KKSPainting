@@ -7,10 +7,11 @@
 //
 
 #import "MainViewController.h"
-// #import <AVFoundation/AVFoundation.h>
+#import "FTEPaintingSaver.h"
 #import "UMSocial.h"
 #import "KKSPainting.h"
 #import "SetPaintingBgViewController.h"
+#import "LoadProjectViewController.h"
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 @interface MainViewController ()<KKSPaintingManagerDelegate>
 {
@@ -427,7 +428,10 @@
             patingBg.drawerView=self.drawerView;
             [self presentViewController:patingBg animated:YES completion:nil];
         }else if (buttonIndex == 1) {
-            
+            LoadProjectViewController *loadProjectViewController=[[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"ProjectView"];
+            loadProjectViewController.paintingManage=self.paintingManager;
+            loadProjectViewController.modalTransitionStyle=UIModalTransitionStylePartialCurl;
+            [self presentViewController:loadProjectViewController animated:YES completion:nil];
         }
     }
     else if([actionSheet.title isEqualToString:@"保存"])
@@ -437,7 +441,9 @@
             [self.drawerView showIndicatorLabelWithText:@"已保存到相册"];
             self.hiddenKeepAbout.hidden=YES;
         }else if (buttonIndex == 1) {
-            
+            self.addNameView.hidden=NO;
+            [self.nameTextField setText:@""];
+            [self.nameTextField becomeFirstResponder];
         }
 
     }
@@ -594,5 +600,26 @@
         default:
             break;
     }
+}
+- (IBAction)keepProject:(id)sender {
+    if (!self.nameTextField.text.length)
+    {
+        [[[UIAlertView alloc]initWithTitle:nil message:@"项目名不能为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+    }
+    else
+    {
+        [FTEPaintingSaver storePaintingManager:[self.paintingManager paintingModel] name:[self.nameTextField text] callback:^(BOOL success) {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"保存成功" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [self.nameTextField resignFirstResponder];
+            self.addNameView.hidden=YES;
+        }  ];
+    }
+}
+
+- (IBAction)cancelKeep:(id)sender {
+    self.addNameView.hidden=YES;
+    [self.nameTextField resignFirstResponder];
+
 }
 @end
