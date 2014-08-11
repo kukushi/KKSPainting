@@ -69,4 +69,14 @@
     return nil;
 }
 
++ (BOOL)deleteFileWithName:(NSString *)name {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *filePath = [self pathWithFilename:name];
+    NSError *error = nil;
+    if (![fileManager removeItemAtPath:filePath error:&error]) {
+        NSLog(@"[Error] %@ (%@)", error, filePath);
+    }
+    return !error;
+}
+
 @end

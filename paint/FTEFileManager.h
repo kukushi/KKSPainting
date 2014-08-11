@@ -22,4 +22,6 @@
 
 + (NSArray *)itemsInDirectory:(NSString *)directoryName;
 
++ (BOOL)deleteFileWithName:(NSString *)name;
+
 @end
