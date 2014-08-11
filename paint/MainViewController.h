@@ -63,4 +63,5 @@
 - (IBAction)scrollingPaint:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *scrollButton;
 @property(nonatomic,strong)NSUserDefaults *userDefaults;
+
 @end

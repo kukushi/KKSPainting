@@ -454,7 +454,14 @@
             self.addNameView.hidden=NO;
             [self.nameTextField becomeFirstResponder];
             self.projectArray=[[FTEPaintingSaver retriveModels]mutableCopy];
-            [self.nameTextField setText:[NSString stringWithFormat:@"工程%d号",[self.projectArray count]]];
+            if (self.paintingManager.modelIndex!=-1)
+            {
+                KKSPaintingModel *model=[self.projectArray objectAtIndex:self.paintingManager.modelIndex];
+                [self.nameTextField setText:[NSString stringWithFormat:@"%@",model.name]];
+            }else
+            {
+                [self.nameTextField setText:[NSString stringWithFormat:@"工程%d号",[self.projectArray count]]];
+            }
         }
 
     }
@@ -626,7 +633,7 @@
     {
         [[[UIAlertView alloc]initWithTitle:nil message:@"项目名不能为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
     }
-    else if (isTheSameName==YES)
+    else if (isTheSameName==YES&&self.paintingManager.modelIndex==-1)
     {
         [[[UIAlertView alloc]initWithTitle:nil message:@"工程名重复，请重新输入" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
     }
