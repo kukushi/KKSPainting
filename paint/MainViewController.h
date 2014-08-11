@@ -52,5 +52,10 @@
 //- (void)levelTimerCallback:(NSTimer *)timer;
 - (IBAction)changeColor:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIView *addNameView;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+- (IBAction)keepProject:(id)sender;
+- (IBAction)cancelKeep:(id)sender;
+
 @property(nonatomic,strong)NSUserDefaults *userDefaults;
 @end

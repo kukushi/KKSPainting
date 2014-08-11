@@ -7,10 +7,11 @@
 //
 
 #import "MainViewController.h"
-// #import <AVFoundation/AVFoundation.h>
+#import "FTEPaintingSaver.h"
 #import "UMSocial.h"
 #import "KKSPainting.h"
 #import "SetPaintingBgViewController.h"
+#import "LoadProjectViewController.h"
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 @interface MainViewController ()<KKSPaintingManagerDelegate>
 {
@@ -316,7 +317,11 @@
     self.myDownBar.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.myDownBar.bounds.size.height+scrollView.bounds.origin.y, self.myDownBar.bounds.size.width, self.myDownBar.bounds.size.height);
     self.editBar.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.editBar.bounds.size.width, self.editBar.bounds.size.height);
     self.nowEditMode.frame=CGRectMake(scrollView.bounds.origin.x+112,scrollView.bounds.origin.y+62, self.nowEditMode.bounds.size.width, self.nowEditMode.bounds.size.height);
+    
+    self.addNameView.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.addNameView.bounds.size.width, self.addNameView.bounds.size.height);
+    self.drawerView.indicatorLabel.frame=CGRectMake(scrollView.bounds.origin.x+60,scrollView.bounds.origin.y+80, self.drawerView.indicatorLabel.bounds.size.width, self.drawerView.indicatorLabel.bounds.size.height);
 
+    
     self.hiddenTools.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.hiddenTools.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenTools.bounds.size.width, self.hiddenTools.bounds.size.height);
     self.hiddenKeepAbout.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.hiddenKeepAbout.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenKeepAbout.bounds.size.width, self.hiddenKeepAbout.bounds.size.height);
     self.hiddenEditAbout.frame=CGRectMake(242+scrollView.bounds.origin.x, screenHeight-self.hiddenEditAbout.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenEditAbout.bounds.size.width, self.hiddenEditAbout.bounds.size.height);
@@ -427,7 +432,10 @@
             patingBg.drawerView=self.drawerView;
             [self presentViewController:patingBg animated:YES completion:nil];
         }else if (buttonIndex == 1) {
-            
+            LoadProjectViewController *loadProjectViewController=[[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"ProjectView"];
+            loadProjectViewController.paintingManage=self.paintingManager;
+            loadProjectViewController.modalTransitionStyle=UIModalTransitionStylePartialCurl;
+            [self presentViewController:loadProjectViewController animated:YES completion:nil];
         }
     }
     else if([actionSheet.title isEqualToString:@"保存"])
@@ -437,7 +445,9 @@
             [self.drawerView showIndicatorLabelWithText:@"已保存到相册"];
             self.hiddenKeepAbout.hidden=YES;
         }else if (buttonIndex == 1) {
-            
+            self.addNameView.hidden=NO;
+            [self.nameTextField setText:@""];
+            [self.nameTextField becomeFirstResponder];
         }
 
     }
@@ -594,5 +604,26 @@
         default:
             break;
     }
+}
+- (IBAction)keepProject:(id)sender {
+    if (!self.nameTextField.text.length)
+    {
+        [[[UIAlertView alloc]initWithTitle:nil message:@"项目名不能为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+    }
+    else
+    {
+        [FTEPaintingSaver storePaintingManager:[self.paintingManager paintingModel] name:[self.nameTextField text] callback:^(BOOL success) {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"保存成功" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [self.nameTextField resignFirstResponder];
+            self.addNameView.hidden=YES;
+        }  ];
+    }
+}
+
+- (IBAction)cancelKeep:(id)sender {
+    self.addNameView.hidden=YES;
+    [self.nameTextField resignFirstResponder];
+
 }
 @end

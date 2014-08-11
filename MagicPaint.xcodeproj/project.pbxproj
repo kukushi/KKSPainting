@@ -55,6 +55,7 @@
 		00887F8518ED9141004E26B4 /* KKSShapePainting.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7C18ED9141004E26B4 /* KKSShapePainting.m */; };
 		00887F8618ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7E18ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m */; };
 		00887F8918EDA66C004E26B4 /* SetPaintingBgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F8818EDA66C004E26B4 /* SetPaintingBgViewController.m */; };
+		0091003C19988B1500B5E6F7 /* LoadProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0091003B19988B1500B5E6F7 /* LoadProjectViewController.m */; };
 		00D4E9D718E02EE1006340AB /* paint.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E9D618E02EE1006340AB /* paint.png */; };
 		00E3764D1997436800F2D686 /* select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E3764C1997436800F2D686 /* select@2x.png */; };
 		2BFB270DA67D4D7F8C0AD85A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24A4D5A2C164D18994E3209 /* libPods.a */; };
@@ -157,6 +158,8 @@
 		00887F7E18ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+KKSValueSupport.m"; sourceTree = "<group>"; };
 		00887F8718EDA66C004E26B4 /* SetPaintingBgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPaintingBgViewController.h; sourceTree = "<group>"; };
 		00887F8818EDA66C004E26B4 /* SetPaintingBgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPaintingBgViewController.m; sourceTree = "<group>"; };
+		0091003A19988B1500B5E6F7 /* LoadProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadProjectViewController.h; sourceTree = "<group>"; };
+		0091003B19988B1500B5E6F7 /* LoadProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadProjectViewController.m; sourceTree = "<group>"; };
 		00D4E9D618E02EE1006340AB /* paint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paint.png; sourceTree = "<group>"; };
 		00E3764C1997436800F2D686 /* select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select@2x.png"; sourceTree = "<group>"; };
 		4074F7872A53482AA5F9637D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 				00868A5E18C012E200CBBE3C /* MainViewController.m */,
 				00887F8718EDA66C004E26B4 /* SetPaintingBgViewController.h */,
 				00887F8818EDA66C004E26B4 /* SetPaintingBgViewController.m */,
+				0091003A19988B1500B5E6F7 /* LoadProjectViewController.h */,
+				0091003B19988B1500B5E6F7 /* LoadProjectViewController.m */,
 				00868A6318C012E200CBBE3C /* Images.xcassets */,
 				00868A4F18C012E200CBBE3C /* Supporting Files */,
 			);
@@ -674,6 +679,7 @@
 				52D56E1C1997AC180015A107 /* FTEFileManager.m in Sources */,
 				00887F8318ED9141004E26B4 /* KKSPaintingView.m in Sources */,
 				00887F8218ED9141004E26B4 /* KKSPaintingBase.m in Sources */,
+				0091003C19988B1500B5E6F7 /* LoadProjectViewController.m in Sources */,
 				00887F8518ED9141004E26B4 /* KKSShapePainting.m in Sources */,
 				5211794119976F3100CEC810 /* KKSPaintingModel.m in Sources */,
 				00887F8618ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m in Sources */,

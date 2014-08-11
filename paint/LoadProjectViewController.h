@@ -1,0 +1,14 @@
+//
+//  LoadProjectViewController.h
+//  MagicPaint
+//
+//  Created by Robin W on 14-8-11.
+//  Copyright (c) 2014年 Robin W. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+@class KKSPaintingManager;
+@interface LoadProjectViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *projectListTable;
+@property(weak,nonatomic)KKSPaintingManager *paintingManage;
+@end
