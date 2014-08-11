@@ -74,6 +74,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         _color = [UIColor blackColor];
         _paintingModel = [[KKSPaintingModel alloc] init];
         _undoManager = [[NSUndoManager alloc] init];
+        _modelIndex=-1;
     }
     return self;
 }

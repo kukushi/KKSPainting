@@ -39,6 +39,8 @@
 
 @property (nonatomic) KKSPaintingType paintingType;
 @property (nonatomic) KKSPaintingMode paintingMode;
+@property (nonatomic) NSInteger modelIndex;
+
 
 
 @property (nonatomic, weak) id<KKSPaintingManagerDelegate> paintingDelegate;

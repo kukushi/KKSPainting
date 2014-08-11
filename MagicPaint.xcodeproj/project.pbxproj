@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003C50D21998D7100087FE12 /* zoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C50D11998D7100087FE12 /* zoom.png */; };
+		003C50D41998DA820087FE12 /* noScroll.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C50D31998DA820087FE12 /* noScroll.png */; };
 		003F38D518E9A33500F9A8B1 /* rotate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D418E9A33500F9A8B1 /* rotate@2x.png */; };
 		003F38D718E9A33B00F9A8B1 /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D618E9A33B00F9A8B1 /* magnify@2x.png */; };
 		003F38D918E9A34700F9A8B1 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D818E9A34700F9A8B1 /* delete@2x.png */; };
@@ -92,6 +94,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		003C50D11998D7100087FE12 /* zoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zoom.png; sourceTree = "<group>"; };
+		003C50D31998DA820087FE12 /* noScroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noScroll.png; sourceTree = "<group>"; };
 		003F38D418E9A33500F9A8B1 /* rotate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotate@2x.png"; sourceTree = "<group>"; };
 		003F38D618E9A33B00F9A8B1 /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magnify@2x.png"; sourceTree = "<group>"; };
 		003F38D818E9A34700F9A8B1 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 		00868A4F18C012E200CBBE3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				003C50D31998DA820087FE12 /* noScroll.png */,
+				003C50D11998D7100087FE12 /* zoom.png */,
 				00E3764C1997436800F2D686 /* select@2x.png */,
 				003F38DA18E9A34B00F9A8B1 /* copy@2x.png */,
 				003F38D818E9A34700F9A8B1 /* delete@2x.png */,
@@ -594,6 +600,7 @@
 				00868A9718C01DA100CBBE3C /* degree2.png in Resources */,
 				00E3764D1997436800F2D686 /* select@2x.png in Resources */,
 				52E9320F19962D0700BD9988 /* UMSocialLocalizable.strings in Resources */,
+				003C50D21998D7100087FE12 /* zoom.png in Resources */,
 				0057234A18C3202B00E05B28 /* hand.png in Resources */,
 				52E9321619962D0700BD9988 /* UMSLoginViewController.xib in Resources */,
 				52E9321419962D0700BD9988 /* UMShareEditViewController.xib in Resources */,
@@ -620,6 +627,7 @@
 				00868A5C18C012E200CBBE3C /* Main.storyboard in Resources */,
 				007E6FC618E17665006EDE73 /* edit.png in Resources */,
 				00868A9A18C01DA100CBBE3C /* degree5.png in Resources */,
+				003C50D41998DA820087FE12 /* noScroll.png in Resources */,
 				00868A9B18C01DA100CBBE3C /* degree6.png in Resources */,
 				00D4E9D718E02EE1006340AB /* paint.png in Resources */,
 				003F38D718E9A33B00F9A8B1 /* magnify@2x.png in Resources */,
