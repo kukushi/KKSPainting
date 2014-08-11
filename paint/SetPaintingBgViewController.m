@@ -63,7 +63,7 @@
     NSLog(@"%f",self.drawerView.contentSize.width);
     [self.drawerView setContentSize:CGSizeMake([self.paintWidth.text floatValue],[self.paintHeight.text floatValue])];
     [self.paintingManager clear];
-    self.drawerView.backgroundColor=[UIColor colorWithPatternImage:self.bgImage];
+    [self.drawerView.paintingManager setPaintingBackground:self.bgImage];
 
     [self dismissViewControllerAnimated:YES completion:nil];
 

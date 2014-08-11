@@ -649,6 +649,12 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             paintingMode == KKSPaintingModePaste);
 }
 
+#pragma mark - Background 
+
+- (void)setPaintingBackground:(UIImage *)image {
+    self.paintingModel.cachedImage = image;
+}
+
 #pragma mark - Accessor & Setter
 
 - (void)paintingViewDidChangeState {
