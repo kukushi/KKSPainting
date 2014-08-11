@@ -167,10 +167,10 @@
 		00D4E9D618E02EE1006340AB /* paint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paint.png; sourceTree = "<group>"; };
 		00E3764C1997436800F2D686 /* select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select@2x.png"; sourceTree = "<group>"; };
 		4074F7872A53482AA5F9637D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		52117935199763C600CEC810 /* FTEPaintingSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FTEPaintingSaver.h; path = ../FTEPaintingSaver.h; sourceTree = "<group>"; };
-		52117936199763C600CEC810 /* FTEPaintingSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTEPaintingSaver.m; path = ../FTEPaintingSaver.m; sourceTree = "<group>"; };
-		5211793F19976F3100CEC810 /* KKSPaintingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingModel.h; sourceTree = "<group>"; };
-		5211794019976F3100CEC810 /* KKSPaintingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingModel.m; sourceTree = "<group>"; };
+		52117935199763C600CEC810 /* FTEPaintingSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTEPaintingSaver.h; sourceTree = "<group>"; };
+		52117936199763C600CEC810 /* FTEPaintingSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTEPaintingSaver.m; sourceTree = "<group>"; };
+		5211793F19976F3100CEC810 /* KKSPaintingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKSPaintingModel.h; path = Painting/KKSPaintingModel.h; sourceTree = "<group>"; };
+		5211794019976F3100CEC810 /* KKSPaintingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKSPaintingModel.m; path = Painting/KKSPaintingModel.m; sourceTree = "<group>"; };
 		522FE921198289D900E0E599 /* KKSPaintingRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingRectangle.h; sourceTree = "<group>"; };
 		522FE922198289D900E0E599 /* KKSPaintingRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingRectangle.m; sourceTree = "<group>"; };
 		522FE9241982905600E0E599 /* KKSPaintingEllipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingEllipse.h; sourceTree = "<group>"; };
@@ -357,6 +357,7 @@
 			children = (
 				529DB90F198255A4007037DA /* Painting */,
 				529DB90E19825584007037DA /* Manager */,
+				52AE13F31998CBE9004E10AD /* Model & Saver */,
 				529DB910198255C4007037DA /* Extension */,
 			);
 			path = KKSPainting;
@@ -375,10 +376,6 @@
 		529DB90F198255A4007037DA /* Painting */ = {
 			isa = PBXGroup;
 			children = (
-				52117935199763C600CEC810 /* FTEPaintingSaver.h */,
-				52117936199763C600CEC810 /* FTEPaintingSaver.m */,
-				5211793F19976F3100CEC810 /* KKSPaintingModel.h */,
-				5211794019976F3100CEC810 /* KKSPaintingModel.m */,
 				00887F7018ED9141004E26B4 /* KKSPainting.h */,
 				52E91BEB198269D4000F5ED4 /* KKSPaintingTool.h */,
 				00887F7418ED9141004E26B4 /* KKSPaintingBase.h */,
@@ -402,6 +399,17 @@
 				00887F7E18ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		52AE13F31998CBE9004E10AD /* Model & Saver */ = {
+			isa = PBXGroup;
+			children = (
+				52117935199763C600CEC810 /* FTEPaintingSaver.h */,
+				52117936199763C600CEC810 /* FTEPaintingSaver.m */,
+				5211793F19976F3100CEC810 /* KKSPaintingModel.h */,
+				5211794019976F3100CEC810 /* KKSPaintingModel.m */,
+			);
+			name = "Model & Saver";
 			sourceTree = "<group>";
 		};
 		52D56E191997AB940015A107 /* FileManager */ = {

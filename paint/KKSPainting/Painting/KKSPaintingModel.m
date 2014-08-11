@@ -15,12 +15,34 @@
 
 @implementation KKSPaintingModel
 
+#pragma mark - Init
+
 - (id)init {
     if (self = [super init]) {
         _usedPaintings = [[NSMutableArray alloc] init];
     }
     return self;
 }
+
+#pragma mark - Manage Used Paintings
+
+- (void)removePainting:(id)painting {
+    NSMutableArray *mutableUsedPaintings = [NSMutableArray arrayWithArray:self.usedPaintings];
+    [mutableUsedPaintings removeObject:painting];
+    self.usedPaintings = [mutableUsedPaintings copy];
+}
+
+- (void)addPainting:(id)painting {
+    NSMutableArray *mutableUsedPaintings = [NSMutableArray arrayWithArray:self.usedPaintings];
+    [mutableUsedPaintings addObject:painting];
+    self.usedPaintings = [mutableUsedPaintings copy];
+}
+
+- (void)removeAllPaintings {
+    self.usedPaintings = [[NSMutableArray alloc] init];
+}
+
+#pragma mark - Mantle
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{@"name": @"name",

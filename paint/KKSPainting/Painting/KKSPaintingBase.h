@@ -76,7 +76,7 @@
 
 - (void)zoomBySettingScale:(CGFloat)scale;
 
-- (void)zoomByMultipleCurrentScale:(CGFloat)scale;
+- (void)zoomByPlusCurrentScale:(CGFloat)scale;
 
 - (void)setFill:(BOOL)shouldFill color:(CGColorRef)fillColor;
 

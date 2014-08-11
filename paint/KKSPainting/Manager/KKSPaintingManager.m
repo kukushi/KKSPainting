@@ -175,8 +175,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             }
             else if (paintingMode == KKSPaintingModeRemove) {
                 [self registerUndoForPaintingWithPaintings:[self.paintingModel.usedPaintings copy]];
-                [self.paintingModel.usedPaintings removeObject:self.selectedPainting];
-                
+                [self.paintingModel removePainting:self.selectedPainting];
                 [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
             }
             else if (paintingMode == KKSPaintingModeCopy) {
@@ -188,7 +187,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
                 KKSPaintingBase *painting = [self.selectedPainting copy];
                 CGPoint translation = translationBetweenPoints(self.firstTouchLocation, touchedLocation);
                 [painting moveByIncreasingTranslation:translation];
-                [self.paintingModel.usedPaintings addObject:painting];
+                [self.paintingModel addPainting:painting];
                 [self updateCachedImageWithPainting:painting cachedImage:self.paintingModel.cachedImage];
                 [self.paintingView setNeedsDisplay];
             }
@@ -233,7 +232,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
                                                      currentLocation);
             self.previousLocation = currentLocation;
             
-            [self.selectedPainting zoomByMultipleCurrentScale:scale];
+            [self.selectedPainting zoomByPlusCurrentScale:scale];
             
             [self.paintingView setNeedsDisplay];
         }
@@ -250,7 +249,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         
         if (self.painting.isDrawingFinished) {
             
-            [self.paintingModel.usedPaintings addObject:self.painting];
+            [self.paintingModel addPainting:self.painting];
             
             self.isActive = NO;
             
@@ -348,19 +347,21 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 - (void)zoomAllPaintingsByScale:(CGFloat)scale {
     for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
-        [painting zoomByMultipleCurrentScale:scale];
+        [painting zoomByPlusCurrentScale:scale];
     }
 }
 
 - (void)zoomByScale:(CGFloat)scale {
+    if (CGSizeEqualToSize(self.paintingModel.originalContentSize, CGSizeZero)) {
+        self.paintingModel.originalContentSize = self.paintingView.contentSize;
+    }
+    
     CGSize contentSize = self.paintingView.contentSize;
-    contentSize = CGSizeMake(contentSize.width * scale, contentSize.height * scale);
+    contentSize = CGSizeMake(self.paintingModel.originalContentSize.width * scale,
+                             self.paintingModel.originalContentSize.height * scale);
     self.paintingView.contentSize = contentSize;
     
     [self zoomAllPaintingsByScale:scale];
-    for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
-        [painting zoomByMultipleCurrentScale:scale];
-    }
     [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
 }
 
@@ -511,7 +512,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 - (void)clear {
     if ([self canClear]) {
-        [self.paintingModel.usedPaintings removeAllObjects];
+        [self.paintingModel removeAllPaintings];
         [self.undoManager removeAllActions];
         self.paintingModel.cachedImage = nil;
         [self.paintingView setNeedsDisplay];
@@ -543,7 +544,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         
         self.painting.isDrawingFinished = YES;
         
-        [self.paintingModel.usedPaintings addObject:self.painting];
+        [self.paintingModel addPainting:self.painting];
         
         self.isActive = NO;
         
@@ -648,6 +649,12 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             paintingMode == KKSPaintingModeRotate ||
             paintingMode == KKSPaintingModeMove ||
             paintingMode == KKSPaintingModePaste);
+}
+
+#pragma mark - Background 
+
+- (void)setPaintingBackground:(UIImage *)image {
+    self.paintingModel.cachedImage = image;
 }
 
 #pragma mark - Accessor & Setter

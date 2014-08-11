@@ -176,7 +176,7 @@
     [self updateTransform];
 }
 
-- (void)zoomByMultipleCurrentScale:(CGFloat)scale {
+- (void)zoomByPlusCurrentScale:(CGFloat)scale {
     self.zoomScale += scale;
     [self updateTransform];
 }
