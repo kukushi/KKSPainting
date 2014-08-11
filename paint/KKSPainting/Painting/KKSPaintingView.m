@@ -39,7 +39,7 @@
 }
 
 - (void)initializeSelf {
-    self.backgroundColor = [UIColor clearColor];
+//    self.backgroundColor = [UIColor clearColor];
     self.scrollEnabled = NO;
     
     _paintingManager = [[KKSPaintingManager alloc] init];

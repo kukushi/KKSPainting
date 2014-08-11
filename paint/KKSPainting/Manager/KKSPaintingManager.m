@@ -56,7 +56,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 #pragma mark - Init
 
-void KKSViewBeginImageContext(UIScrollView *view) {
+void KKSViewBeginImageContextWithImage(UIScrollView *view, UIImage *image) {
     CGSize imageSize;
     if (CGSizeEqualToSize(CGSizeZero, view.contentSize)) {
         imageSize = view.bounds.size;
@@ -65,6 +65,9 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         imageSize = view.contentSize;
     }
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.f);
+    CGRect drawRect = CGRectZero;
+    drawRect.size = imageSize;
+    [image drawInRect:drawRect];
 }
 
 - (id)init {
@@ -298,41 +301,27 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 - (void)renewPainting {
     switch (self.paintingType) {
-        case KKSPaintingTypePen: {
+        case KKSPaintingTypePen:
             self.painting = [[KKSPaintingPen alloc] initWithView:self.paintingView];
-        }
             break;
-            
-        case KKSPaintingTypeLine: {
+        case KKSPaintingTypeLine:
             self.painting = [[KKSPaintingLine alloc] initWithView:self.paintingView];
-        }
             break;
-            
-        case KKSPaintingTypeRectangle: {
+        case KKSPaintingTypeRectangle:
             self.painting = [[KKSPaintingRectangle alloc] initWithView:self.paintingView];
-        }
             break;
-            
-        case KKSPaintingTypeEllipse: {
+        case KKSPaintingTypeEllipse:
             self.painting = [[KKSPaintingEllipse alloc] initWithView:self.paintingView];
-        }
             break;
-            
-        case KKSPaintingTypeSegments: {
+        case KKSPaintingTypeSegments:
             self.painting = [[KKSPaintingSegments alloc] initWithView:self.paintingView];
-        }
             break;
-            
-        case KKSPaintingTypeBezier: {
+        case KKSPaintingTypeBezier:
             self.painting = [[KKSPaintingBezier alloc] initWithView:self.paintingView];
-        }
             break;
-            
-        case KKSPaintingTypePolygon: {
+        case KKSPaintingTypePolygon:
             self.painting = [[KKSPaintingPolygon alloc] initWithView:self.paintingView];
-        }
             break;
-            
         default:
             break;
     }
@@ -573,8 +562,9 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 - (UIImage *)imageBeforePaintingComplete:(KKSPaintingBase *)painting {
     NSInteger endIndex = [self.paintingModel.usedPaintings indexOfObject:painting];
+
+    KKSViewBeginImageContextWithImage(self.paintingView, self.paintingModel.backgroundImage);
     
-    KKSViewBeginImageContext(self.paintingView);
     for (NSInteger index = 0; index<endIndex; ++index) {
         KKSPaintingBase *usedPainting = self.paintingModel.usedPaintings[index];
         [usedPainting drawPath];
@@ -588,8 +578,8 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 - (void)updateCachedImageWithPaintingsAfterPainting:(KKSPaintingBase *)painting {
     NSInteger startIndex = [self.paintingModel.usedPaintings indexOfObject:painting];
     NSInteger count = [self.paintingModel.usedPaintings count];
-    
-    KKSViewBeginImageContext(self.paintingView);
+
+    KKSViewBeginImageContextWithImage(self.paintingView, self.paintingModel.backgroundImage);
     [self.paintingModel.cachedImage drawAtPoint:CGPointZero];
     for (NSInteger index = startIndex; index<count; ++index) {
         KKSPaintingBase *usedPainting = self.paintingModel.usedPaintings[index];
@@ -603,7 +593,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 }
 
 - (void)redrawViewWithPaintings:(NSArray *)paintings {
-    KKSViewBeginImageContext(self.paintingView);
+    KKSViewBeginImageContextWithImage(self.paintingView, self.paintingModel.backgroundImage);
     
     for (KKSPaintingBase *painting in paintings) {
         [painting drawPath];
@@ -617,7 +607,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 - (void)updateCachedImageWithPainting:(KKSPaintingBase *)painting
                           cachedImage:(UIImage *)cachedImage {
-    KKSViewBeginImageContext(self.paintingView);
+    KKSViewBeginImageContextWithImage(self.paintingView, self.paintingModel.backgroundImage);
     
     [cachedImage drawAtPoint:CGPointZero];
     
@@ -655,6 +645,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 - (void)setPaintingBackground:(UIImage *)image {
     self.paintingModel.cachedImage = image;
+    self.paintingModel.backgroundImage = image;
 }
 
 #pragma mark - Accessor & Setter

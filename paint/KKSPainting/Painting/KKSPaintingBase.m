@@ -306,13 +306,13 @@
 }
 
 - (CGPathRef)strokePathWithContext:(CGContextRef)context {
-    CGPathRef storkingPath = CGPathCreateCopyByStrokingPath(self.path,
+    CGPathRef strokingPath = CGPathCreateCopyByStrokingPath(self.path,
                                                             NULL,
                                                             self.scaledLineWidth + 1.f,
                                                             kCGLineCapRound,
                                                             kCGLineJoinRound,
                                                             0.f);
-    CGContextAddPath(context, storkingPath);
+    CGContextAddPath(context, strokingPath);
     CGContextSaveGState(context);
     
     CGFloat dashStyle[] = {5.0f, 5.0f};
@@ -326,7 +326,7 @@
     CGContextStrokePath(context);
     CGContextRestoreGState(context);
     
-    return storkingPath;
+    return strokingPath;
 }
 
 - (void)strokeBoundWithContext:(CGContextRef)context {
