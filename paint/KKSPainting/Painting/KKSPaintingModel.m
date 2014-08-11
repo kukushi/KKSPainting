@@ -17,7 +17,6 @@
 
 - (id)init {
     if (self = [super init]) {
-        _undoManager = [[NSUndoManager alloc] init];
         _usedPaintings = [[NSMutableArray alloc] init];
     }
     return self;
@@ -29,8 +28,8 @@
              @"backgroundImage": @"backgroundImage",
              @"cachedImage": @"cachedImage",
              @"usedPaintings": @"usedPaintings",
-             @"originalContentSize": @"originalContentSize",
-             @"undoManager": @"undoManager"};
+             @"originalContentSize": @"originalContentSize"
+             };
 }
 
 @end

@@ -31,6 +31,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 @property (nonatomic, strong) KKSPaintingModel *paintingModel;
 
+@property (nonatomic, strong) NSUndoManager *undoManager;
 
 @property (nonatomic, strong) KKSPaintingBase *painting;
 @property (nonatomic, weak) KKSPaintingBase *selectedPainting;
@@ -72,6 +73,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         _alpha = 1.f;
         _color = [UIColor blackColor];
         _paintingModel = [[KKSPaintingModel alloc] init];
+        _undoManager = [[NSUndoManager alloc] init];
     }
     return self;
 }
@@ -80,6 +82,10 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 - (void)reloadManagerWithModel:(KKSPaintingModel *)paintingModel {
     self.paintingModel = paintingModel;
+    self.painting = nil;
+    self.selectedPainting = nil;
+    self.paintingToFill = nil;
+    self.undoManager = [[NSUndoManager alloc] init];
     [self.paintingView setNeedsDisplay];
 }
 
@@ -363,7 +369,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 #pragma mark - Undo & Redo & Clear
 
 - (BOOL)canUndo {
-    return ([self.paintingModel.undoManager canUndo] && !self.isActive);
+    return ([self.undoManager canUndo] && !self.isActive);
 }
 
 - (BOOL)canClear {
@@ -371,11 +377,11 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 }
 
 - (BOOL)canRedo {
-    return ([self.paintingModel.undoManager canRedo] && !self.isActive);
+    return ([self.undoManager canRedo] && !self.isActive);
 }
 
 - (void)undo {
-    [self.paintingModel.undoManager undo];
+    [self.undoManager undo];
 }
 
 - (void)undoPainting:(id)object {
@@ -390,7 +396,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 }
 
 - (void)registerUndoForPaintingWithPaintings:(NSArray *)paintings {
-    [self.paintingModel.undoManager registerUndoWithTarget:self
+    [self.undoManager registerUndoWithTarget:self
                                     selector:@selector(undoPainting:)
                                       object:paintings];
 }
@@ -414,7 +420,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     
     NSDictionary *dict = @{KKSPaintingUndoKeyPainting: painting,
                            KKSPaintingUndoKeyTranslation: value};
-    [self.paintingModel.undoManager registerUndoWithTarget:self
+    [self.undoManager registerUndoWithTarget:self
                                     selector:@selector(undoMoving:)
                                       object:dict];
 }
@@ -441,7 +447,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     NSDictionary *dict = @{KKSPaintingUndoKeyPainting: painting,
                            KKSPaintingUndoKeyDegree: value};
     
-    [self.paintingModel.undoManager registerUndoWithTarget:self
+    [self.undoManager registerUndoWithTarget:self
                                     selector:@selector(undoRotating:)
                                       object:dict];
 }
@@ -467,7 +473,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
     NSDictionary *dict = @{KKSPaintingUndoKeyPainting: painting,
                            KKSPaintingUndoKeyZoomScale: value};
     
-    [self.paintingModel.undoManager registerUndoWithTarget:self
+    [self.undoManager registerUndoWithTarget:self
                                     selector:@selector(undoZooming:)
                                       object:dict];
 }
@@ -496,19 +502,19 @@ void KKSViewBeginImageContext(UIScrollView *view) {
                            KKSPaintingUndoKeyShouldFill: shouldFillValue,
                            KKSPaintingUndoKeyFillColor: colorValue};
     
-    [self.paintingModel.undoManager registerUndoWithTarget:self
+    [self.undoManager registerUndoWithTarget:self
                                     selector:@selector(undoFillColor:)
                                       object:dict];
 }
 
 - (void)redo {
-    [self.paintingModel.undoManager redo];
+    [self.undoManager redo];
 }
 
 - (void)clear {
     if ([self canClear]) {
         [self.paintingModel.usedPaintings removeAllObjects];
-        [self.paintingModel.undoManager removeAllActions];
+        [self.undoManager removeAllActions];
         self.paintingModel.cachedImage = nil;
         [self.paintingView setNeedsDisplay];
     }

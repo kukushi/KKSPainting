@@ -20,6 +20,5 @@
 @property (nonatomic, copy) UIImage *cachedImage;
 @property (nonatomic, copy) NSMutableArray *usedPaintings;
 @property (nonatomic) CGSize originalContentSize;
-@property (nonatomic, strong) NSUndoManager *undoManager;
 
 @end
