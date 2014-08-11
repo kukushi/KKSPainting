@@ -232,7 +232,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
                                                      currentLocation);
             self.previousLocation = currentLocation;
             
-            [self.selectedPainting zoomByMultipleCurrentScale:scale];
+            [self.selectedPainting zoomByPlusCurrentScale:scale];
             
             [self.paintingView setNeedsDisplay];
         }
@@ -347,19 +347,21 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 - (void)zoomAllPaintingsByScale:(CGFloat)scale {
     for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
-        [painting zoomByMultipleCurrentScale:scale];
+        [painting zoomByPlusCurrentScale:scale];
     }
 }
 
 - (void)zoomByScale:(CGFloat)scale {
+    if (CGSizeEqualToSize(self.paintingModel.originalContentSize, CGSizeZero)) {
+        self.paintingModel.originalContentSize = self.paintingView.contentSize;
+    }
+    
     CGSize contentSize = self.paintingView.contentSize;
-    contentSize = CGSizeMake(contentSize.width * scale, contentSize.height * scale);
+    contentSize = CGSizeMake(self.paintingModel.originalContentSize.width * scale,
+                             self.paintingModel.originalContentSize.height * scale);
     self.paintingView.contentSize = contentSize;
     
     [self zoomAllPaintingsByScale:scale];
-    for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
-        [painting zoomByMultipleCurrentScale:scale];
-    }
     [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
 }
 
