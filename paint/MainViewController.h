@@ -56,6 +56,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 - (IBAction)keepProject:(id)sender;
 - (IBAction)cancelKeep:(id)sender;
+@property (weak, nonatomic) IBOutlet UISlider *zoomSlider;
 
+@property (weak, nonatomic) IBOutlet UIView *zoomView;
+- (IBAction)zoomPaint:(id)sender;
 @property(nonatomic,strong)NSUserDefaults *userDefaults;
 @end

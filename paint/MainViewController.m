@@ -12,12 +12,13 @@
 #import "KKSPainting.h"
 #import "SetPaintingBgViewController.h"
 #import "LoadProjectViewController.h"
+#import "KKSPaintingModel.h"
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 @interface MainViewController ()<KKSPaintingManagerDelegate>
 {
     NSDate *LastMotion;
 }
-
+@property(nonatomic,strong)NSMutableArray *projectArray;
 @end
 
 @implementation MainViewController
@@ -103,64 +104,74 @@
 #pragma mark 拖动上边栏
 -(void)handelPan:(UIPanGestureRecognizer*)gestureRecognizer
 {
-    static BOOL right; //判断左右移动的标志
-    CGPoint translatedPoint = [gestureRecognizer translationInView:self.myTopBar];
-    if (fabs(translatedPoint.y)<fabs(translatedPoint.x))//如果为水平滑动
+    
+    if (self.zoomView.hidden==NO)
     {
-        if (translatedPoint.x>0)
-        {
-            right=false;
-        }
-        else
-        {
-            right=true;
-        }
-        CGFloat y = self.myTopBar.center.y;
-        CGFloat x = self.myTopBar.center.x + translatedPoint.x;
-        if (x>-160+self.drawerView.bounds.origin.x&&x<480+self.drawerView.bounds.origin.x)
-        {
-            self.myTopBar.center = CGPointMake(x, y);
-        }
+        self.myTopBar.center = CGPointMake(self.myTopBar.center.x, self.myTopBar.center.y);
+
+        [gestureRecognizer setTranslation:CGPointMake(0, 0) inView:self.myTopBar];
     }
-    [gestureRecognizer setTranslation:CGPointMake(0, 0) inView:self.myTopBar];
-    //意一旦你完成上述的移动，将translation重置为0十分重要。否则translation每次都会叠加，很快你的view就会移除屏幕！
-    static CGFloat CX;
-    if (self.myTopBar.center.x<0+self.drawerView.bounds.origin.x) {
-        CX=-160;
-    }else if (self.myTopBar.center.x<320+self.drawerView.bounds.origin.x){
-        CX=160;
-    }else{
-        CX=480;
-    }
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded)//如果拖动状态停止
+    else
     {
-        CGFloat x;
-        if (right)
+        static BOOL right; //判断左右移动的标志
+        CGPoint translatedPoint = [gestureRecognizer translationInView:self.myTopBar];
+        if (fabs(translatedPoint.y)<fabs(translatedPoint.x))//如果为水平滑动
         {
-            if (CX==-160)
+            if (translatedPoint.x>0)
             {
-                x=CX;
+                right=false;
             }
             else
             {
-                x=CX-320;
+                right=true;
+            }
+            CGFloat y = self.myTopBar.center.y;
+            CGFloat x = self.myTopBar.center.x + translatedPoint.x;
+            if (x>-160+self.drawerView.bounds.origin.x&&x<480+self.drawerView.bounds.origin.x)
+            {
+                self.myTopBar.center = CGPointMake(x, y);
             }
         }
-        else
+        [gestureRecognizer setTranslation:CGPointMake(0, 0) inView:self.myTopBar];
+        //意一旦你完成上述的移动，将translation重置为0十分重要。否则translation每次都会叠加，很快你的view就会移除屏幕！
+        static CGFloat CX;
+        if (self.myTopBar.center.x<0+self.drawerView.bounds.origin.x) {
+            CX=-160;
+        }else if (self.myTopBar.center.x<320+self.drawerView.bounds.origin.x){
+            CX=160;
+        }else{
+            CX=480;
+        }
+        if (gestureRecognizer.state == UIGestureRecognizerStateEnded)//如果拖动状态停止
+        {
+            CGFloat x;
+            if (right)
             {
-                if (CX==480)
+                if (CX==-160)
                 {
                     x=CX;
                 }
                 else
                 {
-                    x=CX+320;
+                    x=CX-320;
                 }
             }
-        [UIView animateWithDuration:0.5 animations:^{
-                self.myTopBar.center = CGPointMake(x
-                                                   +self.drawerView.bounds.origin.x, 30+self.drawerView.bounds.origin.y);
-            }];
+            else
+                {
+                    if (CX==480)
+                    {
+                        x=CX;
+                    }
+                    else
+                    {
+                        x=CX+320;
+                    }
+                }
+            [UIView animateWithDuration:0.5 animations:^{
+                    self.myTopBar.center = CGPointMake(x
+                                                       +self.drawerView.bounds.origin.x, 30+self.drawerView.bounds.origin.y);
+                }];
+        }
     }
 }
 
@@ -222,6 +233,8 @@
 - (IBAction)lineTool:(UIButton *)sender {
     [self.selectedTool setBackgroundImage:[sender backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];//更改选中工具图标
     self.paintingManager.paintingMode=KKSPaintingModePainting;
+    self.nowEditMode.text=@"模式:绘制图元";
+    self.zoomView.hidden=YES;
     switch ([sender.titleLabel.text intValue])
     {
         case 0:
@@ -277,7 +290,10 @@
     enable ^= 1;
     self.drawerView.scrollEnabled = YES;
     self.hiddenEditAbout.hidden=YES;
-
+    self.nowEditMode.text=@"模式:缩放画布";
+    self.zoomView.hidden=NO;
+    self.myTopBar.hidden=NO;
+    self.editBar.hidden=YES;
 }
 
 - (IBAction)editGraphic:(id)sender {
@@ -285,7 +301,9 @@
     self.drawerView.scrollEnabled = NO;
     self.paintingManager.paintingMode= KKSPaintingModeMove;
     self.hiddenEditAbout.hidden=YES;
-
+    self.nowEditMode.text=@"模式:拖动图元";
+    self.zoomView.hidden=YES;
+    self.editBar.hidden=NO;
 }
 
 #pragma mark - 编辑菜单相关
@@ -294,18 +312,16 @@
 - (void)paintingManagerDidEnterEditingMode {
     self.myTopBar.hidden=YES;
     self.editBar.hidden=NO;
-    self.nowEditMode.hidden=NO;
-    self.nowEditMode.text=@"模式:拖动";
+    self.nowEditMode.text=@"模式:拖动图元";
 }
 
 - (void)paintingManagerDidLeftEditingMode {
     self.myTopBar.hidden=NO;
     self.editBar.hidden=YES;
-    self.nowEditMode.hidden=YES;
 }
 - (void)paintingmanagerDidCopyPainting
 {
-    self.nowEditMode.text=@"模式:黏贴";
+    self.nowEditMode.text=@"模式:黏贴图元";
 
 }
 
@@ -316,7 +332,8 @@
     self.myTopBar.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.myTopBar.bounds.size.width, self.myTopBar.bounds.size.height);
     self.myDownBar.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.myDownBar.bounds.size.height+scrollView.bounds.origin.y, self.myDownBar.bounds.size.width, self.myDownBar.bounds.size.height);
     self.editBar.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.editBar.bounds.size.width, self.editBar.bounds.size.height);
-    self.nowEditMode.frame=CGRectMake(scrollView.bounds.origin.x+112,scrollView.bounds.origin.y+62, self.nowEditMode.bounds.size.width, self.nowEditMode.bounds.size.height);
+    self.nowEditMode.frame=CGRectMake(scrollView.bounds.origin.x+85,scrollView.bounds.origin.y+62, self.nowEditMode.bounds.size.width, self.nowEditMode.bounds.size.height);
+   // self.zoomView.frame=CGRectMake(scrollView.bounds.origin.x+20,scrollView.bounds.origin.y+92, self.zoomView.bounds.size.width, self.zoomView.bounds.size.height);
     
     self.addNameView.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.addNameView.bounds.size.width, self.addNameView.bounds.size.height);
     self.drawerView.indicatorLabel.frame=CGRectMake(scrollView.bounds.origin.x+60,scrollView.bounds.origin.y+80, self.drawerView.indicatorLabel.bounds.size.width, self.drawerView.indicatorLabel.bounds.size.height);
@@ -401,7 +418,7 @@
                                          appKey:@"507fcab25270157b37000010"
                                       shareText:@"我正在使用MagicPaint作画哦，单手就能涂鸦实在太方便啦，快看看我的作品吧~"
                                      shareImage:[self.paintingManager currentImage]
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQzone,UMShareToQQ,UMShareToRenren,UMShareToDouban,UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter,nil]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToQzone,UMShareToRenren,UMShareToDouban,UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter,nil]
                                        delegate:nil];
     self.hiddenKeepAbout.hidden=YES;
 
@@ -446,8 +463,9 @@
             self.hiddenKeepAbout.hidden=YES;
         }else if (buttonIndex == 1) {
             self.addNameView.hidden=NO;
-            [self.nameTextField setText:@""];
             [self.nameTextField becomeFirstResponder];
+            self.projectArray=[[FTEPaintingSaver retriveModels]mutableCopy];
+            [self.nameTextField setText:[NSString stringWithFormat:@"工程%d号",[self.projectArray count]]];
         }
 
     }
@@ -583,32 +601,45 @@
     {
         case 0:
             self.paintingManager.paintingMode=KKSPaintingModeRemove;
-            self.nowEditMode.text=@"模式:删除";
+            self.nowEditMode.text=@"模式:删除图元";
             break;
         case 1:
             self.paintingManager.paintingMode=KKSPaintingModeRotate;
-            self.nowEditMode.text=@"模式:旋转";
+            self.nowEditMode.text=@"模式:旋转图元";
             break;
         case 2:
             self.paintingManager.paintingMode=KKSPaintingModeCopy;
-            self.nowEditMode.text=@"模式:复制";
+            self.nowEditMode.text=@"模式:复制图元";
             break;
         case 3:
             self.paintingManager.paintingMode=KKSPaintingModeZoom;
-            self.nowEditMode.text=@"模式:缩放";
+            self.nowEditMode.text=@"模式:缩放图元";
             break;
         case 4:
             self.paintingManager.paintingMode=KKSPaintingModeMove;
-            self.nowEditMode.text=@"模式:拖动";
+            self.nowEditMode.text=@"模式:拖动图元";
             break;
         default:
             break;
     }
 }
 - (IBAction)keepProject:(id)sender {
+    BOOL isTheSameName=NO;
+    for (KKSPaintingModel *model in self.projectArray)
+    {
+        if ([model.name isEqualToString:self.nameTextField.text])
+        {
+            isTheSameName=YES;
+            NSLog(@"%@    /n %@",model.name,self.nameTextField.text);
+        }
+    }
     if (!self.nameTextField.text.length)
     {
         [[[UIAlertView alloc]initWithTitle:nil message:@"项目名不能为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+    }
+    else if (isTheSameName==YES)
+    {
+        [[[UIAlertView alloc]initWithTitle:nil message:@"工程名重复，请重新输入" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
     }
     else
     {
@@ -625,5 +656,11 @@
     self.addNameView.hidden=YES;
     [self.nameTextField resignFirstResponder];
 
+}
+#pragma mark 缩放
+- (IBAction)zoomPaint:(UISlider *)sender {
+    NSLog(@"%f",sender.value);
+    [self.paintingManager zoomByScale:sender.value-0.5];
+    
 }
 @end
