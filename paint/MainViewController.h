@@ -60,5 +60,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *zoomView;
 - (IBAction)zoomPaint:(id)sender;
+- (IBAction)scrollingPaint:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *scrollButton;
 @property(nonatomic,strong)NSUserDefaults *userDefaults;
+
 @end

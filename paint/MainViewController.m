@@ -105,13 +105,7 @@
 -(void)handelPan:(UIPanGestureRecognizer*)gestureRecognizer
 {
     
-    if (self.zoomView.hidden==NO)
-    {
-        self.myTopBar.center = CGPointMake(self.myTopBar.center.x, self.myTopBar.center.y);
-
-        [gestureRecognizer setTranslation:CGPointMake(0, 0) inView:self.myTopBar];
-    }
-    else
+    if (self.zoomView.hidden)
     {
         static BOOL right; //判断左右移动的标志
         CGPoint translatedPoint = [gestureRecognizer translationInView:self.myTopBar];
@@ -286,13 +280,10 @@
 }
 - (IBAction)scrollPaint:(id)sender {
     [self.editTool setBackgroundImage:[sender backgroundImageForState:UIControlStateNormal] forState:UIControlStateNormal];//更改选中工具图标
-    BOOL enable = self.drawerView.scrollEnabled;
-    enable ^= 1;
-    self.drawerView.scrollEnabled = YES;
     self.hiddenEditAbout.hidden=YES;
     self.nowEditMode.text=@"模式:缩放画布";
     self.zoomView.hidden=NO;
-    self.myTopBar.hidden=NO;
+    self.zoomView.hidden=NO;
     self.editBar.hidden=YES;
 }
 
@@ -310,13 +301,11 @@
 
 //你在切换到编辑模式和离开编辑模式的时候给个委托方法，然后替换下面这两个。一个是进入编辑模式，一个是离开编辑模式
 - (void)paintingManagerDidEnterEditingMode {
-    self.myTopBar.hidden=YES;
     self.editBar.hidden=NO;
     self.nowEditMode.text=@"模式:拖动图元";
 }
 
 - (void)paintingManagerDidLeftEditingMode {
-    self.myTopBar.hidden=NO;
     self.editBar.hidden=YES;
 }
 - (void)paintingmanagerDidCopyPainting
@@ -333,7 +322,7 @@
     self.myDownBar.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.myDownBar.bounds.size.height+scrollView.bounds.origin.y, self.myDownBar.bounds.size.width, self.myDownBar.bounds.size.height);
     self.editBar.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.editBar.bounds.size.width, self.editBar.bounds.size.height);
     self.nowEditMode.frame=CGRectMake(scrollView.bounds.origin.x+85,scrollView.bounds.origin.y+62, self.nowEditMode.bounds.size.width, self.nowEditMode.bounds.size.height);
-   // self.zoomView.frame=CGRectMake(scrollView.bounds.origin.x+20,scrollView.bounds.origin.y+92, self.zoomView.bounds.size.width, self.zoomView.bounds.size.height);
+    self.zoomView.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.zoomView.bounds.size.width, self.zoomView.bounds.size.height);
     
     self.addNameView.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.addNameView.bounds.size.width, self.addNameView.bounds.size.height);
     self.drawerView.indicatorLabel.frame=CGRectMake(scrollView.bounds.origin.x+60,scrollView.bounds.origin.y+80, self.drawerView.indicatorLabel.bounds.size.width, self.drawerView.indicatorLabel.bounds.size.height);
@@ -465,7 +454,14 @@
             self.addNameView.hidden=NO;
             [self.nameTextField becomeFirstResponder];
             self.projectArray=[[FTEPaintingSaver retriveModels]mutableCopy];
-            [self.nameTextField setText:[NSString stringWithFormat:@"工程%d号",[self.projectArray count]]];
+            if (self.paintingManager.modelIndex!=-1)
+            {
+                KKSPaintingModel *model=[self.projectArray objectAtIndex:self.paintingManager.modelIndex];
+                [self.nameTextField setText:[NSString stringWithFormat:@"%@",model.name]];
+            }else
+            {
+                [self.nameTextField setText:[NSString stringWithFormat:@"工程%d号",[self.projectArray count]]];
+            }
         }
 
     }
@@ -637,7 +633,7 @@
     {
         [[[UIAlertView alloc]initWithTitle:nil message:@"项目名不能为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
     }
-    else if (isTheSameName==YES)
+    else if (isTheSameName==YES&&self.paintingManager.modelIndex==-1)
     {
         [[[UIAlertView alloc]initWithTitle:nil message:@"工程名重复，请重新输入" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
     }
@@ -660,7 +656,24 @@
 #pragma mark 缩放
 - (IBAction)zoomPaint:(UISlider *)sender {
     NSLog(@"%f",sender.value);
-    [self.paintingManager zoomByScale:sender.value-0.5];
-    
+    self.drawerView.scrollEnabled=NO;
+    [self.scrollButton setBackgroundImage:[UIImage imageNamed:@"hand.png"] forState:UIControlStateNormal];
+
+  //  [self.paintingManager zoomByScale:sender.value-0.5];
+
+}
+
+- (IBAction)scrollingPaint:(UIButton *)sender {
+    if (self.drawerView.scrollEnabled)
+    {
+        self.drawerView.scrollEnabled=NO;
+        [sender setBackgroundImage:[UIImage imageNamed:@"hand.png"] forState:UIControlStateNormal];
+
+    }else{
+        self.drawerView.scrollEnabled=YES;
+        [sender setBackgroundImage:[UIImage imageNamed:@"noScroll.png"] forState:UIControlStateNormal];
+
+
+    }
 }
 @end

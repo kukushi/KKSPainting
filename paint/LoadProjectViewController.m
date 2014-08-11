@@ -54,7 +54,7 @@
     KKSPaintingModel *model=[self.projectArray objectAtIndex:[indexPath row]];
     
     UILabel *colorLabel=(UILabel *)[cell viewWithTag:100];
-    colorLabel.backgroundColor=[self.colorArray objectAtIndex:[indexPath row]];
+    colorLabel.backgroundColor=[self.colorArray objectAtIndex:[indexPath row]%4];
     
     UILabel *nameLabel=(UILabel *)[cell viewWithTag:101];
     nameLabel.text=model.name;
@@ -99,6 +99,7 @@
 {
     [self.paintingManage reloadManagerWithModel:[self.projectArray objectAtIndex:[indexPath row]]];
     [self.projectListTable deselectRowAtIndexPath:indexPath animated:YES];
+    self.paintingManage.modelIndex=[indexPath row];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
