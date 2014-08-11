@@ -48,10 +48,10 @@
 
 + (NSArray *)itemsInDirectory:(NSString *)directoryName {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
-    
+    NSString *filePath = [self pathWithFilename:directoryName?:@""];
+    NSURL *URL = [NSURL fileURLWithPath:filePath];
     NSError *error;
-    NSArray *contents = [fileManager contentsOfDirectoryAtURL:bundleURL
+    NSArray *contents = [fileManager contentsOfDirectoryAtURL:URL
                                    includingPropertiesForKeys:@[]
                                                       options:NSDirectoryEnumerationSkipsHiddenFiles
                                                         error:&error];
