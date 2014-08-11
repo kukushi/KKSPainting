@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LoadProjectViewController : UIViewController
-
+@class KKSPaintingManager;
+@interface LoadProjectViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *projectListTable;
+@property(weak,nonatomic)KKSPaintingManager *paintingManage;
 @end
