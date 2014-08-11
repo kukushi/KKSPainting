@@ -317,7 +317,11 @@
     self.myDownBar.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.myDownBar.bounds.size.height+scrollView.bounds.origin.y, self.myDownBar.bounds.size.width, self.myDownBar.bounds.size.height);
     self.editBar.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.editBar.bounds.size.width, self.editBar.bounds.size.height);
     self.nowEditMode.frame=CGRectMake(scrollView.bounds.origin.x+112,scrollView.bounds.origin.y+62, self.nowEditMode.bounds.size.width, self.nowEditMode.bounds.size.height);
+    
+    self.addNameView.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.addNameView.bounds.size.width, self.addNameView.bounds.size.height);
+    self.drawerView.indicatorLabel.frame=CGRectMake(scrollView.bounds.origin.x+60,scrollView.bounds.origin.y+80, self.drawerView.indicatorLabel.bounds.size.width, self.drawerView.indicatorLabel.bounds.size.height);
 
+    
     self.hiddenTools.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.hiddenTools.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenTools.bounds.size.width, self.hiddenTools.bounds.size.height);
     self.hiddenKeepAbout.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.hiddenKeepAbout.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenKeepAbout.bounds.size.width, self.hiddenKeepAbout.bounds.size.height);
     self.hiddenEditAbout.frame=CGRectMake(242+scrollView.bounds.origin.x, screenHeight-self.hiddenEditAbout.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenEditAbout.bounds.size.width, self.hiddenEditAbout.bounds.size.height);

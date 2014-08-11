@@ -12,7 +12,6 @@
 
 @interface KKSPaintingView() <NSCoding>
 
-@property (nonatomic, strong) UILabel *indicatorLabel;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong, readwrite) KKSPaintingManager *paintingManager;
 
@@ -48,7 +47,7 @@
     
     
     _indicatorLabel = ({
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(57, 65, 206, 30)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(57, 80, 206, 30)];
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor grayColor];
         label.textAlignment = NSTextAlignmentCenter;
@@ -120,7 +119,7 @@
                              //
                          } completion:^(BOOL finished) {
         if (finished == YES) {
-            [UIView animateWithDuration:1.f animations:^{
+            [UIView animateWithDuration:1.2f animations:^{
                 self.indicatorLabel.alpha = 0.f;
             }];
         }
