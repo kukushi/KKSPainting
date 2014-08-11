@@ -12,12 +12,13 @@
 #import "KKSPainting.h"
 #import "SetPaintingBgViewController.h"
 #import "LoadProjectViewController.h"
+#import "KKSPaintingModel.h"
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 @interface MainViewController ()<KKSPaintingManagerDelegate>
 {
     NSDate *LastMotion;
 }
-
+@property(nonatomic,strong)NSMutableArray *projectArray;
 @end
 
 @implementation MainViewController
@@ -462,8 +463,9 @@
             self.hiddenKeepAbout.hidden=YES;
         }else if (buttonIndex == 1) {
             self.addNameView.hidden=NO;
-            [self.nameTextField setText:@""];
             [self.nameTextField becomeFirstResponder];
+            self.projectArray=[[FTEPaintingSaver retriveModels]mutableCopy];
+            [self.nameTextField setText:[NSString stringWithFormat:@"工程%d号",[self.projectArray count]]];
         }
 
     }
@@ -622,9 +624,22 @@
     }
 }
 - (IBAction)keepProject:(id)sender {
+    BOOL isTheSameName=NO;
+    for (KKSPaintingModel *model in self.projectArray)
+    {
+        if ([model.name isEqualToString:self.nameTextField.text])
+        {
+            isTheSameName=YES;
+            NSLog(@"%@    /n %@",model.name,self.nameTextField.text);
+        }
+    }
     if (!self.nameTextField.text.length)
     {
         [[[UIAlertView alloc]initWithTitle:nil message:@"项目名不能为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+    }
+    else if (isTheSameName==YES)
+    {
+        [[[UIAlertView alloc]initWithTitle:nil message:@"工程名重复，请重新输入" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
     }
     else
     {
@@ -645,7 +660,7 @@
 #pragma mark 缩放
 - (IBAction)zoomPaint:(UISlider *)sender {
     NSLog(@"%f",sender.value);
-    [self.paintingManager zoomByScale:sender.value];
+    [self.paintingManager zoomByScale:sender.value-0.5];
     
 }
 @end
