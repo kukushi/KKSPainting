@@ -28,4 +28,6 @@ typedef void (^FTEStoreCallback)(BOOL success);
 
 + (NSArray *)retriveModels;
 
++ (BOOL)deletePaintingWithName:(NSString *)name;
+
 @end

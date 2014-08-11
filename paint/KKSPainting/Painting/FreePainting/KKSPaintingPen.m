@@ -96,16 +96,18 @@
 - (void)encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeCGPoint:self.previousLocation forKey:@"previousLocation"];
     [encoder encodeCGPoint:self.currentLocation forKey:@"currentLocation"];
-    NSValue *tempPathValue = [NSValue valueWithPointer:self.tempPath];
-    [encoder encodeObject:tempPathValue forKey:@"tempPath"];
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithCGPath:self.tempPath];
+    [encoder encodeObject:path forKey:@"tempPath"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
     if (self = [super init]) {
         _previousLocation = [decoder decodeCGPointForKey:@"previousLocation"];
         _currentLocation = [decoder decodeCGPointForKey:@"currentLocation"];
-        NSValue *tempPathValue = [decoder decodeObjectForKey:@"tempPath"];
-        _tempPath = [tempPathValue pointerValue];
+        
+        UIBezierPath *path = [decoder decodeObjectForKey:@"tempPath"];
+        _tempPath = CGPathCreateMutableCopy(path.CGPath);
     }
     return self;
 }

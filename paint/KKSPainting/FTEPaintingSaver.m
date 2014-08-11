@@ -32,4 +32,8 @@
     return [FTEFileManager itemsInDirectory:nil];
 }
 
++ (BOOL)deletePaintingWithName:(NSString *)name {
+    return [FTEFileManager deleteFileWithName:name];
+}
+
 @end

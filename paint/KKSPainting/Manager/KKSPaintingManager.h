@@ -35,8 +35,6 @@
 @property (nonatomic) UIColor *color;
 @property (nonatomic) CGFloat alpha;
 
-@property (nonatomic) BOOL canZoom;
-
 @property (nonatomic, weak) KKSPaintingView *paintingView;
 
 @property (nonatomic) KKSPaintingType paintingType;

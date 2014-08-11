@@ -134,7 +134,6 @@
     if (!image && self.backgroundImageView) {
         [self.backgroundImageView removeFromSuperview];
         self.backgroundImageView = nil;
-        self.paintingManager.canZoom = YES;
     }
     else if (image && !self.backgroundImageView) {
         self.contentSize = self.bounds.size;
@@ -142,8 +141,6 @@
         [self addSubview:self.backgroundImageView];
         [self sendSubviewToBack:self.backgroundImageView];
         self.backgroundImageView.image = image;
-        
-        self.paintingManager.canZoom = NO;
     }
     else if (image && self.backgroundImageView) {
         self.backgroundImageView.image = image;
