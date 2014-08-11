@@ -18,7 +18,12 @@
 
 @property (nonatomic, strong) UIImage *backgroundImage;
 @property (nonatomic, copy) UIImage *cachedImage;
-@property (nonatomic, copy) NSMutableArray *usedPaintings;
+@property (nonatomic, copy) NSArray *usedPaintings;
 @property (nonatomic) CGSize originalContentSize;
+
+
+- (void)removePainting:(id)painting;
+- (void)addPainting:(id)painting;
+- (void)removeAllPaintings;
 
 @end

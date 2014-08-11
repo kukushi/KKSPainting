@@ -175,8 +175,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
             }
             else if (paintingMode == KKSPaintingModeRemove) {
                 [self registerUndoForPaintingWithPaintings:[self.paintingModel.usedPaintings copy]];
-                [self.paintingModel.usedPaintings removeObject:self.selectedPainting];
-                
+                [self.paintingModel removePainting:self.selectedPainting];
                 [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
             }
             else if (paintingMode == KKSPaintingModeCopy) {
@@ -188,7 +187,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
                 KKSPaintingBase *painting = [self.selectedPainting copy];
                 CGPoint translation = translationBetweenPoints(self.firstTouchLocation, touchedLocation);
                 [painting moveByIncreasingTranslation:translation];
-                [self.paintingModel.usedPaintings addObject:painting];
+                [self.paintingModel addPainting:painting];
                 [self updateCachedImageWithPainting:painting cachedImage:self.paintingModel.cachedImage];
                 [self.paintingView setNeedsDisplay];
             }
@@ -250,7 +249,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         
         if (self.painting.isDrawingFinished) {
             
-            [self.paintingModel.usedPaintings addObject:self.painting];
+            [self.paintingModel addPainting:self.painting];
             
             self.isActive = NO;
             
@@ -511,7 +510,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
 
 - (void)clear {
     if ([self canClear]) {
-        [self.paintingModel.usedPaintings removeAllObjects];
+        [self.paintingModel removeAllPaintings];
         [self.undoManager removeAllActions];
         self.paintingModel.cachedImage = nil;
         [self.paintingView setNeedsDisplay];
@@ -543,7 +542,7 @@ void KKSViewBeginImageContext(UIScrollView *view) {
         
         self.painting.isDrawingFinished = YES;
         
-        [self.paintingModel.usedPaintings addObject:self.painting];
+        [self.paintingModel addPainting:self.painting];
         
         self.isActive = NO;
         
