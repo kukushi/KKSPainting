@@ -485,6 +485,8 @@
             self.hiddenKeepAbout.hidden=YES;
         }else if (buttonIndex == 1) {
             self.addNameView.hidden=NO;
+            [[UIDevice currentDevice] setProximityMonitoringEnabled:NO];
+            self.accelerometer.delegate = nil;
             [self.nameTextField becomeFirstResponder];
             self.projectArray=[[FTEPaintingSaver retriveModels]mutableCopy];
             if (self.paintingManager.modelIndex!=-1)
@@ -687,12 +689,17 @@
             [alert show];
             [self.nameTextField resignFirstResponder];
             self.addNameView.hidden=YES;
+            [[UIDevice currentDevice] setProximityMonitoringEnabled:YES];
+            self.accelerometer.delegate = self;
         }  ];
     }
+    
 }
 
 - (IBAction)cancelKeep:(id)sender {
     self.addNameView.hidden=YES;
+    [[UIDevice currentDevice] setProximityMonitoringEnabled:YES];
+    self.accelerometer.delegate = self;
     [self.nameTextField resignFirstResponder];
 
 }
