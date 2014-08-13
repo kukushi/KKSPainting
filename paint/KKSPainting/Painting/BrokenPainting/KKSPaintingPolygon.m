@@ -14,7 +14,7 @@
 
 @interface KKSPaintingPolygon ()
 
-@property (nonatomic, strong) NSMutableArray *points;
+@property (nonatomic, copy) NSMutableArray *points;
 
 @property (nonatomic) BOOL isLastDrawing;
 
@@ -116,35 +116,6 @@
              @"isBeforeSecondTap": @"isBeforeSecondTap",
              @"isDrawingFinished": @"isDrawingFinished"};
 }
-
-/*
-#pragma mark - NSCopying
-
-- (id)copyWithZone:(NSZone *)zone {
-    KKSPaintingPolygon *painting = [super copyWithZone:zone];
-    if (painting) {
-        painting->_points = [self.points copy];
-    }
-    return painting;
-}
-
-#pragma mark - NSCoding
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super initWithCoder:decoder]) {
-        _points = [decoder decodeObjectForKey:@"points"];
-        _isLastDrawing = [decoder decodeBoolForKey:@"isLastDrawing"];
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    if (self.points) {
-        [encoder encodeObject:self.points forKey:@"points"];
-    }
-    [encoder encodeBool:self.isLastDrawing forKey:@"isLastDrawing"];
-}
- */
 
 @end
 

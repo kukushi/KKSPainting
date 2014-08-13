@@ -155,6 +155,16 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
             [self.paintingToFill setFill:YES color:self.color];
         }
     }
+    else if (paintingMode == KKSPaintingModePaste) {
+        [self registerUndoForPaintingWithPaintings:[self.paintingModel.usedPaintings copy]];
+        
+        KKSPaintingBase *painting = [self.selectedPainting copy];
+        CGPoint translation = translationBetweenPoints(self.firstTouchLocation, touchedLocation);
+        [painting moveByIncreasingTranslation:translation];
+        [self.paintingModel addPainting:painting];
+        [self updateCachedImageWithPainting:painting cachedImage:self.paintingModel.cachedImage];
+        [self.paintingView needUpdatePaintings];
+    }
     else {
         // Editing Mode
         [self updateSelectedPaintingWithPoint:touchedLocation];
@@ -187,16 +197,6 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
             }
             else if (paintingMode == KKSPaintingModeCopy) {
                 self.firstTouchLocation = touchedLocation;
-            }
-            else if (paintingMode == KKSPaintingModePaste) {
-                [self registerUndoForPaintingWithPaintings:[self.paintingModel.usedPaintings copy]];
-                
-                KKSPaintingBase *painting = [self.selectedPainting copy];
-                CGPoint translation = translationBetweenPoints(self.firstTouchLocation, touchedLocation);
-                [painting moveByIncreasingTranslation:translation];
-                [self.paintingModel addPainting:painting];
-                [self updateCachedImageWithPainting:painting cachedImage:self.paintingModel.cachedImage];
-                [self.paintingView needUpdatePaintings];
             }
         }
     }
@@ -290,11 +290,13 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
         }
     }
     else if (self.paintingMode == KKSPaintingModeCopy) {
-        if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidCopyPainting)]) {
-            [self.paintingDelegate paintingManagerDidCopyPainting];
+        if (self.selectedPainting) {
+            if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidCopyPainting)]) {
+                [self.paintingDelegate paintingManagerDidCopyPainting];
+            }
+            [self clearSelectedPaintingStrokePath];
+            self.paintingMode = KKSPaintingModePaste;
         }
-        [self clearSelectedPaintingStrokePath];
-        self.paintingMode = KKSPaintingModePaste;
     }
     else if (self.paintingMode == KKSPaintingModeRemove) {
         [self.paintingView needUpdatePaintings];

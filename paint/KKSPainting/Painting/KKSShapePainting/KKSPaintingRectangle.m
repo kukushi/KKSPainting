@@ -12,9 +12,7 @@
 @implementation KKSPaintingRectangle
 
 - (void)drawPath {
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
+
     CGRect rectToDraw = [self rectToDraw];
     self.path = [UIBezierPath bezierPathWithRect:rectToDraw];
 
@@ -28,10 +26,6 @@
     [self.path strokeWithBlendMode:kCGBlendModeNormal alpha:self.alpha];
 
     self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
-}
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{};
 }
 
 @end
