@@ -308,7 +308,7 @@
 - (void)paintingManagerDidLeftEditingMode {
     self.editBar.hidden=YES;
 }
-- (void)paintingmanagerDidCopyPainting
+- (void)paintingManagerDidCopyPainting
 {
     self.nowEditMode.text=@"模式:黏贴图元";
 
@@ -325,8 +325,6 @@
     self.zoomView.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.zoomView.bounds.size.width, self.zoomView.bounds.size.height);
     
     self.addNameView.frame=CGRectMake(scrollView.bounds.origin.x,scrollView.bounds.origin.y, self.addNameView.bounds.size.width, self.addNameView.bounds.size.height);
-    self.drawerView.indicatorLabel.frame=CGRectMake(scrollView.bounds.origin.x+60,scrollView.bounds.origin.y+80, self.drawerView.indicatorLabel.bounds.size.width, self.drawerView.indicatorLabel.bounds.size.height);
-
     
     self.hiddenTools.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.hiddenTools.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenTools.bounds.size.width, self.hiddenTools.bounds.size.height);
     self.hiddenKeepAbout.frame=CGRectMake(scrollView.bounds.origin.x, screenHeight-self.hiddenKeepAbout.bounds.size.height-60+scrollView.bounds.origin.y, self.hiddenKeepAbout.bounds.size.width, self.hiddenKeepAbout.bounds.size.height);

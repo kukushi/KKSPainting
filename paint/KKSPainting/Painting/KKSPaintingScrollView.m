@@ -6,19 +6,25 @@
 //  Copyright (c) 2014 Xing He. All rights reserved.
 //
 
+#import "KKSPaintingScrollView.h"
 #import "KKSPaintingView.h"
 #import "KKSPaintingManager.h"
 
 
-@interface KKSPaintingView() <NSCoding>
+@interface KKSPaintingScrollView() <NSCoding>
 
-@property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) UIImageView *backgroundView;
+
+@property (nonatomic, strong) KKSPaintingView *paintingView;
+
 @property (nonatomic, strong, readwrite) KKSPaintingManager *paintingManager;
+
+@property (nonatomic, strong) UILabel *indicatorLabel;
 
 @end
 
 
-@implementation KKSPaintingView
+@implementation KKSPaintingScrollView
 
 #pragma mark - Init
 
@@ -39,12 +45,22 @@
 }
 
 - (void)initializeSelf {
-    self.backgroundColor = [UIColor clearColor];
     self.scrollEnabled = NO;
     
     _paintingManager = [[KKSPaintingManager alloc] init];
     _paintingManager.paintingView = self;
     
+    _backgroundView = [[UIImageView alloc] initWithFrame:self.frame];
+    [self addSubview:_backgroundView];
+    [self sendSubviewToBack:_backgroundView];
+    
+    _paintingView = [[KKSPaintingView alloc] init];
+    _paintingView.backgroundColor = [UIColor clearColor];
+    __weak KKSPaintingScrollView *weakSelf = self;
+    [_paintingView needUpdatePaintingsWithBlock:^{
+        [weakSelf.paintingManager drawAllPaintings];
+    }];
+    [self insertSubview:_paintingView aboveSubview:_backgroundView];
     
     _indicatorLabel = ({
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(57, 80, 206, 30)];
@@ -55,14 +71,6 @@
         [self addSubview:label];
         label;
     });
-}
-
-#pragma mark - Painting Manager
-
-- (void)refreshPaintingManager:(KKSPaintingManager *)paintingManager {
-    self.paintingManager = paintingManager;
-    self.paintingManager.paintingView = self;
-    [self setNeedsDisplay];
 }
 
 #pragma mark - Touches
@@ -130,35 +138,36 @@
 #pragma mark - Background Image
 
 - (void)setBackgroundImage:(UIImage *)image {
-
-    if (!image && self.backgroundImageView) {
-        [self.backgroundImageView removeFromSuperview];
-        self.backgroundImageView = nil;
-    }
-    else if (image && !self.backgroundImageView) {
-        self.contentSize = self.bounds.size;
-        self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.frame];
-        [self addSubview:self.backgroundImageView];
-        [self sendSubviewToBack:self.backgroundImageView];
-        self.backgroundImageView.image = image;
-    }
-    else if (image && self.backgroundImageView) {
-        self.backgroundImageView.image = image;
-    }
+    self.backgroundView.image = image;
 }
 
 #pragma mark - Override ScrollView
 
+- (void)setContentSize:(CGSize)contentSize {
+    CGRect backgoroundRect = CGRectZero;
+    backgoroundRect.size = contentSize;
+    self.paintingView.frame = backgoroundRect;
+    
+    [super setContentSize:contentSize];
+}
+
 - (void)setContentOffset:(CGPoint)contentOffset {
     [super setContentOffset:contentOffset];
-    [self setNeedsDisplay];
+    
+    self.indicatorLabel.frame=CGRectMake(self.bounds.origin.x+60,self.bounds.origin.y+80, self.indicatorLabel.bounds.size.width, self.indicatorLabel.bounds.size.height);
+    
+    [self needUpdatePaintings];
 }
 
 
 #pragma mark - drawing
 
-- (void)drawRect:(CGRect)rect {
-    [self.paintingManager drawAllPaintings];
+- (void)needUpdatePaintings {
+    [self.paintingView setNeedsDisplay];
+}
+
+- (void)needUpdatePaintingsInRect:(CGRect)rect {
+    [self.paintingView setNeedsDisplayInRect:rect];
 }
 
 @end

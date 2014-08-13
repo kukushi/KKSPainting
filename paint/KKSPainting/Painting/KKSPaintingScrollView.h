@@ -11,17 +11,22 @@
 @class KKSPaintingManager;
 
 
-@interface KKSPaintingView : UIScrollView
+@interface KKSPaintingScrollView : UIScrollView
 
 @property (nonatomic, strong, readonly) KKSPaintingManager *paintingManager;
+
 @property (nonatomic, weak) UIViewController *viewController;
-@property (nonatomic, strong) UILabel *indicatorLabel;
+
 
 - (void)setBackgroundImage:(UIImage *)image;
 
 - (void)showIndicatorLabelWithText:(NSString *)text;
 
-- (void)refreshPaintingManager:(KKSPaintingManager *)paintingManager;
+// - (void)refreshPaintingManager:(KKSPaintingManager *)paintingManager;
+
+- (void)needUpdatePaintings;
+
+- (void)needUpdatePaintingsInRect:(CGRect)rect;
 
 @end
 

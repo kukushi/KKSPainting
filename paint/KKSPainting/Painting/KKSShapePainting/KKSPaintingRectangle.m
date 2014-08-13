@@ -15,27 +15,23 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    [self setupContext:context];
-    
     CGRect rectToDraw = [self rectToDraw];
-    CGAffineTransform transform = [self currentTransform];
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddRect(path, &transform, rectToDraw);
-    CGContextAddPath(context, path);
+    self.path = [UIBezierPath bezierPathWithRect:rectToDraw];
+
+    [self setupBezierPath];
+    [self.path applyTransform:[self currentTransform]];
     
     if (self.shouldFill) {
-        CGContextSetFillColorWithColor(context, self.fillColor);
-        CGContextDrawPath(context, kCGPathFillStroke);
-    } else {
-        CGContextStrokePath(context);
+        [self.path fillWithBlendMode:kCGBlendModeNormal alpha:self.alpha];
     }
     
-    
-    self.path = path;
-    
-    if (self.shouldStrokePath) {
-        self.strokingPath = [self strokePathWithContext:context];
-    }
+    [self.path strokeWithBlendMode:kCGBlendModeNormal alpha:self.alpha];
+
+    self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{};
 }
 
 @end

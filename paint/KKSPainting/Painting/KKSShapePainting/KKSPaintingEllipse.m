@@ -25,17 +25,15 @@
     CGContextAddPath(context, path);
     
     if (self.shouldFill) {
-        CGContextSetFillColorWithColor(context, self.fillColor);
+        CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
         CGContextDrawPath(context, kCGPathFillStroke);
     } else {
         CGContextStrokePath(context);
     }
     
-    self.path = path;
-    
-    if (self.shouldStrokePath) {
-        self.strokingPath = [self strokePathWithContext:context];
-    }
+    self.path.CGPath = path;
+
+    self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
 }
 
 @end

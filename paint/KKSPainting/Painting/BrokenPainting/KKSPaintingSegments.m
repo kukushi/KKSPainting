@@ -9,6 +9,7 @@
 #import "KKSPaintingSegments.h"
 #import "KKSPaintingTool_KKSPaintingHelper.h"
 #import "NSMutableArray+KKSValueSupport.h"
+#import "UIBezierPath+Painting.h"
 
 
 @interface KKSPaintingSegments()
@@ -18,12 +19,11 @@
 @end
 
 
-
 @implementation KKSPaintingSegments
 
 #pragma mark - Init
 
-- (id)initWithView:(UIScrollView *)view {
+- (id)initWithView:(KKSPaintingScrollView *)view {
     self = [super initWithView:view];
     if (self) {
         _points = [[NSMutableArray alloc] init];
@@ -43,7 +43,7 @@
     
     self.previousLocation = currentLocation;
     
-    [self.view setNeedsDisplay];
+    [self.view needUpdatePaintings];
 }
 
 - (void)recordingContinueWithTouchMoved:(UITouch *)touch {
@@ -74,39 +74,33 @@
 
 
 - (void)drawPath {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextBeginPath(context);
-    [self setupContext:context];
-    
+
     if (self.isBeforeSecondTap) {
-        CGContextAddArc(context,
-                        self.firstLocation.x,
-                        self.firstLocation.y,
-                        self.scaledLineWidth / 4.f,
-                        0.f * M_PI/180,
-                        360.f * M_PI/180,
-                        1);
+        self.path = [UIBezierPath bezierPath];
+        [self setupBezierPath];
+        [self.path addArcWithCenter:self.firstLocation
+                             radius:self.scaledLineWidth / 4.f
+                         startAngle:0.f
+                           endAngle:360.f * M_PI/180
+                          clockwise:YES];
     }
     else {
-        CGMutablePathRef path = CGPathCreateMutable();
-        
-        CGAffineTransform transform = [self currentTransform];
-        CGPoint points[200];
-        NSInteger pointsCount = [self.points kks_cArrayWithCGPoint:points];
-        CGPathAddLines(path, &transform, points, pointsCount);
-        CGContextAddPath(context, path);
-        
-        self.path = path;
+        self.path = [UIBezierPath bezierPath];
+        [self setupBezierPath];
+        [self.path addLinesWithPoints:self.points];
     }
-    
-    CGContextStrokePath(context);
-    
-    if (self.shouldStrokePath) {
-        self.strokingPath = [self strokePathWithContext:context];
-    }
+
+    [self.path applyTransform:[self currentTransform]];
+    [self.path stroke];
+    self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
+}
+ 
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{@"points": @"points"};
 }
 
+/*
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -132,5 +126,6 @@
         [encoder encodeObject:self.points forKey:@"points"];
     }
 }
+ */
 
 @end

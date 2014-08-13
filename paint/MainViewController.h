@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "KKSPaintingView.h"
+#import "KKSPaintingScrollView.h"
 
 @interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIScrollViewDelegate,UIAlertViewDelegate>
 {
@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIView *hiddenKeepAbout;
 @property (weak, nonatomic) IBOutlet UIView *hiddenEditAbout;
 
-@property (weak, nonatomic) IBOutlet KKSPaintingView *drawerView;
+@property (weak, nonatomic) IBOutlet KKSPaintingScrollView *drawerView;
 @property (nonatomic, weak) KKSPaintingManager *paintingManager;
 
 

@@ -8,10 +8,11 @@
 
 #import "KKSPaintingBase.h"
 
-@interface KKSBrokenPainting : KKSPaintingBase <NSCoding>
+@interface KKSBrokenPainting : KKSPaintingBase
 
 @property (nonatomic) BOOL isFirstTap;
 @property (nonatomic) BOOL isBeforeSecondTap;
+
 @property (nonatomic) CGPoint firstLocation;
 @property (nonatomic) CGPoint previousLocation;
 

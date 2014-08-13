@@ -14,9 +14,8 @@
 
 @interface KKSShapePainting ()
 
-
-
 @end
+
 
 @implementation KKSShapePainting
 
@@ -28,7 +27,7 @@
 
 - (void)recordingContinueWithTouchMoved:(UITouch *)touch {
     self.lastLocation = [touch locationInView:self.view];
-    [self.view setNeedsDisplay];
+    [self.view needUpdatePaintings];
 }
 
 #pragma mark - Helper
@@ -40,6 +39,13 @@
                       self.lastLocation.y - self.firstLocation.y);
 }
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{@"firstLocation": @"firstLocation",
+             @"lastLocation": @"lastLocation"
+             };
+}
+
+/*
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -65,6 +71,7 @@
     }
     return self;
 }
+ */
 
 
 @end

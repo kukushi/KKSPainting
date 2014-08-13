@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KKSPaintingScrollView.h"
+#import <Mantle/MTLModel.h>
+#import <Mantle/MTLJSONAdapter.h>
 
 @protocol KKSPaintingDelegate;
 
-@interface KKSPaintingBase : NSObject <NSCopying>
+@interface KKSPaintingBase : MTLModel <MTLJSONSerializing>
+
+//@interface KKSPaintingBase : NSObject <NSCopying>
 
 @property (nonatomic) CGFloat lineWidth;
 @property (nonatomic) CGFloat alpha;
@@ -18,14 +23,14 @@
 @property (nonatomic) BOOL shouldFill;
 @property (nonatomic) BOOL shouldStrokePath;
 
-@property (nonatomic) __attribute__((NSObject)) CGPathRef path;
-@property (nonatomic) __attribute__((NSObject)) CGPathRef strokingPath;
-@property (nonatomic) __attribute__((NSObject)) CGColorRef strokeColor;
-@property (nonatomic) __attribute__((NSObject)) CGColorRef fillColor;
+@property (nonatomic, strong) UIBezierPath *path;
+@property (nonatomic, strong) UIBezierPath *strokingPath;
+@property (nonatomic, strong) UIColor *strokeColor;
+@property (nonatomic, strong) UIColor *fillColor;
 
 @property (nonatomic, weak) id<KKSPaintingDelegate> delegate;
 
-@property (nonatomic, weak) UIScrollView *view;
+@property (nonatomic, weak) KKSPaintingScrollView *view;
 
 
 /**
@@ -34,10 +39,10 @@
 @property (nonatomic) BOOL isDrawingFinished;
 
 
-- (id)initWithView:(UIScrollView *)view;
+- (id)initWithView:(KKSPaintingScrollView *)view;
 
 - (void)setLineWidth:(CGFloat)lineWidth
-               color:(CGColorRef)color
+               color:(UIColor *)color
                alpha:(CGFloat)alpha;
 
 - (CGPoint)pathCenterPoint;
@@ -78,7 +83,7 @@
 
 - (void)zoomByPlusCurrentScale:(CGFloat)scale;
 
-- (void)setFill:(BOOL)shouldFill color:(CGColorRef)fillColor;
+- (void)setFill:(BOOL)shouldFill color:(UIColor *)fillColor;
 
 - (CGAffineTransform)currentTransform;
 

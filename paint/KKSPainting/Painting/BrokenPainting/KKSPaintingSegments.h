@@ -8,6 +8,6 @@
 
 #import "KKSBrokenPainting.h"
 
-@interface KKSPaintingSegments : KKSBrokenPainting <NSCoding>
+@interface KKSPaintingSegments : KKSBrokenPainting
 
 @end

@@ -42,6 +42,15 @@
     self.usedPaintings = [[NSMutableArray alloc] init];
 }
 
+- (UIImage *)previewImage {
+    UIGraphicsBeginImageContext(self.cachedImage.size);
+    [self.backgroundImage drawAtPoint:CGPointZero];
+    [self.cachedImage drawAtPoint:CGPointZero];
+    UIImage *previewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return previewImage;
+}
+
 #pragma mark - Mantle
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {

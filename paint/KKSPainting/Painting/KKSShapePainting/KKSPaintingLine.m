@@ -12,25 +12,17 @@
 @implementation KKSPaintingLine
 
 - (void)drawPath {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    [self setupContext:context];
-    
-    CGContextStrokePath(context);
-    
-    CGMutablePathRef path = CGPathCreateMutable();
-    
-    CGAffineTransform transform = [self currentTransform];
-    CGPathMoveToPoint(path, &transform, self.firstLocation.x, self.firstLocation.y);
-    CGPathAddLineToPoint(path, &transform, self.lastLocation.x, self.lastLocation.y);
-    CGContextAddPath(context, path);
-    
-    CGContextStrokePath(context);
-    self.path = path;
-    
-    if (self.shouldStrokePath) {
-        self.strokingPath = [self strokePathWithContext:context];
-    }
+
+    self.path = [UIBezierPath bezierPath];
+    [self.path moveToPoint:self.firstLocation];
+    [self.path addLineToPoint:self.lastLocation];
+
+    [self setupBezierPath];
+    [self.path applyTransform:[self currentTransform]];
+
+    [self.path strokeWithBlendMode:kCGBlendModeNormal alpha:self.alpha];
+
+    self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
 }
 
 @end

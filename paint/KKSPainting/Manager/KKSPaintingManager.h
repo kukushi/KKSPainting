@@ -22,12 +22,12 @@
 
 - (void)paintingManagerDidLeftEditingMode;
 
-- (void)paintingmanagerDidCopyPainting;
+- (void)paintingManagerDidCopyPainting;
 
 @end
 
 
-@class KKSPaintingView;
+@class KKSPaintingScrollView;
 
 @interface KKSPaintingManager : NSObject
 
@@ -35,7 +35,7 @@
 @property (nonatomic) UIColor *color;
 @property (nonatomic) CGFloat alpha;
 
-@property (nonatomic, weak) KKSPaintingView *paintingView;
+@property (nonatomic, weak) KKSPaintingScrollView *paintingView;
 
 @property (nonatomic) KKSPaintingType paintingType;
 @property (nonatomic) KKSPaintingMode paintingMode;

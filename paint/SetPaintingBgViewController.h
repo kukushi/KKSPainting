@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-@class KKSPaintingView;
+@class KKSPaintingScrollView;
 @class KKSPaintingManager;
 @interface SetPaintingBgViewController : UIViewController<UITextFieldDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *paintWidth;
 @property (weak, nonatomic) IBOutlet UITextField *paintHeight;
 - (IBAction)setBg:(id)sender;
-@property (weak, nonatomic) KKSPaintingView *drawerView;
+@property (weak, nonatomic) KKSPaintingScrollView *drawerView;
 @property (weak,nonatomic)KKSPaintingManager *paintingManager;
 @property(nonatomic,strong)UIImage *bgImage;
 - (IBAction)setBgImg:(id)sender;
