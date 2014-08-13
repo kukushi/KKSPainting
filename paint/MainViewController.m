@@ -19,6 +19,7 @@
     NSDate *LastMotion;
 }
 @property(nonatomic,strong)NSMutableArray *projectArray;
+@property(nonatomic,strong)NSTimer *timer;
 @end
 
 @implementation MainViewController
@@ -28,6 +29,12 @@
 {
     [super viewDidLoad];
     
+    
+    
+
+    
+
+
     self.shouldShowSheet=YES;
 
     self.paintingManager = self.drawerView.paintingManager;
@@ -95,17 +102,24 @@
             if (self.paintingManager.canUndo)
             {
                 [self.paintingManager undo];
-
-
             }
-
+            NSLog(@"across");
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:0.70 target:self selector:@selector(clearAllOperation) userInfo:nil repeats:NO];
 
         }else{
 
+            NSLog(@"No across");
+            [self.timer invalidate];
+            self.timer=nil;
         }
     //}
 }
+-(void)clearAllOperation
+{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"是否清除所有操作？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"清除", nil];
+    [alert show];
 
+}
 
 #pragma mark 拖动上边栏
 -(void)handelPan:(UIPanGestureRecognizer*)gestureRecognizer
@@ -183,15 +197,15 @@
     // 检测摇动, 1.5为轻摇，2.0为重摇
     
 
-    if (fabsf(acceleration.x)>1.2||
-        fabsf(acceleration.y)>1.2||
-        fabsf(acceleration.z>1.2))
+    if (fabsf(acceleration.x)>1.4||
+        fabsf(acceleration.y)>1.4||
+        fabsf(acceleration.z>1.4))
     {
         
         if ([LastMotion timeIntervalSinceNow]<-0.5f)
         {
             LastMotion=[NSDate date];
-            UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"redo",@"清屏",@"显示/隐藏颜色栏",@"显示/隐藏工具栏",@"显示/隐藏全部" ,nil];
+            UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"redo",@"显示/隐藏颜色栏",@"显示/隐藏工具栏",@"显示/隐藏全部" ,nil];
             [actionSheet showInView:self.drawerView];
         }
     }
@@ -491,24 +505,36 @@
             }
         }
         else
-            if(buttonIndex==1){
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"是否清除所有操作？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"清除", nil];
-            [alert show];
-        }
+            if (buttonIndex==1)
+            {
+                CATransition *animation = [CATransition animation];
+                animation.type = kCATransitionFade;
+                animation.duration = 0.25;
+                [self.myTopBar.layer addAnimation:animation forKey:nil];
+                if (self.myTopBar.hidden==NO)
+                {
+                    self.myTopBar.hidden=YES;
+                }
+                else
+                {
+                    self.myTopBar.hidden=NO;
+                }
+                //如果bar不显示就显示，显示则隐藏
+            }
             else
                 if (buttonIndex==2)
                 {
                     CATransition *animation = [CATransition animation];
                     animation.type = kCATransitionFade;
                     animation.duration = 0.25;
-                    [self.myTopBar.layer addAnimation:animation forKey:nil];
-                    if (self.myTopBar.hidden==NO)
+                    [self.myDownBar.layer addAnimation:animation forKey:nil];
+                    if (self.myDownBar.hidden==NO)
                     {
-                        self.myTopBar.hidden=YES;
+                        self.myDownBar.hidden=YES;
                     }
                     else
                     {
-                        self.myTopBar.hidden=NO;
+                        self.myDownBar.hidden=NO;
                     }
                     //如果bar不显示就显示，显示则隐藏
                 }
@@ -518,37 +544,20 @@
                         CATransition *animation = [CATransition animation];
                         animation.type = kCATransitionFade;
                         animation.duration = 0.25;
+                        [self.myTopBar.layer addAnimation:animation forKey:nil];
                         [self.myDownBar.layer addAnimation:animation forKey:nil];
-                        if (self.myDownBar.hidden==NO)
+                        if (!self.myTopBar.hidden)
                         {
+                            self.myTopBar.hidden=YES;
                             self.myDownBar.hidden=YES;
                         }
                         else
                         {
+                            self.myTopBar.hidden=NO;
                             self.myDownBar.hidden=NO;
                         }
-                        //如果bar不显示就显示，显示则隐藏
-                    }
-                    else
-                        if (buttonIndex==4)
-                        {
-                            CATransition *animation = [CATransition animation];
-                            animation.type = kCATransitionFade;
-                            animation.duration = 0.25;
-                            [self.myTopBar.layer addAnimation:animation forKey:nil];
-                            [self.myDownBar.layer addAnimation:animation forKey:nil];
-                            if (!self.myTopBar.hidden)
-                            {
-                                self.myTopBar.hidden=YES;
-                                self.myDownBar.hidden=YES;
-                            }
-                            else
-                            {
-                                self.myTopBar.hidden=NO;
-                                self.myDownBar.hidden=NO;
-                            }
 
-                        }
+                    }
 
     }
 }
