@@ -10,12 +10,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import "KKSPaintingScrollView.h"
 
-@interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIScrollViewDelegate,UIAlertViewDelegate>
+@interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIScrollViewDelegate,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
 
 }
 @property(strong,nonatomic)UIPanGestureRecognizer *panGes;//拖动对象
-
+@property(assign,nonatomic)BOOL shouldShowSheet;
 
 @property (weak, nonatomic) IBOutlet UIView *editBar;
 - (IBAction)changeEditMode:(id)sender;

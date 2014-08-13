@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UMSocial.h"
+//#import "MainViewController.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -17,8 +18,8 @@
 
     //友盟分享appkey
     [UMSocialData setAppKey:@"507fcab25270157b37000010"];
-    
-        
+//    MainViewController *mainViewController=(MainViewController *)self.window.rootViewController;
+
     
     return YES;
 }

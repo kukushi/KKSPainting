@@ -27,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.shouldShowSheet=YES;
 
     self.paintingManager = self.drawerView.paintingManager;
     self.drawerView.viewController = self;
@@ -65,10 +67,14 @@
                                                object:nil];
 /*----------------------------加速计和距离传感器注册---------------------------*/
 }
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     if (self.drawerView.contentSize.width==0.0f) {
         [self.drawerView setContentSize:CGSizeMake(500.f, 1000.f)];
+    }
+    if (self.shouldShowSheet)
+    {
+        [self addFile:nil];
     }
 }
 
@@ -408,7 +414,7 @@
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToQzone,UMShareToRenren,UMShareToDouban,UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter,nil]
                                        delegate:nil];
     self.hiddenKeepAbout.hidden=YES;
-
+    self.shouldShowSheet=NO;
 }
 //新建作品，可以载入，可以新建画布
 - (IBAction)addFile:(id)sender {
@@ -417,7 +423,7 @@
                                       delegate:self
                                       cancelButtonTitle:@"取消"
                                       destructiveButtonTitle:Nil
-                                      otherButtonTitles:@"空白画布", @"加载工程",nil];
+                                      otherButtonTitles:@"空白画布", @"加载工程",@"拍照涂鸦",nil];
         //actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [actionSheet showInView:self.view];
     self.hiddenKeepAbout.hidden=YES;
@@ -427,6 +433,7 @@
 //actionsheet项执行代码
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    self.shouldShowSheet=NO;
     if ([actionSheet.title isEqualToString:@"新建"])
     {
         if (buttonIndex == 0) {
@@ -440,7 +447,13 @@
             loadProjectViewController.paintingManage=self.paintingManager;
             loadProjectViewController.modalTransitionStyle=UIModalTransitionStylePartialCurl;
             [self presentViewController:loadProjectViewController animated:YES completion:nil];
-        }
+        }else if(buttonIndex==2){
+            UIImagePickerControllerSourceType sourceType =UIImagePickerControllerSourceTypeCamera;
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.sourceType = sourceType;
+            [self presentViewController:picker animated:YES completion:nil];
+            }
     }
     else if([actionSheet.title isEqualToString:@"保存"])
     {
@@ -548,24 +561,39 @@
 }
 
 
-//触碰其他位置隐藏工具扩展栏
-/*
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch =  [touches anyObject];
-    if (touch.view!=self.hiddenTools&&touch.view!=self.hiddenLineDegrees&&touch.view!=self.hiddenKeepAbout)
+//当选择一张图片后进入这里
+-(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    //当选择的类型是图片
+    if ([type isEqualToString:@"public.image"])
     {
-        if (!self.hiddenKeepAbout.hidden||!self.hiddenLineDegrees.hidden||!self.hiddenTools.hidden)
-        {
-            self.hiddenKeepAbout.hidden=YES;
-            self.hiddenLineDegrees.hidden=YES;
-            self.hiddenTools.hidden=YES;
-        }
-
+        //先把图片转成NSData
+        UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        image=[self scaleToSize:image size:CGSizeMake(320,image.size.height/image.size.width*320)];
+        [self.drawerView setContentSize:CGSizeMake(320,image.size.height)];
+        [self.paintingManager clear];
+        [self.drawerView.paintingManager setPaintingBackground:image];
     }
     
- }
- */
+}
 
+- (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{
+         // 创建一个bitmap的context
+     // 并把它设置成为当前正在使用的context
+         UIGraphicsBeginImageContext(size);
+         // 绘制改变大小的图片
+         [img drawInRect:CGRectMake(0, 0, size.width, size.height)];
+         // 从当前context中创建一个改变大小后的图片
+         UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+         // 使当前的context出堆栈
+         UIGraphicsEndImageContext();
+        // 返回新的改变大小后的图片
+         return scaledImage;
+     }
 /*----------------------------保存作品相关内容---------------------------*/
 
 
@@ -657,7 +685,7 @@
     self.drawerView.scrollEnabled=NO;
     [self.scrollButton setBackgroundImage:[UIImage imageNamed:@"hand.png"] forState:UIControlStateNormal];
 
-  //  [self.paintingManager zoomByScale:sender.value-0.5];
+    [self.paintingManager zoomByScale:sender.value];
 
 }
 
