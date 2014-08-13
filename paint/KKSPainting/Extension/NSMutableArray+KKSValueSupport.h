@@ -11,12 +11,17 @@
 @interface NSMutableArray (KKSValueSupport)
 
 - (void)kks_addInteger:(NSInteger)integerValue;
+
 - (void)kks_insertInteger:(NSInteger)integerValue atIndex:(NSInteger)index;
+
 - (NSInteger)kks_lastInteger;
+
 - (NSInteger)kks_firstInteger;
+
 - (NSInteger)kks_integerAtIndex:(NSInteger)index;
 
 - (void)kks_addPoint:(CGPoint)point;
+
 - (NSInteger)kks_cArrayWithCGPoint:(CGPoint *)pointArray;
 
 @end

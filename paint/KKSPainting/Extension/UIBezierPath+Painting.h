@@ -10,6 +10,9 @@
 
 @interface UIBezierPath (Painting)
 
+/*
+ *
+ */
 - (void)addLinesWithPoints:(NSArray *)points;
 
 @end

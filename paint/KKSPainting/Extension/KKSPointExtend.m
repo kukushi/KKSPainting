@@ -37,11 +37,11 @@ NSInteger quadrantWithPoint(CGPoint point) {
 }
 
 CGFloat scaleChangeBetweenPoints(CGPoint originPoint,
-                           CGPoint baiscPoint,
+                           CGPoint basicPoint,
                            CGPoint previousPoint,
                            CGPoint currentPoint) {
     
-    return (distanceBetweenPoints(originPoint, currentPoint) - distanceBetweenPoints(originPoint, previousPoint)) / distanceBetweenPoints(originPoint, baiscPoint);
+    return (distanceBetweenPoints(originPoint, currentPoint) - distanceBetweenPoints(originPoint, previousPoint)) / distanceBetweenPoints(originPoint, basicPoint);
 }
 
 CGFloat degreeWithPoints(CGPoint originPoint,

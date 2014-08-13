@@ -83,44 +83,10 @@
 }
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{@"lastLocation": @"lastLocation",
-             @"secondTouchLocation": @"secondTouchLocation",
-             @"thirdTouchLocation": @"thirdTouchLocation",
-             @"touchCount": @"touchCount"};
+    return @{@"lastLocation" : @"lastLocation",
+            @"secondTouchLocation" : @"secondTouchLocation",
+            @"thirdTouchLocation" : @"thirdTouchLocation",
+            @"touchCount" : @"touchCount"};
 }
-
-/*
-#pragma mark - NSCopying
-
-- (id)copyWithZone:(NSZone *)zone {
-    KKSPaintingBezier *painting = [super copyWithZone:zone];
-    if (painting) {
-        painting->_lastLocation = self.lastLocation;
-        painting->_secondTouchLocation = self.secondTouchLocation;
-        painting->_thirdTouchLocation = self.thirdTouchLocation;
-        painting->_touchCount = self.touchCount;
-    }
-    return painting;
-}
-
-#pragma mark - NSCoding
-
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeCGPoint:self.lastLocation forKey:@"lastLocation"];
-    [encoder encodeCGPoint:self.secondTouchLocation forKey:@"secondTouchLocation"];
-    [encoder encodeCGPoint:self.thirdTouchLocation forKey:@"thirdTouchLocation"];
-    [encoder encodeInteger:self.touchCount forKey:@"touchCount"];
-}
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super initWithCoder:decoder]) {
-        _lastLocation = [decoder decodeCGPointForKey:@"lastLocation"];
-        _secondTouchLocation = [decoder decodeCGPointForKey:@"secondTouchLocation"];
-        _thirdTouchLocation = [decoder decodeCGPointForKey:@"thirdTouchLocation"];
-        _touchCount = [decoder decodeIntegerForKey:@"touchCount"];
-    }
-    return self;
-}
- */
 
 @end
