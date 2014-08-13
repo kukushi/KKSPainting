@@ -55,66 +55,14 @@
     drawingBounds.size.height += bounceWidth * 2;
     drawingBounds.size.width += bounceWidth * 2;
     
-    [self.view needUpdatePaintings];
+    [self.view needUpdatePaintingsInRect:drawingBounds];
 }
 
-#pragma mark - Helper
-
-- (CGRect)addPathWithPreviousPoint:(CGPoint)previousPoint
-                      controlPoint:(CGPoint)controlPoint
-                      currentPoint:(CGPoint)currentPoint {
-    
-    CGPoint middlePoint1 = middlePoint(previousPoint, controlPoint);
-    CGPoint middlePoint2 = middlePoint(controlPoint, currentPoint);
-
-    UIBezierPath *subPath = [UIBezierPath bezierPath];
-    [subPath moveToPoint:middlePoint1];
-    [subPath addQuadCurveToPoint:controlPoint controlPoint:middlePoint2];
-    
-    CGRect bounds = subPath.bounds;
-    [self.path appendPath:subPath];
-
-
-
-    return bounds;
-}
+#pragma mark - Mantle
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{@"path": @"path"};
 }
-
-/*
-- (id)copyWithZone:(NSZone *)zone {
-    KKSPaintingPen *painting = [super copyWithZone:zone];
-    if (painting) {
-        painting->_previousLocation = _previousLocation;
-        painting->_currentLocation = _currentLocation;
-        painting->_tempPath = CGPathCreateMutableCopy(CGPathRetain(_tempPath));
-    }
-    return painting;
-}
-
-#pragma mark - NSCoding
-
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeCGPoint:self.previousLocation forKey:@"previousLocation"];
-    [encoder encodeCGPoint:self.currentLocation forKey:@"currentLocation"];
-    
-    UIBezierPath *path = [UIBezierPath bezierPathWithCGPath:self.tempPath];
-    [encoder encodeObject:path forKey:@"tempPath"];
-}
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super init]) {
-        _previousLocation = [decoder decodeCGPointForKey:@"previousLocation"];
-        _currentLocation = [decoder decodeCGPointForKey:@"currentLocation"];
-        
-        UIBezierPath *path = [decoder decodeObjectForKey:@"tempPath"];
-        _tempPath = CGPathCreateMutableCopy(path.CGPath);
-    }
-    return self;
-}
- */
 
 #pragma mark - Drawing
 

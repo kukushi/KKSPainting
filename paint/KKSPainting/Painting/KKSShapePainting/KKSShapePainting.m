@@ -45,34 +45,5 @@
              };
 }
 
-/*
-#pragma mark - NSCopying
-
-- (id)copyWithZone:(NSZone *)zone {
-    KKSShapePainting *painting = [super copyWithZone:zone];
-    if (painting) {
-        painting->_firstLocation = _firstLocation;
-        painting->_lastLocation = _lastLocation;
-    }
-    return painting;
-}
-
-#pragma mark - NSCoding
-
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeCGPoint:self.firstLocation forKey:@"firstLocation"];
-    [encoder encodeCGPoint:self.lastLocation forKey:@"lastLocation"];
-}
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super init]) {
-        _firstLocation = [decoder decodeCGPointForKey:@"firstLocation"];
-        _lastLocation = [decoder decodeCGPointForKey:@"lastLocation"];
-    }
-    return self;
-}
- */
-
-
 @end
 

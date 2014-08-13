@@ -22,8 +22,6 @@
 
 - (void)showIndicatorLabelWithText:(NSString *)text;
 
-// - (void)refreshPaintingManager:(KKSPaintingManager *)paintingManager;
-
 - (void)needUpdatePaintings;
 
 - (void)needUpdatePaintingsInRect:(CGRect)rect;

@@ -21,7 +21,7 @@ FOUNDATION_EXPORT CGFloat degreeWithPoints(CGPoint originPoint,
                                            CGPoint currentPoint);
 
 FOUNDATION_EXPORT CGFloat scaleChangeBetweenPoints(CGPoint originPoint,
-                                                   CGPoint baiscPoint,
+                                                   CGPoint basicPoint,
                                                    CGPoint previousPoint,
                                                    CGPoint currentPoint);
 
