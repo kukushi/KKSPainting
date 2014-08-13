@@ -25,11 +25,12 @@
 
 @property (nonatomic) CGSize originalContentSize;
 
-
 - (void)removePainting:(id)painting;
 
 - (void)addPainting:(id)painting;
 
 - (void)removeAllPaintings;
+
+- (UIImage *)previewImage;
 
 @end

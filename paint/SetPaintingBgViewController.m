@@ -8,7 +8,7 @@
 
 #import "SetPaintingBgViewController.h"
 #import "KKSPaintingManager.h"
-#import "KKSPaintingView.h"
+#import "KKSPaintingScrollView.h"
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 
 @interface SetPaintingBgViewController ()

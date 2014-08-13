@@ -27,10 +27,10 @@
         self.firstLocation = [touch locationInView:self.view];
     } else if (self.touchCount == 2) {
         self.secondTouchLocation = [touch locationInView:self.view];
-        [self.view setNeedsDisplay];
+        [self.view needUpdatePaintings];
     } else if (self.touchCount == 3) {
         self.thirdTouchLocation = [touch locationInView:self.view];
-        [self.view setNeedsDisplay];
+        [self.view needUpdatePaintings];
     }
     
 }
@@ -38,7 +38,7 @@
 - (void)recordingContinueWithTouchMoved:(UITouch *)touch {
     if (self.touchCount == 1) {
         self.lastLocation = [touch locationInView:self.view];
-        [self.view setNeedsDisplay];
+        [self.view needUpdatePaintings];
     }
 }
 
@@ -52,53 +52,44 @@
 }
 
 - (void)drawPath {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    [self setupContext:context];
-    
-    CGContextBeginPath(context);
-    
     if (self.touchCount == 1 || self.touchCount == 2) {
-        CGContextMoveToPoint(context, self.firstLocation.x, self.firstLocation.y);
-        CGContextAddLineToPoint(context, self.lastLocation.x, self.lastLocation.y);
+        self.path = [UIBezierPath bezierPath];
+        [self.path moveToPoint:self.firstLocation];
+        [self.path addLineToPoint:self.lastLocation];
     }
-    
+
     if (self.touchCount == 2) {
-        CGContextMoveToPoint(context, self.secondTouchLocation.x, self.secondTouchLocation.y);
-        CGContextAddArc(context,
-                        self.secondTouchLocation.x,
-                        self.secondTouchLocation.y,
-                        self.scaledLineWidth / 4.f,
-                        0.f * M_PI/180,
-                        360.f * M_PI/180,
-                        1);
+        [self.path moveToPoint:self.secondTouchLocation];
+        [self.path addArcWithCenter:self.secondTouchLocation
+                             radius:self.scaledLineWidth / 4.f
+                         startAngle:0.f
+                           endAngle:360.f * M_PI/180
+                          clockwise:YES];
     }
     
     if (self.touchCount == 3) {
-        
-        CGMutablePathRef path = CGPathCreateMutable();
-        
-        CGAffineTransform transform = [self currentTransform];
-        CGPathMoveToPoint(path, &transform, self.firstLocation.x, self.firstLocation.y);
-        CGPathAddCurveToPoint(path,
-                              &transform,
-                              self.secondTouchLocation.x,
-                              self.secondTouchLocation.y,
-                              self.thirdTouchLocation.x,
-                              self.thirdTouchLocation.y,
-                              self.lastLocation.x,
-                              self.lastLocation.y);
-        CGContextAddPath(context, path);
-        self.path = path;
+        self.path = [UIBezierPath bezierPath];
+        [self.path moveToPoint:self.firstLocation];
+        [self.path addCurveToPoint:self.lastLocation
+                     controlPoint1:self.secondTouchLocation
+                     controlPoint2:self.thirdTouchLocation];
     }
-    
-    CGContextStrokePath(context);
-    
-    if (self.shouldStrokePath) {
-        self.strokingPath = [self strokePathWithContext:context];
-    }
+
+    [self setupBezierPath];
+    [self.path applyTransform:[self currentTransform]];
+    [self.path stroke];
+
+    self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
 }
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{@"lastLocation": @"lastLocation",
+             @"secondTouchLocation": @"secondTouchLocation",
+             @"thirdTouchLocation": @"thirdTouchLocation",
+             @"touchCount": @"touchCount"};
+}
+
+/*
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -130,5 +121,6 @@
     }
     return self;
 }
+ */
 
 @end

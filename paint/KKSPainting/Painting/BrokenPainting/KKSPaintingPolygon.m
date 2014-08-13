@@ -10,6 +10,7 @@
 #import "KKSPaintingTool_KKSPaintingHelper.h"
 #import "KKSPointExtend.h"
 #import "NSMutableArray+KKSValueSupport.h"
+#import "UIBezierPath+Painting.h"
 
 @interface KKSPaintingPolygon ()
 
@@ -23,7 +24,7 @@
 
 #pragma mark - Init
 
-- (id)initWithView:(UIScrollView *)view {
+- (id)initWithView:(KKSPaintingScrollView *)view {
     self = [super initWithView:view];
     if (self) {
         _points = [[NSMutableArray alloc] init];
@@ -44,12 +45,12 @@
         [self.points kks_addPoint:currentLocation];
     }
     
-    [self.view setNeedsDisplay];
+    [self.view needUpdatePaintings];
 }
 
 - (UIImage *)endDrawingWithCacheImage:(UIImage *)cachedImage {
     self.isDrawingFinished = YES;
-    [self.view setNeedsDisplay];
+    [self.view needUpdatePaintings];
     UIImage *image = [super recordingEndedWithTouch:nil cachedImage:cachedImage];
     return image;
 }
@@ -80,54 +81,43 @@
 }
 
 - (void)drawPath {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextBeginPath(context);
-    [self setupContext:context];
-    
     if (self.isBeforeSecondTap) {
-        CGContextAddArc(context,
-                        self.firstLocation.x,
-                        self.firstLocation.y,
-                        self.scaledLineWidth / 4.f,
-                        0.f * M_PI/180,
-                        360.f * M_PI/180,
-                        1);
-        CGContextStrokePath(context);
+        self.path = [UIBezierPath bezierPath];
+        [self setupBezierPath];
+        [self.path addArcWithCenter:self.firstLocation
+                             radius:self.scaledLineWidth / 4.f
+                         startAngle:0.f
+                           endAngle:360.f * M_PI/180
+                          clockwise:YES];
     } else if (!self.isDrawingFinished) {
-        CGAffineTransform transform = [self currentTransform];
-        
-        CGMutablePathRef path = CGPathCreateMutable();
-        CGPoint points[200];
-        NSInteger pointsCount = [self.points kks_cArrayWithCGPoint:points];
-        CGPathAddLines(path, &transform, points, pointsCount);
-        CGContextAddPath(context, path);
-        CGContextStrokePath(context);
+        self.path = [UIBezierPath bezierPath];
+        [self setupBezierPath];
+        [self.path addLinesWithPoints:self.points];
     } else {
-        CGMutablePathRef path = CGPathCreateMutable();
-        CGAffineTransform transform = [self currentTransform];
-        CGPoint points[200];
-        NSInteger pointsCount = [self.points kks_cArrayWithCGPoint:points];
-        CGPathAddLines(path, &transform, points, pointsCount);
-        CGPathCloseSubpath(path);
-        
-        CGContextAddPath(context, path);
-        
-        self.path = path;
-        
-        if (self.shouldFill) {
-            CGContextSetFillColorWithColor(context, self.fillColor);
-            CGContextDrawPath(context, kCGPathFillStroke);
-        } else {
-            CGContextStrokePath(context);
-        }
-        
-        if (self.shouldStrokePath) {
-            self.strokingPath = [self strokePathWithContext:context];
-        }
+        self.path = [UIBezierPath bezierPath];
+        [self setupBezierPath];
+        [self.path addLinesWithPoints:self.points];
+        [self.path closePath];
     }
+
+    [self.path applyTransform:[self currentTransform]];
+
+    if (self.shouldFill) {
+        [self.path fillWithBlendMode:kCGBlendModeNormal alpha:self.alpha];
+    }
+
+    [self.path strokeWithBlendMode:kCGBlendModeNormal alpha:self.alpha];
+
+    self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
 }
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{@"points": @"points",
+             @"isBeforeSecondTap": @"isBeforeSecondTap",
+             @"isDrawingFinished": @"isDrawingFinished"};
+}
+
+/*
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -154,6 +144,7 @@
     }
     [encoder encodeBool:self.isLastDrawing forKey:@"isLastDrawing"];
 }
+ */
 
 @end
 

@@ -22,7 +22,7 @@ NSTimeInterval const kLongPressEndTime = 0.6f;
 
 #pragma mark - Init
 
-- (id)initWithView:(UIScrollView *)view {
+- (id)initWithView:(KKSPaintingScrollView *)view {
     self = [super initWithView:view];
     if (self) {
         self.isDrawingFinished = NO;
@@ -79,6 +79,14 @@ NSTimeInterval const kLongPressEndTime = 0.6f;
     return touch.timestamp - self.previousTimeStamp > 0.4f;
 }
 
+#pragma mark - Mantle
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{@"firstLocation": @"firstLocation",
+             @"previousLocation": @"previousLocation"};
+}
+
+/*
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -92,7 +100,9 @@ NSTimeInterval const kLongPressEndTime = 0.6f;
     }
     return painting;
 }
+ */
 
+/*
 #pragma mark - NSCoding
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -121,5 +131,7 @@ NSTimeInterval const kLongPressEndTime = 0.6f;
         [encoder encodeObject:self.longPressFinishTimer forKey:@"longPressFinishTimer"];
     }
 }
+ */
+
 
 @end

@@ -10,7 +10,7 @@
 
 #pragma mark - KKSPainting
 
-@interface KKSPaintingBase () <NSCopying, NSCoding>
+@interface KKSPaintingBase ()
 
 @property (nonatomic) CGAffineTransform transform;
 @property (nonatomic) CGFloat realLineWidth;
@@ -27,14 +27,15 @@
 
 #pragma mark - Init
 
-- (id)initWithView:(UIScrollView *)view {
+- (id)initWithView:(KKSPaintingScrollView *)view {
     
     if (self = [super init]) {
         _view = view;
         _lineWidth = 6.f;
         _alpha = 1.f;
-        _strokeColor = [UIColor blackColor].CGColor;
-        _path = CGPathCreateMutable();
+        _strokeColor = [UIColor blackColor];
+        _fillColor = [UIColor clearColor];
+        _path = [UIBezierPath bezierPath];
         _isDrawingFinished = YES;
         _transform = CGAffineTransformIdentity;
         _zoomScale = 1.f;
@@ -42,28 +43,20 @@
     return self;
 }
 
-- (void)dealloc {
-    _path = nil;
-    _strokingPath = nil;
-    _strokeColor = nil;
-    _fillColor = nil;
-}
-
 - (void)setLineWidth:(CGFloat)lineWidth
-               color:(CGColorRef)color
+               color:(UIColor *)color
                alpha:(CGFloat)alpha {
     _lineWidth = lineWidth;
     _realLineWidth = lineWidth;
     _strokeColor = color;
     _alpha = alpha;
-    
 }
 
 #pragma mark - Path Info
 
 - (void)initPathCenterPoint {
     if (CGPointEqualToPoint(self.centerPoint, CGPointZero)) {
-        CGRect bounds = CGPathGetBoundingBox(self.path);
+        CGRect bounds = self.path.bounds;
         self.centerPoint = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
     }
 }
@@ -108,21 +101,12 @@
 }
 
 - (BOOL)pathContainsPoint:(CGPoint)point {
-        CGFloat zoomLength = 15.f;
-        CGPathRef selectingPath = CGPathCreateCopyByStrokingPath(self.path,
-                                                           NULL,
-                                                           self.scaledLineWidth + zoomLength,
-                                                           kCGLineCapRound,
-                                                           kCGLineJoinRound,
-                                                           0.f);
-    
-    BOOL containsPoint = CGPathContainsPoint(selectingPath, NULL, point, true);
-    CGPathRelease(selectingPath);
-    return containsPoint;
+    return [self.strokingPath containsPoint:point];
 }
 
 - (BOOL)areaContainsPoint:(CGPoint)point {
-    return CGPathContainsPoint(self.path, NULL, point, true);
+    return [self.path containsPoint:point];
+//    return CGPathContainsPoint(self.path, NULL, point, true);
 }
 
 #pragma mark - Drawing
@@ -184,7 +168,9 @@
 - (void)updateTransform {
     CGAffineTransform transform = CGAffineTransformMakeTranslation(self.translation.x,
                                                                    self.translation.y);
-    
+
+    NSLog(@"%f", self.translation.x);
+
     CGPoint centerPoint = [self centerPoint];
     transform = CGAffineTransformTranslate(transform, centerPoint.x, centerPoint.y);
     transform = CGAffineTransformRotate(transform, self.rotateDegree);
@@ -197,7 +183,7 @@
     self.transform = transform;
 }
 
-- (void)setFill:(BOOL)shouldFill color:(CGColorRef)fillColor {
+- (void)setFill:(BOOL)shouldFill color:(UIColor *)fillColor {
     self.shouldFill = shouldFill;
     self.fillColor = fillColor;
 }
@@ -210,6 +196,7 @@
     return self.realLineWidth;
 }
 
+/*
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -240,114 +227,84 @@
     }
     return painting;
 }
+ */
 
-#pragma mark - NSCoding
+#pragma mark - Mantle
 
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super init]) {
-        _lineWidth = [decoder decodeFloatForKey:@"lineWidth"];
-        _alpha = [decoder decodeFloatForKey:@"alpha"];
-        _shouldFill = [decoder decodeBoolForKey:@"shouldFill"];
-        _shouldStrokePath = [decoder decodeBoolForKey:@"shouldStrokePath"];
-        NSValue *pathValue = [decoder decodeObjectForKey:@"path"];
-        _path = [pathValue pointerValue];
-        NSValue *strokingPathValue = [decoder decodeObjectForKey:@"strokingPath"];
-        _strokingPath = [strokingPathValue pointerValue];
-        NSValue *strokeColorValue = [decoder decodeObjectForKey:@"strokeColor"];
-        _strokeColor = [strokeColorValue pointerValue];
-        NSValue *fillColorValue = [decoder decodeObjectForKey:@"fillColor"];
-        _fillColor = [fillColorValue pointerValue];
-        _delegate = [decoder decodeObjectForKey:@"delegate"];
-        _view = [decoder decodeObjectForKey:@"view"];
-        _transform = [decoder decodeCGAffineTransformForKey:@"transform"];
-        _realLineWidth = [decoder decodeFloatForKey:@"realLineWidth"];
-        _rotateDegree = [decoder decodeFloatForKey:@"rotateDegree"];
-        _translation = [decoder decodeCGPointForKey:@"translation"];
-        _zoomScale = [decoder decodeFloatForKey:@"zoomScale"];
-        _centerPoint = [decoder decodeCGPointForKey:@"centerPoint"];
-    }
-    return self;
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{@"lineWidth": @"lineWidth",
+             @"alpha": @"alpha",
+             @"shouldFill": @"shouldFill",
+             @"path": @"path",
+             @"shouldStrokePath": @"shouldStrokePath",
+             @"strokingPath": @"strokingPath",
+             @"strokeColor": @"strokeColor",
+             @"fillColor": @"fillColor",
+             @"transform": @"transform",
+             @"realLineWidth": @"realLineWidth",
+             @"rotateDegree": @"rotateDegree",
+             @"translation": @"translation",
+             @"zoomScale": @"zoomScale",
+             @"centerPoint": @"centerPoint"
+             };
 }
-
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeFloat:self.lineWidth forKey:@"lineWidth"];
-    [encoder encodeFloat:self.alpha forKey:@"alpha"];
-    [encoder encodeBool:self.shouldFill forKey:@"shouldFill"];
-    [encoder encodeBool:self.shouldStrokePath forKey:@"shouldStrokePath"];
-    NSValue *pathValue = [NSValue valueWithPointer:self.path];
-    [encoder encodeObject:pathValue forKey:@"path"];
-    NSValue *strokingPathValue = [NSValue valueWithPointer:self.strokingPath];
-    [encoder encodeObject:strokingPathValue forKey:@"strokingPath"];
-    NSValue *strokeColorValue = [NSValue valueWithPointer:self.strokeColor];
-    [encoder encodeObject:strokeColorValue forKey:@"strokeColor"];
-    NSValue *fillColorValue = [NSValue valueWithPointer:self.fillColor];
-    [encoder encodeObject:fillColorValue forKey:@"fillColor"];
-    if (self.delegate) {
-        [encoder encodeObject:self.delegate forKey:@"delegate"];
-    }
-    if (self.view) {
-        [encoder encodeObject:self.view forKey:@"view"];
-    }
-    [encoder encodeCGAffineTransform:self.transform forKey:@"transform"];
-    [encoder encodeFloat:self.realLineWidth forKey:@"realLineWidth"];
-    [encoder encodeFloat:self.rotateDegree forKey:@"rotateDegree"];
-    [encoder encodeCGPoint:self.translation forKey:@"translation"];
-    [encoder encodeFloat:self.zoomScale forKey:@"zoomScale"];
-}
-
 
 #pragma mark - KKSPaintingHelper
+
+- (void)setupBezierPath {
+    self.path.lineCapStyle = kCGLineCapRound;
+    self.path.lineWidth = self.scaledLineWidth;
+    [self.strokeColor setStroke];
+    [self.fillColor setFill];
+}
 
 - (void)setupContext:(CGContextRef)context {
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextSetLineWidth(context, self.scaledLineWidth);
-    CGContextSetStrokeColorWithColor(context, self.strokeColor);
+    CGContextSetStrokeColorWithColor(context, self.strokeColor.CGColor);
     CGContextSetAlpha(context, self.alpha);
 }
 
-- (CGPathRef)strokePathWithContext:(CGContextRef)context {
-    CGPathRef strokingPath = CGPathCreateCopyByStrokingPath(self.path,
+#pragma mark - Drawing Bounds
+
+- (UIColor *)boundsColor {
+    return [UIColor colorWithRed:233/255.f
+                           green:163/255.f
+                            blue:104/255.f
+                           alpha:1.f];
+}
+
+- (void)setupBoundsPath:(UIBezierPath *)path {
+    CGFloat dashStyle[] = {5.0f, 5.0f};
+    CGFloat lineWidth = floor(self.scaledLineWidth / 4.f);
+    UIColor *strokeColor = [self boundsColor];
+    [path setLineDash:dashStyle count:2 phase:0];
+    [path setLineWidth:MAX(1.f, lineWidth)];
+    [strokeColor setStroke];
+}
+
+
+- (UIBezierPath *)strokePathBoundsWithStroking:(BOOL)shouldStroking {
+    CGPathRef strokingPath = CGPathCreateCopyByStrokingPath(self.path.CGPath,
                                                             NULL,
-                                                            self.scaledLineWidth + 1.f,
+                                                            self.scaledLineWidth + 5.f,
                                                             kCGLineCapRound,
                                                             kCGLineJoinRound,
                                                             0.f);
-    CGContextAddPath(context, strokingPath);
-    CGContextSaveGState(context);
+    UIBezierPath *path = [UIBezierPath bezierPathWithCGPath:strokingPath];
+    if (shouldStroking) {
+        [self setupBoundsPath:path];
+        [path stroke];
+    }
     
-    CGFloat dashStyle[] = {5.0f, 5.0f};
-    CGContextSetLineDash(context, 0, dashStyle, 2);
-    CGFloat lineWidth = floor(self.scaledLineWidth / 4.f);
-    CGContextSetLineWidth(context, MAX(1.f, lineWidth));
-    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:233/255.f
-                                                              green:163/255.f
-                                                               blue:104/255.f
-                                                              alpha:1.f].CGColor);
-    CGContextStrokePath(context);
-    CGContextRestoreGState(context);
-    
-    return strokingPath;
+    return path;
 }
 
-- (void)strokeBoundWithContext:(CGContextRef)context {
-    CGRect bounds = CGPathGetBoundingBox(self.path);
-    CGMutablePathRef path = CGPathCreateMutable();
-    
-    CGPathAddRect(path, NULL, bounds);
-    CGContextAddPath(context, path);
-    
-    CGContextSaveGState(context);
-    
-    CGFloat dashStyle[] = {5.0f, 5.0f};
-    CGContextSetLineDash(context, 0, dashStyle, 2);
-    CGFloat lineWidth = floor(self.scaledLineWidth / 4.f);
-    CGContextSetLineWidth(context, MAX(1.f, lineWidth));
-    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:233/255.f
-                                                              green:163/255.f
-                                                               blue:104/255.f
-                                                              alpha:1.f].CGColor);
-    CGContextStrokePath(context);
-    CGContextRestoreGState(context);
+- (void)strokeBoundWithBounds:(CGRect)rect {
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:rect];
+    [self setupBoundsPath:path];
+    [path stroke];
 }
 
 @end

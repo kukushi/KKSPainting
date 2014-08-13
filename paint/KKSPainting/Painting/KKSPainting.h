@@ -8,6 +8,6 @@
 
 #ifndef Drawing_Demo_KKSPainting_h
     #define Drawing_Demo_KKSPainting_h
-    #import "KKSPaintingView.h"
+    #import "KKSPaintingScrollView.h"
     #import "KKSPaintingManager.h"
 #endif

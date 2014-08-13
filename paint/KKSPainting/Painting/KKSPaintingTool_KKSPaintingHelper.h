@@ -10,10 +10,12 @@
 
 @interface KKSPaintingBase ()
 
+- (void)setupBezierPath;
+
 - (void)setupContext:(CGContextRef)context;
 
-- (CGPathRef)strokePathWithContext:(CGContextRef)context;
+- (UIBezierPath *)strokePathBoundsWithStroking:(BOOL)shouldStroking;
 
-- (void)strokeBoundWithContext:(CGContextRef)context;
+- (void)strokeBoundWithBounds:(CGRect)rect;
 
 @end
