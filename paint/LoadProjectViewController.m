@@ -10,6 +10,7 @@
 #import "FTEPaintingSaver.h"
 #import "KKSPaintingModel.h"
 #import "KKSPaintingManager.h"
+#import "MainViewController.h"
 @interface LoadProjectViewController ()
 @property(nonatomic,strong)NSArray *colorArray;
 @property(nonatomic,strong)NSMutableArray *projectArray;
@@ -39,9 +40,15 @@
     self.projectArray=[[FTEPaintingSaver retriveModels]mutableCopy];
 	// Do any additional setup after loading the view.
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[UIDevice currentDevice] setProximityMonitoringEnabled:NO];
+    self.mainViewController.accelerometer.delegate = nil;
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
-
+    [[UIDevice currentDevice] setProximityMonitoringEnabled:YES];
+    self.mainViewController.accelerometer.delegate = self.mainViewController;
 }
 - (void)didReceiveMemoryWarning
 {

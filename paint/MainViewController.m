@@ -63,8 +63,8 @@
     
 /*----------------------------加速计和距离传感器注册---------------------------*/
     //注册加速计，设置代理为自己
-    UIAccelerometer *accelerometer = [UIAccelerometer sharedAccelerometer];
-    accelerometer.delegate = self;
+    self.accelerometer = [UIAccelerometer sharedAccelerometer];
+    self.accelerometer.delegate = self;
     
     //注册近距离传感器
     [[UIDevice currentDevice] setProximityMonitoringEnabled:YES];
@@ -76,6 +76,8 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
+
+    NSLog(@"appear");
     if (self.drawerView.contentSize.width==0.0f) {
         [self.drawerView setContentSize:CGSizeMake(500.f, 1000.f)];
     }
@@ -84,7 +86,12 @@
         [self addFile:nil];
     }
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
 
+    NSLog(@"disappear");
+
+}
 #pragma mark 改变线条颜色
 - (IBAction)changeColor:(UIButton *)sender {
     self.paintingManager.color=sender.backgroundColor;
@@ -454,10 +461,12 @@
             patingBg.modalTransitionStyle=UIModalTransitionStylePartialCurl;
             patingBg.paintingManager=self.paintingManager;
             patingBg.drawerView=self.drawerView;
+            patingBg.mainViewController=self;
             [self presentViewController:patingBg animated:YES completion:nil];
         }else if (buttonIndex == 1) {
             LoadProjectViewController *loadProjectViewController=[[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"ProjectView"];
             loadProjectViewController.paintingManage=self.paintingManager;
+            loadProjectViewController.mainViewController=self;
             loadProjectViewController.modalTransitionStyle=UIModalTransitionStylePartialCurl;
             [self presentViewController:loadProjectViewController animated:YES completion:nil];
         }else if(buttonIndex==2){

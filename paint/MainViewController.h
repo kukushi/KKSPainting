@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *editBar;
 - (IBAction)changeEditMode:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *nowEditMode;
+@property(nonatomic,strong)UIAccelerometer *accelerometer;
 
 @property (weak, nonatomic) IBOutlet UIView *myTopBar;
 @property (weak, nonatomic) IBOutlet UIView *myDownBar;

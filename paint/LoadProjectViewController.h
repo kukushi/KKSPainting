@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MainViewController;
 @class KKSPaintingManager;
 @interface LoadProjectViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *projectListTable;
 @property(weak,nonatomic)KKSPaintingManager *paintingManage;
+@property(weak,nonatomic)MainViewController *mainViewController;
+
 @end
