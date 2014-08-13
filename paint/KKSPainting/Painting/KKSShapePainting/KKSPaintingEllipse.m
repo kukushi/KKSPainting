@@ -12,28 +12,24 @@
 @implementation KKSPaintingEllipse
 
 - (void)drawPath {
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    [self setupContext:context];
-    
-    CGRect rectToDraw = [self rectToDraw];
-    CGAffineTransform transform = [self currentTransform];
-    
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddEllipseInRect(path, &transform, rectToDraw);
-    CGContextAddPath(context, path);
-    
-    if (self.shouldFill) {
-        CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
-        CGContextDrawPath(context, kCGPathFillStroke);
-    } else {
-        CGContextStrokePath(context);
-    }
-    
-    self.path.CGPath = path;
 
-    self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
+    CGRect rectToDraw = [self rectToDraw];
+    self.path = [UIBezierPath bezierPathWithOvalInRect:rectToDraw];
+
+    [self setupBezierPath];
+    [self.path applyTransform:[self currentTransform]];
+
+    if (self.shouldFill) {
+        [self.path fillWithBlendMode:kCGBlendModeNormal alpha:self.alpha];
+    }
+
+    [self.path strokeWithBlendMode:kCGBlendModeNormal alpha:self.alpha];
+
+    [self updateSelectionStrokingPath];
+
+    if (self.shouldStrokePath) {
+        [self strokePathBounds];
+    }
 }
 
 @end

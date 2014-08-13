@@ -79,7 +79,11 @@
     [self.path applyTransform:[self currentTransform]];
     [self.path stroke];
 
-    self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
+    [self updateSelectionStrokingPath];
+
+    if (self.shouldStrokePath) {
+        [self strokePathBounds];
+    }
 }
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {

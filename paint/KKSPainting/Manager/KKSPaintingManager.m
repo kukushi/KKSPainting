@@ -39,9 +39,7 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 @property (nonatomic, strong) UILabel *indicatorLabel;
 
-
 @property (nonatomic) BOOL isActive;
-
 
 @property (nonatomic) BOOL canChangeContentSize;
 
@@ -342,7 +340,7 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 
 - (void)zoomAllPaintingsByScale:(CGFloat)scale {
     for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
-        [painting zoomByPlusCurrentScale:scale];
+        [painting zoomBySettingScale:scale];
     }
 }
 

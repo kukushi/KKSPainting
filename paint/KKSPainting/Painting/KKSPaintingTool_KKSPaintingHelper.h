@@ -12,9 +12,13 @@
 
 - (void)setupBezierPath;
 
-- (void)setupContext:(CGContextRef)context;
+/*
+ * renew the stroking path used to judge whether
+ * a path is selected from current path
+ */
+- (void)updateSelectionStrokingPath;
 
-- (UIBezierPath *)strokePathBoundsWithStroking:(BOOL)shouldStroking;
+- (void)strokePathBounds;
 
 - (void)strokeBoundWithBounds:(CGRect)rect;
 
