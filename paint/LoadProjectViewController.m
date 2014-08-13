@@ -31,10 +31,10 @@
     [super viewDidLoad];
     self.projectListTable.delegate=self;
     self.projectListTable.dataSource=self;
-    UIColor *color2=[UIColor colorWithRed:244.0f/255 green:252.0f/255 blue:121.0f/255 alpha:1.0];
-    UIColor *color1=[UIColor colorWithRed:255.0f/255 green:135.0f/255 blue:135.0f/255 alpha:1.0];
-    UIColor *color3=[UIColor colorWithRed:91.0f/255 green:235.0f/255 blue:192.0f/255 alpha:1.0];
-    UIColor *color4=[UIColor colorWithRed:120.0f/255 green:166.0f/255 blue:235.0f/255 alpha:1.0];
+    UIColor *color1=[UIColor colorWithRed:181.0f/255 green:239.0f/255 blue:155.0f/255 alpha:1.0];
+    UIColor *color3=[UIColor colorWithRed:253.0f/255 green:245.0f/255 blue:161.0f/255 alpha:1.0];
+    UIColor *color4=[UIColor colorWithRed:178.0f/255 green:225.0f/255 blue:250.0f/255 alpha:1.0];
+    UIColor *color2=[UIColor colorWithRed:255.0f/255 green:185.0f/255 blue:173.0f/255 alpha:1.0];
     self.colorArray=[[NSArray alloc]initWithObjects:color1,color2,color3,color4, nil];
     self.projectArray=[[FTEPaintingSaver retriveModels]mutableCopy];
 	// Do any additional setup after loading the view.
@@ -68,7 +68,7 @@
     CALayer * layer = [imageView layer];
     layer.borderColor = [[UIColor lightGrayColor] CGColor];
     layer.borderWidth = 3.0f;
-    imageView.image=model.cachedImage;
+    imageView.image=model.previewImage;
     
     return cell;
 }

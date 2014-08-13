@@ -99,15 +99,14 @@
         LastMotion=[NSDate date]; //上次检测的时间设为现在时间
         if ([[UIDevice currentDevice] proximityState]) {
             //在此写接近时，要做的操作逻辑代码
-            if (self.paintingManager.canUndo)
-            {
-                [self.paintingManager undo];
-            }
             NSLog(@"across");
             self.timer = [NSTimer scheduledTimerWithTimeInterval:0.70 target:self selector:@selector(clearAllOperation) userInfo:nil repeats:NO];
 
         }else{
-
+            if (self.paintingManager.canUndo)
+            {
+                [self.paintingManager undo];
+            }
             NSLog(@"No across");
             [self.timer invalidate];
             self.timer=nil;
