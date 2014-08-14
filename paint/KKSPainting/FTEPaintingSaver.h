@@ -26,7 +26,7 @@ typedef void (^FTEStoreCallback)(BOOL success);
                         name:(NSString *)name
                     callback:(FTEStoreCallback)callback;
 
-+ (NSArray *)retriveModels;
++ (NSArray *)retrieveModels;
 
 + (BOOL)deletePaintingWithName:(NSString *)name;
 

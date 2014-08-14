@@ -37,7 +37,7 @@
     UIColor *color4=[UIColor colorWithRed:178.0f/255 green:225.0f/255 blue:250.0f/255 alpha:1.0];
     UIColor *color2=[UIColor colorWithRed:255.0f/255 green:185.0f/255 blue:173.0f/255 alpha:1.0];
     self.colorArray=[[NSArray alloc]initWithObjects:color1,color2,color3,color4, nil];
-    self.projectArray=[[FTEPaintingSaver retriveModels]mutableCopy];
+    self.projectArray=[[FTEPaintingSaver retrieveModels]mutableCopy];
 	// Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated

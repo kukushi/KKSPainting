@@ -108,7 +108,11 @@
 
     [self.path strokeWithBlendMode:kCGBlendModeNormal alpha:self.alpha];
 
-    self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
+    [self updateSelectionStrokingPath];
+
+    if (self.shouldStrokePath) {
+        [self strokePathBounds];
+    }
 }
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {

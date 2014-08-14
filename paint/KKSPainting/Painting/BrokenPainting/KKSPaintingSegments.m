@@ -92,40 +92,17 @@
 
     [self.path applyTransform:[self currentTransform]];
     [self.path stroke];
-    self.strokingPath = [self strokePathBoundsWithStroking:self.shouldStrokePath];
+
+    [self updateSelectionStrokingPath];
+
+    if (self.shouldStrokePath) {
+        [self strokePathBounds];
+    }
 }
  
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{@"points": @"points"};
 }
-
-/*
-#pragma mark - NSCopying
-
-- (id)copyWithZone:(NSZone *)zone {
-    KKSPaintingSegments *painting = [super copyWithZone:zone];
-    if (painting) {
-        painting->_points = [self.points copy];
-    }
-    return painting;
-}
-
-
-#pragma mark - NSCoding
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super initWithCoder:decoder]) {
-        _points = [decoder decodeObjectForKey:@"points"];
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    if (self.points) {
-        [encoder encodeObject:self.points forKey:@"points"];
-    }
-}
- */
 
 @end

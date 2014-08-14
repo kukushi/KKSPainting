@@ -28,7 +28,7 @@
     });
 }
 
-+ (NSArray *)retriveModels {
++ (NSArray *)retrieveModels {
     return [FTEFileManager itemsInDirectory:nil];
 }
 

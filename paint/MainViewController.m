@@ -488,7 +488,7 @@
             [[UIDevice currentDevice] setProximityMonitoringEnabled:NO];
             self.accelerometer.delegate = nil;
             [self.nameTextField becomeFirstResponder];
-            self.projectArray=[[FTEPaintingSaver retriveModels]mutableCopy];
+            self.projectArray=[[FTEPaintingSaver retrieveModels]mutableCopy];
             if (self.paintingManager.modelIndex!=-1)
             {
                 KKSPaintingModel *model=[self.projectArray objectAtIndex:self.paintingManager.modelIndex];

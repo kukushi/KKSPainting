@@ -259,13 +259,6 @@
     [self.fillColor setFill];
 }
 
-- (void)setupContext:(CGContextRef)context {
-    CGContextSetLineCap(context, kCGLineCapRound);
-    CGContextSetLineWidth(context, self.scaledLineWidth);
-    CGContextSetStrokeColorWithColor(context, self.strokeColor.CGColor);
-    CGContextSetAlpha(context, self.alpha);
-}
-
 #pragma mark - Drawing Bounds
 
 - (UIColor *)boundsColor {
@@ -284,8 +277,17 @@
     [strokeColor setStroke];
 }
 
+- (void)updateSelectionStrokingPath {
+    CGPathRef strokingPath = CGPathCreateCopyByStrokingPath(self.path.CGPath,
+            NULL,
+            self.scaledLineWidth + 12.f,
+            kCGLineCapRound,
+            kCGLineJoinRound,
+            0.f);
+    self.strokingPath = [UIBezierPath bezierPathWithCGPath:strokingPath];
+}
 
-- (UIBezierPath *)strokePathBoundsWithStroking:(BOOL)shouldStroking {
+- (void)strokePathBounds {
     CGPathRef strokingPath = CGPathCreateCopyByStrokingPath(self.path.CGPath,
                                                             NULL,
                                                             self.scaledLineWidth + 5.f,
@@ -293,12 +295,8 @@
                                                             kCGLineJoinRound,
                                                             0.f);
     UIBezierPath *path = [UIBezierPath bezierPathWithCGPath:strokingPath];
-    if (shouldStroking) {
-        [self setupBoundsPath:path];
-        [path stroke];
-    }
-    
-    return path;
+    [self setupBoundsPath:path];
+    [path stroke];
 }
 
 - (void)strokeBoundWithBounds:(CGRect)rect {
