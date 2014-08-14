@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @class KKSPaintingScrollView;
 @class KKSPaintingManager;
+@class MainViewController;
 @interface SetPaintingBgViewController : UIViewController<UITextFieldDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *paintWidth;
@@ -19,4 +20,5 @@
 @property(nonatomic,strong)UIImage *bgImage;
 - (IBAction)setBgImg:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
+@property(weak,nonatomic)MainViewController *mainViewController;
 @end
