@@ -20,6 +20,7 @@
 
 - (void)setBackgroundImage:(UIImage *)image;
 
+
 - (void)showIndicatorLabelWithText:(NSString *)text;
 
 - (void)needUpdatePaintings;
