@@ -72,8 +72,8 @@
 }
 - (IBAction)setBg:(id)sender {
     NSLog(@"%f",self.drawerView.contentSize.width);
-    [self.drawerView setContentSize:CGSizeMake([self.paintWidth.text floatValue],[self.paintHeight.text floatValue])];
     [self.paintingManager clear];
+    [self.drawerView setContentSize:CGSizeMake([self.paintWidth.text floatValue],[self.paintHeight.text floatValue])];
     [self.drawerView.paintingManager setPaintingBackground:self.bgImage];
 
     [self dismissViewControllerAnimated:YES completion:nil];

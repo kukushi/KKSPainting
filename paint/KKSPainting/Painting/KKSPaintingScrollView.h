@@ -13,13 +13,18 @@
 
 @interface KKSPaintingScrollView : UIScrollView
 
+
+/**
+ *  
+ */
 @property (nonatomic, strong, readonly) KKSPaintingManager *paintingManager;
 
 @property (nonatomic, weak) UIViewController *viewController;
 
+@property (nonatomic, strong) UIImageView *backgroundView;
+
 
 - (void)setBackgroundImage:(UIImage *)image;
-
 
 - (void)showIndicatorLabelWithText:(NSString *)text;
 

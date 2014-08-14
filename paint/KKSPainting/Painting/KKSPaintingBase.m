@@ -169,8 +169,6 @@
     CGAffineTransform transform = CGAffineTransformMakeTranslation(self.translation.x,
                                                                    self.translation.y);
 
-    NSLog(@"%f", self.translation.x);
-
     CGPoint centerPoint = [self centerPoint];
     transform = CGAffineTransformTranslate(transform, centerPoint.x, centerPoint.y);
     transform = CGAffineTransformRotate(transform, self.rotateDegree);

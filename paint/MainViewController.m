@@ -13,6 +13,8 @@
 #import "SetPaintingBgViewController.h"
 #import "LoadProjectViewController.h"
 #import "KKSPaintingModel.h"
+#import "KKSLog.h"
+
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 @interface MainViewController ()<KKSPaintingManagerDelegate>
 {
@@ -77,7 +79,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
 
-    NSLog(@"appear");
+    KKSDLog(@"appear");
     if (self.drawerView.contentSize.width==0.0f) {
         [self.drawerView setContentSize:CGSizeMake(500.f, 1000.f)];
     }
@@ -89,7 +91,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
 
-    NSLog(@"disappear");
+    KKSDLog(@"disappear");
 
 }
 #pragma mark 改变线条颜色
@@ -106,7 +108,7 @@
         LastMotion=[NSDate date]; //上次检测的时间设为现在时间
         if ([[UIDevice currentDevice] proximityState]) {
             //在此写接近时，要做的操作逻辑代码
-            NSLog(@"across");
+            KKSDLog(@"across");
             self.timer = [NSTimer scheduledTimerWithTimeInterval:0.70 target:self selector:@selector(clearAllOperation) userInfo:nil repeats:NO];
 
         }else{
@@ -114,7 +116,7 @@
             {
                 [self.paintingManager undo];
             }
-            NSLog(@"No across");
+            KKSDLog(@"No across");
             [self.timer invalidate];
             self.timer=nil;
         }
@@ -671,7 +673,7 @@
         if ([model.name isEqualToString:self.nameTextField.text])
         {
             isTheSameName=YES;
-            NSLog(@"%@    /n %@",model.name,self.nameTextField.text);
+            KKSDLog(@"%@    /n %@",model.name,self.nameTextField.text);
         }
     }
     if (!self.nameTextField.text.length)
@@ -705,7 +707,7 @@
 }
 #pragma mark 缩放
 - (IBAction)zoomPaint:(UISlider *)sender {
-    NSLog(@"%f",sender.value);
+    KKSDLog(@"%f",sender.value);
     self.drawerView.scrollEnabled=NO;
     [self.scrollButton setBackgroundImage:[UIImage imageNamed:@"hand.png"] forState:UIControlStateNormal];
 

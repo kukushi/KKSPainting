@@ -11,9 +11,7 @@
 #import "KKSPaintingManager.h"
 
 
-@interface KKSPaintingScrollView() <NSCoding>
-
-@property (nonatomic, strong) UIImageView *backgroundView;
+@interface KKSPaintingScrollView()
 
 @property (nonatomic, strong) KKSPaintingView *paintingView;
 
@@ -46,9 +44,12 @@
 
 - (void)initializeSelf {
     self.scrollEnabled = NO;
+    self.minimumZoomScale = .25f;
+    self.maximumZoomScale = 10.f;
     
     _paintingManager = [[KKSPaintingManager alloc] init];
     _paintingManager.paintingView = self;
+    self.delegate = _paintingManager;
 
     _backgroundView = [[UIImageView alloc] initWithFrame:self.frame];
     [self addSubview:_backgroundView];
