@@ -191,6 +191,7 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
             else if (paintingMode == KKSPaintingModeRemove) {
                 [self registerUndoForPaintingWithPaintings:[self.paintingModel.usedPaintings copy]];
                 [self.paintingModel removePainting:self.selectedPainting];
+                self.selectedPainting.shouldStrokePath = NO;
                 [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
             }
             else if (paintingMode == KKSPaintingModeCopy) {
