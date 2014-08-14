@@ -9,6 +9,7 @@
 #import "SetPaintingBgViewController.h"
 #import "KKSPaintingManager.h"
 #import "KKSPaintingScrollView.h"
+#import "MainViewController.h"
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 
 @interface SetPaintingBgViewController ()
@@ -31,6 +32,16 @@
     self.paintHeight.text=[NSString stringWithFormat:@"%.0f",screenHeight];
     self.paintWidth.delegate=self;
     self.paintHeight.delegate=self;
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[UIDevice currentDevice] setProximityMonitoringEnabled:NO];
+    self.mainViewController.accelerometer.delegate = nil;
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[UIDevice currentDevice] setProximityMonitoringEnabled:YES];
+    self.mainViewController.accelerometer.delegate = self.mainViewController;
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {

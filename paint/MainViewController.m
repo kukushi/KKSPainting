@@ -19,6 +19,7 @@
     NSDate *LastMotion;
 }
 @property(nonatomic,strong)NSMutableArray *projectArray;
+@property(nonatomic,strong)NSTimer *timer;
 @end
 
 @implementation MainViewController
@@ -28,6 +29,12 @@
 {
     [super viewDidLoad];
     
+    
+    
+
+    
+
+
     self.shouldShowSheet=YES;
 
     self.paintingManager = self.drawerView.paintingManager;
@@ -56,8 +63,8 @@
     
 /*----------------------------加速计和距离传感器注册---------------------------*/
     //注册加速计，设置代理为自己
-    UIAccelerometer *accelerometer = [UIAccelerometer sharedAccelerometer];
-    accelerometer.delegate = self;
+    self.accelerometer = [UIAccelerometer sharedAccelerometer];
+    self.accelerometer.delegate = self;
     
     //注册近距离传感器
     [[UIDevice currentDevice] setProximityMonitoringEnabled:YES];
@@ -69,6 +76,8 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
+
+    NSLog(@"appear");
     if (self.drawerView.contentSize.width==0.0f) {
         [self.drawerView setContentSize:CGSizeMake(500.f, 1000.f)];
     }
@@ -77,7 +86,12 @@
         [self addFile:nil];
     }
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
 
+    NSLog(@"disappear");
+
+}
 #pragma mark 改变线条颜色
 - (IBAction)changeColor:(UIButton *)sender {
     self.paintingManager.color=sender.backgroundColor;
@@ -92,20 +106,26 @@
         LastMotion=[NSDate date]; //上次检测的时间设为现在时间
         if ([[UIDevice currentDevice] proximityState]) {
             //在此写接近时，要做的操作逻辑代码
+            NSLog(@"across");
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:0.70 target:self selector:@selector(clearAllOperation) userInfo:nil repeats:NO];
+
+        }else{
             if (self.paintingManager.canUndo)
             {
                 [self.paintingManager undo];
-
-
             }
-
-
-        }else{
-
+            NSLog(@"No across");
+            [self.timer invalidate];
+            self.timer=nil;
         }
     //}
 }
+-(void)clearAllOperation
+{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"是否清除所有操作？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"清除", nil];
+    [alert show];
 
+}
 
 #pragma mark 拖动上边栏
 -(void)handelPan:(UIPanGestureRecognizer*)gestureRecognizer
@@ -183,15 +203,15 @@
     // 检测摇动, 1.5为轻摇，2.0为重摇
     
 
-    if (fabsf(acceleration.x)>1.2||
-        fabsf(acceleration.y)>1.2||
-        fabsf(acceleration.z>1.2))
+    if (fabsf(acceleration.x)>1.4||
+        fabsf(acceleration.y)>1.4||
+        fabsf(acceleration.z>1.4))
     {
         
         if ([LastMotion timeIntervalSinceNow]<-0.5f)
         {
             LastMotion=[NSDate date];
-            UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"redo",@"清屏",@"显示/隐藏颜色栏",@"显示/隐藏工具栏",@"显示/隐藏全部" ,nil];
+            UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"redo",@"显示/隐藏颜色栏",@"显示/隐藏工具栏",@"显示/隐藏全部" ,nil];
             [actionSheet showInView:self.drawerView];
         }
     }
@@ -441,10 +461,12 @@
             patingBg.modalTransitionStyle=UIModalTransitionStylePartialCurl;
             patingBg.paintingManager=self.paintingManager;
             patingBg.drawerView=self.drawerView;
+            patingBg.mainViewController=self;
             [self presentViewController:patingBg animated:YES completion:nil];
         }else if (buttonIndex == 1) {
             LoadProjectViewController *loadProjectViewController=[[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"ProjectView"];
             loadProjectViewController.paintingManage=self.paintingManager;
+            loadProjectViewController.mainViewController=self;
             loadProjectViewController.modalTransitionStyle=UIModalTransitionStylePartialCurl;
             [self presentViewController:loadProjectViewController animated:YES completion:nil];
         }else if(buttonIndex==2){
@@ -463,6 +485,8 @@
             self.hiddenKeepAbout.hidden=YES;
         }else if (buttonIndex == 1) {
             self.addNameView.hidden=NO;
+            [[UIDevice currentDevice] setProximityMonitoringEnabled:NO];
+            self.accelerometer.delegate = nil;
             [self.nameTextField becomeFirstResponder];
             self.projectArray=[[FTEPaintingSaver retrieveModels]mutableCopy];
             if (self.paintingManager.modelIndex!=-1)
@@ -491,24 +515,36 @@
             }
         }
         else
-            if(buttonIndex==1){
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"是否清除所有操作？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"清除", nil];
-            [alert show];
-        }
+            if (buttonIndex==1)
+            {
+                CATransition *animation = [CATransition animation];
+                animation.type = kCATransitionFade;
+                animation.duration = 0.25;
+                [self.myTopBar.layer addAnimation:animation forKey:nil];
+                if (self.myTopBar.hidden==NO)
+                {
+                    self.myTopBar.hidden=YES;
+                }
+                else
+                {
+                    self.myTopBar.hidden=NO;
+                }
+                //如果bar不显示就显示，显示则隐藏
+            }
             else
                 if (buttonIndex==2)
                 {
                     CATransition *animation = [CATransition animation];
                     animation.type = kCATransitionFade;
                     animation.duration = 0.25;
-                    [self.myTopBar.layer addAnimation:animation forKey:nil];
-                    if (self.myTopBar.hidden==NO)
+                    [self.myDownBar.layer addAnimation:animation forKey:nil];
+                    if (self.myDownBar.hidden==NO)
                     {
-                        self.myTopBar.hidden=YES;
+                        self.myDownBar.hidden=YES;
                     }
                     else
                     {
-                        self.myTopBar.hidden=NO;
+                        self.myDownBar.hidden=NO;
                     }
                     //如果bar不显示就显示，显示则隐藏
                 }
@@ -518,37 +554,20 @@
                         CATransition *animation = [CATransition animation];
                         animation.type = kCATransitionFade;
                         animation.duration = 0.25;
+                        [self.myTopBar.layer addAnimation:animation forKey:nil];
                         [self.myDownBar.layer addAnimation:animation forKey:nil];
-                        if (self.myDownBar.hidden==NO)
+                        if (!self.myTopBar.hidden)
                         {
+                            self.myTopBar.hidden=YES;
                             self.myDownBar.hidden=YES;
                         }
                         else
                         {
+                            self.myTopBar.hidden=NO;
                             self.myDownBar.hidden=NO;
                         }
-                        //如果bar不显示就显示，显示则隐藏
-                    }
-                    else
-                        if (buttonIndex==4)
-                        {
-                            CATransition *animation = [CATransition animation];
-                            animation.type = kCATransitionFade;
-                            animation.duration = 0.25;
-                            [self.myTopBar.layer addAnimation:animation forKey:nil];
-                            [self.myDownBar.layer addAnimation:animation forKey:nil];
-                            if (!self.myTopBar.hidden)
-                            {
-                                self.myTopBar.hidden=YES;
-                                self.myDownBar.hidden=YES;
-                            }
-                            else
-                            {
-                                self.myTopBar.hidden=NO;
-                                self.myDownBar.hidden=NO;
-                            }
 
-                        }
+                    }
 
     }
 }
@@ -670,12 +689,17 @@
             [alert show];
             [self.nameTextField resignFirstResponder];
             self.addNameView.hidden=YES;
+            [[UIDevice currentDevice] setProximityMonitoringEnabled:YES];
+            self.accelerometer.delegate = self;
         }  ];
     }
+    
 }
 
 - (IBAction)cancelKeep:(id)sender {
     self.addNameView.hidden=YES;
+    [[UIDevice currentDevice] setProximityMonitoringEnabled:YES];
+    self.accelerometer.delegate = self;
     [self.nameTextField resignFirstResponder];
 
 }
