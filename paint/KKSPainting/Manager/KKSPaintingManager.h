@@ -29,7 +29,7 @@
 
 @class KKSPaintingScrollView;
 
-@interface KKSPaintingManager : NSObject
+@interface KKSPaintingManager : NSObject <UIScrollViewDelegate>
 
 @property (nonatomic) CGFloat lineWidth;
 @property (nonatomic) UIColor *color;

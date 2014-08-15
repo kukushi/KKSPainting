@@ -169,8 +169,6 @@
     CGAffineTransform transform = CGAffineTransformMakeTranslation(self.translation.x,
                                                                    self.translation.y);
 
-    NSLog(@"%f", self.translation.x);
-
     CGPoint centerPoint = [self centerPoint];
     transform = CGAffineTransformTranslate(transform, centerPoint.x, centerPoint.y);
     transform = CGAffineTransformRotate(transform, self.rotateDegree);
@@ -195,39 +193,6 @@
 - (CGFloat)scaledLineWidth {
     return self.realLineWidth;
 }
-
-/*
-#pragma mark - NSCopying
-
-- (id)copyWithZone:(NSZone *)zone {
-    KKSPaintingBase *painting = [[self class] allocWithZone:zone];
-    if (painting) {
-        painting->_lineWidth = _lineWidth;
-        painting->_alpha = _alpha;
-        painting->_shouldFill = _shouldFill;
-        painting->_shouldStrokePath = _shouldStrokePath;
-        
-        painting->_path = CGPathRetain(_path);
-        painting->_strokingPath = CGPathRetain(_strokingPath);
-        
-        painting->_strokeColor = CGColorRetain(_strokeColor);
-        painting->_fillColor = CGColorRetain(_fillColor);
-        
-        painting->_delegate = _delegate;
-        painting->_view = _view;
-        
-        painting->_isDrawingFinished = _isDrawingFinished;
-        
-        painting->_realLineWidth = _realLineWidth;
-        painting->_transform = _transform;
-        painting->_rotateDegree = _rotateDegree;
-        painting->_translation = _translation;
-        painting->_zoomScale = _zoomScale;
-        painting->_centerPoint = _centerPoint;
-    }
-    return painting;
-}
- */
 
 #pragma mark - Mantle
 

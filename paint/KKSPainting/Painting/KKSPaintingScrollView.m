@@ -11,9 +11,7 @@
 #import "KKSPaintingManager.h"
 
 
-@interface KKSPaintingScrollView() <NSCoding>
-
-@property (nonatomic, strong) UIImageView *backgroundView;
+@interface KKSPaintingScrollView()
 
 @property (nonatomic, strong) KKSPaintingView *paintingView;
 
@@ -46,14 +44,17 @@
 
 - (void)initializeSelf {
     self.scrollEnabled = NO;
+    self.minimumZoomScale = .25f;
+    self.maximumZoomScale = 10.f;
     
     _paintingManager = [[KKSPaintingManager alloc] init];
     _paintingManager.paintingView = self;
-    
+    self.delegate = _paintingManager;
+
     _backgroundView = [[UIImageView alloc] initWithFrame:self.frame];
     [self addSubview:_backgroundView];
     [self sendSubviewToBack:_backgroundView];
-    
+
     _paintingView = [[KKSPaintingView alloc] init];
     _paintingView.backgroundColor = [UIColor clearColor];
     __weak KKSPaintingScrollView *weakSelf = self;
@@ -126,7 +127,7 @@
                          animations:^{
                              //
                          } completion:^(BOOL finished) {
-        if (finished == YES) {
+        if (finished) {
             [UIView animateWithDuration:1.2f animations:^{
                 self.indicatorLabel.alpha = 0.f;
             }];
@@ -139,14 +140,15 @@
 
 - (void)setBackgroundImage:(UIImage *)image {
     self.backgroundView.image = image;
+    self.backgroundView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
 }
 
 #pragma mark - Override ScrollView
 
 - (void)setContentSize:(CGSize)contentSize {
-    CGRect backgoroundRect = CGRectZero;
-    backgoroundRect.size = contentSize;
-    self.paintingView.frame = backgoroundRect;
+    CGRect backgroundRect = CGRectZero;
+    backgroundRect.size = contentSize;
+    self.paintingView.frame = backgroundRect;
     
     [super setContentSize:contentSize];
 }

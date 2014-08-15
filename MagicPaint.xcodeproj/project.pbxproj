@@ -63,6 +63,78 @@
 		2BFB270DA67D4D7F8C0AD85A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24A4D5A2C164D18994E3209 /* libPods.a */; };
 		52117937199763C600CEC810 /* FTEPaintingSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 52117936199763C600CEC810 /* FTEPaintingSaver.m */; };
 		5211794119976F3100CEC810 /* KKSPaintingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5211794019976F3100CEC810 /* KKSPaintingModel.m */; };
+		5216515A199CB457000DD93F /* KKSBrokenPainting.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F6C18ED9141004E26B4 /* KKSBrokenPainting.m */; };
+		5216515B199CB457000DD93F /* KKSPointExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7A18ED9141004E26B4 /* KKSPointExtend.m */; };
+		5216515C199CB457000DD93F /* KKSPaintingBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E91BE91982688F000F5ED4 /* KKSPaintingBezier.m */; };
+		5216515D199CB457000DD93F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00868A5818C012E200CBBE3C /* AppDelegate.m */; };
+		5216515E199CB457000DD93F /* KKSPaintingSegments.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E91BE5198265A6000F5ED4 /* KKSPaintingSegments.m */; };
+		5216515F199CB457000DD93F /* KKSPaintingPen.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F6E18ED9141004E26B4 /* KKSPaintingPen.m */; };
+		52165160199CB457000DD93F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00868A5E18C012E200CBBE3C /* MainViewController.m */; };
+		52165161199CB457000DD93F /* KKSPaintingRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 522FE922198289D900E0E599 /* KKSPaintingRectangle.m */; };
+		52165162199CB457000DD93F /* KKSPaintingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7318ED9141004E26B4 /* KKSPaintingManager.m */; };
+		52165163199CB457000DD93F /* FTEFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D56E1B1997AC180015A107 /* FTEFileManager.m */; };
+		52165164199CB457000DD93F /* KKSPaintingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7818ED9141004E26B4 /* KKSPaintingScrollView.m */; };
+		52165165199CB457000DD93F /* UIBezierPath+Painting.m in Sources */ = {isa = PBXBuildFile; fileRef = 529C7036199A658300B341CF /* UIBezierPath+Painting.m */; };
+		52165166199CB457000DD93F /* KKSPaintingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F796B71999C36100F7A1D8 /* KKSPaintingView.m */; };
+		52165167199CB457000DD93F /* KKSPaintingBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7518ED9141004E26B4 /* KKSPaintingBase.m */; };
+		52165168199CB457000DD93F /* LoadProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0091003B19988B1500B5E6F7 /* LoadProjectViewController.m */; };
+		52165169199CB457000DD93F /* KKSShapePainting.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7C18ED9141004E26B4 /* KKSShapePainting.m */; };
+		5216516A199CB457000DD93F /* KKSPaintingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5211794019976F3100CEC810 /* KKSPaintingModel.m */; };
+		5216516B199CB457000DD93F /* NSMutableArray+KKSValueSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F7E18ED9141004E26B4 /* NSMutableArray+KKSValueSupport.m */; };
+		5216516C199CB457000DD93F /* FTEPaintingSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 52117936199763C600CEC810 /* FTEPaintingSaver.m */; };
+		5216516D199CB457000DD93F /* SetPaintingBgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00887F8818EDA66C004E26B4 /* SetPaintingBgViewController.m */; };
+		5216516E199CB457000DD93F /* KKSPaintingEllipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 522FE9251982905600E0E599 /* KKSPaintingEllipse.m */; };
+		5216516F199CB457000DD93F /* KKSPaintingLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E91BF519826DE6000F5ED4 /* KKSPaintingLine.m */; };
+		52165170199CB457000DD93F /* KKSPaintingPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E91BED19826B13000F5ED4 /* KKSPaintingPolygon.m */; };
+		52165171199CB457000DD93F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00868A5418C012E200CBBE3C /* main.m */; };
+		52165173199CB457000DD93F /* libUMSocial_Sdk_4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52E9320319962D0700BD9988 /* libUMSocial_Sdk_4.0.a */; };
+		52165174199CB457000DD93F /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0049926218C48FE9004B23F9 /* CoreAudio.framework */; };
+		52165175199CB457000DD93F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0049926018C4895F004B23F9 /* AVFoundation.framework */; };
+		52165176199CB457000DD93F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00868A4A18C012E200CBBE3C /* CoreGraphics.framework */; };
+		52165177199CB457000DD93F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00868A4C18C012E200CBBE3C /* UIKit.framework */; };
+		52165178199CB457000DD93F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00868A4818C012E200CBBE3C /* Foundation.framework */; };
+		52165179199CB457000DD93F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24A4D5A2C164D18994E3209 /* libPods.a */; };
+		5216517B199CB457000DD93F /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A8218C0185200CBBE3C /* pencil.png */; };
+		5216517C199CB457000DD93F /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D818E9A34700F9A8B1 /* delete@2x.png */; };
+		5216517D199CB457000DD93F /* ellipse.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A8018C0185200CBBE3C /* ellipse.png */; };
+		5216517E199CB457000DD93F /* degree3.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A9218C01DA100CBBE3C /* degree3.png */; };
+		5216517F199CB457000DD93F /* degree1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A9018C01DA100CBBE3C /* degree1.png */; };
+		52165180199CB457000DD93F /* degree2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A9118C01DA100CBBE3C /* degree2.png */; };
+		52165181199CB457000DD93F /* select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E3764C1997436800F2D686 /* select@2x.png */; };
+		52165182199CB457000DD93F /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52E931F519962D0700BD9988 /* UMSocialLocalizable.strings */; };
+		52165183199CB457000DD93F /* zoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C50D11998D7100087FE12 /* zoom.png */; };
+		52165184199CB457000DD93F /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 0057234918C3202B00E05B28 /* hand.png */; };
+		52165185199CB457000DD93F /* UMSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320A19962D0700BD9988 /* UMSLoginViewController.xib */; };
+		52165186199CB457000DD93F /* UMShareEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320819962D0700BD9988 /* UMShareEditViewController.xib */; };
+		52165187199CB457000DD93F /* keep.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A9C18C01FB900CBBE3C /* keep.png */; };
+		52165188199CB457000DD93F /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A9E18C01FB900CBBE3C /* share.png */; };
+		52165189199CB457000DD93F /* degree4.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A9318C01DA100CBBE3C /* degree4.png */; };
+		5216518A199CB457000DD93F /* curve.png in Resources */ = {isa = PBXBuildFile; fileRef = 0057234718C31F8D00E05B28 /* curve.png */; };
+		5216518B199CB457000DD93F /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A8118C0185200CBBE3C /* line.png */; };
+		5216518C199CB457000DD93F /* UMShareEditViewControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320919962D0700BD9988 /* UMShareEditViewControlleriPad.xib */; };
+		5216518D199CB457000DD93F /* polyline.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A8418C0185200CBBE3C /* polyline.png */; };
+		5216518E199CB457000DD93F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00868A6318C012E200CBBE3C /* Images.xcassets */; };
+		5216518F199CB457000DD93F /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320D19962D0700BD9988 /* UMSocialSDKResourcesNew.bundle */; };
+		52165190199CB457000DD93F /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320519962D0700BD9988 /* UMSCommentDetailController.xib */; };
+		52165191199CB457000DD93F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00868A5118C012E200CBBE3C /* InfoPlist.strings */; };
+		52165192199CB457000DD93F /* UMSnsAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320B19962D0700BD9988 /* UMSnsAccountViewController.xib */; };
+		52165193199CB457000DD93F /* rotate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D418E9A33500F9A8B1 /* rotate@2x.png */; };
+		52165194199CB457000DD93F /* UMSCommentInputController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320619962D0700BD9988 /* UMSCommentInputController.xib */; };
+		52165195199CB457000DD93F /* rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A8518C0185200CBBE3C /* rectangle.png */; };
+		52165196199CB457000DD93F /* pentagon.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A8318C0185200CBBE3C /* pentagon.png */; };
+		52165197199CB457000DD93F /* copy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38DA18E9A34B00F9A8B1 /* copy@2x.png */; };
+		52165198199CB457000DD93F /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 0049925E18C48326004B23F9 /* add.png */; };
+		52165199199CB457000DD93F /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A9D18C01FB900CBBE3C /* photo.png */; };
+		5216519A199CB457000DD93F /* UMSCommentInputControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320719962D0700BD9988 /* UMSCommentInputControlleriPad.xib */; };
+		5216519B199CB457000DD93F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00868A5A18C012E200CBBE3C /* Main.storyboard */; };
+		5216519C199CB457000DD93F /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 007E6FC518E17665006EDE73 /* edit.png */; };
+		5216519D199CB457000DD93F /* degree5.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A9418C01DA100CBBE3C /* degree5.png */; };
+		5216519E199CB457000DD93F /* noScroll.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C50D31998DA820087FE12 /* noScroll.png */; };
+		5216519F199CB457000DD93F /* degree6.png in Resources */ = {isa = PBXBuildFile; fileRef = 00868A9518C01DA100CBBE3C /* degree6.png */; };
+		521651A0199CB457000DD93F /* paint.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D4E9D618E02EE1006340AB /* paint.png */; };
+		521651A1199CB457000DD93F /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003F38D618E9A33B00F9A8B1 /* magnify@2x.png */; };
+		521651A2199CB457000DD93F /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320C19962D0700BD9988 /* UMSShareListController.xib */; };
+		521651AA199CB49A000DD93F /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521651A9199CB49A000DD93F /* Reveal.framework */; };
 		522FE923198289D900E0E599 /* KKSPaintingRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 522FE922198289D900E0E599 /* KKSPaintingRectangle.m */; };
 		522FE9261982905600E0E599 /* KKSPaintingEllipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 522FE9251982905600E0E599 /* KKSPaintingEllipse.m */; };
 		529C7037199A658300B341CF /* UIBezierPath+Painting.m in Sources */ = {isa = PBXBuildFile; fileRef = 529C7036199A658300B341CF /* UIBezierPath+Painting.m */; };
@@ -173,6 +245,9 @@
 		52117936199763C600CEC810 /* FTEPaintingSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTEPaintingSaver.m; sourceTree = "<group>"; };
 		5211793F19976F3100CEC810 /* KKSPaintingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKSPaintingModel.h; path = Painting/KKSPaintingModel.h; sourceTree = "<group>"; };
 		5211794019976F3100CEC810 /* KKSPaintingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKSPaintingModel.m; path = Painting/KKSPaintingModel.m; sourceTree = "<group>"; };
+		521651A7199CB457000DD93F /* MagicPaint copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MagicPaint copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		521651A8199CB458000DD93F /* MagicPaint copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MagicPaint copy-Info.plist"; path = "/Users/nekoP/Dropbox/Project/iOS/paint/MagicPaint copy-Info.plist"; sourceTree = "<absolute>"; };
+		521651A9199CB49A000DD93F /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		522FE921198289D900E0E599 /* KKSPaintingRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingRectangle.h; sourceTree = "<group>"; };
 		522FE922198289D900E0E599 /* KKSPaintingRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingRectangle.m; sourceTree = "<group>"; };
 		522FE9241982905600E0E599 /* KKSPaintingEllipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingEllipse.h; sourceTree = "<group>"; };
@@ -243,6 +318,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52165172199CB457000DD93F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52165173199CB457000DD93F /* libUMSocial_Sdk_4.0.a in Frameworks */,
+				521651AA199CB49A000DD93F /* Reveal.framework in Frameworks */,
+				52165174199CB457000DD93F /* CoreAudio.framework in Frameworks */,
+				52165175199CB457000DD93F /* AVFoundation.framework in Frameworks */,
+				52165176199CB457000DD93F /* CoreGraphics.framework in Frameworks */,
+				52165177199CB457000DD93F /* UIKit.framework in Frameworks */,
+				52165178199CB457000DD93F /* Foundation.framework in Frameworks */,
+				52165179199CB457000DD93F /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -254,6 +344,7 @@
 				00868A4718C012E200CBBE3C /* Frameworks */,
 				00868A4618C012E200CBBE3C /* Products */,
 				4074F7872A53482AA5F9637D /* Pods.xcconfig */,
+				521651A8199CB458000DD93F /* MagicPaint copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -262,6 +353,7 @@
 			children = (
 				00868A4518C012E200CBBE3C /* MagicPaint.app */,
 				00868A6918C012E300CBBE3C /* MagicPaintTests.xctest */,
+				521651A7199CB457000DD93F /* MagicPaint copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -269,6 +361,7 @@
 		00868A4718C012E200CBBE3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				521651A9199CB49A000DD93F /* Reveal.framework */,
 				0049926218C48FE9004B23F9 /* CoreAudio.framework */,
 				0049926018C4895F004B23F9 /* AVFoundation.framework */,
 				00868A4818C012E200CBBE3C /* Foundation.framework */,
@@ -564,6 +657,25 @@
 			productReference = 00868A6918C012E300CBBE3C /* MagicPaintTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		52165157199CB457000DD93F /* MagicPaint reveal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 521651A4199CB457000DD93F /* Build configuration list for PBXNativeTarget "MagicPaint reveal" */;
+			buildPhases = (
+				52165158199CB457000DD93F /* Check Pods Manifest.lock */,
+				52165159199CB457000DD93F /* Sources */,
+				52165172199CB457000DD93F /* Frameworks */,
+				5216517A199CB457000DD93F /* Resources */,
+				521651A3199CB457000DD93F /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MagicPaint reveal";
+			productName = paint;
+			productReference = 521651A7199CB457000DD93F /* MagicPaint copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -593,6 +705,7 @@
 			projectRoot = "";
 			targets = (
 				00868A4418C012E200CBBE3C /* MagicPaint */,
+				52165157199CB457000DD93F /* MagicPaint reveal */,
 				00868A6818C012E300CBBE3C /* MagicPaintTests */,
 			);
 		};
@@ -654,9 +767,86 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5216517A199CB457000DD93F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5216517B199CB457000DD93F /* pencil.png in Resources */,
+				5216517C199CB457000DD93F /* delete@2x.png in Resources */,
+				5216517D199CB457000DD93F /* ellipse.png in Resources */,
+				5216517E199CB457000DD93F /* degree3.png in Resources */,
+				5216517F199CB457000DD93F /* degree1.png in Resources */,
+				52165180199CB457000DD93F /* degree2.png in Resources */,
+				52165181199CB457000DD93F /* select@2x.png in Resources */,
+				52165182199CB457000DD93F /* UMSocialLocalizable.strings in Resources */,
+				52165183199CB457000DD93F /* zoom.png in Resources */,
+				52165184199CB457000DD93F /* hand.png in Resources */,
+				52165185199CB457000DD93F /* UMSLoginViewController.xib in Resources */,
+				52165186199CB457000DD93F /* UMShareEditViewController.xib in Resources */,
+				52165187199CB457000DD93F /* keep.png in Resources */,
+				52165188199CB457000DD93F /* share.png in Resources */,
+				52165189199CB457000DD93F /* degree4.png in Resources */,
+				5216518A199CB457000DD93F /* curve.png in Resources */,
+				5216518B199CB457000DD93F /* line.png in Resources */,
+				5216518C199CB457000DD93F /* UMShareEditViewControlleriPad.xib in Resources */,
+				5216518D199CB457000DD93F /* polyline.png in Resources */,
+				5216518E199CB457000DD93F /* Images.xcassets in Resources */,
+				5216518F199CB457000DD93F /* UMSocialSDKResourcesNew.bundle in Resources */,
+				52165190199CB457000DD93F /* UMSCommentDetailController.xib in Resources */,
+				52165191199CB457000DD93F /* InfoPlist.strings in Resources */,
+				52165192199CB457000DD93F /* UMSnsAccountViewController.xib in Resources */,
+				52165193199CB457000DD93F /* rotate@2x.png in Resources */,
+				52165194199CB457000DD93F /* UMSCommentInputController.xib in Resources */,
+				52165195199CB457000DD93F /* rectangle.png in Resources */,
+				52165196199CB457000DD93F /* pentagon.png in Resources */,
+				52165197199CB457000DD93F /* copy@2x.png in Resources */,
+				52165198199CB457000DD93F /* add.png in Resources */,
+				52165199199CB457000DD93F /* photo.png in Resources */,
+				5216519A199CB457000DD93F /* UMSCommentInputControlleriPad.xib in Resources */,
+				5216519B199CB457000DD93F /* Main.storyboard in Resources */,
+				5216519C199CB457000DD93F /* edit.png in Resources */,
+				5216519D199CB457000DD93F /* degree5.png in Resources */,
+				5216519E199CB457000DD93F /* noScroll.png in Resources */,
+				5216519F199CB457000DD93F /* degree6.png in Resources */,
+				521651A0199CB457000DD93F /* paint.png in Resources */,
+				521651A1199CB457000DD93F /* magnify@2x.png in Resources */,
+				521651A2199CB457000DD93F /* UMSShareListController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		52165158199CB457000DD93F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		521651A3199CB457000DD93F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6A3BCCA8166B46128AD7A186 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -726,6 +916,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				00868A7718C012E300CBBE3C /* paintTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52165159199CB457000DD93F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5216515A199CB457000DD93F /* KKSBrokenPainting.m in Sources */,
+				5216515B199CB457000DD93F /* KKSPointExtend.m in Sources */,
+				5216515C199CB457000DD93F /* KKSPaintingBezier.m in Sources */,
+				5216515D199CB457000DD93F /* AppDelegate.m in Sources */,
+				5216515E199CB457000DD93F /* KKSPaintingSegments.m in Sources */,
+				5216515F199CB457000DD93F /* KKSPaintingPen.m in Sources */,
+				52165160199CB457000DD93F /* MainViewController.m in Sources */,
+				52165161199CB457000DD93F /* KKSPaintingRectangle.m in Sources */,
+				52165162199CB457000DD93F /* KKSPaintingManager.m in Sources */,
+				52165163199CB457000DD93F /* FTEFileManager.m in Sources */,
+				52165164199CB457000DD93F /* KKSPaintingScrollView.m in Sources */,
+				52165165199CB457000DD93F /* UIBezierPath+Painting.m in Sources */,
+				52165166199CB457000DD93F /* KKSPaintingView.m in Sources */,
+				52165167199CB457000DD93F /* KKSPaintingBase.m in Sources */,
+				52165168199CB457000DD93F /* LoadProjectViewController.m in Sources */,
+				52165169199CB457000DD93F /* KKSShapePainting.m in Sources */,
+				5216516A199CB457000DD93F /* KKSPaintingModel.m in Sources */,
+				5216516B199CB457000DD93F /* NSMutableArray+KKSValueSupport.m in Sources */,
+				5216516C199CB457000DD93F /* FTEPaintingSaver.m in Sources */,
+				5216516D199CB457000DD93F /* SetPaintingBgViewController.m in Sources */,
+				5216516E199CB457000DD93F /* KKSPaintingEllipse.m in Sources */,
+				5216516F199CB457000DD93F /* KKSPaintingLine.m in Sources */,
+				52165170199CB457000DD93F /* KKSPaintingPolygon.m in Sources */,
+				52165171199CB457000DD93F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +1141,46 @@
 			};
 			name = Release;
 		};
+		521651A5199CB457000DD93F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4074F7872A53482AA5F9637D /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "paint/Supporting Files/MagicPaint-Prefix.pch";
+				INFOPLIST_FILE = "MagicPaint copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/paint/umeng_ios/UMSocial_Sdk_4.0";
+				PRODUCT_NAME = "MagicPaint copy";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		521651A6199CB457000DD93F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4074F7872A53482AA5F9637D /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "paint/Supporting Files/MagicPaint-Prefix.pch";
+				INFOPLIST_FILE = "MagicPaint copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/paint/umeng_ios/UMSocial_Sdk_4.0";
+				PRODUCT_NAME = "MagicPaint copy";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -946,6 +1207,15 @@
 			buildConfigurations = (
 				00868A7E18C012E300CBBE3C /* Debug */,
 				00868A7F18C012E300CBBE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		521651A4199CB457000DD93F /* Build configuration list for PBXNativeTarget "MagicPaint reveal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				521651A5199CB457000DD93F /* Debug */,
+				521651A6199CB457000DD93F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
