@@ -596,9 +596,9 @@
         //先把图片转成NSData
         UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         image=[self scaleToSize:image size:CGSizeMake(320,image.size.height/image.size.width*320)];
-        [self.drawerView setContentSize:CGSizeMake(320,image.size.height)];
+       // [self.drawerView setContentSize:CGSizeMake(320,image.size.height)];
         [self.paintingManager clear];
-        [self.drawerView.paintingManager setBackgroundImage contentSize:<#(CGSize)size#>];
+        [self.drawerView.paintingManager setBackgroundImage:image contentSize:CGSizeMake(320,image.size.height)];
     }
     
 }

@@ -88,7 +88,7 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
     self.selectedPainting = nil;
     self.paintingToFill = nil;
     self.undoManager = [[NSUndoManager alloc] init];
-    [self.paintingView setBackgroundImage:paintingModel.backgroundImage];
+    [self.paintingView setBackgroundImage:paintingModel.backgroundImage contentSize:self.paintingModel.originalContentSize];
     
     
     [self.paintingView needUpdatePaintings];
