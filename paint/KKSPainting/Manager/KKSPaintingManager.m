@@ -110,7 +110,6 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
             willSelectPainting = YES;
         }
     }
-    KKSDLog("Mode %td Hit on %@", self.paintingMode, self.selectedPainting);
 }
 
 - (KKSPaintingBase *)paintingContainedInAreaWithPoint:(CGPoint)point {
@@ -334,37 +333,16 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
     if (CGSizeEqualToSize(self.paintingModel.originalContentSize, CGSizeZero)) {
         self.paintingModel.originalContentSize = self.paintingView.contentSize;
     }
-    
-    [self adjustPaintingViewFrameWithScale:scale];
-    
-    self.paintingView.zoomScale = scale;
-    
-    NSAssert(self.paintingView.delegate != self, @"shit");
-    
-    [self zoomAllPaintingsByScale:scale];
-    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
-}
 
-- (void)adjustPaintingViewFrameWithScale:(CGFloat)scale {
     CGFloat contentWidth = self.paintingModel.originalContentSize.width * scale;
     CGFloat contentHeight = self.paintingModel.originalContentSize.height * scale;
-    self.paintingView.contentSize = CGSizeMake(contentWidth, contentHeight);
+    [self setBackgroundImage:self.paintingModel.backgroundImage
+                 contentSize:CGSizeMake(contentWidth,  contentHeight)];
     
-    CGFloat paintingViewWidth = CGRectGetWidth(self.paintingView.frame);
-    CGFloat paintingViewHeigth = CGRectGetHeight(self.paintingView.frame);
-    
-    CGRect frame = self.paintingView.frame;
-    
-    if (contentWidth < paintingViewWidth ||
-        ((contentWidth > paintingViewWidth) && paintingViewWidth <= [[UIScreen mainScreen] bounds].size.width)) {
-        frame.size.width = contentWidth;
-    }
-    
-    if (contentHeight < paintingViewHeigth ||
-        ((contentHeight > paintingViewHeigth) && paintingViewHeigth <= [[UIScreen mainScreen] bounds].size.height)) {
-        frame.size.height = contentHeight;
-    }
-    self.paintingView.frame = frame;
+    //self.paintingView.zoomScale = scale;
+    [self zoomAllPaintingsByScale:scale];
+    //NSLog(@"%f",scale);
+    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
 }
 
 #pragma mark - Undo & Redo & Clear
@@ -631,6 +609,7 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 
 - (void)setBackgroundImage:(UIImage *)image contentSize:(CGSize)size {
     self.paintingModel.backgroundImage = image;
+    self.paintingModel.originalContentSize = size;
     [self.paintingView setBackgroundImage:image contentSize:size];
 }
 
@@ -642,6 +621,11 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
     if (self.paintingView.scrollEnabled) {
         self.paintingView.scrollEnabled = NO;
     }
+}
+
+- (void)setPaintingView:(KKSPaintingScrollView *)paintingView {
+    paintingView.delegate = self;
+    _paintingView = paintingView;
 }
 
 - (void)setPaintingType:(KKSPaintingType)paintingType {
@@ -706,9 +690,5 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 }
 
 #pragma mark - UIScrollView Delegate
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.paintingView.backgroundView;
-}
 
 @end

@@ -43,15 +43,17 @@
 }
 
 - (void)initializeSelf {
-    self.scrollEnabled = NO;
     self.minimumZoomScale = .25f;
     self.maximumZoomScale = 10.f;
+    self.scrollEnabled = NO;
     
     _paintingManager = [[KKSPaintingManager alloc] init];
     _paintingManager.paintingView = self;
-    self.delegate = _paintingManager;
 
-    _backgroundView = [[UIImageView alloc] initWithFrame:self.frame];
+    NSAssert(self.delegate == _paintingManager, @"");
+    NSAssert(_paintingManager.paintingView.delegate == _paintingManager, @"");
+
+    _backgroundView = [[UIImageView alloc] init];
     [self addSubview:_backgroundView];
     [self sendSubviewToBack:_backgroundView];
 
@@ -146,7 +148,7 @@
     CGFloat contentWidth = MAX(size.width, image.size.width);
     CGFloat contentHeight = MAX(size.height, image.size.height);
 
-    CGRect frame = CGRectMake(0, 0, screenWidth, screenWidth);
+    CGRect frame = CGRectMake(0, 0, screenWidth, screenHeight);
     if (contentHeight < screenHeight) {
         frame.origin.y = (screenHeight - contentHeight) * 0.5;
         frame.size.height = contentHeight;
@@ -157,20 +159,20 @@
     }
     self.frame = frame;
 
-    self.backgroundView.frame = CGRectMake((contentWidth - image.size.width) * 0.5,
-                                           (contentHeight - image.size.height) * 0.5,
-                                           image.size.width,
-                                           image.size.height);
-    self.backgroundView.image = image;
-
-
+    if (image) {
+        self.backgroundView.frame = CGRectMake((contentWidth - image.size.width) * 0.5,
+                (contentHeight - image.size.height) * 0.5,
+                image.size.width,
+                image.size.height);
+        self.backgroundView.image = image;
+    }
 }
 
 - (void)resizeFrameWithSize:(CGSize)size {
 
     CGFloat contentWidth = size.width;
     CGFloat contentHeight = size.height;
-    
+
 
 }
 

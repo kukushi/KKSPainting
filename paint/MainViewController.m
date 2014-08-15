@@ -363,6 +363,10 @@
     */
 }
 
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.paintingManager.paintingView.backgroundView;
+}
+
 /*----------------------------选择绘制工具---------------------------*/
 
 
