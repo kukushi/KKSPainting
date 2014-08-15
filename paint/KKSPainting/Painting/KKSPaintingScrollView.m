@@ -138,17 +138,14 @@
 
 #pragma mark - Background Image
 
-- (void)setBackgroundImage:(UIImage *)image {
-    [self resizeFrameWithSize:image.size];
-    self.backgroundView.image = image;
-}
-
-- (void)resizeFrameWithSize:(CGSize)size {
+- (void)setBackgroundImage:(UIImage *)image
+                       contentSize:(CGSize)size {
     CGFloat screenWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
     CGFloat screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
-    CGFloat contentWidth = size.width;
-    CGFloat contentHeight = size.height;
-    
+
+    CGFloat contentWidth = MAX(size.width, image.size.width);
+    CGFloat contentHeight = MAX(size.height, image.size.height);
+
     CGRect frame = CGRectMake(0, 0, screenWidth, screenWidth);
     if (contentHeight < screenHeight) {
         frame.origin.y = (screenHeight - contentHeight) * 0.5;
@@ -159,6 +156,22 @@
         frame.size.width = contentWidth;
     }
     self.frame = frame;
+
+    self.backgroundView.frame = CGRectMake((contentWidth - image.size.width) * 0.5,
+                                           (contentHeight - image.size.height) * 0.5,
+                                           image.size.width,
+                                           image.size.height);
+    self.backgroundView.image = image;
+
+
+}
+
+- (void)resizeFrameWithSize:(CGSize)size {
+
+    CGFloat contentWidth = size.width;
+    CGFloat contentHeight = size.height;
+    
+
 }
 
 #pragma mark - Override ScrollView
