@@ -61,6 +61,7 @@
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    /*
     if ([self.paintWidth.text intValue]<320||self.paintWidth.text.length<3)
     {
         self.paintWidth.text=@"320";
@@ -68,13 +69,13 @@
     if ([self.paintHeight.text intValue]<[[NSString stringWithFormat:@"%.0f",screenHeight]intValue]||self.paintWidth.text.length<3)
     {
         self.paintHeight.text=[NSString stringWithFormat:@"%.0f",screenHeight];
-    }
+    }*/
 }
 - (IBAction)setBg:(id)sender {
     NSLog(@"%f",self.drawerView.contentSize.width);
     [self.paintingManager clear];
     [self.drawerView setContentSize:CGSizeMake([self.paintWidth.text floatValue],[self.paintHeight.text floatValue])];
-    [self.drawerView.paintingManager setPaintingBackground:self.bgImage];
+    [self.drawerView.paintingManager setBackgroundImage:self.bgImage contentSize:CGSizeMake([self.paintWidth.text floatValue],[self.paintHeight.text floatValue])];
 
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -111,15 +112,16 @@
         self.bgImgView.image=image;
         
         self.bgImage=image;
-        if (image.size.width>=320)
-        {
+        
+       // if (image.size.width>=320)
+       // {
             self.paintWidth.text=[NSString stringWithFormat:@"%.0f",image.size.width];
-        }
+       // }
 
-        if (image.size.height>=[[NSString stringWithFormat:@"%.0f",screenHeight]intValue])
-        {
+       // if (image.size.height>=[[NSString stringWithFormat:@"%.0f",screenHeight]intValue])
+       //{
             self.paintHeight.text=[NSString stringWithFormat:@"%.0f",image.size.height];
-        }
+       // }*/
     }
     
 }
