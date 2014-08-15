@@ -57,10 +57,8 @@
 #pragma mark - Drawing
 
 - (void)drawPath {
-
     [self setupBezierPath];
-
-    //
+    
     CGAffineTransform transform = [self currentTransform];
     UIBezierPath *transformedPath = [self.path copy];
     [transformedPath applyTransform:transform];

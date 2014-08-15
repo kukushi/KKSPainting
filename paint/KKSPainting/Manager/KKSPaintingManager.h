@@ -66,6 +66,8 @@
 
 - (void)setPaintingBackground:(UIImage *)image;
 
+- (void)setPaintingContentSize:(CGSize)size;
+
 - (void)zoomByScale:(CGFloat)scale;
 
 - (void)paintingFinish;
