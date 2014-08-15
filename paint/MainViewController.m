@@ -598,7 +598,7 @@
         image=[self scaleToSize:image size:CGSizeMake(320,image.size.height/image.size.width*320)];
         [self.drawerView setContentSize:CGSizeMake(320,image.size.height)];
         [self.paintingManager clear];
-        [self.drawerView.paintingManager setPaintingBackground:image];
+        [self.drawerView.paintingManager setBackgroundImage contentSize:<#(CGSize)size#>];
     }
     
 }

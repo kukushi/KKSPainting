@@ -629,12 +629,9 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 
 #pragma mark - Background
 
-- (void)setPaintingBackground:(UIImage *)image {
-    [self.paintingView setBackgroundImage:image];
-}
-
-- (void)setPaintingContentSize:(CGSize)size {
-    [self.paintingView resizeFrameWithSize:size];
+- (void)setBackgroundImage:(UIImage *)image contentSize:(CGSize)size {
+    self.paintingModel.backgroundImage = image;
+    [self.paintingView setBackgroundImage:image contentSize:size];
 }
 
 #pragma mark - Accessor & Setter

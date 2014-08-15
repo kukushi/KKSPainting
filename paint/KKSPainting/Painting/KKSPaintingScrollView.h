@@ -24,9 +24,7 @@
 @property (nonatomic, strong) UIImageView *backgroundView;
 
 
-- (void)setBackgroundImage:(UIImage *)image;
-
-- (void)resizeFrameWithSize:(CGSize)size;
+- (void)setBackgroundImage:(UIImage *)image contentSize:(CGSize)size;
 
 - (void)showIndicatorLabelWithText:(NSString *)text;
 
