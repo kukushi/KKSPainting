@@ -20,8 +20,7 @@ typedef NS_ENUM(NSInteger, KKSPaintingMode) {
     // Editing Mode
     KKSPaintingModeMove,
 
-    KKSPaintingModeRotate,
-    KKSPaintingModeZoom,
+    KKSPaintingModeRotateZoom,
     KKSPaintingModeRemove,
     KKSPaintingModeCopy,
     KKSPaintingModePaste,

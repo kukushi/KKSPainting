@@ -26,6 +26,8 @@
 
 - (void)setBackgroundImage:(UIImage *)image;
 
+- (void)resizeFrameWithSize:(CGSize)size;
+
 - (void)showIndicatorLabelWithText:(NSString *)text;
 
 - (void)needUpdatePaintings;

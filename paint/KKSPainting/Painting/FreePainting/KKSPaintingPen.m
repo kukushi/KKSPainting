@@ -37,17 +37,7 @@
     [self.path addQuadCurveToPoint:midPoint controlPoint:self.previousLocation];
 
     self.previousLocation = [touch locationInView:self.view];
-    // previousPoint = currentPoint;
-
-/*
-    CGPoint morePreviousLocation = self.previousLocation;
-    self.previousLocation = [touch previousLocationInView:self.view];
-    self.currentLocation = [touch locationInView:self.view];
     
-    CGRect drawingBounds = [self addPathWithPreviousPoint:morePreviousLocation
-                                             controlPoint:self.previousLocation
-                                             currentPoint:self.currentLocation];
-                                             */
     CGRect drawingBounds = self.path.bounds;
     CGFloat bounceWidth = [self scaledLineWidth];
     drawingBounds.origin.x -= bounceWidth;
@@ -67,10 +57,8 @@
 #pragma mark - Drawing
 
 - (void)drawPath {
-
     [self setupBezierPath];
-
-    //
+    
     CGAffineTransform transform = [self currentTransform];
     UIBezierPath *transformedPath = [self.path copy];
     [transformedPath applyTransform:transform];
@@ -78,7 +66,7 @@
 
     CGPathRef strokingPath = CGPathCreateCopyByStrokingPath(self.path.CGPath,
             &transform,
-            self.scaledLineWidth + 3.f,
+            self.scaledLineWidth + 12.f,
             kCGLineCapRound,
             kCGLineJoinRound,
             0.f);

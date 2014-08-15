@@ -648,7 +648,7 @@
             self.nowEditMode.text=@"模式:删除图元";
             break;
         case 1:
-            self.paintingManager.paintingMode=KKSPaintingModeRotate;
+            self.paintingManager.paintingMode= KKSPaintingModeRotateZoom;
             self.nowEditMode.text=@"模式:旋转图元";
             break;
         case 2:
@@ -656,7 +656,7 @@
             self.nowEditMode.text=@"模式:复制图元";
             break;
         case 3:
-            self.paintingManager.paintingMode=KKSPaintingModeZoom;
+            self.paintingManager.paintingMode=KKSPaintingModeRotateZoom;
             self.nowEditMode.text=@"模式:缩放图元";
             break;
         case 4:

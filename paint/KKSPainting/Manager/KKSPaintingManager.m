@@ -171,8 +171,7 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
             [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
             
             if (paintingMode == KKSPaintingModeMove ||
-                paintingMode == KKSPaintingModeZoom ||
-                paintingMode == KKSPaintingModeRotate) {
+                paintingMode == KKSPaintingModeRotateZoom) {
                 self.paintingModel.cachedImage = [self imageBeforePaintingComplete:self.selectedPainting];
                 self.isActive = YES;
                 self.previousLocation = touchedLocation;
@@ -181,11 +180,8 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
                 if (paintingMode == KKSPaintingModeMove) {
                     [self registerUndoForMovingWithPainting:self.selectedPainting];
                 }
-                else if (paintingMode == KKSPaintingModeRotate) {
-                    [self registerUndoForRotatingWithPainting:self.selectedPainting];
-                }
-                else if (paintingMode == KKSPaintingModeZoom) {
-                    [self registerUndoForZoomingWithPainting:self.selectedPainting];
+                else if (paintingMode == KKSPaintingModeRotateZoom) {
+                    [self registerUndoForRotatingZoomingWithPainting:self.selectedPainting];
                 }
             }
             else if (paintingMode == KKSPaintingModeRemove) {
@@ -215,31 +211,21 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
             
             [self.paintingView needUpdatePaintings];
         }
-        else if (paintingMode == KKSPaintingModeRotate) {
+        else if (paintingMode == KKSPaintingModeRotateZoom) {
             CGPoint origin = [self.selectedPainting pathCenterPoint];
             CGPoint initialPosition = self.previousLocation;
-            CGPoint touchedPosition = [touch locationInView:self.paintingView];
             
-            CGFloat degree = degreeWithPoints(origin, initialPosition, touchedPosition);
-            self.previousLocation = touchedPosition;
-            
+            CGFloat degree = degreeWithPoints(origin, initialPosition, touchedLocation);
+            self.previousLocation = touchedLocation;
             [self.selectedPainting rotateByIncreasingDegree:degree];
-            
-            [self.paintingView needUpdatePaintings];
-        }
-        else if (self.paintingMode == KKSPaintingModeZoom) {
-            CGPoint currentLocation = [touch locationInView:self.paintingView];
-            CGPoint centerPoint = [self.selectedPainting pathCenterPoint];
+
             CGPoint basicPoint = self.firstTouchLocation;
-            CGPoint previousPoint = self.previousLocation;
-            CGFloat scale = scaleChangeBetweenPoints(centerPoint,
-                                                     basicPoint,
-                                                     previousPoint,
-                                                     currentLocation);
-            self.previousLocation = currentLocation;
-            
+            CGFloat scale = scaleChangeBetweenPoints(origin, basicPoint, initialPosition, touchedLocation);
+
             [self.selectedPainting zoomByPlusCurrentScale:scale];
-            
+
+            KKSDLog("%f %f", degree, scale);
+
             [self.paintingView needUpdatePaintings];
         }
     }
@@ -265,8 +251,7 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
         }
     }
     else if (self.paintingMode == KKSPaintingModeMove ||
-             self.paintingMode == KKSPaintingModeRotate ||
-             self.paintingMode == KKSPaintingModeZoom) {
+             self.paintingMode == KKSPaintingModeRotateZoom) {
         if (self.selectedPainting) {
             self.selectedPainting.shouldStrokePath = NO;
             [self updateCachedImageWithPaintingsAfterPainting:self.selectedPainting];
@@ -442,55 +427,33 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 }
 
 
-- (void)undoRotating:(id)object {
+- (void)undoRotatingZooming:(id)object {
     
     KKSPaintingBase *painting = object[KKSPaintingUndoKeyPainting];
-    [self registerUndoForRotatingWithPainting:painting];
+    [self registerUndoForRotatingZoomingWithPainting:painting];
     
-    NSValue *newValue = object[KKSPaintingUndoKeyDegree];
-    CGFloat newDegree;
-    [newValue getValue:&newDegree];
-    
+    NSNumber *degreeNumber = object[KKSPaintingUndoKeyDegree];
+    CGFloat newDegree = [degreeNumber floatValue];
+    NSNumber *scaleNumber = object[KKSPaintingUndoKeyZoomScale];
+    CGFloat newScale = [scaleNumber floatValue];
+
     [painting rotateBySettingDegree:newDegree];
-    
-    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
-}
-
-- (void)registerUndoForRotatingWithPainting:(KKSPaintingBase *)painting {
-    CGFloat degree = [painting currentRotateDegree];
-    NSValue *value = [NSValue value:&degree withObjCType:@encode(CGFloat)];
-    
-    NSDictionary *dict = @{KKSPaintingUndoKeyPainting: painting,
-                           KKSPaintingUndoKeyDegree: value};
-    
-    [self.undoManager registerUndoWithTarget:self
-                                    selector:@selector(undoRotating:)
-                                      object:dict];
-}
-
-- (void)undoZooming:(id)object {
-    
-    KKSPaintingBase *painting = object[KKSPaintingUndoKeyPainting];
-    [self registerUndoForZoomingWithPainting:painting];
-    
-    NSValue *newValue = object[KKSPaintingUndoKeyZoomScale];
-    CGFloat newScale;
-    [newValue getValue:&newScale];
-    
     [painting zoomBySettingScale:newScale];
     
     [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
 }
 
-- (void)registerUndoForZoomingWithPainting:(KKSPaintingBase *)painting {
+- (void)registerUndoForRotatingZoomingWithPainting:(KKSPaintingBase *)painting {
+    CGFloat degree = [painting currentRotateDegree];
     CGFloat scale = [painting currentZoomScale];
-    NSValue *value = [NSValue value:&scale withObjCType:@encode(CGFloat)];
     
     NSDictionary *dict = @{KKSPaintingUndoKeyPainting: painting,
-                           KKSPaintingUndoKeyZoomScale: value};
+                           KKSPaintingUndoKeyDegree: @(degree),
+                           KKSPaintingUndoKeyZoomScale: @(scale)
+    };
     
     [self.undoManager registerUndoWithTarget:self
-                                    selector:@selector(undoZooming:)
+                                    selector:@selector(undoRotatingZooming:)
                                       object:dict];
 }
 
@@ -659,8 +622,7 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 
     return (paintingMode == KKSPaintingModeRemove ||
             paintingMode == KKSPaintingModeCopy ||
-            paintingMode == KKSPaintingModeZoom ||
-            paintingMode == KKSPaintingModeRotate ||
+            paintingMode == KKSPaintingModeRotateZoom ||
             paintingMode == KKSPaintingModeMove ||
             paintingMode == KKSPaintingModePaste);
 }
@@ -668,8 +630,11 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 #pragma mark - Background
 
 - (void)setPaintingBackground:(UIImage *)image {
-    self.paintingModel.backgroundImage = image;
     [self.paintingView setBackgroundImage:image];
+}
+
+- (void)setPaintingContentSize:(CGSize)size {
+    [self.paintingView resizeFrameWithSize:size];
 }
 
 #pragma mark - Accessor & Setter
@@ -736,8 +701,7 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
             [self.painting drawPath];
         }
         else if (self.paintingMode == KKSPaintingModeMove ||
-                 self.paintingMode == KKSPaintingModeRotate ||
-                 self.paintingMode == KKSPaintingModeZoom) {
+                 self.paintingMode == KKSPaintingModeRotateZoom) {
             [self redrawPaintingsFromSelectedPainting];
             
         }
