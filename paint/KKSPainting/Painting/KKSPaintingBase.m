@@ -245,7 +245,7 @@
 - (void)updateSelectionStrokingPath {
     CGPathRef strokingPath = CGPathCreateCopyByStrokingPath(self.path.CGPath,
             NULL,
-            self.scaledLineWidth + 12.f,
+            self.scaledLineWidth + 15.f,
             kCGLineCapRound,
             kCGLineJoinRound,
             0.f);
