@@ -88,7 +88,8 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
     self.selectedPainting = nil;
     self.paintingToFill = nil;
     self.undoManager = [[NSUndoManager alloc] init];
-    [self.paintingView setBackgroundImage:paintingModel.backgroundImage contentSize:self.paintingModel.originalContentSize];
+    [self.paintingView setBackgroundImage:paintingModel.backgroundImage
+                              contentSize:self.paintingModel.originalContentSize];
     
     
     [self.paintingView needUpdatePaintings];
@@ -330,18 +331,19 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 }
 
 - (void)zoomByScale:(CGFloat)scale {
+    /*
     if (CGSizeEqualToSize(self.paintingModel.originalContentSize, CGSizeZero)) {
         self.paintingModel.originalContentSize = self.paintingView.contentSize;
     }
+    */
 
     CGFloat contentWidth = self.paintingModel.originalContentSize.width * scale;
     CGFloat contentHeight = self.paintingModel.originalContentSize.height * scale;
+
     [self setBackgroundImage:self.paintingModel.backgroundImage
                  contentSize:CGSizeMake(contentWidth,  contentHeight)];
-    
-    //self.paintingView.zoomScale = scale;
+
     [self zoomAllPaintingsByScale:scale];
-    //NSLog(@"%f",scale);
     [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
 }
 

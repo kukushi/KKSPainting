@@ -159,12 +159,12 @@
     }
     self.frame = frame;
 
+    self.backgroundView.image = image;
     if (image) {
         self.backgroundView.frame = CGRectMake((contentWidth - image.size.width) * 0.5,
                 (contentHeight - image.size.height) * 0.5,
                 image.size.width,
                 image.size.height);
-        self.backgroundView.image = image;
     }
 }
 
