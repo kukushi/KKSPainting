@@ -34,8 +34,7 @@
     
     
 
-    
-
+    self.nameTextField.delegate=self;
 
     self.shouldShowSheet=YES;
 
@@ -728,5 +727,14 @@
 
 
     }
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.nameTextField resignFirstResponder];
+    return YES;
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.nameTextField resignFirstResponder];
 }
 @end
