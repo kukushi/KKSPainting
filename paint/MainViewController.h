@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "KKSPaintingScrollView.h"
 
-@interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIScrollViewDelegate,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
+@interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 {
 
 }
