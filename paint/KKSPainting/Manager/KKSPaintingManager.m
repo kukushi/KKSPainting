@@ -88,7 +88,8 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
     self.selectedPainting = nil;
     self.paintingToFill = nil;
     self.undoManager = [[NSUndoManager alloc] init];
-    [self.paintingView setBackgroundImage:paintingModel.backgroundImage contentSize:self.paintingModel.originalContentSize];
+    [self.paintingView setBackgroundImage:paintingModel.backgroundImage
+                              contentSize:self.paintingModel.originalContentSize];
     
     
     [self.paintingView needUpdatePaintings];
@@ -102,15 +103,13 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 
 - (void)updateSelectedPaintingWithPoint:(CGPoint)point {
     self.selectedPainting = nil;
-    
-    BOOL willSelectPainting = NO;
+
+    // keep the last one selected
     for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
         if ([painting pathContainsPoint:point]) {
             self.selectedPainting = painting;
-            willSelectPainting = YES;
         }
     }
-    KKSDLog("Mode %td Hit on %@", self.paintingMode, self.selectedPainting);
 }
 
 - (KKSPaintingBase *)paintingContainedInAreaWithPoint:(CGPoint)point {
@@ -259,9 +258,6 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
             [self.paintingView needUpdatePaintings];
             
             self.isActive = NO;
-
-            // after editing end, mode should be changed to selection
-            // self.paintingMode = KKSPaintingModeMove;
         }
     }
     else if (self.paintingMode == KKSPaintingModeFillColor) {
@@ -331,40 +327,14 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 }
 
 - (void)zoomByScale:(CGFloat)scale {
-    if (CGSizeEqualToSize(self.paintingModel.originalContentSize, CGSizeZero)) {
-        self.paintingModel.originalContentSize = self.paintingView.contentSize;
-    }
-    
-    [self adjustPaintingViewFrameWithScale:scale];
-    
-    self.paintingView.zoomScale = scale;
-    
-    NSAssert(self.paintingView.delegate != self, @"shit");
-    
-    [self zoomAllPaintingsByScale:scale];
-    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
-}
 
-- (void)adjustPaintingViewFrameWithScale:(CGFloat)scale {
     CGFloat contentWidth = self.paintingModel.originalContentSize.width * scale;
     CGFloat contentHeight = self.paintingModel.originalContentSize.height * scale;
-    self.paintingView.contentSize = CGSizeMake(contentWidth, contentHeight);
-    
-    CGFloat paintingViewWidth = CGRectGetWidth(self.paintingView.frame);
-    CGFloat paintingViewHeigth = CGRectGetHeight(self.paintingView.frame);
-    
-    CGRect frame = self.paintingView.frame;
-    
-    if (contentWidth < paintingViewWidth ||
-        ((contentWidth > paintingViewWidth) && paintingViewWidth <= [[UIScreen mainScreen] bounds].size.width)) {
-        frame.size.width = contentWidth;
-    }
-    
-    if (contentHeight < paintingViewHeigth ||
-        ((contentHeight > paintingViewHeigth) && paintingViewHeigth <= [[UIScreen mainScreen] bounds].size.height)) {
-        frame.size.height = contentHeight;
-    }
-    self.paintingView.frame = frame;
+
+    [self.paintingView adjustFrameWithSize:CGSizeMake(contentWidth, contentHeight)];
+
+    [self zoomAllPaintingsByScale:scale];
+    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
 }
 
 #pragma mark - Undo & Redo & Clear
@@ -631,6 +601,7 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 
 - (void)setBackgroundImage:(UIImage *)image contentSize:(CGSize)size {
     self.paintingModel.backgroundImage = image;
+    self.paintingModel.originalContentSize = size;
     [self.paintingView setBackgroundImage:image contentSize:size];
 }
 
@@ -642,6 +613,11 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
     if (self.paintingView.scrollEnabled) {
         self.paintingView.scrollEnabled = NO;
     }
+}
+
+- (void)setPaintingView:(KKSPaintingScrollView *)paintingView {
+    paintingView.delegate = self;
+    _paintingView = paintingView;
 }
 
 - (void)setPaintingType:(KKSPaintingType)paintingType {
@@ -706,9 +682,5 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 }
 
 #pragma mark - UIScrollView Delegate
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.paintingView.backgroundView;
-}
 
 @end
