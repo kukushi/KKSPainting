@@ -103,12 +103,11 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 
 - (void)updateSelectedPaintingWithPoint:(CGPoint)point {
     self.selectedPainting = nil;
-    
-    BOOL willSelectPainting = NO;
+
+    // keep the last one selected
     for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
         if ([painting pathContainsPoint:point]) {
             self.selectedPainting = painting;
-            willSelectPainting = YES;
         }
     }
 }
@@ -259,9 +258,6 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
             [self.paintingView needUpdatePaintings];
             
             self.isActive = NO;
-
-            // after editing end, mode should be changed to selection
-            // self.paintingMode = KKSPaintingModeMove;
         }
     }
     else if (self.paintingMode == KKSPaintingModeFillColor) {
@@ -331,17 +327,11 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 }
 
 - (void)zoomByScale:(CGFloat)scale {
-    /*
-    if (CGSizeEqualToSize(self.paintingModel.originalContentSize, CGSizeZero)) {
-        self.paintingModel.originalContentSize = self.paintingView.contentSize;
-    }
-    */
 
     CGFloat contentWidth = self.paintingModel.originalContentSize.width * scale;
     CGFloat contentHeight = self.paintingModel.originalContentSize.height * scale;
 
-    [self setBackgroundImage:self.paintingModel.backgroundImage
-                 contentSize:CGSizeMake(contentWidth,  contentHeight)];
+    [self.paintingView adjustFrameWithSize:CGSizeMake(contentWidth, contentHeight)];
 
     [self zoomAllPaintingsByScale:scale];
     [self redrawViewWithPaintings:self.paintingModel.usedPaintings];

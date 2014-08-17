@@ -141,12 +141,27 @@
 #pragma mark - Background Image
 
 - (void)setBackgroundImage:(UIImage *)image
-                       contentSize:(CGSize)size {
-    CGFloat screenWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
-    CGFloat screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
+               contentSize:(CGSize)size {
 
     CGFloat contentWidth = MAX(size.width, image.size.width);
     CGFloat contentHeight = MAX(size.height, image.size.height);
+
+    [self adjustFrameWithSize:CGSizeMake(contentWidth, contentHeight)];
+
+    self.backgroundView.image = image;
+    if (image) {
+        self.backgroundView.frame = CGRectMake((contentWidth - image.size.width) * 0.5,
+                                               (contentHeight - image.size.height) * 0.5,
+                image.size.width,
+                image.size.height);
+    }
+}
+
+- (void)adjustFrameWithSize:(CGSize)size {
+    CGFloat screenWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
+    CGFloat screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
+    CGFloat contentWidth = size.width;
+    CGFloat contentHeight = size.height;
 
     CGRect frame = CGRectMake(0, 0, screenWidth, screenHeight);
     if (contentHeight < screenHeight) {
@@ -158,22 +173,7 @@
         frame.size.width = contentWidth;
     }
     self.frame = frame;
-
-    self.backgroundView.image = image;
-    if (image) {
-        self.backgroundView.frame = CGRectMake((contentWidth - image.size.width) * 0.5,
-                (contentHeight - image.size.height) * 0.5,
-                image.size.width,
-                image.size.height);
-    }
-}
-
-- (void)resizeFrameWithSize:(CGSize)size {
-
-    CGFloat contentWidth = size.width;
-    CGFloat contentHeight = size.height;
-
-
+    self.contentSize = CGSizeMake(contentWidth, contentHeight);
 }
 
 #pragma mark - Override ScrollView
