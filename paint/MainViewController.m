@@ -79,7 +79,7 @@
 
     KKSDLog(@"appear");
     if (self.drawerView.contentSize.width==0.0f) {
-        [self.drawerView setContentSize:CGSizeMake(500.f, 1000.f)];
+        [self.drawerView setBackgroundImage:nil contentSize:CGSizeMake(500.f, 1000.f)];
     }
     if (self.shouldShowSheet)
     {
