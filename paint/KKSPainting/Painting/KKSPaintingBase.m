@@ -16,10 +16,15 @@
 @property (nonatomic) CGFloat realLineWidth;
 
 @property (nonatomic) CGFloat rotateDegree;
-@property (nonatomic) CGPoint translation;
+
 @property (nonatomic) CGFloat zoomScale;
 
+@property (nonatomic) CGPoint translation;
+@property (nonatomic) CGFloat zoomAroundCenterScale;
+
 @property (nonatomic) CGPoint centerPoint;
+
+@property (nonatomic) BOOL shouldUpdateTransform;
 
 @end
 
@@ -38,7 +43,7 @@
         _path = [UIBezierPath bezierPath];
         _isDrawingFinished = YES;
         _transform = CGAffineTransformIdentity;
-        _zoomScale = 1.f;
+        _zoomAroundCenterScale = 1.f;
     }
     return self;
 }
@@ -128,41 +133,51 @@
 
 - (void)moveBySettingTranslation:(CGPoint)translation {
     self.translation = translation;
-    [self updateTransform];
+    self.shouldUpdateTransform = YES;
 }
 
 - (void)moveByIncreasingTranslation:(CGPoint)translation {
     self.translation = CGPointMake(self.translation.x + translation.x,
                                    self.translation.y + translation.y);
-    [self updateTransform];
+    self.shouldUpdateTransform = YES;
 }
 
 - (CGFloat)currentRotateDegree {
     return self.rotateDegree;
 }
 
-- (void)rotateBySettingDegree:(CGFloat)degree {
+- (void)rotateAroundCenterBySettingDegree:(CGFloat)degree {
     self.rotateDegree = degree;
-    [self updateTransform];
+    self.shouldUpdateTransform = YES;
 }
 
-- (void)rotateByIncreasingDegree:(CGFloat)degree {
+- (void)rotateAroundByIncreasingDegree:(CGFloat)degree {
     self.rotateDegree += degree;
-    [self updateTransform];
-}
-
-- (CGFloat)currentZoomScale {
-    return self.zoomScale;
+    self.shouldUpdateTransform = YES;
 }
 
 - (void)zoomBySettingScale:(CGFloat)scale {
     self.zoomScale = scale;
-    [self updateTransform];
+    self.shouldUpdateTransform = YES;
 }
 
-- (void)zoomByPlusCurrentScale:(CGFloat)scale {
+- (void)zoomByIncreasingScale:(CGFloat)scale {
     self.zoomScale += scale;
-    [self updateTransform];
+    self.shouldUpdateTransform = YES;
+}
+
+- (CGFloat)currentZoomScale {
+    return self.zoomAroundCenterScale;
+}
+
+- (void)zoomAroundCenterBySettingScale:(CGFloat)scale {
+    self.zoomAroundCenterScale = scale;
+    self.shouldUpdateTransform = YES;
+}
+
+- (void)zoomAroundCenterByIncreasingCurrentScale:(CGFloat)scale {
+    self.zoomAroundCenterScale += scale;
+    self.shouldUpdateTransform = YES;
 }
 
 - (void)updateTransform {
@@ -170,12 +185,17 @@
                                                                    self.translation.y);
 
     CGPoint centerPoint = [self centerPoint];
-    transform = CGAffineTransformTranslate(transform, centerPoint.x, centerPoint.y);
-    transform = CGAffineTransformRotate(transform, self.rotateDegree);
-    if (self.zoomScale != 1.f) {
+
+    if (self.zoomScale) {
         transform = CGAffineTransformScale(transform, self.zoomScale, self.zoomScale);
     }
-    self.realLineWidth = self.lineWidth * self.zoomScale;
+
+    transform = CGAffineTransformTranslate(transform, centerPoint.x, centerPoint.y);
+    transform = CGAffineTransformRotate(transform, self.rotateDegree);
+    if (self.zoomAroundCenterScale != 1.f) {
+        transform = CGAffineTransformScale(transform, self.zoomAroundCenterScale, self.zoomAroundCenterScale);
+    }
+    self.realLineWidth = self.lineWidth * self.zoomAroundCenterScale;
     transform = CGAffineTransformTranslate(transform, -1 * centerPoint.x, -1 * centerPoint.y);
 
     self.transform = transform;
@@ -187,6 +207,10 @@
 }
 
 - (CGAffineTransform)currentTransform {
+    if (self.shouldUpdateTransform) {
+        [self updateTransform];
+        self.shouldUpdateTransform = NO;
+    }
     return self.transform;
 }
 
@@ -210,7 +234,7 @@
              @"realLineWidth": @"realLineWidth",
              @"rotateDegree": @"rotateDegree",
              @"translation": @"translation",
-             @"zoomScale": @"zoomScale",
+             @"zoomAroundCenterScale": @"zoomAroundCenterScale",
              @"centerPoint": @"centerPoint"
              };
 }

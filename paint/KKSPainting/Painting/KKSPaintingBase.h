@@ -15,8 +15,6 @@
 
 @interface KKSPaintingBase : MTLModel <MTLJSONSerializing>
 
-//@interface KKSPaintingBase : NSObject <NSCopying>
-
 @property (nonatomic) CGFloat lineWidth;
 @property (nonatomic) CGFloat alpha;
 
@@ -73,15 +71,19 @@
 
 - (CGFloat)currentRotateDegree;
 
-- (void)rotateBySettingDegree:(CGFloat)degree;
+- (void)rotateAroundCenterBySettingDegree:(CGFloat)degree;
 
-- (void)rotateByIncreasingDegree:(CGFloat)degree;
+- (void)rotateAroundByIncreasingDegree:(CGFloat)degree;
 
 - (CGFloat)currentZoomScale;
 
+- (void)zoomAroundCenterBySettingScale:(CGFloat)scale;
+
+- (void)zoomAroundCenterByIncreasingCurrentScale:(CGFloat)scale;
+
 - (void)zoomBySettingScale:(CGFloat)scale;
 
-- (void)zoomByPlusCurrentScale:(CGFloat)scale;
+- (void)zoomByIncreasingScale:(CGFloat)scale;
 
 - (void)setFill:(BOOL)shouldFill color:(UIColor *)fillColor;
 

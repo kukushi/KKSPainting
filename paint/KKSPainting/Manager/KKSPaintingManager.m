@@ -216,12 +216,12 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
             
             CGFloat degree = degreeWithPoints(origin, initialPosition, touchedLocation);
             self.previousLocation = touchedLocation;
-            [self.selectedPainting rotateByIncreasingDegree:degree];
+            [self.selectedPainting rotateAroundByIncreasingDegree:degree];
 
             CGPoint basicPoint = self.firstTouchLocation;
             CGFloat scale = scaleChangeBetweenPoints(origin, basicPoint, initialPosition, touchedLocation);
 
-            [self.selectedPainting zoomByPlusCurrentScale:scale];
+            [self.selectedPainting zoomAroundCenterByIncreasingCurrentScale:scale];
 
             KKSDLog("%f %f", degree, scale);
 
@@ -407,8 +407,8 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
     NSNumber *scaleNumber = object[KKSPaintingUndoKeyZoomScale];
     CGFloat newScale = [scaleNumber floatValue];
 
-    [painting rotateBySettingDegree:newDegree];
-    [painting zoomBySettingScale:newScale];
+    [painting rotateAroundCenterBySettingDegree:newDegree];
+    [painting zoomAroundCenterBySettingScale:newScale];
     
     [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
 }
