@@ -107,6 +107,7 @@
     [self.paintingManage reloadManagerWithModel:[self.projectArray objectAtIndex:[indexPath row]]];
     [self.projectListTable deselectRowAtIndexPath:indexPath animated:YES];
     self.paintingManage.modelIndex=[indexPath row];
+    [self.mainViewController.zoomSlider setValue:1.0f];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
