@@ -43,12 +43,13 @@
 }
 
 - (void)initializeSelf {
-    self.minimumZoomScale = .25f;
-    self.maximumZoomScale = 10.f;
+    self.minimumZoomScale = .01f;
+    self.maximumZoomScale = 100.f;
     self.scrollEnabled = NO;
     
     _paintingManager = [[KKSPaintingManager alloc] init];
     _paintingManager.paintingView = self;
+    self.delegate = _paintingManager;
 
     NSAssert(self.delegate == _paintingManager, @"");
     NSAssert(_paintingManager.paintingView.delegate == _paintingManager, @"");
@@ -173,6 +174,7 @@
         frame.size.width = contentWidth;
     }
     self.frame = frame;
+
     self.contentSize = CGSizeMake(contentWidth, contentHeight);
 }
 
