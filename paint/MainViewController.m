@@ -342,11 +342,7 @@
 
 
 
-
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.paintingManager.paintingView.backgroundView;
-}
+#pragma mark - UIScrollViewDelegate
 
 /*----------------------------选择绘制工具---------------------------*/
 
