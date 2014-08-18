@@ -42,7 +42,8 @@
     self.drawerView.viewController = self;
     self.paintingManager.paintingDelegate = self;
     self.paintingManager.paintingMode = KKSPaintingModePainting;
-    
+    [self.drawerView.paintingManager setBackgroundImage:nil contentSize:CGSizeMake(500.f, 1000.f)];
+
     
 /*-------------------------------颜色选择栏触摸相关---------------------------*/
     LastMotion=[NSDate date];
@@ -78,9 +79,7 @@
 {
 
     KKSDLog(@"appear");
-    if (self.drawerView.contentSize.width==0.0f) {
-        [self.drawerView setBackgroundImage:nil contentSize:CGSizeMake(500.f, 1000.f)];
-    }
+
     if (self.shouldShowSheet)
     {
         [self addFile:nil];
