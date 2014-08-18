@@ -154,6 +154,7 @@
 		52E9321719962D0700BD9988 /* UMSnsAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320B19962D0700BD9988 /* UMSnsAccountViewController.xib */; };
 		52E9321819962D0700BD9988 /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320C19962D0700BD9988 /* UMSShareListController.xib */; };
 		52E9321919962D0700BD9988 /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52E9320D19962D0700BD9988 /* UMSocialSDKResourcesNew.bundle */; };
+		52F756DF19A22BB9001B9C87 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521651A9199CB49A000DD93F /* Reveal.framework */; };
 		52F796B81999C36100F7A1D8 /* KKSPaintingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F796B71999C36100F7A1D8 /* KKSPaintingView.m */; };
 /* End PBXBuildFile section */
 
@@ -299,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52E9321019962D0700BD9988 /* libUMSocial_Sdk_4.0.a in Frameworks */,
+				52F756DF19A22BB9001B9C87 /* Reveal.framework in Frameworks */,
 				0049926318C48FE9004B23F9 /* CoreAudio.framework in Frameworks */,
 				0049926118C4895F004B23F9 /* AVFoundation.framework in Frameworks */,
 				00868A4B18C012E200CBBE3C /* CoreGraphics.framework in Frameworks */,
@@ -1075,6 +1077,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "paint/Supporting Files/MagicPaint-Prefix.pch";
 				INFOPLIST_FILE = "paint/Supporting Files/MagicPaint-Info.plist";
@@ -1091,6 +1097,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "paint/Supporting Files/MagicPaint-Prefix.pch";
 				INFOPLIST_FILE = "paint/Supporting Files/MagicPaint-Info.plist";

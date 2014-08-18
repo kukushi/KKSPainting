@@ -186,7 +186,7 @@
 
     CGPoint centerPoint = [self centerPoint];
 
-    if (self.zoomScale) {
+    if (self.zoomScale != 1.f) {
         transform = CGAffineTransformScale(transform, self.zoomScale, self.zoomScale);
     }
 

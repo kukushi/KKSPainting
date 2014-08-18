@@ -43,6 +43,8 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 @property (nonatomic) BOOL canChangeContentSize;
 
+@property (nonatomic) CGFloat scale;
+
 
 
 @end
@@ -326,6 +328,7 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 
 - (void)zoomByScale:(CGFloat)scale {
 
+    self.scale = scale;
     // [self.paintingView.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
 
     CGFloat contentWidth = self.paintingModel.originalContentSize.width * scale;

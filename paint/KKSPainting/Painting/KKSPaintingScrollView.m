@@ -51,14 +51,11 @@
     _paintingManager.paintingView = self;
     self.delegate = _paintingManager;
 
-    NSAssert(self.delegate == _paintingManager, @"");
-    NSAssert(_paintingManager.paintingView.delegate == _paintingManager, @"");
-
     _backgroundView = [[UIImageView alloc] init];
     [self addSubview:_backgroundView];
     [self sendSubviewToBack:_backgroundView];
 
-    _paintingView = [[KKSPaintingView alloc] init];
+    _paintingView = [[KKSPaintingView alloc] initWithFrame:self.frame];
     _paintingView.backgroundColor = [UIColor clearColor];
     __weak KKSPaintingScrollView *weakSelf = self;
     [_paintingView needUpdatePaintingsWithBlock:^{
@@ -181,10 +178,15 @@
 #pragma mark - Override ScrollView
 
 - (void)setContentSize:(CGSize)contentSize {
-    CGRect backgroundRect = CGRectZero;
+    if (CGSizeEqualToSize(contentSize, CGSizeZero)) {
+        return;
+    }
+    CGRect backgroundRect = self.paintingView.frame;
     backgroundRect.size = contentSize;
     self.paintingView.frame = backgroundRect;
-    
+
+    NSLog(@"%@", NSStringFromCGRect(self.paintingView.frame));
+
     [super setContentSize:contentSize];
 }
 
