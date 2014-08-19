@@ -186,7 +186,7 @@
 
     CGPoint centerPoint = [self centerPoint];
 
-    if (self.zoomScale != 1.f) {
+    if (self.zoomScale != 0.f) {
         transform = CGAffineTransformScale(transform, self.zoomScale, self.zoomScale);
         self.realLineWidth = self.lineWidth * self.zoomScale;
     }

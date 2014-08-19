@@ -17,7 +17,6 @@
 
 @property (nonatomic, strong, readwrite) KKSPaintingManager *paintingManager;
 
-@property (nonatomic, strong) UILabel *indicatorLabel;
 
 @end
 
@@ -63,15 +62,7 @@
     }];
     [self insertSubview:_paintingView aboveSubview:_backgroundView];
     
-    _indicatorLabel = ({
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(57, 80, 206, 30)];
-        label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor grayColor];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.alpha = 0.f;
-        [self addSubview:label];
-        label;
-    });
+    
 }
 
 #pragma mark - Touches

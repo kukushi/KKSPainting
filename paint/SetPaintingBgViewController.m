@@ -13,7 +13,7 @@
 #define screenHeight [[UIScreen mainScreen] bounds].size.height
 
 @interface SetPaintingBgViewController ()
-
+- (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size;
 @end
 
 @implementation SetPaintingBgViewController
@@ -32,6 +32,9 @@
     self.paintHeight.text=[NSString stringWithFormat:@"%.0f",screenHeight];
     self.paintWidth.delegate=self;
     self.paintHeight.delegate=self;
+    CALayer * layer = [self.bgImgView layer];
+    layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    layer.borderWidth = 1.5f;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -75,6 +78,7 @@
     NSLog(@"%f",self.drawerView.contentSize.width);
     [self.paintingManager clear];
     [self.drawerView.paintingManager setBackgroundImage:self.bgImage contentSize:CGSizeMake([self.paintWidth.text floatValue],[self.paintHeight.text floatValue])];
+    self.mainViewController.paintingManager.modelIndex=-1;
     [self.mainViewController.zoomSlider setValue:1.0f];
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -110,21 +114,34 @@
         UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         self.bgImgView.image=image;
         
+       //self.bgImage=[self scaleToSize:image size:CGSizeMake(image.size.width/2.0f, image.size.height/2.0f)];
         self.bgImage=image;
-        
        // if (image.size.width>=320)
        // {
-            self.paintWidth.text=[NSString stringWithFormat:@"%.0f",image.size.width];
+            self.paintWidth.text=[NSString stringWithFormat:@"%.0f",self.bgImage.size.width];
        // }
 
        // if (image.size.height>=[[NSString stringWithFormat:@"%.0f",screenHeight]intValue])
        //{
-            self.paintHeight.text=[NSString stringWithFormat:@"%.0f",image.size.height];
+            self.paintHeight.text=[NSString stringWithFormat:@"%.0f",self.bgImage.size.height];
        // }*/
     }
     
 }
 
+- (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{
+    // 创建一个bitmap的context
+    // 并把它设置成为当前正在使用的context
+    UIGraphicsBeginImageContext(size);
+    // 绘制改变大小的图片
+    [img drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    // 从当前context中创建一个改变大小后的图片
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    // 返回新的改变大小后的图片
+    return scaledImage;
+}
 
 
 - (IBAction)setBgImg:(id)sender {

@@ -22,6 +22,8 @@
 }
 @property(nonatomic,strong)NSMutableArray *projectArray;
 @property(nonatomic,strong)NSTimer *timer;
+@property (nonatomic, strong) UILabel *indicatorLabel;
+
 @end
 
 @implementation MainViewController
@@ -30,10 +32,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    
+    self.indicatorLabel = ({
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(57, 80, 206, 330)];
+        label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor grayColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.alpha = 0.f;
+        label;
+    });
+    [self.view insertSubview:self.indicatorLabel aboveSubview:self.drawerView];
 
+    
+    
+    
     self.nameTextField.delegate=self;
 
     self.shouldShowSheet=YES;
@@ -41,6 +52,7 @@
     self.paintingManager = self.drawerView.paintingManager;
     self.drawerView.viewController = self;
     self.paintingManager.paintingDelegate = self;
+    self.drawerView.indicatorLabel=self.indicatorLabel;
     self.paintingManager.paintingMode = KKSPaintingModePainting;
     [self.drawerView.paintingManager setBackgroundImage:nil contentSize:CGSizeMake(500.f, 1000.f)];
 
@@ -463,7 +475,7 @@
     else if([actionSheet.title isEqualToString:@"保存"])
     {
         if (buttonIndex == 0) {
-            UIImageWriteToSavedPhotosAlbum([self.paintingManager currentImage], nil, nil,nil);
+            UIImageWriteToSavedPhotosAlbum([self.paintingManager.paintingModel previewImage], nil, nil,nil);
             [self.drawerView showIndicatorLabelWithText:@"已保存到相册"];
             self.hiddenKeepAbout.hidden=YES;
         }else if (buttonIndex == 1) {
@@ -578,6 +590,7 @@
         image=[self scaleToSize:image size:CGSizeMake(320,image.size.height/image.size.width*320)];
        // [self.drawerView setContentSize:CGSizeMake(320,image.size.height)];
         [self.paintingManager clear];
+        self.paintingManager.modelIndex=-1;
         [self.drawerView.paintingManager setBackgroundImage:image contentSize:CGSizeMake(320,image.size.height)];
     }
     

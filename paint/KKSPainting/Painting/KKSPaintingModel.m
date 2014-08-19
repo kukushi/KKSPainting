@@ -10,7 +10,6 @@
 
 @interface KKSPaintingModel ()
 
-
 @end
 
 @implementation KKSPaintingModel

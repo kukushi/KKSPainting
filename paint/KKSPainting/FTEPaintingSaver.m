@@ -1,5 +1,5 @@
 //
-//  FTEPaintingStorer.m
+//  FTEPaintingSaver.m
 //  MagicPaint
 //
 //  Created by kukushi on 8/10/14.

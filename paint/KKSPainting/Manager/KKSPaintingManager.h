@@ -44,6 +44,7 @@
 
 
 @property (nonatomic, weak) id<KKSPaintingManagerDelegate> paintingDelegate;
+// @property (nonatomic, strong) UILabel *indicatorLabel;
 
 - (void)paintingBeginWithTouch:(UITouch *)touch;
 

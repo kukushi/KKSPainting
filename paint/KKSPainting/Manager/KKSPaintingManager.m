@@ -37,7 +37,6 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 @property (nonatomic) CGPoint firstTouchLocation;
 @property (nonatomic) CGPoint previousLocation;
 
-@property (nonatomic, strong) UILabel *indicatorLabel;
 
 @property (nonatomic) BOOL isActive;
 
@@ -336,36 +335,13 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 
     [self.paintingView adjustFrameWithSize:CGSizeMake(contentWidth, contentHeight)];
 
-//    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-//    CGPoint center = CGPointMake(CGRectGetWidth(screenBounds) / 2.f, CGRectGetHeight(screenBounds)/2.f);
-//    CGRect rect = [self zoomRectWithScale:scale withCenter:center];
-
-//    CGFloat centerWidth = rect.origin.x + rect.size.width / 2.f;
-//    CGFloat centerHeight = rect.origin.y + rect.size.height / 2.f;
-
-    //NSLog(@"%@ %f %f", NSStringFromCGRect(rect), centerWidth, centerHeight);
-
-    //[self.paintingView zoomToRect:rect animated:NO];
-
-//    NSLog(@"offset inset %@ %@", NSStringFromCGPoint(self.paintingView.contentOffset), NSStringFromUIEdgeInsets(self.paintingView.contentInset));
-
-    self.paintingView.zoomScale = scale;
+    if (self.paintingView.backgroundView.image) {
+        self.paintingView.zoomScale = scale;
+    }
 
     [self zoomAllPaintingsByScale:scale];
+
     [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
-}
-
-- (CGRect)zoomRectWithScale:(float)scale withCenter:(CGPoint)center {
-
-    CGRect zoomRect;
-    zoomRect.size.height = self.paintingView.backgroundView.frame.size.height / scale;
-    zoomRect.size.width  = self.paintingView.backgroundView.frame.size.width  / scale;
-
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    zoomRect.origin.x = (CGRectGetWidth(self.paintingView.frame) - zoomRect.size.width) / 2.f;
-    zoomRect.origin.y = (CGRectGetHeight(self.paintingView.frame) - zoomRect.size.height) / 2.f;
-
-    return zoomRect;
 }
 
 #pragma mark - Undo & Redo & Clear
