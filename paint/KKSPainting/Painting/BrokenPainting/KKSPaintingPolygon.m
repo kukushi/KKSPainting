@@ -3,7 +3,7 @@
 //  MagicPaint
 //
 //  Created by kukushi on 7/25/14.
-//  Copyright (c) 2014 Robin W. All rights reserved.
+//  Copyright (c) 2014 Xing He. All rights reserved.
 //
 
 #import "KKSPaintingPolygon.h"
@@ -15,8 +15,6 @@
 @interface KKSPaintingPolygon ()
 
 @property (nonatomic, copy) NSMutableArray *points;
-
-@property (nonatomic) BOOL isLastDrawing;
 
 @end
 
@@ -48,27 +46,18 @@
     [self.view needUpdatePaintings];
 }
 
-- (UIImage *)endDrawingWithCacheImage:(UIImage *)cachedImage {
+- (void)endDrawing {
     self.isDrawingFinished = YES;
     [self.view needUpdatePaintings];
-    UIImage *image = [super recordingEndedWithTouch:nil cachedImage:cachedImage];
-    return image;
 }
 
-- (UIImage *)recordingEndedWithTouch:(UITouch *)touch cachedImage:(UIImage *)cachedImage {
+- (void)recordingEndedWithTouch:(UITouch *)touch {
     [self.longPressFinishTimer invalidate];
-    
-    UIImage *image;
+
     if ([self isLongTapWithTouch:touch] || self.isDrawingFinished) {
         self.isDrawingFinished = YES;
         [self.autoEndTimer invalidate];
-        image = [super recordingEndedWithTouch:touch cachedImage:cachedImage];
     }
-    else {
-        image = cachedImage;
-    }
-    
-    return image;
 }
 
 #pragma mark - Helper

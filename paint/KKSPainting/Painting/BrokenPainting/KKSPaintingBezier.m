@@ -3,7 +3,7 @@
 //  MagicPaint
 //
 //  Created by kukushi on 7/25/14.
-//  Copyright (c) 2014 Robin W. All rights reserved.
+//  Copyright (c) 2014 Xing He All rights reserved.
 //
 
 #import "KKSPaintingBezier.h"
@@ -32,7 +32,6 @@
         self.thirdTouchLocation = [touch locationInView:self.view];
         [self.view needUpdatePaintings];
     }
-    
 }
 
 - (void)recordingContinueWithTouchMoved:(UITouch *)touch {
@@ -42,13 +41,10 @@
     }
 }
 
-- (UIImage *)recordingEndedWithTouch:(UITouch *)touch cachedImage:(UIImage *)cachedImage {
-    [self.longPressFinishTimer invalidate];
+- (void)recordingEndedWithTouch:(UITouch *)touch {
     if (self.touchCount == 3) {
         self.isDrawingFinished = YES;
-        cachedImage = [super recordingEndedWithTouch:touch cachedImage:cachedImage];
     }
-    return cachedImage;
 }
 
 - (void)drawPath {

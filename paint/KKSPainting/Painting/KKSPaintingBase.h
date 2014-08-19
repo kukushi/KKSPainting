@@ -49,7 +49,7 @@
 
 - (void)recordingContinueWithTouchMoved:(UITouch *)touch;
 
-- (UIImage *)recordingEndedWithTouch:(UITouch *)touch cachedImage:(UIImage *)cachedImage;
+- (void)recordingEndedWithTouch:(UITouch *)touch;
 
 - (BOOL)pathContainsPoint:(CGPoint)point;
 
@@ -61,7 +61,7 @@
  *  end the painting directly.
  *  only work in Segment and Plo.
  */
-- (UIImage *)endDrawingWithCacheImage:(UIImage *)cachedImage;
+- (void)endDrawing;
 
 - (CGPoint)currentTranslation;
 

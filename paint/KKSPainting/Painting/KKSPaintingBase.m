@@ -87,27 +87,8 @@
     // implemented by subclass
 }
 
-- (UIImage *)recordingEndedWithTouch:(UITouch *)touch cachedImage:(UIImage *)cachedImage {
-    
-    CGSize imageSize;
-    if (CGSizeEqualToSize(CGSizeZero, self.view.contentSize)) {
-        imageSize = self.view.bounds.size;
-    }
-    else {
-        imageSize = self.view.contentSize;
-    }
-    
-    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.f);
-    
-    [cachedImage drawAtPoint:CGPointZero];
-    
-    [self drawPath];
-
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    
+- (void)recordingEndedWithTouch:(UITouch *)touch {
     [self initPathCenterPoint];
-    
-    return image;
 }
 
 - (BOOL)pathContainsPoint:(CGPoint)point {
@@ -116,7 +97,6 @@
 
 - (BOOL)areaContainsPoint:(CGPoint)point {
     return [self.path containsPoint:point];
-//    return CGPathContainsPoint(self.path, NULL, point, true);
 }
 
 #pragma mark - Drawing
@@ -125,9 +105,8 @@
     // implemented by subclass
 }
 
-- (UIImage *)endDrawingWithCacheImage:(UIImage *)cachedImage {
+- (void)endDrawing {
     // implemented by subclass
-    return nil;
 }
 
 #pragma mark - Transform

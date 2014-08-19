@@ -3,7 +3,7 @@
 //  MagicPaint
 //
 //  Created by kukushi on 7/25/14.
-//  Copyright (c) 2014 Robin W. All rights reserved.
+//  Copyright (c) 2014 Xing He All rights reserved.
 //
 
 #import "KKSPaintingSegments.h"
@@ -41,8 +41,6 @@
     
     [self.points kks_addPoint:currentLocation];
     
-    self.previousLocation = currentLocation;
-    
     [self.view needUpdatePaintings];
 }
 
@@ -50,24 +48,17 @@
     // do nothing
 }
 
-- (UIImage *)recordingEndedWithTouch:(UITouch *)touch
-                         cachedImage:(UIImage *)cachedImage {
+- (void)recordingEndedWithTouch:(UITouch *)touch {
     [self.longPressFinishTimer invalidate];
     
     if ([self isLongTapWithTouch:touch]) {
         // Drawing End
         self.isDrawingFinished = YES;
-        cachedImage = [super recordingEndedWithTouch:touch cachedImage:cachedImage];
     }
-    
-    return cachedImage;
 }
 
-- (UIImage *)endDrawingWithCacheImage:(UIImage *)cachedImage {
+- (void)endDrawing {
     self.isDrawingFinished = YES;
-    cachedImage = [super recordingEndedWithTouch:nil
-                                     cachedImage:cachedImage];
-    return cachedImage;
 }
 
 #pragma mark - Helper

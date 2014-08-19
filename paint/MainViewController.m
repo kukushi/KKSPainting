@@ -426,7 +426,7 @@
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@"507fcab25270157b37000010"
                                       shareText:@"我正在使用MagicPaint作画哦，单手就能涂鸦实在太方便啦，快看看我的作品吧~"
-                                     shareImage:[self.paintingManager currentImage]
+                                     shareImage:[self.paintingManager.paintingModel previewImage]
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToQzone,UMShareToRenren,UMShareToDouban,UMShareToEmail,UMShareToSms,UMShareToFacebook,UMShareToTwitter,nil]
                                        delegate:nil];
     self.hiddenKeepAbout.hidden=YES;
@@ -491,7 +491,7 @@
                 [self.nameTextField setText:[NSString stringWithFormat:@"%@",model.name]];
             }else
             {
-                [self.nameTextField setText:[NSString stringWithFormat:@"工程%d号",[self.projectArray count]]];
+                [self.nameTextField setText:[NSString stringWithFormat:@"工程%td号",[self.projectArray count]]];
             }
         }
 

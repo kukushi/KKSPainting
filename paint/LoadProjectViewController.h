@@ -3,7 +3,7 @@
 //  MagicPaint
 //
 //  Created by Robin W on 14-8-11.
-//  Copyright (c) 2014年 Robin W. All rights reserved.
+//  Copyright (c) 2014年 Xing He All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

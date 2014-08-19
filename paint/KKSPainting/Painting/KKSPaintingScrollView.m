@@ -183,7 +183,6 @@
     [super setContentOffset:contentOffset];
     
     self.indicatorLabel.frame=CGRectMake(self.bounds.origin.x+60,self.bounds.origin.y+80, self.indicatorLabel.bounds.size.width, self.indicatorLabel.bounds.size.height);
-    [self.paintingManager renewCachedImage];
     [self needUpdatePaintings];
 }
 

@@ -14,7 +14,6 @@
 @property (nonatomic) BOOL isBeforeSecondTap;
 
 @property (nonatomic) CGPoint firstLocation;
-@property (nonatomic) CGPoint previousLocation;
 
 @property (nonatomic) NSTimeInterval previousTimeStamp;
 

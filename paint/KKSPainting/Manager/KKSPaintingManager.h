@@ -66,8 +66,6 @@
 - (BOOL)canClear;
 - (void)clear;
 
-- (UIImage *)currentImage;
-
 - (void)setBackgroundImage:(UIImage *)image contentSize:(CGSize)size;
 
 - (void)zoomByScale:(CGFloat)scale;
@@ -75,8 +73,6 @@
 - (void)paintingFinish;
 
 - (BOOL)hasSelectedPainting;
-
-- (void)renewCachedImage;
 
 - (void)drawAllPaintings;
 

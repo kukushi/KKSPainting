@@ -144,7 +144,6 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
             [self registerUndoForPaintingWithPaintings:[self.paintingModel.usedPaintings copy]];
         }
         [self.painting recordingBeganWithTouch:touch];
-        
     }
     else if (paintingMode == KKSPaintingModeFillColor) {
         self.paintingToFill = [self paintingContainedInAreaWithPoint:touchedLocation];
@@ -161,7 +160,6 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
         CGPoint translation = translationBetweenPoints(self.firstTouchLocation, touchedLocation);
         [painting moveByIncreasingTranslation:translation];
         [self.paintingModel addPainting:painting];
-        [self updateCachedImageWithPainting:painting cachedImage:self.paintingModel.cachedImage];
         [self.paintingView needUpdatePaintings];
     }
     else {
@@ -169,11 +167,9 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
         [self updateSelectedPaintingWithPoint:touchedLocation];
         if (self.selectedPainting) {
             self.selectedPainting.shouldStrokePath = YES;
-            [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
             
             if (paintingMode == KKSPaintingModeMove ||
                 paintingMode == KKSPaintingModeRotateZoom) {
-                self.paintingModel.cachedImage = [self imageBeforePaintingComplete:self.selectedPainting];
                 self.isActive = YES;
                 self.previousLocation = touchedLocation;
                 self.firstTouchLocation = touchedLocation;
@@ -189,11 +185,13 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
                 [self registerUndoForPaintingWithPaintings:[self.paintingModel.usedPaintings copy]];
                 [self.paintingModel removePainting:self.selectedPainting];
                 self.selectedPainting.shouldStrokePath = NO;
-                [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
+//                [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
             }
             else if (paintingMode == KKSPaintingModeCopy) {
                 self.firstTouchLocation = touchedLocation;
             }
+            
+            [self.paintingView needUpdatePaintings];
         }
     }
 }
@@ -209,7 +207,6 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
         if (paintingMode == KKSPaintingModeMove) {
             CGPoint translation = translationBetweenPoints(self.previousLocation, touchedLocation);
             [self.selectedPainting moveByIncreasingTranslation:translation];
-            
             [self.paintingView needUpdatePaintings];
         }
         else if (paintingMode == KKSPaintingModeRotateZoom) {
@@ -233,15 +230,13 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
 
 - (void)paintingEndWithTouch:(UITouch *)touch {
     if (self.paintingMode == KKSPaintingModePainting) {
-        [self paintingMovedWithTouch:touch];
+        [self.painting recordingEndedWithTouch:touch];
         // make sure at least one point is recorded
         
-        self.paintingModel.cachedImage = [self.painting recordingEndedWithTouch:touch cachedImage:self.paintingModel.cachedImage];
-        
         if (self.painting.isDrawingFinished) {
-            
+            [self.painting recordingEndedWithTouch:touch];
             [self.paintingModel addPainting:self.painting];
-            
+            self.painting = nil;
             self.isActive = NO;
             
             if ([self.paintingDelegate respondsToSelector:@selector(paintingManagerDidEndedPainting)]) {
@@ -253,7 +248,7 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
              self.paintingMode == KKSPaintingModeRotateZoom) {
         if (self.selectedPainting) {
             self.selectedPainting.shouldStrokePath = NO;
-            [self updateCachedImageWithPaintingsAfterPainting:self.selectedPainting];
+//            [self updateCachedImageWithPaintingsAfterPainting:self.selectedPainting];
             
             [self.paintingView needUpdatePaintings];
             
@@ -262,8 +257,8 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
     }
     else if (self.paintingMode == KKSPaintingModeFillColor) {
         if (self.paintingToFill) {
-            [self updateCachedImageWithPainting:self.paintingToFill
-                                    cachedImage:self.paintingModel.cachedImage];
+//            [self updateCachedImageWithPainting:self.paintingToFill
+//                                    cachedImage:self.paintingModel.cachedImage];
             [self.paintingView needUpdatePaintings];
             self.isActive = NO;
             self.paintingToFill = nil;
@@ -328,7 +323,6 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
 }
 
 - (void)zoomByScale:(CGFloat)scale {
-    // [self.paintingView.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
 
     CGFloat contentWidth = self.paintingModel.originalContentSize.width * scale;
     CGFloat contentHeight = self.paintingModel.originalContentSize.height * scale;
@@ -341,7 +335,7 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
 
     [self zoomAllPaintingsByScale:scale];
 
-    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
+    [self.paintingView needUpdatePaintings];
 
     self.currentZoomScale = scale;
 }
@@ -369,10 +363,9 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
     [self registerUndoForPaintingWithPaintings:[self.paintingModel.usedPaintings copy]];
     
     NSArray *paintings = (NSArray *)object;
-    
-    self.paintingModel.usedPaintings = [NSMutableArray arrayWithArray:object];
-    
-    [self redrawViewWithPaintings:paintings];
+    self.paintingModel.usedPaintings = [NSMutableArray arrayWithArray:paintings];
+
+    [self.paintingView needUpdatePaintings];
 }
 
 - (void)registerUndoForPaintingWithPaintings:(NSArray *)paintings {
@@ -389,9 +382,8 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
     CGPoint newTranslation = [newValue CGPointValue];
 
     [painting moveBySettingTranslation:newTranslation];
-    
-    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
-    
+
+    [self.paintingView needUpdatePaintings];
 }
 
 - (void)registerUndoForMovingWithPainting:(KKSPaintingBase *)painting {
@@ -418,8 +410,8 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
 
     [painting rotateAroundCenterBySettingDegree:newDegree];
     [painting zoomAroundCenterBySettingScale:newScale];
-    
-    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
+
+    [self.paintingView needUpdatePaintings];
 }
 
 - (void)registerUndoForRotatingZoomingWithPainting:(KKSPaintingBase *)painting {
@@ -444,8 +436,8 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
     BOOL shouldFill = [shouldFillValue boolValue];
     
     [painting setFill:shouldFill color:painting.fillColor];
-    
-    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
+
+    [self.paintingView needUpdatePaintings];
 }
 
 - (void)registerUndoForFillColorWithPainting:(KKSPaintingBase *)painting {
@@ -469,8 +461,8 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
     if ([self canClear]) {
         [self.paintingModel removeAllPaintings];
         [self.undoManager removeAllActions];
-        self.paintingModel.cachedImage = nil;
         [self.paintingView needUpdatePaintings];
+        self.painting = nil;
     }
 }
 
@@ -495,11 +487,12 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
          || [self.painting isKindOfClass:[KKSPaintingPolygon class]]) &&
         self.isActive) {
         
-        self.paintingModel.cachedImage = [self.painting endDrawingWithCacheImage:self.paintingModel.cachedImage];
-        
         self.painting.isDrawingFinished = YES;
+
+        [self.paintingView needUpdatePaintings];
         
         [self.paintingModel addPainting:self.painting];
+        self.painting = nil;
         
         self.isActive = NO;
         
@@ -541,68 +534,10 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
     return image;
 }
 
-- (void)updateCachedImageWithPaintingsAfterPainting:(KKSPaintingBase *)painting {
-    NSInteger startIndex = [self.paintingModel.usedPaintings indexOfObject:painting];
-    NSInteger count = [self.paintingModel.usedPaintings count];
-
-    KKSViewBeginImageContextWithImage(self.paintingView);
-    [self.paintingModel.cachedImage drawAtPoint:CGPointZero];
-    for (NSInteger index = startIndex; index<count; ++index) {
-        KKSPaintingBase *usedPainting = self.paintingModel.usedPaintings[index];
-        [usedPainting drawPath];
-    }
-    
-    self.paintingModel.cachedImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-}
-
-- (void)redrawViewWithPaintings:(NSArray *)paintings {
-    KKSViewBeginImageContextWithImage(self.paintingView);
-    
-    for (KKSPaintingBase *painting in paintings) {
-        [painting drawPath];
-    }
-    
-    self.paintingModel.cachedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    [self.paintingView needUpdatePaintings];
-}
-
-- (void)updateCachedImageWithPainting:(KKSPaintingBase *)painting
-                          cachedImage:(UIImage *)cachedImage {
-    KKSViewBeginImageContextWithImage(self.paintingView);
-    
-    [cachedImage drawAtPoint:CGPointZero];
-    
-    [painting drawPath];
-    
-    self.paintingModel.cachedImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-}
-
-- (void)renewCachedImage {
-    KKSViewBeginImageContextWithImage(self.paintingView);
-
-    for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
-        [painting drawPath];
-    }
-
-    self.paintingModel.cachedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-}
-
-- (UIImage *)currentImage {
-    return self.paintingModel.cachedImage;
-}
-
 #pragma mark -
 
 - (void)clearSelectedPaintingStrokePath {
     self.selectedPainting.shouldStrokePath = NO;
-    [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
 }
 
 #pragma mark - 
@@ -686,17 +621,12 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
 }
 
 - (void)drawAllPaintings {
-    [self.paintingModel.cachedImage drawAtPoint:CGPointZero];
+    for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
+        [painting drawPath];
+    }
     
-    if (self.isActive) {
-        if (self.paintingMode == KKSPaintingModePainting) {
-            [self.painting drawPath];
-        }
-        else if (self.paintingMode == KKSPaintingModeMove ||
-                 self.paintingMode == KKSPaintingModeRotateZoom) {
-            [self redrawPaintingsFromSelectedPainting];
-            
-        }
+    if (self.painting) {
+        [self.painting drawPath];
     }
 }
 

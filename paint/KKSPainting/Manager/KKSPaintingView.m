@@ -3,7 +3,7 @@
 //  MagicPaint
 //
 //  Created by kukushi on 8/12/14.
-//  Copyright (c) 2014 Robin W. All rights reserved.
+//  Copyright (c) 2014 Xing He All rights reserved.
 //
 
 #import "KKSPaintingView.h"

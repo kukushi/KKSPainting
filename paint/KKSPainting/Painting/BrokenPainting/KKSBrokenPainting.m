@@ -9,7 +9,7 @@
 #import "KKSBrokenPainting.h"
 
 
-CGFloat const kAutoEndTime = 1.2f;
+NSTimeInterval const kAutoEndTime = 1.2f;
 NSTimeInterval const kLongPressEndTime = 0.6f;
 
 #pragma mark - KKSBrokenPainting

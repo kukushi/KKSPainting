@@ -3,10 +3,11 @@
 //  MagicPaint
 //
 //  Created by kukushi on 8/10/14.
-//  Copyright (c) 2014 Robin W. All rights reserved.
+//  Copyright (c) 2014 Xing He. All rights reserved.
 //
 
 #import "KKSPaintingModel.h"
+#import "KKSPaintingManager.h"
 
 @interface KKSPaintingModel ()
 
@@ -42,9 +43,9 @@
 }
 
 - (UIImage *)previewImage {
-    UIGraphicsBeginImageContext(self.cachedImage.size);
+    UIGraphicsBeginImageContext(self.originalContentSize);
     [self.backgroundImage drawAtPoint:CGPointZero];
-    [self.cachedImage drawAtPoint:CGPointZero];
+    [self.paintingManager drawAllPaintings];
     UIImage *previewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return previewImage;
