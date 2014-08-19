@@ -14,7 +14,6 @@
 #import "KKSPaintingModel.h"
 
 #import "KKSPointExtend.h"
-#import "KKSLog.h"
 
 static NSString * const KKSPaintingUndoKeyPainting = @"KKSPaintingUndoKeyPainting";
 static NSString * const KKSPaintingUndoKeyTranslation = @"KKSPaintingUndoKeyTranslation";
@@ -37,12 +36,9 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 @property (nonatomic) CGPoint firstTouchLocation;
 @property (nonatomic) CGPoint previousLocation;
 
-
 @property (nonatomic) BOOL isActive;
 
-@property (nonatomic) BOOL canChangeContentSize;
-
-@property (nonatomic) CGFloat scale;
+@property (nonatomic) CGFloat currentZoomScale;
 
 
 
@@ -52,16 +48,8 @@ static NSString * const KKSPaintingUndoKeyFillColor = @"KKSPaintingUndoKeyFillCo
 
 #pragma mark - Init
 
-void KKSViewBeginImageContextWithImage(UIScrollView *view) {
-    CGSize imageSize;
-    if (CGSizeEqualToSize(CGSizeZero, view.contentSize)) {
-        imageSize = view.bounds.size;
-    }
-    else {
-        imageSize = view.contentSize;
-    }
-    
-    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.f);
+void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
+    UIGraphicsBeginImageContextWithOptions(view.visibleContentSize.size, NO, 0.f);
 }
 
 - (id)init {
@@ -72,28 +60,41 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
         _paintingModel = [[KKSPaintingModel alloc] init];
         _undoManager = [[NSUndoManager alloc] init];
         _modelIndex = -1;
+        _currentZoomScale = 1.f;
     }
     return self;
 }
 
-#pragma mark -
+#pragma mark - Reload
 
 - (void)reloadManagerWithModel:(KKSPaintingModel *)paintingModel {
     for (KKSPaintingBase *painting in paintingModel.usedPaintings) {
         painting.delegate = self;
         painting.view = self.paintingView;
     }
-    
     self.paintingModel = paintingModel;
-    self.painting = nil;
-    self.selectedPainting = nil;
-    self.paintingToFill = nil;
-    self.undoManager = [[NSUndoManager alloc] init];
+    [self resetProperties];
     [self.paintingView setBackgroundImage:paintingModel.backgroundImage
                               contentSize:self.paintingModel.originalContentSize];
     
     
     [self.paintingView needUpdatePaintings];
+}
+
+- (void)reloadManagerWithImage:(UIImage *)image Size:(CGSize)size {
+    self.paintingModel = [[KKSPaintingModel alloc] init];
+    self.paintingModel.backgroundImage = image;
+    self.paintingModel.originalContentSize = size;
+    [self resetProperties];
+    [self.paintingView needUpdatePaintings];
+}
+
+- (void)resetProperties {
+    self.currentZoomScale = 1.f;
+    self.painting = nil;
+    self.selectedPainting = nil;
+    self.paintingToFill = nil;
+    self.undoManager = [[NSUndoManager alloc] init];
 }
 
 #pragma mark - Selected Painting
@@ -321,13 +322,12 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
 
 - (void)zoomAllPaintingsByScale:(CGFloat)scale {
     for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
+        [painting setBaseZoomScale:self.currentZoomScale];
         [painting zoomBySettingScale:scale];
     }
 }
 
 - (void)zoomByScale:(CGFloat)scale {
-
-    self.scale = scale;
     // [self.paintingView.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
 
     CGFloat contentWidth = self.paintingModel.originalContentSize.width * scale;
@@ -342,6 +342,8 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
     [self zoomAllPaintingsByScale:scale];
 
     [self redrawViewWithPaintings:self.paintingModel.usedPaintings];
+
+    self.currentZoomScale = scale;
 }
 
 #pragma mark - Undo & Redo & Clear
@@ -553,7 +555,6 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
     self.paintingModel.cachedImage = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
-    
 }
 
 - (void)redrawViewWithPaintings:(NSArray *)paintings {
@@ -579,6 +580,17 @@ void KKSViewBeginImageContextWithImage(UIScrollView *view) {
     
     self.paintingModel.cachedImage = UIGraphicsGetImageFromCurrentImageContext();
     
+    UIGraphicsEndImageContext();
+}
+
+- (void)renewCachedImage {
+    KKSViewBeginImageContextWithImage(self.paintingView);
+
+    for (KKSPaintingBase *painting in self.paintingModel.usedPaintings) {
+        [painting drawPath];
+    }
+
+    self.paintingModel.cachedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 }
 

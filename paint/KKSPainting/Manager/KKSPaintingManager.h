@@ -52,7 +52,10 @@
 
 - (void)paintingEndWithTouch:(UITouch *)touch;
 
+
 - (void)reloadManagerWithModel:(KKSPaintingModel *)paintingModel;
+
+- (void)reloadManagerWithImage:(UIImage *)image Size:(CGSize)size;
 
 - (BOOL)canUndo;
 - (void)undo;
@@ -72,6 +75,8 @@
 - (void)paintingFinish;
 
 - (BOOL)hasSelectedPainting;
+
+- (void)renewCachedImage;
 
 - (void)drawAllPaintings;
 

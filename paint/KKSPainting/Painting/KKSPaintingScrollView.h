@@ -35,6 +35,8 @@
 
 - (void)needUpdatePaintingsInRect:(CGRect)rect;
 
+- (CGRect)visibleContentSize;
+
 @end
 
 

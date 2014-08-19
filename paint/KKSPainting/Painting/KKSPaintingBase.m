@@ -19,6 +19,11 @@
 
 @property (nonatomic) CGFloat zoomScale;
 
+/**
+ *  not decoded.
+ */
+@property (nonatomic) CGFloat baseZoomScale;
+
 @property (nonatomic) CGPoint translation;
 @property (nonatomic) CGFloat zoomAroundCenterScale;
 
@@ -157,7 +162,10 @@
 }
 
 - (void)zoomBySettingScale:(CGFloat)scale {
-    self.zoomScale = scale;
+    if (self.baseZoomScale == 0.f) {
+        self.baseZoomScale = scale;
+    }
+    self.zoomScale = scale / self.baseZoomScale;
     self.shouldUpdateTransform = YES;
 }
 
@@ -247,6 +255,14 @@
     self.path.lineWidth = self.scaledLineWidth;
     [self.strokeColor setStroke];
     [self.fillColor setFill];
+}
+
+#pragma mark - Setter
+
+- (void)setBaseZoomScale:(CGFloat)baseZoomScale {
+    if (_baseZoomScale == 0.f) {
+        _baseZoomScale = baseZoomScale;
+    }
 }
 
 #pragma mark - Drawing Bounds

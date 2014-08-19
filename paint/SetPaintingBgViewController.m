@@ -76,8 +76,10 @@
 }
 - (IBAction)setBg:(id)sender {
     NSLog(@"%f",self.drawerView.contentSize.width);
-    [self.paintingManager clear];
-    [self.drawerView.paintingManager setBackgroundImage:self.bgImage contentSize:CGSizeMake([self.paintWidth.text floatValue],[self.paintHeight.text floatValue])];
+    // [self.paintingManager clear];
+    CGSize contentSize = CGSizeMake([self.paintWidth.text floatValue],[self.paintHeight.text floatValue]);
+    [self.drawerView.paintingManager setBackgroundImage:self.bgImage contentSize:contentSize];
+    [self.drawerView.paintingManager reloadManagerWithImage:self.bgImage Size:contentSize];
     self.mainViewController.paintingManager.modelIndex=-1;
     [self.mainViewController.zoomSlider setValue:1.0f];
     [self dismissViewControllerAnimated:YES completion:nil];

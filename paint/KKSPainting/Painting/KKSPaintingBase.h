@@ -91,6 +91,8 @@
 
 - (CGFloat)scaledLineWidth;
 
+- (void)setBaseZoomScale:(CGFloat)baseZoomScale;
+
 @end
 
 

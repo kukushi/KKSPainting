@@ -176,8 +176,6 @@
     backgroundRect.size = contentSize;
     self.paintingView.frame = backgroundRect;
 
-    NSLog(@"%@", NSStringFromCGRect(self.paintingView.frame));
-
     [super setContentSize:contentSize];
 }
 
@@ -185,15 +183,27 @@
     [super setContentOffset:contentOffset];
     
     self.indicatorLabel.frame=CGRectMake(self.bounds.origin.x+60,self.bounds.origin.y+80, self.indicatorLabel.bounds.size.width, self.indicatorLabel.bounds.size.height);
-    
+    [self.paintingManager renewCachedImage];
     [self needUpdatePaintings];
+}
+
+#pragma mark -
+
+- (CGRect)visibleContentSize {
+    CGRect rect = CGRectZero;
+    rect.origin = self.contentOffset;
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    rect.size.width = MIN(CGRectGetWidth(screenBounds), self.contentSize.width);
+    rect.size.height = MIN(CGRectGetHeight(screenBounds), self.contentSize.height);
+    return rect;
 }
 
 
 #pragma mark - drawing
 
 - (void)needUpdatePaintings {
-    [self.paintingView setNeedsDisplay];
+    CGRect rect = [self visibleContentSize];
+    [self.paintingView setNeedsDisplayInRect:rect];
 }
 
 - (void)needUpdatePaintingsInRect:(CGRect)rect {

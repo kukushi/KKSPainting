@@ -23,6 +23,7 @@
 @property(nonatomic,strong)NSMutableArray *projectArray;
 @property(nonatomic,strong)NSTimer *timer;
 @property (nonatomic, strong) UILabel *indicatorLabel;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
 
 @end
 
@@ -54,7 +55,7 @@
     self.paintingManager.paintingDelegate = self;
     self.drawerView.indicatorLabel=self.indicatorLabel;
     self.paintingManager.paintingMode = KKSPaintingModePainting;
-    [self.drawerView.paintingManager setBackgroundImage:nil contentSize:CGSizeMake(500.f, 1000.f)];
+    [self.drawerView.paintingManager setBackgroundImage:nil contentSize:CGSizeMake(320.f, screenHeight)];
 
     
 /*-------------------------------颜色选择栏触摸相关---------------------------*/
