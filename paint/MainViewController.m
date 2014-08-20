@@ -35,6 +35,7 @@
     [super viewDidLoad];
     self.indicatorLabel = ({
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(57, 80, 206, 330)];
+        label.font = [UIFont systemFontOfSize:21.0f];
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor grayColor];
         label.textAlignment = NSTextAlignmentCenter;
@@ -434,14 +435,14 @@
 }
 //新建作品，可以载入，可以新建画布
 - (IBAction)addFile:(id)sender {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                      initWithTitle:@"新建"
-                                      delegate:self
-                                      cancelButtonTitle:@"取消"
-                                      destructiveButtonTitle:Nil
-                                      otherButtonTitles:@"空白画布", @"加载工程",@"拍照涂鸦",nil];
-        //actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-        [actionSheet showInView:self.view];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@"新建"
+                                  delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:Nil
+                                  otherButtonTitles:@"空白画布", @"加载工程",@"拍照涂鸦",nil];
+    //actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionSheet showInView:self.view];
     self.hiddenKeepAbout.hidden=YES;
 
     

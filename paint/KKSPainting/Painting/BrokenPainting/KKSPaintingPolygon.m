@@ -53,10 +53,12 @@
 
 - (void)recordingEndedWithTouch:(UITouch *)touch {
     [self.longPressFinishTimer invalidate];
+    self.longPressFinishTimer = nil;
 
     if ([self isLongTapWithTouch:touch] || self.isDrawingFinished) {
         self.isDrawingFinished = YES;
         [self.autoEndTimer invalidate];
+        self.autoEndTimer = nil;
     }
 }
 

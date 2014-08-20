@@ -50,6 +50,7 @@
 
 - (void)recordingEndedWithTouch:(UITouch *)touch {
     [self.longPressFinishTimer invalidate];
+    self.longPressFinishTimer = nil;
     
     if ([self isLongTapWithTouch:touch]) {
         // Drawing End

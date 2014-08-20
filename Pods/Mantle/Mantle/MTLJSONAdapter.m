@@ -27,8 +27,8 @@ static NSString * const MTLJSONAdapterThrownExceptionErrorKey = @"MTLJSONAdapter
 // completed.
 @property (nonatomic, strong, readonly) Class modelClass;
 
-// A cached copy of the return value of +JSONKeyPathsByPropertyKey.
-@property (nonatomic, copy, readonly) NSDictionary *JSONKeyPathsByPropertyKey;
+// A cached copy of the return value of +encodingBehaviorsByPropertyKey.
+@property (nonatomic, copy, readonly) NSDictionary *encodingBehaviorsByPropertyKey;
 
 // Looks up the NSValueTransformer that should be used for the given key.
 //
@@ -138,13 +138,13 @@ static NSString * const MTLJSONAdapterThrownExceptionErrorKey = @"MTLJSONAdapter
 	if (self == nil) return nil;
 
 	_modelClass = modelClass;
-	_JSONKeyPathsByPropertyKey = [[modelClass JSONKeyPathsByPropertyKey] copy];
+	_encodingBehaviorsByPropertyKey = [[modelClass encodingBehaviorsByPropertyKey] copy];
 
 	NSMutableDictionary *dictionaryValue = [[NSMutableDictionary alloc] initWithCapacity:JSONDictionary.count];
 
 	NSSet *propertyKeys = [self.modelClass propertyKeys];
 
-	for (NSString *JSONKeyPath in self.JSONKeyPathsByPropertyKey) {
+	for (NSString *JSONKeyPath in self.encodingBehaviorsByPropertyKey) {
 		if ([propertyKeys containsObject:JSONKeyPath]) continue;
 
 		if (error != NULL) {
@@ -228,7 +228,7 @@ static NSString * const MTLJSONAdapterThrownExceptionErrorKey = @"MTLJSONAdapter
 
 	_model = model;
 	_modelClass = model.class;
-	_JSONKeyPathsByPropertyKey = [[model.class JSONKeyPathsByPropertyKey] copy];
+	_encodingBehaviorsByPropertyKey = [[model.class encodingBehaviorsByPropertyKey] copy];
 
 	return self;
 }
@@ -296,7 +296,7 @@ static NSString * const MTLJSONAdapterThrownExceptionErrorKey = @"MTLJSONAdapter
 - (NSString *)JSONKeyPathForPropertyKey:(NSString *)key {
 	NSParameterAssert(key != nil);
 
-	id JSONKeyPath = self.JSONKeyPathsByPropertyKey[key];
+	id JSONKeyPath = self.encodingBehaviorsByPropertyKey[key];
 	if ([JSONKeyPath isEqual:NSNull.null]) return nil;
 
 	if (JSONKeyPath == nil) {

@@ -329,6 +329,9 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
 
     [self.paintingView adjustFrameWithSize:CGSizeMake(contentWidth, contentHeight)];
 
+//     CGPoint contentOffset = self.paintingView.contentOffset;
+//    self.paintingView.contentOffset = CGPointMake(contentOffset.x * scale, contentOffset.y * scale);
+
     if (self.paintingView.backgroundView.image) {
         self.paintingView.zoomScale = scale;
     }

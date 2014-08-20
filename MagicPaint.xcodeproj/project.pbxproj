@@ -137,6 +137,7 @@
 		521651AA199CB49A000DD93F /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521651A9199CB49A000DD93F /* Reveal.framework */; };
 		522FE923198289D900E0E599 /* KKSPaintingRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 522FE922198289D900E0E599 /* KKSPaintingRectangle.m */; };
 		522FE9261982905600E0E599 /* KKSPaintingEllipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 522FE9251982905600E0E599 /* KKSPaintingEllipse.m */; };
+		528709AA19A451D000F4D325 /* RoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 528709A919A451D000F4D325 /* RoundButton.m */; };
 		529C7037199A658300B341CF /* UIBezierPath+Painting.m in Sources */ = {isa = PBXBuildFile; fileRef = 529C7036199A658300B341CF /* UIBezierPath+Painting.m */; };
 		52D56E1C1997AC180015A107 /* FTEFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D56E1B1997AC180015A107 /* FTEFileManager.m */; };
 		52E91BE6198265A6000F5ED4 /* KKSPaintingSegments.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E91BE5198265A6000F5ED4 /* KKSPaintingSegments.m */; };
@@ -252,6 +253,8 @@
 		522FE922198289D900E0E599 /* KKSPaintingRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingRectangle.m; sourceTree = "<group>"; };
 		522FE9241982905600E0E599 /* KKSPaintingEllipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingEllipse.h; sourceTree = "<group>"; };
 		522FE9251982905600E0E599 /* KKSPaintingEllipse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingEllipse.m; sourceTree = "<group>"; };
+		528709A819A451D000F4D325 /* RoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundButton.h; sourceTree = "<group>"; };
+		528709A919A451D000F4D325 /* RoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundButton.m; sourceTree = "<group>"; };
 		529C7035199A658300B341CF /* UIBezierPath+Painting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Painting.h"; sourceTree = "<group>"; };
 		529C7036199A658300B341CF /* UIBezierPath+Painting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Painting.m"; sourceTree = "<group>"; };
 		52D56E1A1997AC180015A107 /* FTEFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTEFileManager.h; sourceTree = "<group>"; };
@@ -339,6 +342,8 @@
 		00868A3C18C012E200CBBE3C = {
 			isa = PBXGroup;
 			children = (
+				528709A819A451D000F4D325 /* RoundButton.h */,
+				528709A919A451D000F4D325 /* RoundButton.m */,
 				00868A4E18C012E200CBBE3C /* paint */,
 				00868A7018C012E300CBBE3C /* paintTests */,
 				00868A4718C012E200CBBE3C /* Frameworks */,
@@ -908,6 +913,7 @@
 				52117937199763C600CEC810 /* FTEPaintingSaver.m in Sources */,
 				00887F8918EDA66C004E26B4 /* SetPaintingBgViewController.m in Sources */,
 				522FE9261982905600E0E599 /* KKSPaintingEllipse.m in Sources */,
+				528709AA19A451D000F4D325 /* RoundButton.m in Sources */,
 				52E91BF619826DE6000F5ED4 /* KKSPaintingLine.m in Sources */,
 				52E91BEE19826B13000F5ED4 /* KKSPaintingPolygon.m in Sources */,
 				00868A5518C012E200CBBE3C /* main.m in Sources */,

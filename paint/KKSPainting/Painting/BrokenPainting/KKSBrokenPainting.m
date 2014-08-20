@@ -39,12 +39,13 @@ NSTimeInterval const kLongPressEndTime = 0.6f;
     
     if ([self.autoEndTimer isValid]) {
         [self.autoEndTimer invalidate];
+        self.autoEndTimer = nil;
     }
-    
+
     if ([self.delegate respondsToSelector:@selector(drawingWillEndAutomatically)]) {
         self.autoEndTimer = [NSTimer scheduledTimerWithTimeInterval:kAutoEndTime
-                                                         target:self.delegate
-                                                              selector:@selector(drawingWillEndAutomatically)
+                                                         target:self
+                                                           selector:@selector(autoEndTimerFired)
                                                        userInfo:nil
                                                         repeats:NO];
     }
@@ -65,8 +66,16 @@ NSTimeInterval const kLongPressEndTime = 0.6f;
     }
 }
 
+- (void)autoEndTimerFired {
+    if ([self.delegate respondsToSelector:@selector(drawingWillEndAutomatically)]) {
+        self.autoEndTimer = nil;
+        [self.delegate drawingWillEndAutomatically];
+    }
+}
+
 - (void)drawingEndByLongPress {
     [self.autoEndTimer invalidate];
+    self.autoEndTimer = nil;
      if ([self.delegate respondsToSelector:@selector(drawingDidEndNormally)]) {
          [self.delegate drawingDidEndNormally];
      }

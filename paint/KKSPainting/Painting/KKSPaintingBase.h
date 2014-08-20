@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KKSPaintingScrollView.h"
-#import <Mantle/MTLModel.h>
+#import <Mantle/Mantle.h>
 #import <Mantle/MTLJSONAdapter.h>
 
 @protocol KKSPaintingDelegate;
@@ -30,6 +30,7 @@
 
 @property (nonatomic, weak) KKSPaintingScrollView *view;
 
+@property (nonatomic) CGFloat zoomScale;
 
 /**
  *  Indicate whether drawing is finished.

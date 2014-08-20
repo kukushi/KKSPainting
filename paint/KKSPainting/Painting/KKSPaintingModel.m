@@ -7,7 +7,7 @@
 //
 
 #import "KKSPaintingModel.h"
-#import "KKSPaintingManager.h"
+#import "KKSPaintingBase.h"
 
 @interface KKSPaintingModel ()
 
@@ -45,7 +45,12 @@
 - (UIImage *)previewImage {
     UIGraphicsBeginImageContext(self.originalContentSize);
     [self.backgroundImage drawAtPoint:CGPointZero];
-    [self.paintingManager drawAllPaintings];
+    for (KKSPaintingBase *painting in self.usedPaintings) {
+        CGFloat zoomScale = painting.zoomScale;
+        painting.zoomScale = 1.f;
+        [painting drawPath];
+        painting.zoomScale = zoomScale;
+    }
     UIImage *previewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return previewImage;

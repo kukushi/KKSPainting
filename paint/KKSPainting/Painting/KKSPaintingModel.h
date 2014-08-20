@@ -10,8 +10,6 @@
 #import <Mantle/MTLModel.h>
 #import <Mantle/MTLJSONAdapter.h>
 
-@class KKSPaintingManager;
-
 @interface KKSPaintingModel : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy) NSString *name;
@@ -22,7 +20,6 @@
 
 @property (nonatomic, copy) NSArray *usedPaintings;
 
-@property (nonatomic, weak) KKSPaintingManager *paintingManager;
 
 @property (nonatomic) CGSize originalContentSize;
 

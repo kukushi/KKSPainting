@@ -17,8 +17,6 @@
 
 @property (nonatomic) CGFloat rotateDegree;
 
-@property (nonatomic) CGFloat zoomScale;
-
 /**
  *  not decoded.
  */
@@ -71,6 +69,11 @@
     }
 }
 
+- (void)resetCenterPoint {
+    CGRect bounds = self.path.bounds;
+    self.centerPoint = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
+}
+
 - (CGPoint)pathCenterPoint {
     CGPoint translatedPoint = CGPointMake(self.centerPoint.x + self.translation.x,
                                           self.centerPoint.y + self.translation.y);
@@ -118,12 +121,17 @@
 - (void)moveBySettingTranslation:(CGPoint)translation {
     self.translation = translation;
     self.shouldUpdateTransform = YES;
+
+//    [self resetCenterPoint];
 }
 
 - (void)moveByIncreasingTranslation:(CGPoint)translation {
     self.translation = CGPointMake(self.translation.x + translation.x,
                                    self.translation.y + translation.y);
     self.shouldUpdateTransform = YES;
+
+
+//    [self resetCenterPoint];
 }
 
 - (CGFloat)currentRotateDegree {
@@ -172,10 +180,12 @@
                                                                    self.translation.y);
 
     CGPoint centerPoint = [self centerPoint];
-
+    
     if (self.zoomScale != 0.f) {
+        transform = CGAffineTransformTranslate(transform, self.translation.x, self.translation.y);
         transform = CGAffineTransformScale(transform, self.zoomScale, self.zoomScale);
         self.realLineWidth = self.lineWidth * self.zoomScale;
+        transform = CGAffineTransformTranslate(transform, -1 * self.translation.x, -1 * self.translation.y);
     }
 
     transform = CGAffineTransformTranslate(transform, centerPoint.x, centerPoint.y);
@@ -207,7 +217,6 @@
 }
 
 #pragma mark - Mantle
-
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{@"lineWidth": @"lineWidth",

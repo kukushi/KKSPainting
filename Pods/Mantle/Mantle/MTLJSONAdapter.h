@@ -25,7 +25,7 @@
 //
 // Returns a dictionary mapping property keys to JSON key paths (as strings) or
 // NSNull values.
-+ (NSDictionary *)JSONKeyPathsByPropertyKey;
++ (NSDictionary *)encodingBehaviorsByPropertyKey;
 
 @optional
 
@@ -63,7 +63,7 @@ extern const NSInteger MTLJSONAdapterErrorNoClassFound;
 // The provided JSONDictionary is not valid.
 extern const NSInteger MTLJSONAdapterErrorInvalidJSONDictionary;
 
-// The model's implementation of +JSONKeyPathsByPropertyKey included a key which
+// The model's implementation of +encodingBehaviorsByPropertyKey included a key which
 // does not actually exist in +propertyKeys.
 extern const NSInteger MTLJSONAdapterErrorInvalidJSONMapping;
 
