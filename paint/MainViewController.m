@@ -56,6 +56,7 @@
     self.paintingManager.paintingDelegate = self;
     self.drawerView.indicatorLabel=self.indicatorLabel;
     self.paintingManager.paintingMode = KKSPaintingModePainting;
+    
     [self.drawerView.paintingManager setBackgroundImage:nil contentSize:CGSizeMake(320.f, screenHeight)];
 
     

@@ -54,6 +54,7 @@
     
     if ([self isLongTapWithTouch:touch]) {
         // Drawing End
+        [super recordingEndedWithTouch:touch];
         self.isDrawingFinished = YES;
     }
 }

@@ -43,6 +43,7 @@
 
 - (void)recordingEndedWithTouch:(UITouch *)touch {
     if (self.touchCount == 3) {
+        [super recordingEndedWithTouch:touch];
         self.isDrawingFinished = YES;
     }
 }

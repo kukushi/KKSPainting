@@ -69,6 +69,7 @@ NSTimeInterval const kLongPressEndTime = 0.6f;
 - (void)autoEndTimerFired {
     if ([self.delegate respondsToSelector:@selector(drawingWillEndAutomatically)]) {
         self.autoEndTimer = nil;
+        [self initPathCenterPoint];
         [self.delegate drawingWillEndAutomatically];
     }
 }
@@ -76,6 +77,7 @@ NSTimeInterval const kLongPressEndTime = 0.6f;
 - (void)drawingEndByLongPress {
     [self.autoEndTimer invalidate];
     self.autoEndTimer = nil;
+    [self initPathCenterPoint];
      if ([self.delegate respondsToSelector:@selector(drawingDidEndNormally)]) {
          [self.delegate drawingDidEndNormally];
      }

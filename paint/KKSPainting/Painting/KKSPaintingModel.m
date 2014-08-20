@@ -46,14 +46,13 @@
     UIGraphicsBeginImageContext(self.originalContentSize);
     [self.backgroundImage drawAtPoint:CGPointZero];
     for (KKSPaintingBase *painting in self.usedPaintings) {
-        CGFloat zoomScale = painting.zoomScale;
-        painting.zoomScale = 1.f;
+        [painting zoomBySettingScale:1.f];
         [painting drawPath];
-        painting.zoomScale = zoomScale;
     }
     UIImage *previewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return previewImage;
+    
 }
 
 #pragma mark - Mantle

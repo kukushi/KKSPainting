@@ -72,6 +72,8 @@
             0.f);
 
     self.strokingPath = [UIBezierPath bezierPathWithCGPath:strokingPath];
+    
+    CGPathRelease(strokingPath);
 
     if (self.shouldStrokePath) {
         [self strokeBoundWithBounds:transformedPath.bounds];

@@ -56,6 +56,7 @@
     self.longPressFinishTimer = nil;
 
     if ([self isLongTapWithTouch:touch] || self.isDrawingFinished) {
+        [super recordingEndedWithTouch:touch];
         self.isDrawingFinished = YES;
         [self.autoEndTimer invalidate];
         self.autoEndTimer = nil;

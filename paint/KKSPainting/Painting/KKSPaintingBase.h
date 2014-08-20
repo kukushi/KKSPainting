@@ -30,8 +30,6 @@
 
 @property (nonatomic, weak) KKSPaintingScrollView *view;
 
-@property (nonatomic) CGFloat zoomScale;
-
 /**
  *  Indicate whether drawing is finished.
  */
@@ -93,6 +91,8 @@
 - (CGFloat)scaledLineWidth;
 
 - (void)setBaseZoomScale:(CGFloat)baseZoomScale;
+
+- (void)initPathCenterPoint;
 
 @end
 
