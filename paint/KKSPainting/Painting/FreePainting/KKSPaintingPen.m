@@ -28,6 +28,8 @@
     CGPoint currentLocation = [touch locationInView:self.view];
     [self.path moveToPoint:currentLocation];
     self.previousLocation = currentLocation;
+
+    [self recordingContinueWithTouchMoved:touch];
 }
 
 - (void)recordingContinueWithTouchMoved:(UITouch *)touch {

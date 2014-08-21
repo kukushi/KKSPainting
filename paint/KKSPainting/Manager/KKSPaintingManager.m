@@ -165,7 +165,12 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
     else {
         // Editing Mode
         [self updateSelectedPaintingWithPoint:touchedLocation];
+
         if (self.selectedPainting) {
+            // send selected painting to front most
+            [self.paintingModel removePainting:self.selectedPainting];
+            [self.paintingModel addPainting:self.selectedPainting];
+
             self.selectedPainting.shouldStrokePath = YES;
             
             if (paintingMode == KKSPaintingModeMove ||

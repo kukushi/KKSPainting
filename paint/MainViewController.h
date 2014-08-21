@@ -11,9 +11,7 @@
 #import "KKSPaintingScrollView.h"
 
 @interface MainViewController : UIViewController<UIAccelerometerDelegate,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
-{
 
-}
 @property(strong,nonatomic)UIPanGestureRecognizer *panGes;//拖动对象
 @property(assign,nonatomic)BOOL shouldShowSheet;
 
@@ -34,6 +32,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *selectedTool;
+
 - (IBAction)selectedTool:(id)sender;
 - (IBAction)lineTool:(id)sender;
 - (IBAction)editTool:(id)sender;
