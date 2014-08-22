@@ -286,7 +286,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="dPP-8K-dlb" customClass="RoundButton">
                                         <rect key="frame" x="347" y="7" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.98431378602981567" green="0.84705889225006104" blue="0.3333333432674408" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
                                             <action selector="changeColor:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="0tk-2e-YnY"/>
                                         </connections>
@@ -294,7 +294,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="9bE-2h-X1m" customClass="RoundButton">
                                         <rect key="frame" x="421" y="7" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0078431377187371254" green="0.65882354974746704" blue="0.75294125080108643" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
                                             <action selector="changeColor:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="8s6-pO-Duu"/>
                                         </connections>
@@ -302,7 +302,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="1wk-sD-43r" customClass="RoundButton">
                                         <rect key="frame" x="568" y="7" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.43137258291244507" blue="0.27058824896812439" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
                                             <action selector="changeColor:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="Csw-mS-rak"/>
                                         </connections>
@@ -310,7 +310,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="a2m-Tc-HW5" customClass="RoundButton">
                                         <rect key="frame" x="674" y="7" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.58431375026702881" green="0.23921570181846619" blue="0.7882353663444519" alpha="1" colorSpace="deviceRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="changeColor:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="GpZ-hu-WPZ"/>
@@ -319,7 +319,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="lSv-MH-yqO" customClass="RoundButton">
                                         <rect key="frame" x="752" y="7" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.5058823823928833" green="0.56470590829849243" blue="0.59215688705444336" alpha="1" colorSpace="deviceRGB"/>
                                         <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="changeColor:" destination="Kn1-aR-vBU" eventType="touchUpInside" id="PPR-AG-UjS"/>

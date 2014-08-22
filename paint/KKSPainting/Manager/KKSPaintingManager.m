@@ -168,8 +168,9 @@ void KKSViewBeginImageContextWithImage(KKSPaintingScrollView *view) {
 
         if (self.selectedPainting) {
             // send selected painting to front most
-            [self.paintingModel removePainting:self.selectedPainting];
-            [self.paintingModel addPainting:self.selectedPainting];
+//            [self.paintingModel removePainting:self.selectedPainting];
+//            [self.paintingModel addPainting:self.selectedPainting];
+            [self.paintingModel putPaintingToBack:self.selectedPainting];
 
             self.selectedPainting.shouldStrokePath = YES;
             

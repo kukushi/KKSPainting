@@ -29,6 +29,8 @@
 
 - (void)removeAllPaintings;
 
+- (void)putPaintingToBack:(id)painting;
+
 - (UIImage *)previewImage;
 
 @end

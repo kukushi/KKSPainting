@@ -200,7 +200,7 @@
     transform = CGAffineTransformTranslate(transform, -1 * centerPoint.x, -1 * centerPoint.y);
 
     self.realLineWidth = lineWidth;
-    
+    	
     self.transform = transform;
 }
 

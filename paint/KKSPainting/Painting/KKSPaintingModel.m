@@ -42,6 +42,22 @@
     self.usedPaintings = [[NSMutableArray alloc] init];
 }
 
+- (void)putPaintingToBack:(id)painting {
+    /*
+    NSInteger currentIndex = [self.usedPaintings indexOfObject:painting];
+    NSInteger lastIndex = [self.usedPaintings count] - 1;
+    NSMutableArray *mutableUsedPaintings = [NSMutableArray arrayWithArray:self.usedPaintings];
+    [mutableUsedPaintings exchangeObjectAtIndex:currentIndex withObjectAtIndex:lastIndex];
+    self.usedPaintings = [mutableUsedPaintings copy];
+     */
+    NSMutableArray *mutableUsedPaintings = [NSMutableArray arrayWithArray:self.usedPaintings];
+    [mutableUsedPaintings removeObject:painting];
+    [mutableUsedPaintings addObject:painting];
+    self.usedPaintings = [mutableUsedPaintings copy];
+}
+
+#pragma mark - Preview Image
+
 - (UIImage *)previewImage {
     UIGraphicsBeginImageContext(self.originalContentSize);
     [self.backgroundImage drawAtPoint:CGPointZero];
