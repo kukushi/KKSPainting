@@ -86,7 +86,7 @@
 		52EA8F7F19B0CFF1007542DE /* KKSPaintingSegments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingSegments.m; sourceTree = "<group>"; };
 		52EA8F8119B0CFF1007542DE /* KKSPaintingPen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingPen.h; sourceTree = "<group>"; };
 		52EA8F8219B0CFF1007542DE /* KKSPaintingPen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingPen.m; sourceTree = "<group>"; };
-		52EA8F8319B0CFF1007542DE /* KKSPainting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPainting.h; sourceTree = "<group>"; };
+		52EA8F8319B0CFF1007542DE /* KKSPainting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKSPainting.h; path = ../../KKSPainting/Painting/KKSPainting.h; sourceTree = "<group>"; };
 		52EA8F8419B0CFF1007542DE /* KKSPaintingBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingBase.h; sourceTree = "<group>"; };
 		52EA8F8519B0CFF1007542DE /* KKSPaintingBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingBase.m; sourceTree = "<group>"; };
 		52EA8F8619B0CFF1007542DE /* KKSPaintingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingModel.h; sourceTree = "<group>"; };
@@ -235,6 +235,7 @@
 		52EA8F3419B0CFC4007542DE /* KKSPainting */ = {
 			isa = PBXGroup;
 			children = (
+				52EA8F8319B0CFF1007542DE /* KKSPainting.h */,
 				52EA8F7619B0CFF1007542DE /* Painting */,
 				52EA8F9519B0CFF1007542DE /* Extension */,
 				52EA8F9C19B0CFF1007542DE /* Manager */,
@@ -249,7 +250,6 @@
 			children = (
 				52EA8F7719B0CFF1007542DE /* BrokenPainting */,
 				52EA8F8019B0CFF1007542DE /* FreePainting */,
-				52EA8F8319B0CFF1007542DE /* KKSPainting.h */,
 				52EA8F8419B0CFF1007542DE /* KKSPaintingBase.h */,
 				52EA8F8519B0CFF1007542DE /* KKSPaintingBase.m */,
 				52EA8F8619B0CFF1007542DE /* KKSPaintingModel.h */,

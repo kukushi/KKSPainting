@@ -24,10 +24,26 @@
                                         <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <items>
-                                            <barButtonItem image="FolderIcon" width="64" style="plain" id="ePR-xc-NvH" userLabel="Folder"/>
-                                            <barButtonItem image="PencilIcon" width="64" style="plain" id="j8u-aD-buP" userLabel="Pencil"/>
-                                            <barButtonItem image="lineWidth" width="64" style="plain" id="9tL-tZ-yI4" userLabel="LineWidth"/>
-                                            <barButtonItem image="Pan" width="64" style="plain" id="FFe-Pn-kS8" userLabel="Pan"/>
+                                            <barButtonItem image="PencilIcon" width="68" style="plain" id="j8u-aD-buP" userLabel="Pencil">
+                                                <connections>
+                                                    <action selector="changePaintingType:" destination="vXZ-lx-hvc" id="c0m-1D-YOY"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="lineWidth" width="67" style="plain" id="9tL-tZ-yI4" userLabel="LineWidth">
+                                                <connections>
+                                                    <action selector="changeLineWidthType:" destination="vXZ-lx-hvc" id="6uh-LE-ZuK"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="Pan" width="60" style="plain" id="FFe-Pn-kS8" userLabel="Pan">
+                                                <connections>
+                                                    <action selector="changePanType:" destination="vXZ-lx-hvc" id="JVz-cE-YGs"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="editing" style="plain" id="xCi-Mm-JGz">
+                                                <connections>
+                                                    <action selector="changeEditingType:" destination="vXZ-lx-hvc" id="Z2N-IQ-978"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                     </toolbar>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G8H-PH-qWm">
@@ -44,6 +60,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4.5"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="changePaintingColor:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ewn-pM-SDT"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OX6-pH-bzT">
                                                 <rect key="frame" x="100" y="4" width="40" height="40"/>
@@ -55,6 +74,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4.5"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="changePaintingColor:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wfL-HJ-NcU"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Z-9P-xo0">
                                                 <rect key="frame" x="180" y="4" width="40" height="40"/>
@@ -66,6 +88,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4.5"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="changePaintingColor:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="UqS-Ed-YA6"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vV0-jY-k3y">
                                                 <rect key="frame" x="260" y="4" width="40" height="40"/>
@@ -77,11 +102,46 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4.5"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="changePaintingColor:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pqd-4p-irl"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.59607845544815063" green="0.75294125080108643" blue="0.92549026012420654" alpha="1" colorSpace="deviceRGB"/>
                                         <color key="tintColor" red="1" green="0.9711707579644111" blue="0.98927626588377882" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jva-E1-G8K">
+                                        <rect key="frame" x="0.0" y="464" width="320" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="30" id="9CN-Qw-JK8">
+                                            <size key="itemSize" width="40" height="40"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="25" minY="10" maxX="25" maxY="10"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PopupCollectionView" id="F9N-r0-hhn">
+                                                <rect key="frame" x="25" y="10" width="40" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" tag="664" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDJ-Sy-UGX">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="vXZ-lx-hvc" id="GMQ-Q5-G2y"/>
+                                            <outlet property="delegate" destination="vXZ-lx-hvc" id="1Ma-m5-tb5"/>
+                                        </connections>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -89,16 +149,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="paintingView" destination="HpB-wl-bA5" id="KGz-0h-dqI"/>
+                        <outlet property="popupView" destination="Jva-E1-G8K" id="WbI-UF-RIb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="20"/>
+            <point key="canvasLocation" x="404" y="34"/>
         </scene>
     </scenes>
     <resources>
-        <image name="FolderIcon" width="40" height="40"/>
         <image name="Pan" width="40" height="40"/>
         <image name="PencilIcon" width="40" height="40"/>
+        <image name="editing" width="80" height="80"/>
         <image name="lineWidth" width="40" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

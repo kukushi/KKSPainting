@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger, KKSPaintingMode) {
     // you can scroll only in this mode
     KKSPaintingModeNone,
 
-    // DrawingMode
+    // Drawing Mode
     KKSPaintingModePainting,
     KKSPaintingModeFillColor,
 
