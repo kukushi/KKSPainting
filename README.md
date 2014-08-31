@@ -1,13 +1,12 @@
 # Paint
-=====
 
-A iOS painting framework base on CoreGraphics.
+A iOS painting framework base on CoreGraphics (UIBezierPath).
 
 ## Features 
 
 ### Basic Drawings
 
-You can draw the follwing items:
+You can draw the following items:
 
 * Smooth Signatures
 * Line
@@ -17,7 +16,7 @@ You can draw the follwing items:
 * Rectangle
 * Ellipse
 
-Redo, undo, clear are also supported.
+Redo, undo, clear  action also supported.
 
 ### Editing Support
 
