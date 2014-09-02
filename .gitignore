@@ -26,7 +26,8 @@ xcshareddata/
 
 # CocoaPods
 
-PaintExample/Pods/
+PaintExample/Pods
+Pods/
 
 
 .DS_Store
