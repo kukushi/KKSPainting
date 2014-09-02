@@ -162,7 +162,7 @@
     <resources>
         <image name="Pan" width="40" height="40"/>
         <image name="PencilIcon" width="40" height="40"/>
-        <image name="editing" width="80" height="80"/>
+        <image name="editing" width="40" height="40"/>
         <image name="lineWidth" width="40" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
