@@ -11,7 +11,7 @@
 @interface UIBezierPath (Painting)
 
 /*
- *
+ * Build a segment path using points.
  */
 - (void)addLinesWithPoints:(NSArray *)points;
 

@@ -67,9 +67,6 @@ CGFloat degreeWithPoints(CGPoint originPoint,
     currentPosition.x *= factor;
     currentPosition.y *= factor;
     
-    //    CGPoint remapedInitalPositon = CGPointMake(initialPosition.x - origin.x, initialPosition.y - origin.y);
-    //    CGPoint remappedCurrentPosition = CGPointMake(currentPosition.x - origin.x, currentPosition.y - origin.y);
-    
     NSInteger quadrant = quadrantWithPoint(initialPosition);
     
     // in the UIKit coordinate system
