@@ -17,9 +17,6 @@
 
 @property (nonatomic) CGFloat rotateDegree;
 
-/**
- *  not decoded.
- */
 @property (nonatomic) CGFloat baseZoomScale;
 
 @property (nonatomic) CGPoint translation;
