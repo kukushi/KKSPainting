@@ -13,11 +13,8 @@
 
 @interface KKSPaintingScrollView : UIScrollView
 
-
-/**
- *  
- */
 @property (nonatomic, strong, readonly) KKSPaintingManager *paintingManager;
+
 @property (nonatomic, strong) UILabel *indicatorLabel;
 
 @property (nonatomic, weak) UIViewController *viewController;
