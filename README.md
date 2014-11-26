@@ -8,9 +8,12 @@ A iOS painting framework base on CoreGraphics (UIBezierPath).
 
 ## Install
 
-Download the copy and drag `KKSPainting` to your project. Add a `KKSPaintingScrollView` subview  of the mainview.
+1. Simply drag the `KKSPainting` folder into your project. 
+2. Add a `KKSPaintingScrollView` subview  of the mainview.
 
 > Note: If you want to run the demo project, you should install the pod first ( by `pod install`).
+
+## Features
 
 ### Basic Drawings
 
