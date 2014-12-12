@@ -1,6 +1,6 @@
 # Paint
 
-A iOS painting framework base on CoreGraphics (UIBezierPath).
+An iOS painting framework base on CoreGraphics (UIBezierPath).
 
 ## Demo Screen Shot
 
