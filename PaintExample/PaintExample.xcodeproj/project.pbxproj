@@ -1,708 +1,1987 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		526EBCD319B0CAA300CFF9E0 /* FTEFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 526EBCD119B0CAA300CFF9E0 /* FTEFileManager.m */; };
-		529F75C319B0954900A0746D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529F75C219B0954900A0746D /* Foundation.framework */; };
-		529F75C519B0954900A0746D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529F75C419B0954900A0746D /* CoreGraphics.framework */; };
-		529F75C719B0954900A0746D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529F75C619B0954900A0746D /* UIKit.framework */; };
-		529F75CD19B0954900A0746D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 529F75CB19B0954900A0746D /* InfoPlist.strings */; };
-		529F75CF19B0954900A0746D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F75CE19B0954900A0746D /* main.m */; };
-		529F75D319B0954900A0746D /* FTEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F75D219B0954900A0746D /* FTEAppDelegate.m */; };
-		529F75D619B0954900A0746D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 529F75D419B0954900A0746D /* Main.storyboard */; };
-		529F75D919B0954900A0746D /* FTEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F75D819B0954900A0746D /* FTEViewController.m */; };
-		529F75DB19B0954900A0746D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 529F75DA19B0954900A0746D /* Images.xcassets */; };
-		529F75E219B0954900A0746D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529F75E119B0954900A0746D /* XCTest.framework */; };
-		529F75E319B0954900A0746D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529F75C219B0954900A0746D /* Foundation.framework */; };
-		529F75E419B0954900A0746D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529F75C619B0954900A0746D /* UIKit.framework */; };
-		529F75EC19B0954900A0746D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 529F75EA19B0954900A0746D /* InfoPlist.strings */; };
-		529F75EE19B0954900A0746D /* PaintExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F75ED19B0954900A0746D /* PaintExampleTests.m */; };
-		52EA8FA419B0CFF1007542DE /* KKSBrokenPainting.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F7919B0CFF1007542DE /* KKSBrokenPainting.m */; };
-		52EA8FA519B0CFF1007542DE /* KKSPaintingBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F7B19B0CFF1007542DE /* KKSPaintingBezier.m */; };
-		52EA8FA619B0CFF1007542DE /* KKSPaintingPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F7D19B0CFF1007542DE /* KKSPaintingPolygon.m */; };
-		52EA8FA719B0CFF1007542DE /* KKSPaintingSegments.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F7F19B0CFF1007542DE /* KKSPaintingSegments.m */; };
-		52EA8FA819B0CFF1007542DE /* KKSPaintingPen.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F8219B0CFF1007542DE /* KKSPaintingPen.m */; };
-		52EA8FA919B0CFF1007542DE /* KKSPaintingBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F8519B0CFF1007542DE /* KKSPaintingBase.m */; };
-		52EA8FAA19B0CFF1007542DE /* KKSPaintingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F8719B0CFF1007542DE /* KKSPaintingModel.m */; };
-		52EA8FAB19B0CFF1007542DE /* KKSPaintingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F8919B0CFF1007542DE /* KKSPaintingScrollView.m */; };
-		52EA8FAC19B0CFF1007542DE /* KKSPaintingEllipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F8E19B0CFF1007542DE /* KKSPaintingEllipse.m */; };
-		52EA8FAD19B0CFF1007542DE /* KKSPaintingLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F9019B0CFF1007542DE /* KKSPaintingLine.m */; };
-		52EA8FAE19B0CFF1007542DE /* KKSPaintingRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F9219B0CFF1007542DE /* KKSPaintingRectangle.m */; };
-		52EA8FAF19B0CFF1007542DE /* KKSShapePainting.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F9419B0CFF1007542DE /* KKSShapePainting.m */; };
-		52EA8FB019B0CFF1007542DE /* KKSPointExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F9719B0CFF1007542DE /* KKSPointExtend.m */; };
-		52EA8FB119B0CFF1007542DE /* NSMutableArray+KKSValueSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F9919B0CFF1007542DE /* NSMutableArray+KKSValueSupport.m */; };
-		52EA8FB219B0CFF1007542DE /* UIBezierPath+Painting.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F9B19B0CFF1007542DE /* UIBezierPath+Painting.m */; };
-		52EA8FB319B0CFF1007542DE /* KKSPaintingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8F9F19B0CFF1007542DE /* KKSPaintingManager.m */; };
-		52EA8FB419B0CFF1007542DE /* KKSPaintingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8FA119B0CFF1007542DE /* KKSPaintingView.m */; };
-		52EA8FB519B0CFF1007542DE /* FTEPaintingSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EA8FA319B0CFF1007542DE /* FTEPaintingSaver.m */; };
-		5D1251415DE749278AF22576 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EC07B06B00448BB41651A2 /* libPods.a */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		529F75E519B0954900A0746D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 529F75B719B0954800A0746D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 529F75BE19B0954900A0746D;
-			remoteInfo = PaintExample;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		526EBCD119B0CAA300CFF9E0 /* FTEFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTEFileManager.m; path = FileManager/FTEFileManager.m; sourceTree = "<group>"; };
-		526EBCD219B0CAA300CFF9E0 /* FTEFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FTEFileManager.h; path = FileManager/FTEFileManager.h; sourceTree = "<group>"; };
-		529F75BF19B0954900A0746D /* PaintExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaintExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		529F75C219B0954900A0746D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		529F75C419B0954900A0746D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		529F75C619B0954900A0746D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		529F75CA19B0954900A0746D /* PaintExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PaintExample-Info.plist"; sourceTree = "<group>"; };
-		529F75CC19B0954900A0746D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		529F75CE19B0954900A0746D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		529F75D019B0954900A0746D /* PaintExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaintExample-Prefix.pch"; sourceTree = "<group>"; };
-		529F75D119B0954900A0746D /* FTEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTEAppDelegate.h; sourceTree = "<group>"; };
-		529F75D219B0954900A0746D /* FTEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTEAppDelegate.m; sourceTree = "<group>"; };
-		529F75D519B0954900A0746D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		529F75D719B0954900A0746D /* FTEViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTEViewController.h; sourceTree = "<group>"; };
-		529F75D819B0954900A0746D /* FTEViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTEViewController.m; sourceTree = "<group>"; };
-		529F75DA19B0954900A0746D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		529F75E019B0954900A0746D /* PaintExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaintExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		529F75E119B0954900A0746D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		529F75E919B0954900A0746D /* PaintExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PaintExampleTests-Info.plist"; sourceTree = "<group>"; };
-		529F75EB19B0954900A0746D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		529F75ED19B0954900A0746D /* PaintExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaintExampleTests.m; sourceTree = "<group>"; };
-		52EA8F3319B0CEA9007542DE /* KKSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSLog.h; sourceTree = "<group>"; };
-		52EA8F7819B0CFF1007542DE /* KKSBrokenPainting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSBrokenPainting.h; sourceTree = "<group>"; };
-		52EA8F7919B0CFF1007542DE /* KKSBrokenPainting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSBrokenPainting.m; sourceTree = "<group>"; };
-		52EA8F7A19B0CFF1007542DE /* KKSPaintingBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingBezier.h; sourceTree = "<group>"; };
-		52EA8F7B19B0CFF1007542DE /* KKSPaintingBezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingBezier.m; sourceTree = "<group>"; };
-		52EA8F7C19B0CFF1007542DE /* KKSPaintingPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingPolygon.h; sourceTree = "<group>"; };
-		52EA8F7D19B0CFF1007542DE /* KKSPaintingPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingPolygon.m; sourceTree = "<group>"; };
-		52EA8F7E19B0CFF1007542DE /* KKSPaintingSegments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingSegments.h; sourceTree = "<group>"; };
-		52EA8F7F19B0CFF1007542DE /* KKSPaintingSegments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingSegments.m; sourceTree = "<group>"; };
-		52EA8F8119B0CFF1007542DE /* KKSPaintingPen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingPen.h; sourceTree = "<group>"; };
-		52EA8F8219B0CFF1007542DE /* KKSPaintingPen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingPen.m; sourceTree = "<group>"; };
-		52EA8F8319B0CFF1007542DE /* KKSPainting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKSPainting.h; path = ../../KKSPainting/Painting/KKSPainting.h; sourceTree = "<group>"; };
-		52EA8F8419B0CFF1007542DE /* KKSPaintingBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingBase.h; sourceTree = "<group>"; };
-		52EA8F8519B0CFF1007542DE /* KKSPaintingBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingBase.m; sourceTree = "<group>"; };
-		52EA8F8619B0CFF1007542DE /* KKSPaintingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingModel.h; sourceTree = "<group>"; };
-		52EA8F8719B0CFF1007542DE /* KKSPaintingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingModel.m; sourceTree = "<group>"; };
-		52EA8F8819B0CFF1007542DE /* KKSPaintingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingScrollView.h; sourceTree = "<group>"; };
-		52EA8F8919B0CFF1007542DE /* KKSPaintingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingScrollView.m; sourceTree = "<group>"; };
-		52EA8F8A19B0CFF1007542DE /* KKSPaintingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingTool.h; sourceTree = "<group>"; };
-		52EA8F8B19B0CFF1007542DE /* KKSPaintingTool_KKSPaintingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingTool_KKSPaintingHelper.h; sourceTree = "<group>"; };
-		52EA8F8D19B0CFF1007542DE /* KKSPaintingEllipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingEllipse.h; sourceTree = "<group>"; };
-		52EA8F8E19B0CFF1007542DE /* KKSPaintingEllipse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingEllipse.m; sourceTree = "<group>"; };
-		52EA8F8F19B0CFF1007542DE /* KKSPaintingLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingLine.h; sourceTree = "<group>"; };
-		52EA8F9019B0CFF1007542DE /* KKSPaintingLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingLine.m; sourceTree = "<group>"; };
-		52EA8F9119B0CFF1007542DE /* KKSPaintingRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingRectangle.h; sourceTree = "<group>"; };
-		52EA8F9219B0CFF1007542DE /* KKSPaintingRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingRectangle.m; sourceTree = "<group>"; };
-		52EA8F9319B0CFF1007542DE /* KKSShapePainting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSShapePainting.h; sourceTree = "<group>"; };
-		52EA8F9419B0CFF1007542DE /* KKSShapePainting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSShapePainting.m; sourceTree = "<group>"; };
-		52EA8F9619B0CFF1007542DE /* KKSPointExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPointExtend.h; sourceTree = "<group>"; };
-		52EA8F9719B0CFF1007542DE /* KKSPointExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPointExtend.m; sourceTree = "<group>"; };
-		52EA8F9819B0CFF1007542DE /* NSMutableArray+KKSValueSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+KKSValueSupport.h"; sourceTree = "<group>"; };
-		52EA8F9919B0CFF1007542DE /* NSMutableArray+KKSValueSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+KKSValueSupport.m"; sourceTree = "<group>"; };
-		52EA8F9A19B0CFF1007542DE /* UIBezierPath+Painting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Painting.h"; sourceTree = "<group>"; };
-		52EA8F9B19B0CFF1007542DE /* UIBezierPath+Painting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Painting.m"; sourceTree = "<group>"; };
-		52EA8F9D19B0CFF1007542DE /* KKSPaintingConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingConstant.h; sourceTree = "<group>"; };
-		52EA8F9E19B0CFF1007542DE /* KKSPaintingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingManager.h; sourceTree = "<group>"; };
-		52EA8F9F19B0CFF1007542DE /* KKSPaintingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingManager.m; sourceTree = "<group>"; };
-		52EA8FA019B0CFF1007542DE /* KKSPaintingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSPaintingView.h; sourceTree = "<group>"; };
-		52EA8FA119B0CFF1007542DE /* KKSPaintingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSPaintingView.m; sourceTree = "<group>"; };
-		52EA8FA219B0CFF1007542DE /* FTEPaintingSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FTEPaintingSaver.h; path = ../../KKSPainting/FTEPaintingSaver.h; sourceTree = "<group>"; };
-		52EA8FA319B0CFF1007542DE /* FTEPaintingSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTEPaintingSaver.m; path = ../../KKSPainting/FTEPaintingSaver.m; sourceTree = "<group>"; };
-		68A46B0141D4429895202B74 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		75EC07B06B00448BB41651A2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		529F75BC19B0954900A0746D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				529F75C519B0954900A0746D /* CoreGraphics.framework in Frameworks */,
-				529F75C719B0954900A0746D /* UIKit.framework in Frameworks */,
-				529F75C319B0954900A0746D /* Foundation.framework in Frameworks */,
-				5D1251415DE749278AF22576 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		529F75DD19B0954900A0746D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				529F75E219B0954900A0746D /* XCTest.framework in Frameworks */,
-				529F75E419B0954900A0746D /* UIKit.framework in Frameworks */,
-				529F75E319B0954900A0746D /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		526EBCCF19B0CA3300CFF9E0 /* FIleManager */ = {
-			isa = PBXGroup;
-			children = (
-				526EBCD119B0CAA300CFF9E0 /* FTEFileManager.m */,
-				526EBCD219B0CAA300CFF9E0 /* FTEFileManager.h */,
-			);
-			name = FIleManager;
-			sourceTree = "<group>";
-		};
-		529F75B619B0954800A0746D = {
-			isa = PBXGroup;
-			children = (
-				529F75C819B0954900A0746D /* PaintExample */,
-				529F75E719B0954900A0746D /* PaintExampleTests */,
-				529F75C119B0954900A0746D /* Frameworks */,
-				529F75C019B0954900A0746D /* Products */,
-				68A46B0141D4429895202B74 /* Pods.xcconfig */,
-			);
-			sourceTree = "<group>";
-		};
-		529F75C019B0954900A0746D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				529F75BF19B0954900A0746D /* PaintExample.app */,
-				529F75E019B0954900A0746D /* PaintExampleTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		529F75C119B0954900A0746D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				529F75C219B0954900A0746D /* Foundation.framework */,
-				529F75C419B0954900A0746D /* CoreGraphics.framework */,
-				529F75C619B0954900A0746D /* UIKit.framework */,
-				529F75E119B0954900A0746D /* XCTest.framework */,
-				75EC07B06B00448BB41651A2 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		529F75C819B0954900A0746D /* PaintExample */ = {
-			isa = PBXGroup;
-			children = (
-				52EA8F3319B0CEA9007542DE /* KKSLog.h */,
-				526EBCCF19B0CA3300CFF9E0 /* FIleManager */,
-				52EA8F3419B0CFC4007542DE /* KKSPainting */,
-				529F75D119B0954900A0746D /* FTEAppDelegate.h */,
-				529F75D219B0954900A0746D /* FTEAppDelegate.m */,
-				529F75D419B0954900A0746D /* Main.storyboard */,
-				529F75D719B0954900A0746D /* FTEViewController.h */,
-				529F75D819B0954900A0746D /* FTEViewController.m */,
-				529F75DA19B0954900A0746D /* Images.xcassets */,
-				529F75C919B0954900A0746D /* Supporting Files */,
-			);
-			path = PaintExample;
-			sourceTree = "<group>";
-		};
-		529F75C919B0954900A0746D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				529F75CA19B0954900A0746D /* PaintExample-Info.plist */,
-				529F75CB19B0954900A0746D /* InfoPlist.strings */,
-				529F75CE19B0954900A0746D /* main.m */,
-				529F75D019B0954900A0746D /* PaintExample-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		529F75E719B0954900A0746D /* PaintExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				529F75ED19B0954900A0746D /* PaintExampleTests.m */,
-				529F75E819B0954900A0746D /* Supporting Files */,
-			);
-			path = PaintExampleTests;
-			sourceTree = "<group>";
-		};
-		529F75E819B0954900A0746D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				529F75E919B0954900A0746D /* PaintExampleTests-Info.plist */,
-				529F75EA19B0954900A0746D /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		52EA8F3419B0CFC4007542DE /* KKSPainting */ = {
-			isa = PBXGroup;
-			children = (
-				52EA8F8319B0CFF1007542DE /* KKSPainting.h */,
-				52EA8F7619B0CFF1007542DE /* Painting */,
-				52EA8F9519B0CFF1007542DE /* Extension */,
-				52EA8F9C19B0CFF1007542DE /* Manager */,
-				52EA8FA219B0CFF1007542DE /* FTEPaintingSaver.h */,
-				52EA8FA319B0CFF1007542DE /* FTEPaintingSaver.m */,
-			);
-			name = KKSPainting;
-			sourceTree = "<group>";
-		};
-		52EA8F7619B0CFF1007542DE /* Painting */ = {
-			isa = PBXGroup;
-			children = (
-				52EA8F7719B0CFF1007542DE /* BrokenPainting */,
-				52EA8F8019B0CFF1007542DE /* FreePainting */,
-				52EA8F8419B0CFF1007542DE /* KKSPaintingBase.h */,
-				52EA8F8519B0CFF1007542DE /* KKSPaintingBase.m */,
-				52EA8F8619B0CFF1007542DE /* KKSPaintingModel.h */,
-				52EA8F8719B0CFF1007542DE /* KKSPaintingModel.m */,
-				52EA8F8819B0CFF1007542DE /* KKSPaintingScrollView.h */,
-				52EA8F8919B0CFF1007542DE /* KKSPaintingScrollView.m */,
-				52EA8F8A19B0CFF1007542DE /* KKSPaintingTool.h */,
-				52EA8F8B19B0CFF1007542DE /* KKSPaintingTool_KKSPaintingHelper.h */,
-				52EA8F8C19B0CFF1007542DE /* KKSShapePainting */,
-			);
-			name = Painting;
-			path = ../../KKSPainting/Painting;
-			sourceTree = "<group>";
-		};
-		52EA8F7719B0CFF1007542DE /* BrokenPainting */ = {
-			isa = PBXGroup;
-			children = (
-				52EA8F7819B0CFF1007542DE /* KKSBrokenPainting.h */,
-				52EA8F7919B0CFF1007542DE /* KKSBrokenPainting.m */,
-				52EA8F7A19B0CFF1007542DE /* KKSPaintingBezier.h */,
-				52EA8F7B19B0CFF1007542DE /* KKSPaintingBezier.m */,
-				52EA8F7C19B0CFF1007542DE /* KKSPaintingPolygon.h */,
-				52EA8F7D19B0CFF1007542DE /* KKSPaintingPolygon.m */,
-				52EA8F7E19B0CFF1007542DE /* KKSPaintingSegments.h */,
-				52EA8F7F19B0CFF1007542DE /* KKSPaintingSegments.m */,
-			);
-			path = BrokenPainting;
-			sourceTree = "<group>";
-		};
-		52EA8F8019B0CFF1007542DE /* FreePainting */ = {
-			isa = PBXGroup;
-			children = (
-				52EA8F8119B0CFF1007542DE /* KKSPaintingPen.h */,
-				52EA8F8219B0CFF1007542DE /* KKSPaintingPen.m */,
-			);
-			path = FreePainting;
-			sourceTree = "<group>";
-		};
-		52EA8F8C19B0CFF1007542DE /* KKSShapePainting */ = {
-			isa = PBXGroup;
-			children = (
-				52EA8F8D19B0CFF1007542DE /* KKSPaintingEllipse.h */,
-				52EA8F8E19B0CFF1007542DE /* KKSPaintingEllipse.m */,
-				52EA8F8F19B0CFF1007542DE /* KKSPaintingLine.h */,
-				52EA8F9019B0CFF1007542DE /* KKSPaintingLine.m */,
-				52EA8F9119B0CFF1007542DE /* KKSPaintingRectangle.h */,
-				52EA8F9219B0CFF1007542DE /* KKSPaintingRectangle.m */,
-				52EA8F9319B0CFF1007542DE /* KKSShapePainting.h */,
-				52EA8F9419B0CFF1007542DE /* KKSShapePainting.m */,
-			);
-			path = KKSShapePainting;
-			sourceTree = "<group>";
-		};
-		52EA8F9519B0CFF1007542DE /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				52EA8F9619B0CFF1007542DE /* KKSPointExtend.h */,
-				52EA8F9719B0CFF1007542DE /* KKSPointExtend.m */,
-				52EA8F9819B0CFF1007542DE /* NSMutableArray+KKSValueSupport.h */,
-				52EA8F9919B0CFF1007542DE /* NSMutableArray+KKSValueSupport.m */,
-				52EA8F9A19B0CFF1007542DE /* UIBezierPath+Painting.h */,
-				52EA8F9B19B0CFF1007542DE /* UIBezierPath+Painting.m */,
-			);
-			name = Extension;
-			path = ../../KKSPainting/Extension;
-			sourceTree = "<group>";
-		};
-		52EA8F9C19B0CFF1007542DE /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				52EA8F9D19B0CFF1007542DE /* KKSPaintingConstant.h */,
-				52EA8F9E19B0CFF1007542DE /* KKSPaintingManager.h */,
-				52EA8F9F19B0CFF1007542DE /* KKSPaintingManager.m */,
-				52EA8FA019B0CFF1007542DE /* KKSPaintingView.h */,
-				52EA8FA119B0CFF1007542DE /* KKSPaintingView.m */,
-			);
-			name = Manager;
-			path = ../../KKSPainting/Manager;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		529F75BE19B0954900A0746D /* PaintExample */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 529F75F119B0954900A0746D /* Build configuration list for PBXNativeTarget "PaintExample" */;
-			buildPhases = (
-				555A38217A8D4BA09DB1FA34 /* Check Pods Manifest.lock */,
-				529F75BB19B0954900A0746D /* Sources */,
-				529F75BC19B0954900A0746D /* Frameworks */,
-				529F75BD19B0954900A0746D /* Resources */,
-				CD759728CC134FE2B66E3D4B /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PaintExample;
-			productName = PaintExample;
-			productReference = 529F75BF19B0954900A0746D /* PaintExample.app */;
-			productType = "com.apple.product-type.application";
-		};
-		529F75DF19B0954900A0746D /* PaintExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 529F75F419B0954900A0746D /* Build configuration list for PBXNativeTarget "PaintExampleTests" */;
-			buildPhases = (
-				529F75DC19B0954900A0746D /* Sources */,
-				529F75DD19B0954900A0746D /* Frameworks */,
-				529F75DE19B0954900A0746D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				529F75E619B0954900A0746D /* PBXTargetDependency */,
-			);
-			name = PaintExampleTests;
-			productName = PaintExampleTests;
-			productReference = 529F75E019B0954900A0746D /* PaintExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		529F75B719B0954800A0746D /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				CLASSPREFIX = FTE;
-				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Xing He";
-				TargetAttributes = {
-					529F75DF19B0954900A0746D = {
-						TestTargetID = 529F75BE19B0954900A0746D;
-					};
-				};
-			};
-			buildConfigurationList = 529F75BA19B0954800A0746D /* Build configuration list for PBXProject "PaintExample" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 529F75B619B0954800A0746D;
-			productRefGroup = 529F75C019B0954900A0746D /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				529F75BE19B0954900A0746D /* PaintExample */,
-				529F75DF19B0954900A0746D /* PaintExampleTests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		529F75BD19B0954900A0746D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				529F75DB19B0954900A0746D /* Images.xcassets in Resources */,
-				529F75CD19B0954900A0746D /* InfoPlist.strings in Resources */,
-				529F75D619B0954900A0746D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		529F75DE19B0954900A0746D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				529F75EC19B0954900A0746D /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		555A38217A8D4BA09DB1FA34 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CD759728CC134FE2B66E3D4B /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		529F75BB19B0954900A0746D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				529F75D919B0954900A0746D /* FTEViewController.m in Sources */,
-				52EA8FAF19B0CFF1007542DE /* KKSShapePainting.m in Sources */,
-				52EA8FA719B0CFF1007542DE /* KKSPaintingSegments.m in Sources */,
-				52EA8FA919B0CFF1007542DE /* KKSPaintingBase.m in Sources */,
-				52EA8FAD19B0CFF1007542DE /* KKSPaintingLine.m in Sources */,
-				52EA8FAB19B0CFF1007542DE /* KKSPaintingScrollView.m in Sources */,
-				52EA8FB419B0CFF1007542DE /* KKSPaintingView.m in Sources */,
-				526EBCD319B0CAA300CFF9E0 /* FTEFileManager.m in Sources */,
-				52EA8FAE19B0CFF1007542DE /* KKSPaintingRectangle.m in Sources */,
-				52EA8FB519B0CFF1007542DE /* FTEPaintingSaver.m in Sources */,
-				52EA8FA519B0CFF1007542DE /* KKSPaintingBezier.m in Sources */,
-				52EA8FB319B0CFF1007542DE /* KKSPaintingManager.m in Sources */,
-				52EA8FB219B0CFF1007542DE /* UIBezierPath+Painting.m in Sources */,
-				52EA8FAA19B0CFF1007542DE /* KKSPaintingModel.m in Sources */,
-				529F75D319B0954900A0746D /* FTEAppDelegate.m in Sources */,
-				529F75CF19B0954900A0746D /* main.m in Sources */,
-				52EA8FA819B0CFF1007542DE /* KKSPaintingPen.m in Sources */,
-				52EA8FB019B0CFF1007542DE /* KKSPointExtend.m in Sources */,
-				52EA8FB119B0CFF1007542DE /* NSMutableArray+KKSValueSupport.m in Sources */,
-				52EA8FA619B0CFF1007542DE /* KKSPaintingPolygon.m in Sources */,
-				52EA8FA419B0CFF1007542DE /* KKSBrokenPainting.m in Sources */,
-				52EA8FAC19B0CFF1007542DE /* KKSPaintingEllipse.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		529F75DC19B0954900A0746D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				529F75EE19B0954900A0746D /* PaintExampleTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		529F75E619B0954900A0746D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 529F75BE19B0954900A0746D /* PaintExample */;
-			targetProxy = 529F75E519B0954900A0746D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		529F75CB19B0954900A0746D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				529F75CC19B0954900A0746D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		529F75D419B0954900A0746D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				529F75D519B0954900A0746D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		529F75EA19B0954900A0746D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				529F75EB19B0954900A0746D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		529F75EF19B0954900A0746D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		529F75F019B0954900A0746D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		529F75F219B0954900A0746D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68A46B0141D4429895202B74 /* Pods.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PaintExample/PaintExample-Prefix.pch";
-				INFOPLIST_FILE = "PaintExample/PaintExample-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		529F75F319B0954900A0746D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68A46B0141D4429895202B74 /* Pods.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PaintExample/PaintExample-Prefix.pch";
-				INFOPLIST_FILE = "PaintExample/PaintExample-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		529F75F519B0954900A0746D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PaintExample.app/PaintExample";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PaintExample/PaintExample-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "PaintExampleTests/PaintExampleTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		529F75F619B0954900A0746D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PaintExample.app/PaintExample";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PaintExample/PaintExample-Prefix.pch";
-				INFOPLIST_FILE = "PaintExampleTests/PaintExampleTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		529F75BA19B0954800A0746D /* Build configuration list for PBXProject "PaintExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				529F75EF19B0954900A0746D /* Debug */,
-				529F75F019B0954900A0746D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		529F75F119B0954900A0746D /* Build configuration list for PBXNativeTarget "PaintExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				529F75F219B0954900A0746D /* Debug */,
-				529F75F319B0954900A0746D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		529F75F419B0954900A0746D /* Build configuration list for PBXNativeTarget "PaintExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				529F75F519B0954900A0746D /* Debug */,
-				529F75F619B0954900A0746D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 529F75B719B0954800A0746D /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>419B6B20CC4E10467716476B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>526EBCCF19B0CA3300CFF9E0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>526EBCD119B0CAA300CFF9E0</string>
+				<string>526EBCD219B0CAA300CFF9E0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>FIleManager</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>526EBCD119B0CAA300CFF9E0</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FTEFileManager.m</string>
+			<key>path</key>
+			<string>FileManager/FTEFileManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>526EBCD219B0CAA300CFF9E0</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FTEFileManager.h</string>
+			<key>path</key>
+			<string>FileManager/FTEFileManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>526EBCD319B0CAA300CFF9E0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>526EBCD119B0CAA300CFF9E0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75B619B0954800A0746D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>529F75C819B0954900A0746D</string>
+				<string>529F75E719B0954900A0746D</string>
+				<string>529F75C119B0954900A0746D</string>
+				<string>529F75C019B0954900A0746D</string>
+				<string>6B1C536088CBAF740CB841EE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75B719B0954800A0746D</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>CLASSPREFIX</key>
+				<string>FTE</string>
+				<key>LastUpgradeCheck</key>
+				<string>0510</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Xing He</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>529F75DF19B0954900A0746D</key>
+					<dict>
+						<key>TestTargetID</key>
+						<string>529F75BE19B0954900A0746D</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>529F75BA19B0954800A0746D</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>529F75B619B0954800A0746D</string>
+			<key>productRefGroup</key>
+			<string>529F75C019B0954900A0746D</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>529F75BE19B0954900A0746D</string>
+				<string>529F75DF19B0954900A0746D</string>
+			</array>
+		</dict>
+		<key>529F75BA19B0954800A0746D</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>529F75EF19B0954900A0746D</string>
+				<string>529F75F019B0954900A0746D</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>529F75BB19B0954900A0746D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>529F75D919B0954900A0746D</string>
+				<string>52EA8FAF19B0CFF1007542DE</string>
+				<string>52EA8FA719B0CFF1007542DE</string>
+				<string>52EA8FA919B0CFF1007542DE</string>
+				<string>52EA8FAD19B0CFF1007542DE</string>
+				<string>52EA8FAB19B0CFF1007542DE</string>
+				<string>52EA8FB419B0CFF1007542DE</string>
+				<string>526EBCD319B0CAA300CFF9E0</string>
+				<string>52EA8FAE19B0CFF1007542DE</string>
+				<string>52EA8FB519B0CFF1007542DE</string>
+				<string>52EA8FA519B0CFF1007542DE</string>
+				<string>52EA8FB319B0CFF1007542DE</string>
+				<string>52EA8FB219B0CFF1007542DE</string>
+				<string>52EA8FAA19B0CFF1007542DE</string>
+				<string>529F75D319B0954900A0746D</string>
+				<string>529F75CF19B0954900A0746D</string>
+				<string>52EA8FA819B0CFF1007542DE</string>
+				<string>52EA8FB019B0CFF1007542DE</string>
+				<string>52EA8FB119B0CFF1007542DE</string>
+				<string>52EA8FA619B0CFF1007542DE</string>
+				<string>52EA8FA419B0CFF1007542DE</string>
+				<string>52EA8FAC19B0CFF1007542DE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>529F75BC19B0954900A0746D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>529F75C519B0954900A0746D</string>
+				<string>529F75C719B0954900A0746D</string>
+				<string>529F75C319B0954900A0746D</string>
+				<string>5D1251415DE749278AF22576</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>529F75BD19B0954900A0746D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>529F75DB19B0954900A0746D</string>
+				<string>529F75CD19B0954900A0746D</string>
+				<string>529F75D619B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>529F75BE19B0954900A0746D</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>529F75F119B0954900A0746D</string>
+			<key>buildPhases</key>
+			<array>
+				<string>555A38217A8D4BA09DB1FA34</string>
+				<string>529F75BB19B0954900A0746D</string>
+				<string>529F75BC19B0954900A0746D</string>
+				<string>529F75BD19B0954900A0746D</string>
+				<string>CD759728CC134FE2B66E3D4B</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>PaintExample</string>
+			<key>productName</key>
+			<string>PaintExample</string>
+			<key>productReference</key>
+			<string>529F75BF19B0954900A0746D</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>529F75BF19B0954900A0746D</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>PaintExample.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>529F75C019B0954900A0746D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>529F75BF19B0954900A0746D</string>
+				<string>529F75E019B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75C119B0954900A0746D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>529F75C219B0954900A0746D</string>
+				<string>529F75C419B0954900A0746D</string>
+				<string>529F75C619B0954900A0746D</string>
+				<string>529F75E119B0954900A0746D</string>
+				<string>75EC07B06B00448BB41651A2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75C219B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>529F75C319B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75C219B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75C419B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreGraphics.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreGraphics.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>529F75C519B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75C419B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75C619B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>UIKit.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/UIKit.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>529F75C719B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75C619B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75C819B0954900A0746D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>52EA8F3319B0CEA9007542DE</string>
+				<string>526EBCCF19B0CA3300CFF9E0</string>
+				<string>52EA8F3419B0CFC4007542DE</string>
+				<string>529F75D119B0954900A0746D</string>
+				<string>529F75D219B0954900A0746D</string>
+				<string>529F75D419B0954900A0746D</string>
+				<string>529F75D719B0954900A0746D</string>
+				<string>529F75D819B0954900A0746D</string>
+				<string>529F75DA19B0954900A0746D</string>
+				<string>529F75C919B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>PaintExample</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75C919B0954900A0746D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>529F75CA19B0954900A0746D</string>
+				<string>529F75CB19B0954900A0746D</string>
+				<string>529F75CE19B0954900A0746D</string>
+				<string>529F75D019B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75CA19B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>PaintExample-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75CB19B0954900A0746D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>529F75CC19B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75CC19B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75CD19B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75CB19B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75CE19B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75CF19B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75CE19B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75D019B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PaintExample-Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75D119B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FTEAppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75D219B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FTEAppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75D319B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75D219B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75D419B0954900A0746D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>529F75D519B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75D519B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75D619B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75D419B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75D719B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FTEViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75D819B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FTEViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75D919B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75D819B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75DA19B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75DB19B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75DA19B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75DC19B0954900A0746D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>529F75EE19B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>529F75DD19B0954900A0746D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>529F75E219B0954900A0746D</string>
+				<string>529F75E419B0954900A0746D</string>
+				<string>529F75E319B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>529F75DE19B0954900A0746D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>529F75EC19B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>529F75DF19B0954900A0746D</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>529F75F419B0954900A0746D</string>
+			<key>buildPhases</key>
+			<array>
+				<string>529F75DC19B0954900A0746D</string>
+				<string>529F75DD19B0954900A0746D</string>
+				<string>529F75DE19B0954900A0746D</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>529F75E619B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>PaintExampleTests</string>
+			<key>productName</key>
+			<string>PaintExampleTests</string>
+			<key>productReference</key>
+			<string>529F75E019B0954900A0746D</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>529F75E019B0954900A0746D</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>PaintExampleTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>529F75E119B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>XCTest.framework</string>
+			<key>path</key>
+			<string>Library/Frameworks/XCTest.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>529F75E219B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75E119B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75E319B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75C219B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75E419B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75C619B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75E519B0954900A0746D</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>529F75B719B0954800A0746D</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>529F75BE19B0954900A0746D</string>
+			<key>remoteInfo</key>
+			<string>PaintExample</string>
+		</dict>
+		<key>529F75E619B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>529F75BE19B0954900A0746D</string>
+			<key>targetProxy</key>
+			<string>529F75E519B0954900A0746D</string>
+		</dict>
+		<key>529F75E719B0954900A0746D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>529F75ED19B0954900A0746D</string>
+				<string>529F75E819B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>PaintExampleTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75E819B0954900A0746D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>529F75E919B0954900A0746D</string>
+				<string>529F75EA19B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75E919B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>PaintExampleTests-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75EA19B0954900A0746D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>529F75EB19B0954900A0746D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75EB19B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75EC19B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75EA19B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75ED19B0954900A0746D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>PaintExampleTests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>529F75EE19B0954900A0746D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>529F75ED19B0954900A0746D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>529F75EF19B0954900A0746D</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.1</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>529F75F019B0954900A0746D</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.1</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>529F75F119B0954900A0746D</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>529F75F219B0954900A0746D</string>
+				<string>529F75F319B0954900A0746D</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>529F75F219B0954900A0746D</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>419B6B20CC4E10467716476B</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>PaintExample/PaintExample-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>PaintExample/PaintExample-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>529F75F319B0954900A0746D</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>6EEE38D8A643381F23E49A57</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>PaintExample/PaintExample-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>PaintExample/PaintExample-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>529F75F419B0954900A0746D</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>529F75F519B0954900A0746D</string>
+				<string>529F75F619B0954900A0746D</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>529F75F519B0954900A0746D</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/PaintExample.app/PaintExample</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>PaintExample/PaintExample-Prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>PaintExampleTests/PaintExampleTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>529F75F619B0954900A0746D</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/PaintExample.app/PaintExample</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>PaintExample/PaintExample-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>PaintExampleTests/PaintExampleTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>52EA8F3319B0CEA9007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSLog.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F3419B0CFC4007542DE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>52EA8F8319B0CFF1007542DE</string>
+				<string>52EA8F7619B0CFF1007542DE</string>
+				<string>52EA8F9519B0CFF1007542DE</string>
+				<string>52EA8F9C19B0CFF1007542DE</string>
+				<string>52EA8FA219B0CFF1007542DE</string>
+				<string>52EA8FA319B0CFF1007542DE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>KKSPainting</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F7619B0CFF1007542DE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>52EA8F7719B0CFF1007542DE</string>
+				<string>52EA8F8019B0CFF1007542DE</string>
+				<string>52EA8F8419B0CFF1007542DE</string>
+				<string>52EA8F8519B0CFF1007542DE</string>
+				<string>52EA8F8619B0CFF1007542DE</string>
+				<string>52EA8F8719B0CFF1007542DE</string>
+				<string>52EA8F8819B0CFF1007542DE</string>
+				<string>52EA8F8919B0CFF1007542DE</string>
+				<string>52EA8F8A19B0CFF1007542DE</string>
+				<string>52EA8F8B19B0CFF1007542DE</string>
+				<string>52EA8F8C19B0CFF1007542DE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Painting</string>
+			<key>path</key>
+			<string>../../KKSPainting/Painting</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F7719B0CFF1007542DE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>52EA8F7819B0CFF1007542DE</string>
+				<string>52EA8F7919B0CFF1007542DE</string>
+				<string>52EA8F7A19B0CFF1007542DE</string>
+				<string>52EA8F7B19B0CFF1007542DE</string>
+				<string>52EA8F7C19B0CFF1007542DE</string>
+				<string>52EA8F7D19B0CFF1007542DE</string>
+				<string>52EA8F7E19B0CFF1007542DE</string>
+				<string>52EA8F7F19B0CFF1007542DE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>BrokenPainting</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F7819B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSBrokenPainting.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F7919B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSBrokenPainting.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F7A19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingBezier.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F7B19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingBezier.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F7C19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingPolygon.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F7D19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingPolygon.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F7E19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingSegments.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F7F19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingSegments.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8019B0CFF1007542DE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>52EA8F8119B0CFF1007542DE</string>
+				<string>52EA8F8219B0CFF1007542DE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>FreePainting</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8119B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingPen.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8219B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingPen.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8319B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>KKSPainting.h</string>
+			<key>path</key>
+			<string>../../KKSPainting/Painting/KKSPainting.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8419B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingBase.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8519B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingBase.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8619B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingModel.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8719B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingModel.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8819B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingScrollView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8919B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingScrollView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8A19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingTool.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8B19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingTool_KKSPaintingHelper.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8C19B0CFF1007542DE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>52EA8F8D19B0CFF1007542DE</string>
+				<string>52EA8F8E19B0CFF1007542DE</string>
+				<string>52EA8F8F19B0CFF1007542DE</string>
+				<string>52EA8F9019B0CFF1007542DE</string>
+				<string>52EA8F9119B0CFF1007542DE</string>
+				<string>52EA8F9219B0CFF1007542DE</string>
+				<string>52EA8F9319B0CFF1007542DE</string>
+				<string>52EA8F9419B0CFF1007542DE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>KKSShapePainting</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8D19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingEllipse.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8E19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingEllipse.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F8F19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingLine.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9019B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingLine.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9119B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingRectangle.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9219B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingRectangle.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9319B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSShapePainting.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9419B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSShapePainting.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9519B0CFF1007542DE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>52EA8F9619B0CFF1007542DE</string>
+				<string>52EA8F9719B0CFF1007542DE</string>
+				<string>52EA8F9819B0CFF1007542DE</string>
+				<string>52EA8F9919B0CFF1007542DE</string>
+				<string>52EA8F9A19B0CFF1007542DE</string>
+				<string>52EA8F9B19B0CFF1007542DE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Extension</string>
+			<key>path</key>
+			<string>../../KKSPainting/Extension</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9619B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPointExtend.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9719B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPointExtend.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9819B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NSMutableArray+KKSValueSupport.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9919B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSMutableArray+KKSValueSupport.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9A19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UIBezierPath+Painting.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9B19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UIBezierPath+Painting.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9C19B0CFF1007542DE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>52EA8F9D19B0CFF1007542DE</string>
+				<string>52EA8F9E19B0CFF1007542DE</string>
+				<string>52EA8F9F19B0CFF1007542DE</string>
+				<string>52EA8FA019B0CFF1007542DE</string>
+				<string>52EA8FA119B0CFF1007542DE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Manager</string>
+			<key>path</key>
+			<string>../../KKSPainting/Manager</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9D19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingConstant.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9E19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8F9F19B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8FA019B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>KKSPaintingView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8FA119B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>KKSPaintingView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8FA219B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FTEPaintingSaver.h</string>
+			<key>path</key>
+			<string>../../KKSPainting/FTEPaintingSaver.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8FA319B0CFF1007542DE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>FTEPaintingSaver.m</string>
+			<key>path</key>
+			<string>../../KKSPainting/FTEPaintingSaver.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52EA8FA419B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F7919B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FA519B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F7B19B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FA619B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F7D19B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FA719B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F7F19B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FA819B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F8219B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FA919B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F8519B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FAA19B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F8719B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FAB19B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F8919B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FAC19B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F8E19B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FAD19B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F9019B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FAE19B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F9219B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FAF19B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F9419B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FB019B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F9719B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FB119B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F9919B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FB219B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F9B19B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FB319B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8F9F19B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FB419B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8FA119B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>52EA8FB519B0CFF1007542DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52EA8FA319B0CFF1007542DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>555A38217A8D4BA09DB1FA34</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>5D1251415DE749278AF22576</key>
+		<dict>
+			<key>fileRef</key>
+			<string>75EC07B06B00448BB41651A2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6B1C536088CBAF740CB841EE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>419B6B20CC4E10467716476B</string>
+				<string>6EEE38D8A643381F23E49A57</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6EEE38D8A643381F23E49A57</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>75EC07B06B00448BB41651A2</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>CD759728CC134FE2B66E3D4B</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>529F75B719B0954800A0746D</string>
+</dict>
+</plist>
