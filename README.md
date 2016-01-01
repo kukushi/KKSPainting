@@ -1,4 +1,4 @@
-# Paint
+# KKSPaint
 
 An iOS painting framework base on CoreGraphics (UIBezierPath).
 
